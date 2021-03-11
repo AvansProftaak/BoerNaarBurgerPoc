@@ -54,7 +54,7 @@
                     <div class="footer-copyright">© 2020 Copyright: groep 4A - Deeltijdopleiding Informatica aan Avans Hogeschool Breda</div>
                 </footer>
 
-                <!-- Profile Picture Modal -->
+                <!-- Boer registration not possible Modal -->
                 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel1" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

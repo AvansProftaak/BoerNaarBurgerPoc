@@ -49,10 +49,14 @@ class Customer
         $this->db->bind(':email', $email);
         $row = $this->db->single();
 
-        $hashedPassword = $row->password;
+        if($row) {
+            $hashedPassword = $row->password;
 
-        if (password_verify($password, $hashedPassword)) {
-            return $row;
+            if (password_verify($password, $hashedPassword)) {
+                return $row;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

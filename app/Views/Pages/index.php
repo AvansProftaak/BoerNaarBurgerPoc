@@ -28,7 +28,7 @@
 
                 Bekijk het besteloverzicht of plaats een bestelling bij een van onze boeren. Om van start te gaan dient eerst de database aangemaakt
                 te worden. Klik daarvoor op onderstaande knop en ervaar het gemak van Boer naar Burger!<br><br>
-                <i>Knop werkt nog niet ;). Voor nu gewoon het create database script even runnen in phpmyadmin. Vind je in de database map (root).</i>
+                <i>Knop werkt nog niet ;). Voor nu gewoon het create database script even runnen in phpmyadmin. Vind je in de <strong>database</strong> map (root).</i>
             </p>
             <button class="btn btn-green px-5">Maak Database</button>
         </div>
