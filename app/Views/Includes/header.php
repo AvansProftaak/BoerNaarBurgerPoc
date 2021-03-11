@@ -77,8 +77,8 @@
                             <?php echo $_SESSION['customer_name']; ?></a>
 
                         <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item dropdown-right-item" href="#">Besteloverzicht</a>
-                            <a class="dropdown-item dropdown-right-item" href="#">Mijn Gegevens</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/orderoverview">Besteloverzicht</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/accountdetails">Mijn Gegevens</a>
                             <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/logout">Uitloggen</a>
                         </div>
                     </li>

@@ -61,4 +61,10 @@ class Customer
             return false;
         }
     }
+
+    public function accountDetails($email) {
+        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+        $this->db->bind(':email', $email);
+        return $this->db->single();
+    }
 }

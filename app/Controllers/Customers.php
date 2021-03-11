@@ -130,9 +130,11 @@ class Customers extends Controller
 
             if (empty($data['emailError']) && empty($data['passwordError'])) {
                 $authorizedCustomer = $this->customerModel->login($data['email'], $data['password']);
+                var_dump($authorizedCustomer);
 
                 if ($authorizedCustomer) {
                     $this->createCustomerSession($authorizedCustomer);
+                    $this->view('customers/accountdetails');
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
 
@@ -161,5 +163,18 @@ class Customers extends Controller
         unset($_SESSION['email']);
         unset($_SESSION['customer_name']);
         header('location:' . URLROOT . '/customers/login');
+    }
+
+    public function accountDetails() {
+        if (isLoggedIn()) {
+            $data = $this->customerModel->accountDetails($_SESSION['email']);
+            $this->view('customers/accountdetails', $data);
+        } else {
+            $this->login();
+        }
+    }
+
+    public function orderOverview() {
+        $this->view('customers/orderoverview');
     }
 }
