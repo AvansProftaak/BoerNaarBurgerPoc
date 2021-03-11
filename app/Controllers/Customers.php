@@ -166,7 +166,7 @@ class Customers extends Controller
 
     public function accountDetails() {
         if (isLoggedIn()) {
-            $data = $this->customerModel->accountDetails($_SESSION['email']);
+            $data = $this->customerModel->getAccountDetails($_SESSION['email']);
             $this->view('customers/accountdetails', $data);
         } else {
             $this->login();

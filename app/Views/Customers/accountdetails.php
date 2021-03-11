@@ -71,7 +71,7 @@
                                 <button type="submit" class="btn btn-green">Gegevens opslaan</button>
                             </div>
                             <div class="mr-3 pr-3">
-                            <button type="button" class="btn btn-green">Wachtwoord wijzigen</button>
+                            <button type="button" data-toggle="modal" data-target="#passwordModal" class="btn btn-green">Wachtwoord wijzigen</button>
                             </div>
                         </div>
                     </form>
@@ -93,8 +93,52 @@
             </div>
             <form action="#" method="POST">
                 <div class="modal-body modal-text">
-                    <label for="avatar" class="">Upload afbeelding</label>
+                    <label for="avatar" class="">Een profielfoto uploaden is niet mogelijk in dit proof of concept.</label>
                     <input type="file" class="form-control-file" id="image" name="avatar">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal">Sluiten</button>
+                    <!-- Button is Disabled. Uploading a profile picture is out of scope for this POC -->
+                    <button type="submit" disabled class="btn btn-green px-2">Opslaan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title user-data-header" id="passwordModalLabel">Wachtwoord wijzigen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo URLROOT; ?>/customers/accountdetails" method="POST">
+                <div class="col mt-3">
+                    <p>Vul het formulier in om uw wachtwoord te wijzigen.</p>
+                </div>
+                <!-- Current Password -->
+                <div class="col">
+                    <label for="current_password" class="pl-2 user-data-header">Huidig wachtwoord</span></label>
+                    <p><span class="pl-3 text-danger user-data-header"><?php echo $passwordData['currentPasswordError'] ?></span></p>
+                    <input id="current_password" type="password" class="form-control rounded-borders" name="current_password" autocomplete="current_password">
+                </div>
+
+                <!-- New Password -->
+                <div class="col">
+                    <label for="password" class="pl-2 user-data-header">Nieuw wachtwoord</label>
+                    <span class="pl-3 text-danger user-data-header"></span>
+                    <input id="password" type="password" class="form-control rounded-borders" name="password" autocomplete="new-password">
+                </div>
+
+                <!-- Confirm New Password -->
+                <div class="col mb-3">
+                    <label for="password-confirm" class="pl-2 user-data-header">Bevestig wachtwoord</span></label>
+                    <span class="pl-3 text-danger user-data-header"></span>
+                    <input id="password_confirmation" type="password" class="form-control rounded-borders" name="password_confirmation" autocomplete="new-password">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal">Sluiten</button>

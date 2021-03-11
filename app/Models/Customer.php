@@ -47,13 +47,13 @@ class Customer
         $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
 
         $this->db->bind(':email', $email);
-        $row = $this->db->single();
+        $customer = $this->db->single();
 
-        if($row) {
-            $hashedPassword = $row->password;
+        if($customer) {
+            $hashedPassword = $customer->password;
 
             if (password_verify($password, $hashedPassword)) {
-                return $row;
+                return $customer;
             } else {
                 return false;
             }
@@ -62,7 +62,7 @@ class Customer
         }
     }
 
-    public function accountDetails($email) {
+    public function getAccountDetails($email) {
         $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
         $this->db->bind(':email', $email);
         return $this->db->single();

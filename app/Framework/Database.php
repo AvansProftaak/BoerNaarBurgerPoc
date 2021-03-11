@@ -1,14 +1,14 @@
 <?php
 
 class Database {
-    private $dbHost = DB_HOST;
-    private $dbUser = DB_USER;
-    private $dbPassword = DB_PASS;
-    private $dbName = DB_NAME;
+    private string $dbHost = DB_HOST;
+    private string $dbUser = DB_USER;
+    private string $dbPassword = DB_PASS;
+    private string $dbName = DB_NAME;
 
     private $statement;
-    private $dbHandler;
-    private $error;
+    private PDO $dbHandler;
+    private string $error;
 
     public function __construct() {
         $conn = 'mysql:host=' . $this->dbHost . ';dbName=' . $this->dbName;

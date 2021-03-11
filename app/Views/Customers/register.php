@@ -38,11 +38,13 @@
                                 <input id="email" type="email" class="form-control rounded-borders" name="email" placeholder="email@voorbeeld.nl" autocomplete="email">
                             </div>
 
+                            <!-- Password -->
                             <div class="col">
                                 <label for="password" class="pl-2 user-data-header">Wachtwoord</label>
                                 <input id="password" type="password" class="form-control rounded-borders" name="password" autocomplete="new-password">
                             </div>
 
+                            <!-- Confirm Password -->
                             <div class="col">
                                 <label for="password-confirm" class="pl-2 user-data-header">Bevestig wachtwoord</span></label>
                                 <input id="password_confirmation" type="password" class="form-control rounded-borders" name="password_confirmation" autocomplete="new-password">
