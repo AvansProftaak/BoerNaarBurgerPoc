@@ -123,7 +123,7 @@
                 <!-- Current Password -->
                 <div class="col">
                     <label for="current_password" class="pl-2 user-data-header">Huidig wachtwoord</span></label>
-                    <p><span class="pl-3 text-danger user-data-header"><?php echo $passwordData['currentPasswordError'] ?></span></p>
+                    <span class="pl-3 text-danger user-data-header"></span>
                     <input id="current_password" type="password" class="form-control rounded-borders" name="current_password" autocomplete="current_password">
                 </div>
 
