@@ -130,11 +130,10 @@ class Customers extends Controller
 
             if (empty($data['emailError']) && empty($data['passwordError'])) {
                 $authorizedCustomer = $this->customerModel->login($data['email'], $data['password']);
-                var_dump($authorizedCustomer);
 
                 if ($authorizedCustomer) {
                     $this->createCustomerSession($authorizedCustomer);
-                    $this->view('customers/accountdetails');
+                    header('location:' . URLROOT . '/customers/orderoverview');
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
 
