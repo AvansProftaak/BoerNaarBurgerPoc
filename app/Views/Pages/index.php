@@ -19,13 +19,16 @@
         <div class="col-6">
             <h1 id="rh-column-rechts-header">Proof of Concept</h1>
             <p class="rh-column-links-tekst">
-                In dit proof of concept is het mogelijk om als Burger ons platform te ervaren. Er kan ingelogd worden op het test account van Peter:
+                In dit proof of concept is het mogelijk om als burger ons platform te ervaren. U kunt zich
+                <a href="<?php echo URLROOT; ?>/customers/register">registreren</a> en <a href="<?php echo URLROOT; ?>/customers/login">inloggen</a> als burger,
+                maar er kan ook ingelogd worden op het (bestaande) test account van Peter:
                 <br><br>
                 E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
                 Wachtwoord: <strong>wachtwoord123</strong><br><br>
 
                 Bekijk het besteloverzicht of plaats een bestelling bij een van onze boeren. Om van start te gaan dient eerst de database aangemaakt
-                te worden. Klik daarvoor op onderstaande knop en ervaar het gemak van Boer naar Burger!
+                te worden. Klik daarvoor op onderstaande knop en ervaar het gemak van Boer naar Burger!<br><br>
+                <i>Knop werkt nog niet ;). Voor nu gewoon het create database script even runnen in phpmyadmin. Vind je in de database map (root).</i>
             </p>
             <button class="btn btn-green px-5">Maak Database</button>
         </div>

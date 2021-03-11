@@ -1,5 +1,5 @@
 
-/*      Create boer_naar_burger database schema and tables */
+/*      Create boer_naar_burger database schema and tables      */
 
 
 DROP DATABASE IF EXISTS `boer_naar_burger`;
@@ -90,7 +90,7 @@ CREATE TABLE `orders` (
   `orderamount_excl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
   `orderamount_incl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
   `completed_at` DATETIME DEFAULT NULL,
-  `status` ENUM('COMPLETED', 'CANCELED', 'PENDING', 'EXPIRED') NOT NULL,
+  `status` ENUM('COMPLETED', 'CANCELED', 'PENDING', 'EXPIRED') NOT NULL, 
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT pk_orders PRIMARY KEY (`order_number`),
@@ -116,7 +116,7 @@ DROP TABLE IF EXISTS `payments`;
 CREATE TABLE `payments` (
   `payment_number` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_number` INT(10) UNSIGNED NOT NULL,
-  `payment_method` ENUM('IDEAL', 'VISA', 'MASTERCARD', 'PAYPAL') NOT NULL,
+  `payment_method` ENUM('IDEAL', 'VISA', 'MASTERCARD', 'PAYPAL') NOT NULL, 
   `total_amount` DECIMAL(12,2) UNSIGNED NOT NULL,
   `status` ENUM('AUTHORIZED', 'CANCELED', 'PENDING', 'EXPIRED', 'FAILED', 'REFUND PENDING', 'REFUNDED') NOT NULL,
   `paid_at` DATETIME DEFAULT NULL,
@@ -147,8 +147,7 @@ CREATE TABLE `payouts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-/*      Create boer_naar_burger functions      */
+/*      Create boer_naar_burger functions       */
 
 
 -- SQL script to generate all functions required for a fully functioning boer_naar_burger database
@@ -188,8 +187,7 @@ END$$
 DELIMITER ;
 
 
-
-/*      Create boer_naar_burger stored procedures    */
+/*      Create boer_naar_burger stored procedures       */
 
 
 USE `boer_naar_burger`;
@@ -199,7 +197,7 @@ DELIMITER $$
 USE `boer_naar_burger`$$
 CREATE PROCEDURE `insert_payout_record` (
 	IN payment_number INTEGER(10),
-    IN total_amount DECIMAL(12,2)
+    IN total_amount DECIMAL(12,2)   
 )
 BEGIN
 	DECLARE shop_list_isdone BOOLEAN DEFAULT FALSE;
@@ -214,30 +212,29 @@ BEGIN
 		WHERE pay.payment_number = payment_number
         AND pay.`status` = 'AUTHORIZED'
 	;
-
+    
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET shop_list_isdone = TRUE;
-
+    
     OPEN shop_list;
-
+    
     shop_loop: LOOP
 		FETCH shop_list INTO cur_shop_number, cur_price;
         IF shop_list_isdone THEN
         LEAVE shop_loop;
         END IF;
-
+        
 	INSERT INTO `boer_naar_burger`.`payouts` (payment_number, shop_number, subtotal_amount, fee_excl_tax, fee_incl_tax, payout_amount, `status`)
     VALUES (payment_number, cur_shop_number, cur_price, getAmountWithoutTax(getBnbFee(cur_price)), getBnbFee(cur_price), cur_price - getBnbFee(cur_price), 'PENDING');
-
+    
     END LOOP shop_loop;
-
+    
     CLOSE shop_list;
 END$$
 
 DELIMITER ;
 
 
-
-/*      Create boer_naar_burger triggers      */
+/*      Create boer_naar_burger triggers        */
 
 
 USE `boer_naar_burger`;
@@ -273,8 +270,7 @@ FOR EACH ROW
 CALL insert_payout_record(NEW.payment_number, NEW.total_amount);
 
 
-
-/*      Insert test data          */
+/*      Insert test data        */
 
 
 -- INSERT shop_owners test data
@@ -285,26 +281,26 @@ VALUES('37564967', 'Veehouderij Janssen B.V.', 'Theo', 'Janssen', 'Veestraat', '
 
 -- INSERT customers test data
 INSERT INTO boer_naar_burger.customers (first_name, last_name, address, house_number, postal_code, city, country, phone_number, email, `password`)
-VALUES ('Peter', 'de Vries', 'Marktstraat', '66D', '4811ZJ', 'Breda', 'NL', '+31645678945', 'peterdevries@hotmail.com', 'ZmlldHNrbmFs'),
-('Sandra', 'Verbeeten', 'Wendel', '4', '6854YI', 'Eindhoven', 'NL', '+31618566497', 'sandasemail@gmail.com', 'c2ZzZGZzZGZzZA=='),
-('Petra', 'Visser', 'Zuilenstraat', '17', '4813AL', 'Breda', 'NL', '+31624568894', 'petravisser@gmail.com', 'ZmRnamtqa2hmZHNkZmRkcnRydHI='),
-('Johan', 'Bruins', 'Heilaarlaan', '7', '4567JU', 'Middelburg', 'NL', '+31612345678', 'johanbruins@googlemail.com', 'ZGZnaGprbDt3cnR5'),
-('Karel', 'Rops', 'Stationstraat', '17', '3455TY', 'Tilburg', 'NL', '+31699700834', 'karel.rops@hotmail.com', 'cXdlcmdoZmdGRkY1'),
-('Bert', 'van Marwijk', 'Veemarktstraat', '15C', '2000', 'Antwerpen', 'BE', '+31655768987', 'bert_van_marwijk@hetnet.nl', 'd2FjaHR3b29yZGlzbmlldHN0ZXJrMQ=='),
-('Johanna', 'Palings', 'Blauwmoezelstraat', '2', '6859GK', 'Breda', 'NL', '+31646577956', 'johannapalings@volendam.nl', 'b3VyIHN1cGVyIA=='),
-('Berend', 'Vuurens', 'Haagweg', '16', '8567YU', 'Breda', 'NL', '+31657688907', 'berend.vuurens@live.nl', 'ZW5jb2RlIA=='),
-('Adriaan', 'van Bergen', 'Middellaan', '867', '4545OL', 'Breda', 'NL', '+31657338907', 'adrianus_dnberg@live.nl', 'YWRyaWFudXNfZG5iZXJn'),
-('Josh', 'Walgreens', 'Regent Road', '1', 'SE24 0EL', 'London', 'GB', '+44718599487', 'joshwalgreens@london.co.uk', 'bG9uZG9u'),
-('Nina', 'Balsem', 'Esserstraat', '34', '4811AD', 'Breda', 'NL', '+31656766990', 'ninabalsem@gmail.com', 'bG9uZG9uNTY3NTY='),
-('Sanne', 'de Boer', 'Esserstraat', '36', '4811AD', 'Breda', 'NL', '+31656745690', 'sannedeboer@gmail.com', 'MzQ1NzM0NTYzNDU2'),
-('Niek', 'Hurks', 'Konijnenberg', '24', '4814BG', 'Breda', 'NL', '+31653870950', 'niekhurks@hotmail.com', 'QmFzZTY0IA=='),
-('Joep', 'Peeters', 'Jazzstraat', '9', '4564BL', 'Den Bosch', 'NL', '+31655344570', 'joeppeeters@hotmail.com', 'Y3VzdG9tZXJz'),
-('Sven', 'van Gurp', 'Holtken', '17', '4813BK', 'Breda', 'NL', '+3165887750', 'svenneke@hotmail.com', 'cGlsc2plcw=='),
-('Maria', 'Gonzalez', 'Ettensebaan', '56', '5576JK', 'Bergen op Zoom', 'NL', '+31659875098', 'mariagonzalez@hotmail.com', 'c2Fsamhkc2dnaGc='),
-('Fiona', 'Volkers', 'Kleine Krogt', '2', '8895UI', 'Utrecht', 'NL', '+31656788909', 'fionavolkers@hotmail.com', 'Z2VnZW5yaWplcmc='),
-('Jelle', 'van Steen', 'Ridderstraat', '21', '5667KL', 'Groningen', 'NL', '+31656588947', 'jellevansteen@gmail.com', 'a2FtZXJ2bmFra29waA=='),
-('Frederik', 'Woerdeman', 'Tramsingel', '71', '5123YU', 'Groningen', 'NL', '+31666788947', 'frederikwoerdeman@gmail.com', 'Z3JvbmluZ2Vu'),
-('Ronald', 'Verlinden', 'Johan de Voslaan', '56', '2546LO', 'Amsterdam', 'NL', '+31654809947', 'ronald.verlinden@gmail.com', 'Y2FmZWRlc3BlZWx0dWlu');
+VALUES ('Peter', 'de Vries', 'Marktstraat', '66D', '4811ZJ', 'Breda', 'NL', '+31645678945', 'peterdevries@hotmail.com', '$2y$10$RzfT4LKkZsNJO/i6QHcY6eGkAP5YhEvmz.Oril5H3wYipcYpVKct6'),
+('Sandra', 'Verbeeten', 'Wendel', '4', '6854YI', 'Eindhoven', 'NL', '+31618566497', 'sandasemail@gmail.com', '$2y$10$no74HaoKPsn8pg2vyE/SkOnstT.mFNF7r6.vQv11BzCbU61L62zx6'),
+('Petra', 'Visser', 'Zuilenstraat', '17', '4813AL', 'Breda', 'NL', '+31624568894', 'petravisser@gmail.com', '$2y$10$lhnmyrj5/PYNX9TFbyjHXeldXUicUzMOmZaoU7j3oizbz/WQ6hoAm'),
+('Johan', 'Bruins', 'Heilaarlaan', '7', '4567JU', 'Middelburg', 'NL', '+31612345678', 'johanbruins@googlemail.com', '$2y$10$VvAO9HEwJJQJzt4ySScLeOcds.nwCgFMGOv3N.3vzDJ3tKpyFsw5q'),
+('Karel', 'Rops', 'Stationstraat', '17', '3455TY', 'Tilburg', 'NL', '+31699700834', 'karel.rops@hotmail.com', '$2y$10$c0RpKDS2RnHlMN/kMYdBnuUN4bc34xUR.4UH7prk0HOHb1C7OXXMy'),
+('Bert', 'van Marwijk', 'Veemarktstraat', '15C', '2000', 'Antwerpen', 'BE', '+31655768987', 'bert_van_marwijk@hetnet.nl', '$2y$10$IoCYxskaxp7pXtOZiAygwOr3N2Xc6qdYH7moQWPMFEnQkG5bXQeO6'),
+('Johanna', 'Palings', 'Blauwmoezelstraat', '2', '6859GK', 'Breda', 'NL', '+31646577956', 'johannapalings@volendam.nl', '$2y$10$J9ClePs.zvr8STHvib3wMuTL1gxjjVeu8zDgQZDX3zBgcrntU4LX.'),
+('Berend', 'Vuurens', 'Haagweg', '16', '8567YU', 'Breda', 'NL', '+31657688907', 'berend.vuurens@live.nl', '$2y$10$dcr4AXyEaX99BLMGkN37HORwKUtI5T1/AJz6xcBeYT9YxoEl1mwMS'),
+('Adriaan', 'van Bergen', 'Middellaan', '867', '4545OL', 'Breda', 'NL', '+31657338907', 'adrianus_dnberg@live.nl', '$2y$10$uRNI5aGelSnZcDaS3jZi5eNqeVxro9ImAFbvmJuOu1kzeEyGxFAJ2'),
+('Josh', 'Walgreens', 'Regent Road', '1', 'SE24 0EL', 'London', 'GB', '+44718599487', 'joshwalgreens@london.co.uk', '$2y$10$4tfitXmXMjIWccRdcGS95eXnShKJsXtpNpjhjKWEBVAJ0KBYyHCF2'),
+('Nina', 'Balsem', 'Esserstraat', '34', '4811AD', 'Breda', 'NL', '+31656766990', 'ninabalsem@gmail.com', '$2y$10$adxmK4fbo8v/u.a2BmkGv.SrCw7t2r4yKvwMKOOdWe29NngVdmNm.'),
+('Sanne', 'de Boer', 'Esserstraat', '36', '4811AD', 'Breda', 'NL', '+31656745690', 'sannedeboer@gmail.com', '$2y$10$dqcU3BoqRRvjgwg3zsEHAe7DKqgrnRsf2C.e1QW7bRA.ZREtjDCCK'),
+('Niek', 'Hurks', 'Konijnenberg', '24', '4814BG', 'Breda', 'NL', '+31653870950', 'niekhurks@hotmail.com', '$2y$10$Vqo0zPMQquyoLB4i0DKI2uH06Xq9Vj/whe/zn/7HYjpvDDVfRLvP2'),
+('Joep', 'Peeters', 'Jazzstraat', '9', '4564BL', 'Den Bosch', 'NL', '+31655344570', 'joeppeeters@hotmail.com', '$2y$10$sBrkFfGvP1xVBYob9VTg.OkUSxcTtQ0kuv0OlVFMwZk8SdbLI6oQu'),
+('Sven', 'van Gurp', 'Holtken', '17', '4813BK', 'Breda', 'NL', '+31657887750', 'svenneke@hotmail.com', '$2y$10$zTPeEgQiGuWwpz4foUtJdOVIQRVH07yUxIxyijXIjwNLM3Ly9mBR.'),
+('Maria', 'Gonzalez', 'Ettensebaan', '56', '5576JK', 'Bergen op Zoom', 'NL', '+31659875098', 'mariagonzalez@hotmail.com', '$2y$10$swklUwkg.ctlioMl8jJiQOgn//adpSvEJhlzo5TTKHYPSrMecnWCK'),
+('Fiona', 'Volkers', 'Kleine Krogt', '2', '8895UI', 'Utrecht', 'NL', '+31656788909', 'fionavolkers@hotmail.com', '$2y$10$C4mKYzefUNie9ms/pp4cI.Q5qC3feo2oaeff.6o1QhahMNRD7NscG'),
+('Jelle', 'van Steen', 'Ridderstraat', '21', '5667KL', 'Groningen', 'NL', '+31656588947', 'jellevansteen@gmail.com', '$2y$10$ZB9ILY.SAhagf8DMpSY0XO5GkF0BsFOvIccqsX0n1AiUHzL5uOXJW'),
+('Frederik', 'Woerdeman', 'Tramsingel', '71', '5123YU', 'Groningen', 'NL', '+31666788947', 'frederikwoerdeman@gmail.com', '$2y$10$8Bc22RcDxrSz3nzXD45xHeCrROgEHJI0G91h.lDqz660rt5TNdvH.'),
+('Ronald', 'Verlinden', 'Johan de Voslaan', '56', '2546LO', 'Amsterdam', 'NL', '+31654809947', 'ronald.verlinden@gmail.com', '$2y$10$PsbAUQfyDLz.4YwvePz8B.keOWZURpgN.h4zYZm5sxVa1NtkxRk0C');
 
 -- INSERT shops test data
 INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, banner_url)
@@ -342,7 +338,8 @@ VALUES ('1','12.50', NOW(),'COMPLETED'),
 ('17','7.74', NOW(),'COMPLETED'),
 ('18','7.74', NOW(),'CANCELED'),
 ('19','7.74', NOW(),'EXPIRED'),
-('20','7.74', NOW(),'EXPIRED');
+('20','7.74', NOW(),'EXPIRED'),
+('1','7.74', NOW(),'COMPLETED');
 
 -- INSERT items test data
 INSERT INTO boer_naar_burger.items (order_number, product_number, price, amount, pickup_date)
@@ -387,7 +384,10 @@ VALUES ('1000', '2', '12.50', '1', '2021-05-01 10:00:00'),
 ('1019', '5', '1.75', '1', '2021-05-01 10:00:00'),
 ('1020', '1', '2.50', '1', '2021-05-01 10:00:00'),
 ('1020', '3', '3.49', '1', '2021-05-01 10:00:00'),
-('1020', '5', '1.75', '1', '2021-05-01 10:00:00');
+('1020', '5', '1.75', '1', '2021-05-01 10:00:00'),
+('1021', '1', '2.50', '1', '2021-05-01 10:00:00'),
+('1021', '3', '3.49', '1', '2021-05-01 10:00:00'),
+('1021', '5', '1.75', '1', '2021-05-01 10:00:00');
 
 -- INSERT payments test data
 INSERT INTO boer_naar_burger.payments (order_number, payment_method, total_amount, `status`, paid_at)
@@ -411,4 +411,5 @@ VALUES ('1000','IDEAL','12.50','AUTHORIZED', NOW()),
 ('1017','IDEAL','7.74','AUTHORIZED', NOW()),
 ('1018','IDEAL','7.74','FAILED', NOW()),
 ('1019','PAYPAL','7.74','EXPIRED', NOW()),
-('1020','IDEAL','7.74','EXPIRED', NOW());
+('1020','IDEAL','7.74','EXPIRED', NOW()),
+('1021','IDEAL','7.74','AUTHORIZED', NOW());

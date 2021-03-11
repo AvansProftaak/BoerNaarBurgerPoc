@@ -135,8 +135,17 @@ class Customers extends Controller
                     $this->createCustomerSession($authorizedCustomer);
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
+
+                    $this->view('customers/login', $data);
                 }
             }
+        } else {
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => '',
+                'passwordError' => ''
+            ];
         }
         $this->view('customers/login', $data);
     }
@@ -145,5 +154,6 @@ class Customers extends Controller
         session_start();
         $_SESSION['customer_number'] = $customer->customer_number;
         $_SESSION['email'] = $customer->email;
+        $_SESSION['customer_name'] = $customer->first_name . ' ' . $customer->last_name;
     }
 }

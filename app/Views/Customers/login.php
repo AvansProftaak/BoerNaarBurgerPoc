@@ -33,7 +33,7 @@
                         <div class="form-group row mb-3">
                             <div class="ml-3 pl-3">
                                 <button type="submit" name="submit" class="btn btn-green px-5">Log in</button>
-                                <p class="mt-4">Heeft u nog geen account? Klik <a href="/<?php echo URLROOT; ?>/customers/register">hier</a> om te registeren.</p>
+                                <p class="mt-4">Heeft u nog geen account? Klik <a href="<?php echo URLROOT; ?>/customers/register">hier</a> om te registeren.</p>
                             </div>
                         </div>
                     </form>

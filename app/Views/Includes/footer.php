@@ -40,9 +40,9 @@
                             <div class="px-5 pt-3 mx-5 col footer-content">
                                 <div>
                                     <h2 class="h2-footer">Service</h2>
-                                    <li><a href="?view=Home" class="a-footer">Sitemap</a></li>
-                                    <li><a href="?view=Contact" class="a-footer">Veelgestelde vragen</a></li>
-                                    <li><a href="?view=Contact" class="a-footer">Contact</a></li>
+                                    <li><a href="<?php echo URLROOT; ?>/pages/index" class="a-footer">Sitemap</a></li>
+                                    <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer">Veelgestelde vragen</a></li>
+                                    <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer">Contact</a></li>
                                     <br/>
                                     <a data-toggle="modal" data-target="#registerModal" class="btn btn-pink">
                                         Meld je aan als klant
