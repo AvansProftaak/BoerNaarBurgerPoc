@@ -151,9 +151,15 @@ class Customers extends Controller
     }
 
     public function createCustomerSession ($customer) {
-        session_start();
         $_SESSION['customer_number'] = $customer->customer_number;
         $_SESSION['email'] = $customer->email;
         $_SESSION['customer_name'] = $customer->first_name . ' ' . $customer->last_name;
+    }
+
+    public function logout() {
+        unset($_SESSION['customer_number']);
+        unset($_SESSION['email']);
+        unset($_SESSION['customer_name']);
+        header('location:' . URLROOT . '/customers/login');
     }
 }
