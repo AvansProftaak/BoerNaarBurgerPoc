@@ -67,4 +67,26 @@ class Customer
         $this->db->bind(':email', $email);
         return $this->db->single();
     }
+
+    public function update($data, $customer) {
+        $this->db->query('UPDATE boer_naar_burger.customers SET first_name = :first_name, last_name = :last_name,
+                                email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
+                                city = :city WHERE customer_number = :customer');
+        $this->db->bind(':first_name', $data['first_name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':house_number', $data['house_number']);
+        $this->db->bind(':postal_code', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':customer', $customer->customer_number);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            return $this->error;
+        }
+    }
 }

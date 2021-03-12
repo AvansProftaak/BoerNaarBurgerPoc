@@ -15,54 +15,54 @@
                 <div class="col-9 pr-2">
                     <h2 class="pt-4 pl-4 data-headers">Gegevens</h2>
                     <hr class="mx-2">
-                    <form action="#" method="POST">
+                    <form action="<?php echo URLROOT; ?>/customers/accountdetails" method="POST">
 
                         <div class="form-group row mx-1">
                             <!-- First Name -->
                             <div class="col-5">
-                                <label for="first_name" class="pl-2 user-data-header">Voornaam</label>
-                                <input id="first_name" type="text" class="form-control rounded-borders" value="<?php echo $data->first_name; ?>" name="first_name" required autocomplete="fname">
+                                <label for="first_name" class="pl-2 user-data-header">Voornaam<span class="pl-3 text-danger"><?php echo $data['firstNameError'] ?></span></label>
+                                <input id="first_name" type="text" class="form-control rounded-borders" value="<?php echo $data['first_name']; ?>" name="first_name" required autocomplete="fname">
                             </div>
                             <!-- Last Name -->
                             <div class="col">
-                                <label for="last_name" class="pl-2 user-data-header">Achternaam</label>
-                                <input id="last_name" type="text" class="form-control rounded-borders" value="<?php echo $data->last_name; ?>" name="last_name" required autocomplete="lname">
+                                <label for="last_name" class="pl-2 user-data-header">Achternaam<span class="pl-3 text-danger"><?php echo $data['lastNameError'] ?></span></label>
+                                <input id="last_name" type="text" class="form-control rounded-borders" value="<?php echo $data['last_name']; ?>" name="last_name" required autocomplete="lname">
                             </div>
                         </div>
 
                         <!-- E-mail Address -->
                         <div class="form-group row mx-1">
                             <div class="col-5">
-                                <label for="email" class="pl-2 user-data-header">E-Mailadres</label>
-                                <input id="email" type="email" class="form-control rounded-borders" name="email" value="<?php echo $data->email; ?>" required autocomplete="email">
+                                <label for="email" class="pl-2 user-data-header">E-Mailadres<span class="pl-3 text-danger"><?php echo $data['emailError'] ?></span></label>
+                                <input id="email" type="email" class="form-control rounded-borders" name="email" value="<?php echo $data['email']; ?>" required autocomplete="email">
                             </div>
                             <!-- password -->
                             <div class="col">
-                                <label for="password" class="pl-2 user-data-header">Wachtwoord<span class="pl-3 text-danger user-data-header"></label>
-                                <input id="password" type="password" class="form-control rounded-borders" name="password" required autocomplete="current-password">
+                                <label for="password" class="pl-2 user-data-header">Wachtwoord<span class="pl-3 text-danger"><?php echo $data['passwordError'] ?></span></label>
+                                <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" required autocomplete="passwordd">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1">
                             <!-- Street -->
                             <div class="col-4">
-                                <label for="street" class="pl-2 user-data-header">Adres</label>
-                                <input id="street" type="text" class="form-control rounded-borders" value="<?php echo $data->address; ?>" name="street" required autocomplete="street">
+                                <label for="address" class="pl-2 user-data-header">Adres</label>
+                                <input id="address" type="text" class="form-control rounded-borders" value="<?php echo $data['address']; ?>" name="address" required autocomplete="street">
                             </div>
                             <!-- Housenumber -->
                             <div class="col-2">
                                 <label for="house_number" class="pl-2 user-data-header">Huisnummer</label>
-                                <input id="house_number" type="text" class="form-control rounded-borders" value="<?php echo $data->house_number; ?>" name="house_number" required autocomplete="housenumber">
+                                <input id="house_number" type="text" class="form-control rounded-borders" value="<?php echo $data['house_number']; ?>" name="house_number" required autocomplete="housenumber">
                             </div>
                             <!-- Zipcode -->
                             <div class="col-sm-2">
-                                <label for="zipcode" class="pl-2 user-data-header">Postcode</label>
-                                <input id="zipcode" type="text" class="form-control rounded-borders" value="<?php echo $data->postal_code; ?>" name="zipcode" required autocomplete="zipcode">
+                                <label for="postal_code" class="pl-2 user-data-header">Postcode</label>
+                                <input id="postal_code" type="text" class="form-control rounded-borders" value="<?php echo $data['postal_code']; ?>" name="postal_code" required autocomplete="postal_code">
                             </div>
                             <!-- City -->
                             <div class="col">
                                 <label for="city" class="pl-2 user-data-header">Stad</label>
-                                <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data->city; ?>" name="city" required autocomplete="city">
+                                <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data['city']; ?>" name="city" required autocomplete="city">
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@
                 <div class="col">
                     <label for="password" class="pl-2 user-data-header">Nieuw wachtwoord</label>
                     <span class="pl-3 text-danger user-data-header"></span>
-                    <input id="password" type="password" class="form-control rounded-borders" name="password" autocomplete="new-password">
+                    <input id="password2" type="password" class="form-control rounded-borders" name="password" autocomplete="new-password">
                 </div>
 
                 <!-- Confirm New Password -->

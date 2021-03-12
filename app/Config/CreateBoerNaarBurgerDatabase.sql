@@ -1,3 +1,8 @@
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+
 
 /*      Create boer_naar_burger database schema and tables      */
 
@@ -90,7 +95,7 @@ CREATE TABLE `orders` (
   `orderamount_excl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
   `orderamount_incl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
   `completed_at` DATETIME DEFAULT NULL,
-  `status` ENUM('COMPLETED', 'CANCELED', 'PENDING', 'EXPIRED') NOT NULL, 
+  `status` ENUM('COMPLETED', 'CANCELED', 'PENDING', 'EXPIRED') NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT pk_orders PRIMARY KEY (`order_number`),
@@ -116,7 +121,7 @@ DROP TABLE IF EXISTS `payments`;
 CREATE TABLE `payments` (
   `payment_number` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `order_number` INT(10) UNSIGNED NOT NULL,
-  `payment_method` ENUM('IDEAL', 'VISA', 'MASTERCARD', 'PAYPAL') NOT NULL, 
+  `payment_method` ENUM('IDEAL', 'VISA', 'MASTERCARD', 'PAYPAL') NOT NULL,
   `total_amount` DECIMAL(12,2) UNSIGNED NOT NULL,
   `status` ENUM('AUTHORIZED', 'CANCELED', 'PENDING', 'EXPIRED', 'FAILED', 'REFUND PENDING', 'REFUNDED') NOT NULL,
   `paid_at` DATETIME DEFAULT NULL,
@@ -197,7 +202,7 @@ DELIMITER $$
 USE `boer_naar_burger`$$
 CREATE PROCEDURE `insert_payout_record` (
 	IN payment_number INTEGER(10),
-    IN total_amount DECIMAL(12,2)   
+    IN total_amount DECIMAL(12,2)
 )
 BEGIN
 	DECLARE shop_list_isdone BOOLEAN DEFAULT FALSE;
@@ -212,22 +217,22 @@ BEGIN
 		WHERE pay.payment_number = payment_number
         AND pay.`status` = 'AUTHORIZED'
 	;
-    
+
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET shop_list_isdone = TRUE;
-    
+
     OPEN shop_list;
-    
+
     shop_loop: LOOP
 		FETCH shop_list INTO cur_shop_number, cur_price;
         IF shop_list_isdone THEN
         LEAVE shop_loop;
         END IF;
-        
+
 	INSERT INTO `boer_naar_burger`.`payouts` (payment_number, shop_number, subtotal_amount, fee_excl_tax, fee_incl_tax, payout_amount, `status`)
     VALUES (payment_number, cur_shop_number, cur_price, getAmountWithoutTax(getBnbFee(cur_price)), getBnbFee(cur_price), cur_price - getBnbFee(cur_price), 'PENDING');
-    
+
     END LOOP shop_loop;
-    
+
     CLOSE shop_list;
 END$$
 
@@ -305,7 +310,7 @@ VALUES ('Peter', 'de Vries', 'Marktstraat', '66D', '4811ZJ', 'Breda', 'NL', '+31
 -- INSERT shops test data
 INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, banner_url)
 VALUES ('37564967', 'Melkwinkel Jansen', 'Verse melk van de koeien van ons familiebedrijf. Dagelijks vers gemolken!', 'Veestraat', '12', '5748KF', 'Winschoten', 'NL', '/assets/shopbanners/6yLuyVdOG4.png'),
-('06989770', 'Aardbeien van René', 'Niks uit de kas, alleen vers van het land de heerlijkste Lambada aardbeien. Dagvers in de zomer. Nu verkrijgbaar in doosjes van 500 gram of XXL per kilo.', 'Spoorlaan', '7A', '4813BK', 'Breda', 'NL', '/assets/shopbanners/e8eEmiwsjS.png'),
+('06989770', 'Aardbeien van René', 'Niks uit de kas, alleen vers van het land de heerlijkste Lambada aardbeien. Dagvers in de zomer. Nu verkrijgbaar in doosjes van 250 gram of XXL per kilo.', 'Spoorlaan', '7A', '4813BK', 'Breda', 'NL', '/assets/shopbanners/e8eEmiwsjS.png'),
 ('27798339', 'Appelboer Verhulst', 'Welkom bij mijn appelshop. Ik verkoop biologisch geteelde granny smith appels, verkrijgbaar per kilo. Zo lekker vind je ze niet in de supermarkt. Groetjes, Hans', 'Bergpad', '67', '2049TJ', 'Tilburg', 'NL', '/assets/shopbanners/LmY1ETcsyE.png');
 
 -- INSERT products test data
@@ -413,3 +418,6 @@ VALUES ('1000','IDEAL','12.50','AUTHORIZED', NOW()),
 ('1019','PAYPAL','7.74','EXPIRED', NOW()),
 ('1020','IDEAL','7.74','EXPIRED', NOW()),
 ('1021','IDEAL','7.74','AUTHORIZED', NOW());
+
+SET FOREIGN_KEY_CHECKS=1;
+COMMIT;

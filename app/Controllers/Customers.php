@@ -166,7 +166,86 @@ class Customers extends Controller
 
     public function accountDetails() {
         if (isLoggedIn()) {
-            $data = $this->customerModel->getAccountDetails($_SESSION['email']);
+            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+            $data = [
+                'first_name' => $customer->first_name,
+                'last_name' => $customer->last_name,
+                'email' => $customer->email,
+                'address' => $customer->address,
+                'house_number' => $customer->house_number,
+                'postal_code' => $customer->postal_code,
+                'city' => $customer->city,
+                'password' => '',
+                'password_confirmation' => '',
+                'firstNameError' => '',
+                'lastNameError' => '',
+                'emailError' => '',
+                'passwordError' => ''
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'first_name' => trim($_POST['first_name']),
+                    'last_name' => trim($_POST['last_name']),
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                    'address' => trim($_POST['address']),
+                    'house_number' => trim($_POST['house_number']),
+                    'postal_code' => trim($_POST['postal_code']),
+                    'city' => trim($_POST['city']),
+                    'firstNameError' => '',
+                    'lastNameError' => '',
+                    'emailError' => '',
+                    'passwordError' => '',
+                    'confirmPasswordError' => ''
+                ];
+
+                //validate first_name
+                if (empty($data['first_name'])) {
+                    $data['firstNameError'] = 'Vul uw voornaam in.';
+                }
+
+                //validate last_name
+                if (empty($data['last_name'])) {
+                    $data['lastNameError'] = 'Vul uw achternaam in.';
+                }
+
+                //validate email
+                if (empty($data['email'])) {
+                    $data['emailError'] = 'Vul uw e-mail adres in.';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
+                }
+
+                // Validate password
+                if(empty($data['password'])) {
+                    $data['passwordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['password'] != password_verify($data['password'], $customer->password)) {
+                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                //if no errors are found continue
+                if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
+                        empty($data['emailError'])) && empty($data['passwordError'])) {
+
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->customerModel->update($data, $customer)) {
+                        header('location: ' . URLROOT . '/customers/accountdetails');
+                    } else {
+                        if((strpos($this->customerModel->update($data, $customer),'uc_email') !== false)) {
+                            $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
+                        } else {
+                            die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
+                        }
+                    }
+                }
+            }
+
             $this->view('customers/accountdetails', $data);
         } else {
             $this->login();

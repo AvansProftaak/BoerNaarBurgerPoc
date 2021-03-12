@@ -24,13 +24,11 @@
                 maar er kan ook ingelogd worden op het (bestaande) test account van Peter:
                 <br><br>
                 E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
-                Wachtwoord: <strong>wachtwoord123</strong><br><br>
-
-                Bekijk het besteloverzicht of plaats een bestelling bij een van onze boeren. Om van start te gaan dient eerst de database aangemaakt
-                te worden. Klik daarvoor op onderstaande knop en ervaar het gemak van Boer naar Burger!<br><br>
-                <i>Knop werkt nog niet ;). Voor nu gewoon het create database script even runnen in phpmyadmin. Vind je in de <strong>database</strong> map (root).</i>
+                Wachtwoord: <strong>wachtwoord123</strong>
             </p>
-            <button class="btn btn-green px-5">Maak Database</button>
+            <form method="POST" action="<?php echo URLROOT; ?>/pages/index">
+            <button class="btn btn-green px-5" type="submit" name="createDatabase">Maak Database</button>
+            </form>
         </div>
     </div>
 
