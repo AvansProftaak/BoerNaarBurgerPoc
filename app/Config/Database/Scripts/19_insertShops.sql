@@ -1,0 +1,4 @@
+INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, banner_url)
+VALUES ('37564967', 'Melkwinkel Jansen', 'Verse melk van de koeien van ons familiebedrijf. Dagelijks vers gemolken!', 'Veestraat', '12', '5748KF', 'Winschoten', 'NL', '/assets/shopbanners/6yLuyVdOG4.png'),
+('06989770', 'Aardbeien van René', 'Niks uit de kas, alleen vers van het land de heerlijkste Lambada aardbeien. Dagvers in de zomer. Nu verkrijgbaar in doosjes van 250 gram of XXL per kilo.', 'Spoorlaan', '7A', '4813BK', 'Breda', 'NL', '/assets/shopbanners/e8eEmiwsjS.png'),
+('27798339', 'Appelboer Verhulst', 'Welkom bij mijn appelshop. Ik verkoop biologisch geteelde granny smith appels, verkrijgbaar per kilo. Zo lekker vind je ze niet in de supermarkt. Groetjes, Hans', 'Bergpad', '67', '2049TJ', 'Tilburg', 'NL', '/assets/shopbanners/LmY1ETcsyE.png');

@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS `shop_owners`;
+CREATE TABLE `shop_owners` (
+  `kvk_number` CHAR(8) NOT NULL,
+  `company_name` VARCHAR(128) DEFAULT NULL,
+  `first_name` VARCHAR(128) DEFAULT NULL,
+  `last_name` VARCHAR(128) DEFAULT NULL,
+  `address` VARCHAR(128) DEFAULT NULL,
+  `house_number` VARCHAR(20) DEFAULT NULL,
+  `postal_code` VARCHAR(20) DEFAULT NULL,
+  `city` VARCHAR(64) DEFAULT NULL,
+  `country` VARCHAR(128) DEFAULT NULL,
+  `phone_number` VARCHAR(32) DEFAULT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `iban` VARCHAR(128) NOT NULL,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT uc_email UNIQUE (`email`),
+  CONSTRAINT pk_shopowners PRIMARY KEY (`kvk_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

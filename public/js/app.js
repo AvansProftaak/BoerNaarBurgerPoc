@@ -39,3 +39,22 @@ function calculateTotal() {
     let total2 = parseFloat(document.getElementById("total2").innerHTML);
     document.getElementById("totalAmount").innerHTML = parseFloat(total+total2).toFixed(2);
 }
+
+// Homepage Loading after creating database
+function ButtonClicked()
+{
+    document.getElementById("create-db-button").style.display = "none";
+    document.getElementById("loading-spinner").style.display = "";
+    return true;
+}
+var Loading = true;
+function RestoreSubmitButton() {
+    if(Loading) {
+        Loading = false;
+        return;
+    }
+    document.getElementById("create-db-button").style.display = "";
+    document.getElementById("loading-spinner").style.display = "none";
+}
+
+document.onfocus = RestoreSubmitButton;

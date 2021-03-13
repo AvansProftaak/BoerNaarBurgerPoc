@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `order_number` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `customer_number` INT(10) UNSIGNED NOT NULL,
+  `orderamount_excl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
+  `orderamount_incl_tax` DECIMAL(12,2) UNSIGNED DEFAULT NULL,
+  `completed_at` DATETIME DEFAULT NULL,
+  `status` ENUM('COMPLETED', 'CANCELED', 'PENDING', 'EXPIRED') NOT NULL, 
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT pk_orders PRIMARY KEY (`order_number`),
+  CONSTRAINT fk_order_customer FOREIGN KEY (`customer_number`)
+  REFERENCES customers(`customer_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000;

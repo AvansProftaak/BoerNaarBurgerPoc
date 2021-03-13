@@ -8,6 +8,7 @@
 
     <!-- Scripts -->
     <script src="../js/bootstrap.js" defer></script>
+    <script src="../js/app.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <!-- Icon -->

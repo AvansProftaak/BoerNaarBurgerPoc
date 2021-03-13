@@ -26,8 +26,13 @@
                 E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
                 Wachtwoord: <strong>wachtwoord123</strong>
             </p>
+            <p class="rh-column-links-tekst"><strong><?php echo $data['dbCreated'] ?></strong></p>
+
             <form method="POST" action="<?php echo URLROOT; ?>/pages/index">
-            <button class="btn btn-green px-5" type="submit" name="createDatabase">Maak Database</button>
+                <div id="loading-spinner" class="spinner-border" role="status" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <button id="create-db-button" class="btn btn-green px-5" type="submit" onclick="ButtonClicked()" name="createDatabase">Maak Database</button>
             </form>
         </div>
     </div>

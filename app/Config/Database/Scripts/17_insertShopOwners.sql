@@ -1,0 +1,4 @@
+INSERT INTO boer_naar_burger.shop_owners (kvk_number, company_name, first_name, last_name, address, house_number, postal_code, city, country, phone_number, email, password, iban)
+VALUES('37564967', 'Veehouderij Janssen B.V.', 'Theo', 'Janssen', 'Veestraat', '12', '5748KF', 'Winschoten', 'NL', '31645629867', 'theo.janssen@veehouderijjanssen.nl', 'd2FjaHR3b29yZA==', 'NL02ABNA0546887932'),
+('06989770', 'Aardbeienkwekerij van Haperen', 'René', 'van Haperen', 'Spoorlaan', '7A', '4813BK', 'Breda', 'NL', '+31647588976', 'rene.vanhaperen@aardbei.nl', 'ZmlldHM=', 'NL10RABO0786995647'),
+('27798339', 'Appelboer Verhulst', 'Hans', 'Verhulst', 'Bergpad', '67', '2049TJ', 'Tilburg', 'NL', '+31628699087', 'hansdeappelboer@hotmail.com', 'Ym9la2Vua2FzdA==', 'NL02ABNA0576998709');

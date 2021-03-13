@@ -3,26 +3,25 @@
 
 class Pages extends Controller
 {
-    private $db;
+    private $pageModel;
 
     public function __construct() {
-        $this->db = new Database;
+        $this->pageModel = $this->model('Page');
     }
 
     public function index() {
+        $data = [
+            'dbCreated' => '',
+        ];
 
         if (isset($_POST['createDatabase'])) {
-            $query = file_get_contents(APPROOT . '/Config/CreateBoerNaarBurgerDatabase.sql');
-            $this->db->query($query);
-
-            if($this->db->execute()) {
-                return 'De Boer naar Burger database is succesvol aangemaakt!';
+            if($this->pageModel->createDatabase()) {
+                $data['dbCreated'] = 'De database is succesvol aangemaakt!';
             } else {
-                return 'De Boer naar Burger database kon niet worden aangemaakt. Controleer of MySQL services runnen.';
+                $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
             }
         }
-
-        $this->view('pages/index');
+        $this->view('pages/index', $data);
     }
 
     public function about() {
