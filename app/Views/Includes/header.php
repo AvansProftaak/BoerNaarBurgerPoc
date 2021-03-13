@@ -43,15 +43,19 @@
             <div class="navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="pl-5 ml-5 navbar-nav">
-                    <li class="mr-5 pr-3 nav-item nav-text">
+                    <li class="mr-3 pr-3 nav-item nav-text">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/index') !== false) : ?>
                          nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/index">HOME</a>
                     </li>
-                    <li class="mr-5 pr-3 nav-item nav-text">
+                    <li class="mr-3 pr-3 nav-item nav-text">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/about') !== false) : ?>
                          nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/about">WIE ZIJN WIJ</a>
                     </li>
-                    <li class="mr-5 pr-3 nav-item nav-text dropdown">
+                    <li class="mr-3 pr-3 nav-item nav-text">
+                        <a class="nav-link nav-text <?php if(strpos($_GET['url'],'shops/overview') !== false) : ?>
+                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/overview">SHOPS</a>
+                    </li>
+                    <li class="mr-3 pr-3 nav-item nav-text dropdown">
                         <a class="nav-link nav-text nav-text-login <?php if(strpos($_GET['url'],'pages/contact') !== false) : ?>
                          nav-active <?php endif; ?> dropdown-toggledropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONTACT</a>
 

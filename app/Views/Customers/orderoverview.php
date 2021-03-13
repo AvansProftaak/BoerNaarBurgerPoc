@@ -3,6 +3,17 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 class="lh-subtitel pt-4">Overzicht bestellingen</h2>
+            <?php if(!$data['orders']) :?>
+            <div class="col-md-12">
+                <div class="pt-5">
+                    <p class="text-md-center rh-column-links-tekst">Er zijn nog geen bestellingen geplaatst!<br>
+                        Bezoek de shop van onze boeren en ontdek wat Boer naar Burger jou te bieden heeft!</p>
+                    <div class="pt-3 d-flex justify-content-center">
+                        <a class="center btn btn-green px-5" href="<?php echo URLROOT; ?>/shops/overview">Ga naar de shops</a>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
             <?php foreach($data['orders'] as $order): ?>
             <!-- Bestelling -->
             <div class="col-md-12">

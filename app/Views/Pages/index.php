@@ -21,10 +21,13 @@
             <p class="rh-column-links-tekst">
                 In dit proof of concept is het mogelijk om als burger ons platform te ervaren. U kunt zich
                 <a href="<?php echo URLROOT; ?>/customers/register">registreren</a> en <a href="<?php echo URLROOT; ?>/customers/login">inloggen</a> als burger,
-                maar er kan ook ingelogd worden op het (bestaande) test account van Peter:
+                maar er kan ook ingelogd worden op het (bestaande) test account van Peter, om zijn bestellingen te bekijken.
                 <br><br>
                 E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
                 Wachtwoord: <strong>wachtwoord123</strong>
+                <br><br>
+                Helaas is het (nog) niet mogelijk een bestelling te plaatsen bij een boer, maar de <a href="<?php echo URLROOT; ?>/shops/overview">shops</a> van de reeds
+                geregistreerde boeren zijn zeker alvast te bewonderen.
                 <br><br>
                 Voor het functioneren van deze website is een database vereist. Klik op onderstaande knop om deze aan te maken.<br>
                 <strong>Let op: </strong>Indien de boer_naar_burger database lokaal al bestaat zal deze overschreven worden!
