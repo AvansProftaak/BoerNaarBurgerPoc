@@ -12,15 +12,15 @@ class Page
     public function createDatabase() {
         $files = $this->getSqlFiles();
 
-        try {
-            foreach ($files as $file) {
+        foreach ($files as $file) {
+            try {
                 $query = file_get_contents($file);
                 $this->db->query($query);
                 $this->db->execute();
+            } catch (PDOException $e) {
+                $this->error = $e->getMessage();
+                return false;
             }
-        } catch (PDOException $e) {
-            $this->error = $e->getMessage();
-            return false;
         }
         return true;
     }

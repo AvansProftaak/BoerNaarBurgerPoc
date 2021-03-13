@@ -41,20 +41,21 @@ function calculateTotal() {
 }
 
 // Homepage Loading after creating database
-function ButtonClicked()
+function buttonClicked()
 {
     document.getElementById("create-db-button").style.display = "none";
     document.getElementById("loading-spinner").style.display = "";
     return true;
 }
-var Loading = true;
-function RestoreSubmitButton() {
-    if(Loading) {
-        Loading = false;
+
+let loading = true;
+function restoreSubmitButton() {
+    if(loading) {
+        loading = false;
         return;
     }
     document.getElementById("create-db-button").style.display = "";
     document.getElementById("loading-spinner").style.display = "none";
 }
 
-document.onfocus = RestoreSubmitButton;
+document.onfocus = restoreSubmitButton;

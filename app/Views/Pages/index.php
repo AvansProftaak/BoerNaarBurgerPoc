@@ -25,6 +25,9 @@
                 <br><br>
                 E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
                 Wachtwoord: <strong>wachtwoord123</strong>
+                <br><br>
+                Voor het functioneren van deze website is een database vereist. Klik op onderstaande knop om deze aan te maken.<br>
+                <strong>Let op: </strong>Indien de boer_naar_burger database lokaal al bestaat zal deze overschreven worden!
             </p>
             <p class="rh-column-links-tekst"><strong><?php echo $data['dbCreated'] ?></strong></p>
 
@@ -32,7 +35,7 @@
                 <div id="loading-spinner" class="spinner-border" role="status" style="display: none;">
                     <span class="sr-only">Loading...</span>
                 </div>
-                <button id="create-db-button" class="btn btn-green px-5" type="submit" onclick="ButtonClicked()" name="createDatabase">Maak Database</button>
+                <button id="create-db-button" class="btn btn-green px-5" type="submit" onclick="buttonClicked()" name="createDatabase">Maak Database</button>
             </form>
         </div>
     </div>

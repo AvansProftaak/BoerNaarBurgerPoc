@@ -51,9 +51,14 @@
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/about') !== false) : ?>
                          nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/about">WIE ZIJN WIJ</a>
                     </li>
-                    <li class="mr-5 pr-3 nav-item nav-text">
-                        <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/contact') !== false) : ?>
-                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/contact">CONTACT</a>
+                    <li class="mr-5 pr-3 nav-item nav-text dropdown">
+                        <a class="nav-link nav-text nav-text-login <?php if(strpos($_GET['url'],'pages/contact') !== false) : ?>
+                         nav-active <?php endif; ?> dropdown-toggledropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CONTACT</a>
+
+                        <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdownContact">
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/contact">Contactgegevens</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/faq">Veelgestelde vragen</a>
+                        </div>
                     </li>
                 </ul>
 
@@ -73,8 +78,8 @@
                     <?php else : ?>
                     <!-- if logged in -->
                     <li class="nav-item nav-text-login nav-text dropdown">
-                        <a id="navbarDropdown" class="nav-text-login nav-link dropdown-toggle" href="#"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-text-login nav-link dropdown-toggle"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo $_SESSION['customer_name']; ?></a>
 
                         <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">

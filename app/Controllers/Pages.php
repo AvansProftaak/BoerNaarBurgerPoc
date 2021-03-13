@@ -31,4 +31,8 @@ class Pages extends Controller
     public function contact() {
         $this->view('pages/contact');
     }
+
+    public function faq() {
+        $this->view('pages/faq');
+    }
 }
