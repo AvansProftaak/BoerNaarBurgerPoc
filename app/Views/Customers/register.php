@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="row float-right mr-4 mt-0">
-                            <span class="pl-3 text-danger user-data-header"><?php echo $data['passwordError'] ?></span>
+                            <span class="pl-3 text-danger user-data-header mr-5"><?php echo $data['passwordError'] ?></span>
                             <span class="pl-3 text-danger user-data-header"><?php echo $data['confirmPasswordError'] ?></span>
                         </div>
 

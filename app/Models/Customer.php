@@ -89,4 +89,16 @@ class Customer
             return $this->error;
         }
     }
+
+    public function changePassword($data, $customer) {
+        $this->db->query('UPDATE boer_naar_burger.customers SET password = :password WHERE customer_number = :customer');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':customer', $customer->customer_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

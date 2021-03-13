@@ -7,39 +7,41 @@ class Customers extends Controller
      * @var mixed
      */
     private $customerModel;
+    public $orderModel;
 
     public function __construct() {
         $this->customerModel = $this->model('Customer');
+        $this->orderModel = $this->model('Order');
     }
 
     public function register() {
         $data = [
-            'first_name' => '',
-            'last_name' => '',
-            'email' => '',
-            'password' => '',
+            'first_name'            => '',
+            'last_name'             => '',
+            'email'                 => '',
+            'password'              => '',
             'password_confirmation' => '',
-            'firstNameError' => '',
-            'lastNameError' => '',
-            'emailError' => '',
-            'passwordError' => '',
-            'confirmPasswordError' => ''
+            'firstNameError'        => '',
+            'lastNameError'         => '',
+            'emailError'            => '',
+            'passwordError'         => '',
+            'confirmPasswordError'  => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'first_name' => trim($_POST['first_name']),
-                'last_name' => trim($_POST['last_name']),
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
+                'first_name'            => trim($_POST['first_name']),
+                'last_name'             => trim($_POST['last_name']),
+                'email'                 => trim($_POST['email']),
+                'password'              => trim($_POST['password']),
                 'password_confirmation' => trim($_POST['password_confirmation']),
-                'firstNameError' => '',
-                'lastNameError' => '',
-                'emailError' => '',
-                'passwordError' => '',
-                'confirmPasswordError' => ''
+                'firstNameError'        => '',
+                'lastNameError'         => '',
+                'emailError'            => '',
+                'passwordError'         => '',
+                'confirmPasswordError'  => ''
             ];
 
             //validate first_name
@@ -104,9 +106,9 @@ class Customers extends Controller
 
     public function login() {
         $data = [
-            'email' => '',
-            'password' => '',
-            'emailError' => '',
+            'email'         => '',
+            'password'      => '',
+            'emailError'    => '',
             'passwordError' => ''
         ];
 
@@ -114,9 +116,9 @@ class Customers extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-                'emailError' => '',
+                'email'         => trim($_POST['email']),
+                'password'      => trim($_POST['password']),
+                'emailError'    => '',
                 'passwordError' => ''
             ];
 
@@ -142,9 +144,9 @@ class Customers extends Controller
             }
         } else {
             $data = [
-                'email' => '',
-                'password' => '',
-                'emailError' => '',
+                'email'         => '',
+                'password'      => '',
+                'emailError'    => '',
                 'passwordError' => ''
             ];
         }
@@ -168,38 +170,40 @@ class Customers extends Controller
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $data = [
-                'first_name' => $customer->first_name,
-                'last_name' => $customer->last_name,
-                'email' => $customer->email,
-                'address' => $customer->address,
-                'house_number' => $customer->house_number,
-                'postal_code' => $customer->postal_code,
-                'city' => $customer->city,
-                'password' => '',
+                'first_name'            => $customer->first_name,
+                'last_name'             => $customer->last_name,
+                'email'                 => $customer->email,
+                'address'               => $customer->address,
+                'house_number'          => $customer->house_number,
+                'postal_code'           => $customer->postal_code,
+                'city'                  => $customer->city,
+                'password'              => '',
                 'password_confirmation' => '',
-                'firstNameError' => '',
-                'lastNameError' => '',
-                'emailError' => '',
-                'passwordError' => ''
+                'firstNameError'        => '',
+                'lastNameError'         => '',
+                'emailError'            => '',
+                'passwordError'         => '',
+                'currentPasswordError'  => '',
+                'confirmPasswordError'  => ''
             ];
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['submit-personal-data'])) {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
-                    'first_name' => trim($_POST['first_name']),
-                    'last_name' => trim($_POST['last_name']),
-                    'email' => trim($_POST['email']),
-                    'password' => trim($_POST['password']),
-                    'address' => trim($_POST['address']),
-                    'house_number' => trim($_POST['house_number']),
-                    'postal_code' => trim($_POST['postal_code']),
-                    'city' => trim($_POST['city']),
-                    'firstNameError' => '',
-                    'lastNameError' => '',
-                    'emailError' => '',
-                    'passwordError' => '',
-                    'confirmPasswordError' => ''
+                    'first_name'            => trim($_POST['first_name']),
+                    'last_name'             => trim($_POST['last_name']),
+                    'email'                 => trim($_POST['email']),
+                    'password'              => trim($_POST['password']),
+                    'address'               => trim($_POST['address']),
+                    'house_number'          => trim($_POST['house_number']),
+                    'postal_code'           => trim($_POST['postal_code']),
+                    'city'                  => trim($_POST['city']),
+                    'firstNameError'        => '',
+                    'lastNameError'         => '',
+                    'emailError'            => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
                 ];
 
                 //validate first_name
@@ -245,14 +249,96 @@ class Customers extends Controller
                     }
                 }
             }
-
             $this->view('customers/accountdetails', $data);
         } else {
             $this->login();
         }
     }
 
+    public function changePassword()
+    {
+        if (isLoggedIn()) {
+            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+            $data = [
+            'current_password'          => '',
+                'password'              => '',
+                'password_confirmation' => '',
+                'currentPasswordError'  => '',
+                'passwordError'         => '',
+                'confirmPasswordError'  => ''
+            ];
+
+            if (isset($_POST['submit-change-password'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'current_password'      => trim($_POST['current_password']),
+                    'password'              => trim($_POST['password']),
+                    'password_confirmation' => trim($_POST['password_confirmation']),
+                    'currentPasswordError'  => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
+                ];
+
+                // Validate password
+                if(empty($data['current_password'])) {
+                    $data['currentPasswordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['current_password'] != password_verify($data['current_password'], $customer->password)) {
+                        $data['currentPasswordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                if (empty($data['password'])) {
+                    $data['passwordError'] = 'Vul een nieuw wachtwoord in.';
+                }
+
+                //Validate confirm password
+                if (empty($data['password_confirmation'])) {
+                    $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                } else {
+                    if ($data['password'] != $data['password_confirmation']) {
+                        $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                    }
+                }
+
+                if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->customerModel->changePassword($data, $customer)) {
+                        header('location: ' . URLROOT . '/customers/accountdetails');
+                    } else {
+                        die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
+                    }
+                }
+            }
+
+        $this->view('customers/changepassword', $data);
+        } else {
+            $this->login();
+        }
+    }
+
     public function orderOverview() {
-        $this->view('customers/orderoverview');
+        if (isLoggedIn()) {
+            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+            $orders = $this->orderModel->getCustomerOrders($customer);
+            $orderDetails = [];
+
+            foreach ($orders as $order) {
+                $orderDetails[] = $this->orderModel->getOrderDetails($order);
+                continue;
+            }
+
+            $data = [
+                'orders'        => $orders,
+                'customer'      => $customer,
+                'orderDetails'  => $orderDetails
+            ];
+
+            $this->view('customers/orderoverview', $data);
+        } else {
+            $this->login();
+        }
     }
 }

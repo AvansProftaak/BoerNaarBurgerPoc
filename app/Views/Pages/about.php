@@ -22,7 +22,7 @@
             </div>
 
             <p>Boer naar Burger brengt consument en boer met elkaar in contact. Samen
-                staan we sterk! <a href="#">Meld je aan</a> op ons platform en ontvang de
+                staan we sterk! <a href="<?php echo URLROOT; ?>/customers/register">Meld je aan</a> op ons platform en ontvang de
                 heerlijkste verse streekproducten, direct van de oorsprong. Geen extra bewerking,
                 onbekende handelingen. Gewoon eerlijke en pure producten. Dat is de kracht van
                 Boer naar Burger.
@@ -44,7 +44,7 @@
                 Door deze producten op te kopen helpen wij boeren van hun overproductie af,
                 en ondersteunen wij onze medemens in moeilijkere tijden. Daarnaast bieden wij
                 consumenten, producten met een verhaal; (h)eerlijk en betrouwbaar. </p>
-            <button class="lh-button">Meld je aan als klant</button>
+            <button class="lh-button" data-toggle="modal" data-target="#registerModal">Meld je aan als klant</button>
         </div>
 
         <div class="lh-textcolumn">
@@ -77,6 +77,26 @@
                 kwijt kan. Boer naar Burger geeft deze producten een nieuw doel, een reden
                 van bestaan. We zijn volledig open over de volledige productie keten en bieden
                 transparantie en vertrouwen. ‘Onze’ boeren, delen onze kernwaarden. </p>
+        </div>
+    </div>
+</div>
+
+<!-- Boer registration not possible Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title user-data-header" id="registerModalLabel">Registreren niet mogelijk</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-text">
+                <p>In dit proof of concept is het niet mogelijk om u als klant aan te melden.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal">Sluiten</button>
+            </div>
         </div>
     </div>
 </div>

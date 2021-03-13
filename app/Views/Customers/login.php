@@ -17,7 +17,7 @@
                         <div class="form-group row mx-1">
                             <div class="col">
                                 <label for="email" class="pl-2 user-data-header">E-Mailadres<span class="pl-3 text-danger user-data-header"><?php echo $data['emailError'] ?></span></label>
-                                <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>" name="email" placeholder="email@voorbeeld.nl" required autocomplete="email">
+                                <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>" name="email" placeholder="email@voorbeeld.nl" autocomplete="email">
                             </div>
                         </div>
 
@@ -25,7 +25,7 @@
                         <div class="form-group row mx-1">
                             <div class="col">
                                 <label for="password" class="pl-2 user-data-header">Wachtwoord<span class="pl-3 text-danger user-data-header"><?php echo $data['passwordError'] ?></span></label>
-                                <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" autocomplete="current-password">
                             </div>
                         </div>
 
