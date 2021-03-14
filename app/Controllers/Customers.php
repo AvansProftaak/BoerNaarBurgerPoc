@@ -323,17 +323,10 @@ class Customers extends Controller
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
-            $orderDetails = [];
-
-            foreach ($orders as $order) {
-                $orderDetails[] = $this->orderModel->getOrderDetails($order);
-                continue;
-            }
 
             $data = [
                 'orders'        => $orders,
-                'customer'      => $customer,
-                'orderDetails'  => $orderDetails
+                'customer'      => $customer
             ];
 
             $this->view('customers/orderoverview', $data);

@@ -7,9 +7,11 @@ class Shops extends Controller
      * @var mixed
      */
     private $shopModel;
+    private $customerModel;
 
     public function __construct() {
         $this->shopModel = $this->model('Shop');
+        $this->customerModel = $this->model('Customer');
     }
 
     public function overview() {
@@ -46,18 +48,90 @@ class Shops extends Controller
     }
 
     public function step2() {
-        $this->view('shops/step2');
+        $customer = '';
+        if (isLoggedIn()) {
+            $customer = $this->customerModel->getAccountDetails($_SESSION['email']) ? $this->customerModel->getAccountDetails($_SESSION['email']) : null;
+        }
+        if (isset($_GET['shop'])) {
+
+            $shop = $this->shopModel->getShop($_GET['shop']);
+
+            if($shop) {
+
+                $products = $this->shopModel->getShopProducts($shop);
+
+                $data = [
+                    'shop'      => $shop,
+                    'products'  => $products,
+                    'customer'  => $customer
+                ];
+
+                $this->view('shops/step2', $data);
+            } else {
+                $this->view('shops/notfound');
+            }
+        } else {
+            $this->view('shops/notfound');
+        }
     }
 
     public function step3() {
-        $this->view('shops/step3');
+        if (isset($_GET['shop'])) {
+
+            $shop = $this->shopModel->getShop($_GET['shop']);
+
+            if($shop) {
+
+                $data = [
+                    'shop'      => $shop,
+                ];
+
+                $this->view('shops/step3', $data);
+            } else {
+                $this->view('shops/notfound');
+            }
+        } else {
+            $this->view('shops/notfound');
+        }
     }
 
     public function success() {
-        $this->view('shops/success');
+        if (isset($_GET['shop'])) {
+
+            $shop = $this->shopModel->getShop($_GET['shop']);
+
+            if($shop) {
+
+                $data = [
+                    'shop'      => $shop,
+                ];
+
+                $this->view('shops/success', $data);
+            } else {
+                $this->view('shops/notfound');
+            }
+        } else {
+            $this->view('shops/notfound');
+        }
     }
 
     public function failure() {
-        $this->view('shops/failure');
+        if (isset($_GET['shop'])) {
+
+            $shop = $this->shopModel->getShop($_GET['shop']);
+
+            if($shop) {
+
+                $data = [
+                    'shop'      => $shop,
+                ];
+
+                $this->view('shops/failure', $data);
+            } else {
+                $this->view('shops/notfound');
+            }
+        } else {
+            $this->view('shops/notfound');
+        }
     }
 }

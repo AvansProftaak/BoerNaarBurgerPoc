@@ -19,8 +19,8 @@
     </div>
 
     <div class="pt-4">
-        <button type="button" onclick="window.location='<?php echo URLROOT; ?>/shops/success'" class="mx-2 btn btn-success">Success</button>
-        <button type="button" onclick="window.location='<?php echo URLROOT; ?>/shops/failure'" class="mx-2 btn btn-danger">Failed</button>
+        <button type="button" onclick="window.location='<?php echo URLROOT . '/shops/success?shop=' . $data['shop']->shop_number?>'" class="mx-2 btn btn-success">Success</button>
+        <button type="button" onclick="window.location='<?php echo URLROOT . '/shops/failure?shop=' . $data['shop']->shop_number?>'" class="mx-2 btn btn-danger">Failed</button>
     </div>
 </div>
 <?php include APPROOT."/Views/Includes/footerShop.php"; ?>

@@ -1,7 +1,7 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
     <div class="pt-4">
-        <h3 class="font-weight-bolder">Aardbeien van René</h3>
+        <h3 class="font-weight-bolder"><?php echo $data['shop']->shop_name ?></h3>
     </div>
     <div class="pt-4">
         <h3 class="font-weight-bolder">Betaling mislukt</h3>

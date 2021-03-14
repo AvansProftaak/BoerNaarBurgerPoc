@@ -34,13 +34,13 @@
                 <nav class="p-0 navbar navigation-bar-shop navbar-expand-md justify-content-center">
                     <ul class="pl-1 ml-5 navbar-nav">
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step1') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/step1">1. Producten</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step1') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. Producten</a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step2') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/step2">2. Gegevens</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step2') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. Gegevens</a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step3') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/step3">3. Betaling</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step3') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. Betaling</a>
                         </li>
                     </ul>
                 </nav>

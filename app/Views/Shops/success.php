@@ -5,7 +5,7 @@
     </div>
 
     <div class="pt-4">
-        <p>Bedankt voor uw bestelling bij <strong>Aardbeien van René</strong>. Uw bestelling is succesvol afgerond. Binnen enkele minuten ontvangt
+        <p>Bedankt voor uw bestelling bij <strong><?php echo $data['shop']->shop_name ?></strong>. Uw bestelling is succesvol afgerond. Binnen enkele minuten ontvangt
             u een bevestiging op het door u opgegeven e-mail adres.</p>
         <p><em><strong>Let op!</strong> Soms wordt e-mail onderschept door een spamfilter. Controleer daarom ook uw spambox
                 indien u binnen enkele minuten geen e-mail ontvangen heeft. Niks ontvangen? Neem <a href="<?php echo URLROOT; ?>/pages/contact">contact</a> op met Boer naar Burger.</em></p>
