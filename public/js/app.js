@@ -1,8 +1,3 @@
-// Increment/decrement product amount in shop
-
-
-
-
 // Homepage Loading after creating database
 function buttonClicked()
 {

@@ -29,7 +29,7 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <button type="button" class="btn-decrement">-</button>
-                <p id="count" class="px-3">0</p>
+                <p id="count<?php echo $product->product_number ?>" class="px-3">0</p>
                 <button type="button" class="btn-increment">+</button>
             </div>
             <div class = "price-width text-right">
