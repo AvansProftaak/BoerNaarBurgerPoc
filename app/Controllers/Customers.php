@@ -239,6 +239,7 @@ class Customers extends Controller
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                     if ($this->customerModel->update($data, $customer)) {
+                        $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
                         header('location: ' . URLROOT . '/customers/accountdetails');
                     } else {
                         if((strpos($this->customerModel->update($data, $customer),'uc_email') !== false)) {
