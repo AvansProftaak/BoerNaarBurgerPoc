@@ -1,0 +1,40 @@
+version: "3.1"
+
+services:
+  boer-naar-burger-webserver:
+    image: nginx:alpine
+    restart: always
+    container_name: boer-naar-burger-webserver
+    working_dir: /application
+    volumes:
+      - ../:/application
+      - ./images/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8090:80
+    depends_on:
+      - boer-naar-burger-php-fpm
+
+  boer-naar-burger-php-fpm:
+    build: ./images/php-fpm
+    restart: always
+    container_name: boer-naar-burger-php-fpm
+    working_dir: /application
+    volumes:
+      - ../:/application
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'boer_naar_burger'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_ROOT_PASSWORD: 'secret'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
