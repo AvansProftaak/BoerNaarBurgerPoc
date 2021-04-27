@@ -1,0 +1,144 @@
+
+#rh-titel-logo {
+    height: 55px;
+    top: 0;
+    left: 0;
+    float: left;
+    position: absolute;
+    overflow: hidden;
+}
+
+.navigatiebar {
+    background-color:#34744d;
+    text-align: center;
+    top:0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .navigatiebar {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    #rh-titel-logo {
+        display: none;
+    }
+}
+
+.geselecteerdePagina {
+    color:gold !important;
+    font-weight: bold;
+}
+
+.dropButton {
+    background-color: transparent;
+    color: #F0FFF9;
+    padding: 16px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    font-family: 'Dosis', sans-serif;
+    text-decoration: none;
+}
+
+.dropButton a {
+    color: #F0FFF9;
+    text-decoration: none;
+}
+
+.dropButton:hover {
+    color: #E38F88;
+    font-weight: bold;
+}
+
+.dropButton a:hover {
+    color: #E38F88;
+    font-weight: bold;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition: 0.4s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34744d;
+    min-width: 150px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.dropdown-content a:hover {
+    color: #E38F88;
+    font-weight: bold;
+}
+
+.show {
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+        border-bottom: 1px solid #F0FFF9;
+    }
+    .noHover {
+        pointer-events: none;
+    }
+    .dropdown:hover {
+        background-color: #005622;
+        color: white;
+    }
+    .dropdown a:hover {
+        background-color: darkgoldenrod;
+        color: #005622;
+        transition: 0.4s;
+    }
+    .dropdown-content {
+        position: relative;
+        background-color: gold;
+        box-shadow: none;
+    }
+    .dropdown-content .geselecteerdePagina {
+        color:#005622 !important;
+        font-weight: bold;
+    }
+
+    .dropdown-content a {
+        color: #34744d;
+        font-size: 15px;
+    }
+    .dropButton {
+        width: 100%;
+        font-size: 15px;
+        max-width: 180px;
+        padding: 8px 10px;
+        font-family: 'Dosis', sans-serif;
+    }
+    .dropButton:hover {
+        background-color: transparent;
+        color: white;
+    }
+    #bottomNavbar {
+        border-bottom: 3px solid #005622;
+    }
+}
