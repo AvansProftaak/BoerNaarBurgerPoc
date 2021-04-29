@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+<p>hoi</p>
 
 <!-- Boer registration not possible Modal -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel1" aria-hidden="true">
