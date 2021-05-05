@@ -18,7 +18,7 @@
                             <!-- ShopName -->
                             <div class="col-5">
                                 <label for="shop_name" class="pl-2 user-data-header">Shopnaam<span class="pl-3 text-danger"><?php echo $data['shopNameError'] ?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shopNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Aarbeienhok" name="shop_name" autocomplete="sname">
+                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shopNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Shop Naam" name="shop_name" autocomplete="sname">
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                         <!-- Register Button -->
                         <div class="form-group row mb-3 mt-4">
                             <div class="ml-3 pl-3">
-                                <button type="submit" class="btn btn-green px-5">Registreer</button>
+                                <button type="submit" class="btn btn-green px-5">Registreer winkel</button>
                             </div>
                         </div>
                     </form>
