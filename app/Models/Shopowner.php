@@ -1,7 +1,7 @@
 <?php
 
 
-class Customer
+class Shopowner
 {
     private $db;
 
