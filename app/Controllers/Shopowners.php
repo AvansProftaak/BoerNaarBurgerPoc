@@ -9,98 +9,89 @@ class Shopowners extends Controller
     public $shopModel;
 
     public function __construct() {
-        $this->customerModel = $this->model('Shopowner');
+        $this->shopownerModel = $this->model('Shopowner');
         $this->shopModel = $this->model('Shop');
     }
 
-    public function register() {
+    public function create() {
         $data = [
-            'first_name'            => '',
-            'last_name'             => '',
-            'email'                 => '',
-            'password'              => '',
-            'password_confirmation' => '',
-            'firstNameError'        => '',
-            'lastNameError'         => '',
-            'emailError'            => '',
-            'passwordError'         => '',
-            'confirmPasswordError'  => ''
+            'kvk_number'            => '',
+            'shop_name'             => '',
+            'description'           => '',
+            'address'               => '',
+            'house_number'          => '',
+            'postal_code'           => '',
+            'city'                  => '',
+            'country'               => '',
+            'open_from'             => '',
+            'closed_at'             => '',
+            'banner_url'            => '',
+
+
+            'kvk_numberError'       => '',
+            'shop_nameError'        => '',
+            'descriptionError'      => '',
+            'addressError'          => '',
+            'house_numberError'     => '',
+            'postal_codeError'      => '',
+            'cityError'             => '',
+            'countryError'          => '',
+            'open_fromError'        => '',
+            'banner_urlError'       => '',
+            'closed_atError'        => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'first_name'            => trim($_POST['first_name']),
-                'last_name'             => trim($_POST['last_name']),
-                'email'                 => trim($_POST['email']),
-                'password'              => trim($_POST['password']),
-                'password_confirmation' => trim($_POST['password_confirmation']),
-                'firstNameError'        => '',
-                'lastNameError'         => '',
-                'emailError'            => '',
-                'passwordError'         => '',
-                'confirmPasswordError'  => ''
+                'kvk_number'            => trim($_POST['kvk_number']),
+                'shop_name'             => trim($_POST['shop_name']),
+                'description'           => trim($_POST['description']),
+                'address'               => trim($_POST['address']),
+                'house_number'          => trim($_POST['house_number']),
+                'postal_code'           => trim($_POST['postal_code']),
+                'city'                  => trim($_POST['city']),
+                'country'               => trim($_POST['country']),
+                'open_from'             => trim($_POST['open_from']),
+                'closed_at'             => trim($_POST['closed_at']),
+                'banner_url'            => trim($_POST['banner_url']),
+
+                'kvk_numberError'       => '',
+                'shop_nameError'        => '',
+                'descriptionError'      => '',
+                'addressError'          => '',
+                'house_numberError'     => '',
+                'postal_codeError'      => '',
+                'cityError'             => '',
+                'countryError'          => '',
+                'open_fromError'        => '',
+                'banner_urlError'       => '',
+                'closed_atError'        => ''
             ];
 
-            //validate first_name
-            if (empty($data['first_name'])) {
-                $data['firstNameError'] = 'Vul uw voornaam in.';
+            foreach ($data as $item) {
+                if (empty($data[$item])) {
+                    $itemError = $item . 'Error';
+                    $errorMessage = "Vul het $item veld in in.";
+                    $data[$itemError] = 'Vul dit veld in in.';
             }
 
-            //validate last_name
-            if (empty($data['last_name'])) {
-                $data['lastNameError'] = 'Vul uw achternaam in.';
-            }
 
-            //validate email
-            if (empty($data['email'])) {
-                $data['emailError'] = 'Vul uw e-mail adres in.';
-            } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
-            } else {
-                // check if email exists
-                if ($this->customerModel->findCustomerByEmail($data['email'])) {
-                    $data['emailError'] = 'E-mail adres is al geregistreerd.';
-                }
-            }
+            // //if no errors are found continue
+            // if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
+            //         empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
 
-            // password validation regex (contains atleast 1 number)
-            $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
+            //     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-
-            // Validate password
-            if(empty($data['password'])) {
-                $data['passwordError'] = 'Vul een wachtwoord in.';
-            } elseif(strlen($data['password']) < 6) {
-                $data['passwordError'] = 'Wachtwoord moet tenminste 8 karakters bevatten.';
-            } elseif (preg_match($passwordValidation, $data['password'])) {
-                $data['passwordError'] = 'Wachtwoord moet tenminste 1 cijfer bevatten.';
-            }
-
-            //Validate confirm password
-            if (empty($data['password_confirmation'])) {
-                $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
-            } else {
-                if ($data['password'] != $data['password_confirmation']) {
-                    $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
-                }
-            }
-
-            //if no errors are found continue
-            if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
-                    empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
-
-                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-                if ($this->customerModel->register($data)) {
-                    header('location: ' . URLROOT . '/customers/login');
-                } else {
-                    die('Registreren is mislukt. Probeer het opnieuw.');
-                }
-            }
+            //     if ($this->shopownerModel->register($data)) {
+            //         header('location: ' . URLROOT . '/customers/login');
+            //     } else {
+            //         die('Registreren is mislukt. Probeer het opnieuw.');
+            //     }
+            // }
         }
-        $this->view('customers/register', $data);
+        $this->view('shopowners/create', $data);
     }
 
     // public function login() {
@@ -130,7 +121,7 @@ class Shopowners extends Controller
     //         }
 
     //         if (empty($data['emailError']) && empty($data['passwordError'])) {
-    //             $authorizedCustomer = $this->customerModel->login($data['email'], $data['password']);
+    //             $authorizedCustomer = $this->shopownerModel->login($data['email'], $data['password']);
 
     //             if ($authorizedCustomer) {
     //                 $this->createCustomerSession($authorizedCustomer);
@@ -167,7 +158,7 @@ class Shopowners extends Controller
 
     // public function accountDetails() {
     //     if (isLoggedIn()) {
-    //         $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+    //         $customer = $this->shopownerModel->getAccountDetails($_SESSION['email']);
     //         $data = [
     //             'first_name'            => $customer->first_name,
     //             'last_name'             => $customer->last_name,
@@ -237,11 +228,11 @@ class Shopowners extends Controller
 
     //                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-    //                 if ($this->customerModel->update($data, $customer)) {
+    //                 if ($this->shopownerModel->update($data, $customer)) {
     //                     $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
     //                     header('location: ' . URLROOT . '/customers/accountdetails');
     //                 } else {
-    //                     if((strpos($this->customerModel->update($data, $customer),'uc_email') !== false)) {
+    //                     if((strpos($this->shopownerModel->update($data, $customer),'uc_email') !== false)) {
     //                         $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
     //                     } else {
     //                         die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
@@ -258,7 +249,7 @@ class Shopowners extends Controller
     // public function changePassword()
     // {
     //     if (isLoggedIn()) {
-    //         $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+    //         $customer = $this->shopownerModel->getAccountDetails($_SESSION['email']);
     //         $data = [
     //         'current_password'          => '',
     //             'password'              => '',
@@ -305,7 +296,7 @@ class Shopowners extends Controller
     //             if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
     //                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-    //                 if ($this->customerModel->changePassword($data, $customer)) {
+    //                 if ($this->shopownerModel->changePassword($data, $customer)) {
     //                     header('location: ' . URLROOT . '/customers/accountdetails');
     //                 } else {
     //                     die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
@@ -321,8 +312,8 @@ class Shopowners extends Controller
 
     // public function orderOverview() {
     //     if (isLoggedIn()) {
-    //         $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-    //         $orders = $this->orderModel->getCustomerOrders($customer);
+    //         $customer = $this->shopownerModel->getAccountDetails($_SESSION['email']);
+    //         $orders = $this->shopModel->getCustomerOrders($customer);
 
     //         $data = [
     //             'orders'        => $orders,
@@ -333,5 +324,5 @@ class Shopowners extends Controller
     //     } else {
     //         $this->login();
     //     }
-    // }
+    }
 }
