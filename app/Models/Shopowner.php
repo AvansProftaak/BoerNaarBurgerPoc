@@ -10,22 +10,22 @@ class Shopowner
     }
 
     public function getShops() {
+        echo 1;
         $this->db->query("SELECT * FROM boer_naar_burger.shops");
         $result = $this->db->resultSet();
-
         return $result;
     }
 
-    // public function findCustomerByEmail($email) {
-    //     $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
-    //     $this->db->bind(':email', $email);
+    public function findCustomerByEmail($email) {
+        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+        $this->db->bind(':email', $email);
 
-    //     if ($this->db->rowCount() > 0) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function createShop($data) {
         $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url, created_at)
@@ -51,30 +51,30 @@ class Shopowner
         }
     }
 
-    // public function login($email, $password) {
-    //     $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+    public function login($email, $password) {
+        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
 
-    //     $this->db->bind(':email', $email);
-    //     $customer = $this->db->single();
+        $this->db->bind(':email', $email);
+        $customer = $this->db->single();
 
-    //     if($customer) {
-    //         $hashedPassword = $customer->password;
+        if($customer) {
+            $hashedPassword = $customer->password;
 
-    //         if (password_verify($password, $hashedPassword)) {
-    //             return $customer;
-    //         } else {
-    //             return false;
-    //         }
-    //     } else {
-    //         return false;
-    //     }
-    // }
+            if (password_verify($password, $hashedPassword)) {
+                return $customer;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-    // public function getAccountDetails($email) {
-    //     $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
-    //     $this->db->bind(':email', $email);
-    //     return $this->db->single();
-    // }
+    public function getAccountDetails($email) {
+        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+        $this->db->bind(':email', $email);
+        return $this->db->single();
+    }
 
     public function update($data, $customer) {
         $this->db->query('UPDATE boer_naar_burger.customers SET first_name = :first_name, last_name = :last_name,
@@ -98,15 +98,15 @@ class Shopowner
         }
     }
 
-    // public function changePassword($data, $customer) {
-    //     $this->db->query('UPDATE boer_naar_burger.customers SET password = :password WHERE customer_number = :customer');
-    //     $this->db->bind(':password', $data['password']);
-    //     $this->db->bind(':customer', $customer->customer_number);
+    public function changePassword($data, $customer) {
+        $this->db->query('UPDATE boer_naar_burger.customers SET password = :password WHERE customer_number = :customer');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':customer', $customer->customer_number);
 
-    //     if ($this->db->execute()) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

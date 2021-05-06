@@ -1,4 +1,4 @@
-S
+
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
 <div class="container pt-4">
     <div class="row justify-content-center">
@@ -14,34 +14,34 @@ S
                     <h2 class="pt-4 pl-4 data-headers">Shop registreren</h2>
                     <hr class="mx-2">
 
-                    <form method="POST" action="<?php echo URLROOT; ?>/Shopowners/create">
+                    <form method="POST" action="<?php echo URLROOT; ?>/shopowners/create">
                         <div class="form-group row mx-1">
                             <!-- ShopName -->
                             <div class="col-5">
-                                <label for="shop_name" class="pl-2 user-data-header">Shopnaam<span class="pl-3 text-danger"><?php echo $data['shopNameError'] ?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shopNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Shop Naam" name="shop_name" autocomplete="sname">
+                                <label for="kvk_number" class="pl-2 user-data-header">kvk nummer<span class="pl-3 text-danger"><?php echo $data['kvk_numberError'] ?></span></label>
+                                <input id="kvk_number" type="text" class="form-control rounded-borders <?php if($data['kvk_numberError']) : ?> is-invalid <?php endif; ?>" placeholder="KVK nummer" name="kvk_number" autocomplete="kvk_number">
                             </div>
                         </div>
 
                         <!-- E-mail Address -->
                         <div class="form-group row mx-1 mb-0">
                             <div class="col-5">
-                                <label for="email" class="pl-2 user-data-header">E-Mailadres<span class="pl-3 text-danger"><?php echo $data['emailError'] ?></span></label>
-                                <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>" name="email" placeholder="email@voorbeeld.nl" autocomplete="email">
+                                <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php echo $data['shop_nameError'] ?></span></label>
+                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="email@voorbeeld.nl" autocomplete="shop_name">
                             </div>
 
                             <!-- img -->
                             <!-- zoek uit hoe dit kan -->
-                            <div class="col">
+                            <!-- <div class="col">
                                 <label for="imglink" class="pl-2 user-data-header">Foto</label>
                                 <input id="imglink" type="image" class="form-control rounded-borders <?php if($data['imagedError']) : ?> is-invalid <?php endif; ?>" name="image" autocomplete="image">
                             </div>
 
-                            <!-- description -->
+                            <!-- description
                             <div class="col">
                                 <label for="description" class="pl-2 user-data-header">Beschrijving</label>
                                 <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" autocomplete="description">
-                            </div>
+                            </div> -->
 
                         <!-- Register Button -->
                         <div class="form-group row mb-3 mt-4">

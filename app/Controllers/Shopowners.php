@@ -11,7 +11,12 @@ class Shopowners extends Controller
     public function __construct() {
         $this->shopownerModel = $this->model('Shopowner');
         $this->shopModel = $this->model('Shop');
+        // print_r($this->shopownerModel);
+        // print_r($this->shopModel);
+        // $shops = $this->shopModel->getShops();
     }
+
+    
 
     public function create() {
         $data = [
@@ -70,14 +75,36 @@ class Shopowners extends Controller
                 'closed_atError'        => ''
             ];
 
+            //
             foreach ($data as $item) {
+                if ( str_contains("Error", $item)) {
+                    break;
+                }
                 if (empty($data[$item])) {
                     $itemError = $item . 'Error';
+                    $item = str_replace($item, "", "_");
                     $errorMessage = "Vul het $item veld in in.";
-                    $data[$itemError] = 'Vul dit veld in in.';
+                    $data[$itemError] = "Vul het $item veld in in.";
             }
 
+            $errorMessages = [
+                'kvk_numberError',
+                'shop_nameError',
+                'descriptionError',
+                'addressError',
+                'house_numberError',
+                'postal_codeError',
+                'cityError',
+                'countryError',
+                'open_fromError',
+                'banner_urlError',
+                'closed_atError'] ;
 
+            foreach ($errorMessages as $errorMEssage) {
+                if ($data[$errorMessage]){
+                    die('Registreren is mislukt. Probeer het opnieuw.');
+                }
+            }
             // //if no errors are found continue
             // if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
             //         empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
@@ -89,7 +116,7 @@ class Shopowners extends Controller
             //     } else {
             //         die('Registreren is mislukt. Probeer het opnieuw.');
             //     }
-            // }
+            }
         }
         $this->view('shopowners/create', $data);
     }
@@ -324,5 +351,5 @@ class Shopowners extends Controller
     //     } else {
     //         $this->login();
     //     }
-    }
+    // }
 }
