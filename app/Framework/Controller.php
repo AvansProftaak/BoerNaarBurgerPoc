@@ -1,12 +1,14 @@
 <?php
 
 class Controller {
+
     // require the model
     public function model($model) {
         require_once '../app/models/' . $model . '.php';
         // instantiate the model
         return new $model();
     }
+
 
     // require the view, if exists.
     public function view($view, $data = []) {
