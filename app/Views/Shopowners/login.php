@@ -10,9 +10,9 @@
                     </div>
                 </div>
                 <div class="col pr-2">
-                    <h2 class="pt-4 pl-4 data-headers">Log in burger</h2>
+                    <h2 class="pt-4 pl-4 data-headers">Log in boer</h2>
                     <hr class="mx-2">
-                    <form method="POST" action="<?php echo URLROOT; ?>/customers/login">
+                    <form method="POST" action="<?php echo URLROOT; ?>/shopowners/login">
                         <!-- E-mail -->
                         <div class="form-group row mx-1">
                             <div class="col">
@@ -33,8 +33,8 @@
                         <div class="form-group row mb-3">
                             <div class="ml-3 pl-3">
                                 <button type="submit" name="submit" class="btn btn-green px-5">Log in</button>
-                                <p class="mt-4">Heeft u nog geen account? Klik <a href="<?php echo URLROOT; ?>/customers/register">hier</a> om te registeren.<br>
-                                                Wilt u inloggen als boer? Klik dan <a href="<?php echo URLROOT; ?>/shopowners/login">hier</a>.
+                                <p class="mt-4">Heeft u nog geen account? Klik <a href="<?php echo URLROOT; ?>/shopowners/register">hier</a> om te registeren.<br>
+                                    Wilt u inloggen als burger? Klik dan <a href="<?php echo URLROOT; ?>/customers/login">hier</a>.
                                 </p>
                             </div>
                         </div>

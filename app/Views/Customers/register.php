@@ -56,6 +56,7 @@
                         <div class="form-group row mb-3 mt-4">
                             <div class="ml-3 pl-3">
                                 <button type="submit" class="btn btn-green px-5">Registreer</button>
+                                <p class="mt-4">Bent u een boer en wilt u uw eigen webshop openen? Klik dan <a href="<?php echo URLROOT; ?>/shopowners/register">hier</a> om te registeren.</p>
                             </div>
                         </div>
                     </form>

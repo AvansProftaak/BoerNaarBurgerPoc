@@ -44,7 +44,7 @@
                                     <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer">Veelgestelde vragen</a></li>
                                     <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer">Contact</a></li>
                                     <br/>
-                                    <a data-toggle="modal" data-target="#registerModal" class="btn btn-pink">
+                                    <a href="<?php echo URLROOT; ?>/shopowners/register" class="btn btn-pink">
                                         Meld je aan als klant
                                     </a>
                                 </div>
@@ -53,26 +53,6 @@
                     </div>
                     <div class="footer-copyright">© 2020 Copyright: groep 4A - Deeltijdopleiding Informatica aan Avans Hogeschool Breda</div>
                 </footer>
-
-                <!-- Boer registration not possible Modal -->
-                <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel1" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title user-data-header" id="registerModalLabel">Registreren niet mogelijk</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body modal-text">
-                                <p>In dit proof of concept is het niet mogelijk om u als klant aan te melden.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal">Sluiten</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </body>

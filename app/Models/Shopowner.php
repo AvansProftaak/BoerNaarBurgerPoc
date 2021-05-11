@@ -16,9 +16,20 @@ class Shopowner
         return $result;
     }
 
-    public function findCustomerByEmail($email) {
-        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+    public function findShopOwnerByEmail($email) {
+        $this->db->query('SELECT * FROM boer_naar_burger.shop_owners WHERE email = :email');
         $this->db->bind(':email', $email);
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function findShopOwnerByKvkNumber($kvkNumber) {
+        $this->db->query('SELECT * FROM boer_naar_burger.shop_owners WHERE kvk_number = :kvkNumber');
+        $this->db->bind(':kvkNumber', $kvkNumber);
 
         if ($this->db->rowCount() > 0) {
             return true;
@@ -51,17 +62,42 @@ class Shopowner
         }
     }
 
+    public function register($data)
+    {
+        $this->db->query('INSERT INTO boer_naar_burger.shop_owners (kvk_number, company_name, first_name, 
+                                          last_name, address, house_number, postal_code, city, email, password)
+                              VALUES (:kvk_number, :company_name, :first_name, :last_name, :address, :house_number, 
+                                      :postal_code, :city, :email, :password)');
+
+        $this->db->bind(':kvk_number', $data['kvk_number']);
+        $this->db->bind(':company_name', $data['company_name']);
+        $this->db->bind(':first_name', $data['first_name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':house_number', $data['house_number']);
+        $this->db->bind(':postal_code', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function login($email, $password) {
-        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
+        $this->db->query('SELECT * FROM boer_naar_burger.shop_owners WHERE email = :email');
 
         $this->db->bind(':email', $email);
-        $customer = $this->db->single();
+        $shopOwner = $this->db->single();
 
-        if($customer) {
-            $hashedPassword = $customer->password;
+        if($shopOwner) {
+            $hashedPassword = $shopOwner->password;
 
             if (password_verify($password, $hashedPassword)) {
-                return $customer;
+                return $shopOwner;
             } else {
                 return false;
             }
@@ -70,43 +106,4 @@ class Shopowner
         }
     }
 
-    public function getAccountDetails($email) {
-        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE email = :email');
-        $this->db->bind(':email', $email);
-        return $this->db->single();
-    }
-
-    public function update($data, $customer) {
-        $this->db->query('UPDATE boer_naar_burger.customers SET first_name = :first_name, last_name = :last_name,
-                                email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
-                                city = :city WHERE customer_number = :customer');
-        $this->db->bind(':first_name', $data['first_name']);
-        $this->db->bind(':last_name', $data['last_name']);
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':address', $data['address']);
-        $this->db->bind(':house_number', $data['house_number']);
-        $this->db->bind(':postal_code', $data['postal_code']);
-        $this->db->bind(':city', $data['city']);
-        $this->db->bind(':customer', $customer->customer_number);
-
-        try {
-            $this->db->execute();
-            return true;
-        } catch (PDOException $e) {
-            $this->error = $e->getMessage();
-            return $this->error;
-        }
-    }
-
-    public function changePassword($data, $customer) {
-        $this->db->query('UPDATE boer_naar_burger.customers SET password = :password WHERE customer_number = :customer');
-        $this->db->bind(':password', $data['password']);
-        $this->db->bind(':customer', $customer->customer_number);
-
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

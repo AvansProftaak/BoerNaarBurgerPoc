@@ -69,7 +69,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- if logged out -->
-                    <?php if (!isset($_SESSION['customer_number'])) : ?>
+                    <?php if (!isset($_SESSION['customer_number']) && !isset($_SESSION['kvk_number'])) : ?>
                     <li class="nav-item nav-text-login">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'customers/login') !== false) : ?>
                          nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/login">Log in</a>
@@ -78,9 +78,9 @@
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'customers/register') !== false) : ?>
                          nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/register">Registreer</a>
                     </li>
-
-                    <?php else : ?>
-                    <!-- if logged in -->
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['customer_number'])) : ?>
+                    <!-- if logged in customer -->
                     <li class="nav-item nav-text-login nav-text dropdown">
                         <a id="navbarDropdown" class="nav-text-login nav-link dropdown-toggle"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +92,19 @@
                             <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/logout">Uitloggen</a>
                         </div>
                     </li>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['kvk_number'])) : ?>
+                        <!-- if logged in shop owner -->
+                        <li class="nav-item nav-text-login nav-text dropdown">
+                            <a id="navbarDropdown" class="nav-text-login nav-link dropdown-toggle"
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $_SESSION['shopowner_name']; ?></a>
+
+                            <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create">Shop aanmaken</a>
+                                <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout">Uitloggen</a>
+                            </div>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

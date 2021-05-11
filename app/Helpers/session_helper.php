@@ -8,3 +8,11 @@ function isLoggedIn() {
         return false;
     }
 }
+
+function isLoggedInShopOwner() {
+    if(isset($_SESSION['kvk_number'])) {
+        return true;
+    } else {
+        return false;
+    }
+}
