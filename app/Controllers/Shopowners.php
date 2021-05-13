@@ -49,6 +49,7 @@ class Shopowners extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            #KVK_Nummer moet uit de session komen
             $data = [
                 'kvk_number'            => trim($_POST['kvk_number']),
                 'shop_name'             => trim($_POST['shop_name']),
