@@ -15,13 +15,6 @@
                     <hr class="mx-2">
 
                     <form method="POST" action="<?php echo URLROOT; ?>/shopowners/create">
-                        <div class="form-group row mx-1">
-                            <!-- KVK -->
-                            <div class="col-5">
-                                <label for="kvk_number" class="pl-2 user-data-header">kvk nummer<span class="pl-3 text-danger"><?php echo $data['kvk_numberError'] ?></span></label>
-                                <input id="kvk_number" type="text" class="form-control rounded-borders <?php if($data['kvk_numberError']) : ?> is-invalid <?php endif; ?>" placeholder="KVK nummer" name="kvk_number" autocomplete="kvk_number">
-                            </div>
-                        </div>
 
                         <!-- Shop name -->
                         <div class="form-group row mx-1 mb-0">
@@ -30,14 +23,14 @@
                                 <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mx-1 mb-0">
-                            <!-- stad -->
+                            <!-- description -->
                             <div class="col-5">
-                                <label for="city" class="pl-2 user-data-header">Stad<span class="pl-3 text-danger"><?php echo $data['cityError'] ?></span></label>
-                                <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" name="city" placeholder="Amsterdam" autocomplete="city">
+                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
+                                <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                             </div>
-                        </div>
+                        </div><br><br>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
@@ -68,6 +61,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mx-1 mb-0">
+                            <!-- stad -->
+                            <div class="col-5">
+                                <label for="city" class="pl-2 user-data-header">Stad<span class="pl-3 text-danger"><?php echo $data['cityError'] ?></span></label>
+                                <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" name="city" placeholder="Amsterdam" autocomplete="city">
+                            </div>
+                        </div><br><br>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
@@ -80,14 +80,6 @@
                             <div class="col-5">
                                 <label for="closed_at" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php echo $data['closed_atError'] ?></span></label>
                                 <input id="closed_at" type="text" class="form-control rounded-borders <?php if($data['closed_atError']) : ?> is-invalid <?php endif; ?>" name="closed_at" placeholder="17:00" autocomplete="closed_at">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- description -->
-                            <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
-                                <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                             </div>
                         </div><br>
 
