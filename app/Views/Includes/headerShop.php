@@ -1,5 +1,8 @@
+<?php
+require_once '../app/Helpers/language_helper.php';
+?>
 <!doctype html>
-<html lang="nl">
+<html lang="<?php $_SESSION['lang'] ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,13 +37,27 @@
                 <nav class="p-0 navbar navigation-bar-shop navbar-expand-md justify-content-center">
                     <ul class="pl-1 ml-5 navbar-nav">
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step1') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. Producten</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step1') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step2') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. Gegevens</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step2') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. <?php echo $lang['data']; ?></a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step3') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. Betaling</a>
+                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step3') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. <?php echo $lang['payment']; ?></a>
+                        </li>
+                    </ul>
+
+                    <!-- Language selector -->
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <a id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../img/icon/<?php echo $_SESSION['lang']; ?>.png" alt="<?php echo $_SESSION['lang']; ?>" class="langicon">
+                            </a>
+
+                            <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown">
+                                <a href="<?php echo URLROOT . '/' . $_GET['url'] . '?shop=' . $_GET['shop'] ?>&lang=en"><img src="../img/icon/EN.png" alt="EN" class="langicon"></a>
+                                <a href="<?php echo URLROOT . '/' . $_GET['url'] . '?shop=' . $_GET['shop'] ?>&lang=nl"><img src="../img/icon/NL.png" alt="NL" class="langicon"></a>
+                            </div>
                         </li>
                     </ul>
                 </nav>

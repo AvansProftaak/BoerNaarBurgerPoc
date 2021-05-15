@@ -1,6 +1,9 @@
 <?php
 $lang = array (
 
+    //generic
+    'here' => 'here',
+
     //header
     'home'            => 'HOME',
     'about'           => 'ABOUT',
@@ -18,4 +21,25 @@ $lang = array (
 
     //shopowner
     'create_shop' => 'Create Shop',
+
+    //shop header
+    'products' => 'Products',
+    'data'     => 'Personal Details',
+    'payment'  => 'Payment',
+
+    //login customer
+    'welcome' => 'Welcome to Boer naar Burger',
+    'login_customer' => 'Log in customer',
+    'login_button' => 'Log in',
+    'login_farmer' => 'Do you want to login as farmer? Please click ',
+    'no_account' => 'No account? Click ',
+    'no_account2' => ' to register.',
+
+    //login shop owner
+    'login_shopowner' => 'Log in farmer',
+    'login_burger' => 'Do you want to login as customer? Please click ',
+
+    //generic form labels
+    'email' => 'E-mail address',
+    'password' => 'Password',
 );
