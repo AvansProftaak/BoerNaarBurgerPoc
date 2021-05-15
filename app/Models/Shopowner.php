@@ -39,10 +39,6 @@ class Shopowner
     }
 
     public function createShop($data) {
-        print_r($data);
-        print count($data);
-
-
         $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url)
                               VALUES (:kvk_number, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url)');
 
@@ -107,6 +103,20 @@ class Shopowner
         } else {
             return false;
         }
+    }
+    // save shop image
+    function saveFile($filename, $filecontent){
+        $filename = "/assets/shopbanners/" . $filename;
+        $dirname = IMGROOT ;
+        if (strlen($filename)>0){
+            if (!file_exists($dirname)) {
+                mkdir($dirname);
+            }
+            move_uploaded_file($_FILES["banner_url"]["tmp_name"], $dirname . DIRECTORY_SEPARATOR . $filename);
+
+            return -2;
+        }
+        return -1;
     }
 
 }

@@ -66,7 +66,7 @@ class Shopowners extends Controller
                 'country'               => 'Nederland',
                 'open_from'             => trim($_POST['open_from']),
                 'closed_at'             => trim($_POST['closed_at']),
-                'banner_url'            => trim($_POST['banner_url']),
+                'banner_url'            => "/assets/shopbanners/" . trim($_FILES['banner_url']['name']),
 
                 'kvk_numberError'       => '',
                 'shop_nameError'        => '',
@@ -87,7 +87,6 @@ class Shopowners extends Controller
             foreach ($data as $key => $item) {
                 if (empty($item)) {
                     if (strpos($key, "Error") !== false) {
-                        print "error found";
                         continue;
                     }
                     # if items contains the word error pass
@@ -123,7 +122,12 @@ class Shopowners extends Controller
                 }
                 $i++ ;  
         }
+
         if ($this->shopOwnerModel->createShop($data)) {
+            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+            $imageFileContents = file_get_contents($imageFile);
+            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
             header('location: ' . URLROOT . '/Shopowners/updateitems');
         }
     }
@@ -424,4 +428,8 @@ class Shopowners extends Controller
     }
         $this->view('shopowners/updateitems', $data);
     }
+
+    
+
+
 }

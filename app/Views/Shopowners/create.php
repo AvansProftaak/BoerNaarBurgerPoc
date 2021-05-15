@@ -14,7 +14,7 @@
                     <h2 class="pt-4 pl-4 data-headers">Shop registreren</h2>
                     <hr class="mx-2">
 
-                    <form method="POST" action="<?php echo URLROOT; ?>/shopowners/create">
+                    <form method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/create">
 
                         <!-- Shop name -->
                         <div class="form-group row mx-1 mb-0">
@@ -88,7 +88,7 @@
                             <!-- description -->
                             <div class="col-5">
                                 <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php echo $data['banner_urlError'] ?></span></label>
-                                <input id="banner_url" type="text" class="form-control rounded-borders <?php if($data['banner_urlError']) : ?> is-invalid <?php endif; ?>" name="banner_url" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
+                                <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders <?php if($data['banner_urlError']) : ?> is-invalid <?php endif; ?>" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
                             </div>
                         </div>
 
