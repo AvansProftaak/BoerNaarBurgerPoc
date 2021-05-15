@@ -2,7 +2,7 @@
     require_once '../app/Helpers/language_helper.php';
 ?>
 <!doctype html>
-<html lang="nl">
+<html lang="<?php $_SESSION['lang'] ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

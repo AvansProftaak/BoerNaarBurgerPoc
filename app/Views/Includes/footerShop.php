@@ -9,9 +9,9 @@
         </div>
         <div class="pl-4 pt-1">
             <p class="mb-0">
-                Ook zelf online producten verkopen?
+                <?php echo $lang['sell_products']; ?>
                 <a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer">
-                    Neem contact op!
+                    <?php echo $lang['reach_out']; ?>
                 </a>
             </p>
         </div>
