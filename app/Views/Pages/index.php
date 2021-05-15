@@ -1,4 +1,7 @@
-<?php include APPROOT."/Views/Includes/header.php"; ?>
+<?php
+    include APPROOT."/Views/Includes/header.php";
+    require_once '../app/Helpers/language_helper.php';
+?>
 <div class="container">
     <div class="welcome-images">
         <img class="logoBnB" src="../img/logo%20Boer%20naar%20burger_liggend_color.png" alt="logoBnB">

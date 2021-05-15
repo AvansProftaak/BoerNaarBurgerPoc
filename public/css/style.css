@@ -2,6 +2,12 @@
     height: 55px;
 }
 
+.langicon {
+    height: 55px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
 .lightblue-background {
     background-color: #C2F5EB !important;
 }
@@ -26,6 +32,13 @@
 
 .dropdown-menu-contact {
     margin-right: 150px;
+}
+
+.language-menu {
+    min-width: 0;
+    background-color: #005622;
+    padding: 5px;
+    margin: 0;
 }
 
 .nav-text-login {
