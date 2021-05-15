@@ -52,7 +52,7 @@ class Shopowners extends Controller
             if (isLoggedInShopOwner()){
                 $KVKNumber = $_SESSION['customer_number'];
             } else {
-                $KVKNumber = "test";
+                $KVKNumber = '06989770';
             }
 
             $data = [
@@ -67,7 +67,6 @@ class Shopowners extends Controller
                 'open_from'             => trim($_POST['open_from']),
                 'closed_at'             => trim($_POST['closed_at']),
                 'banner_url'            => trim($_POST['banner_url']),
-                'created_at'            => date('d F, Y'),
 
                 'kvk_numberError'       => '',
                 'shop_nameError'        => '',
