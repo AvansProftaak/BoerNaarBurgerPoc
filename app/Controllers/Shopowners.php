@@ -51,12 +51,9 @@ class Shopowners extends Controller
 
             if (isLoggedInShopOwner()){
                 $KVKNumber = $_SESSION['customer_number'];
-                // print "ingelogd" ;
             } else {
                 $KVKNumber = "test";
-                // print "niet ingelogd" ;
             }
-
 
             $data = [
                 'kvk_number'            => $KVKNumber,
@@ -70,6 +67,7 @@ class Shopowners extends Controller
                 'open_from'             => trim($_POST['open_from']),
                 'closed_at'             => trim($_POST['closed_at']),
                 'banner_url'            => trim($_POST['banner_url']),
+                'created_at'            => date('d F, Y'),
 
                 'kvk_numberError'       => '',
                 'shop_nameError'        => '',
@@ -83,6 +81,8 @@ class Shopowners extends Controller
                 'banner_urlError'       => '',
                 'closed_atError'        => ''
             ];
+
+            // print_r( $data);
 
             $i = 0 ;
             foreach ($data as $key => $item) {
@@ -112,23 +112,14 @@ class Shopowners extends Controller
                     'banner_urlError',
                     'closed_atError'] ;
 
+                //if no errors are found continue
                 foreach ($errorMessages as $errorMessage) {
-                    print_r( $data);
                     if (!empty($data[$errorMessage])){
                         die('Registreren is mislukt. Probeer het opnieuw.');
+                    } elseif ($this->shopOwnerModel->createShop($data)) {
+                        header('location: ' . URLROOT . '/Shopowners/updateitems');
                     }
                 }
-
-                // //if no errors are found continue
-                // if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
-                //         empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
-
-                //     if ($this->shopownerModel->register($data)) {
-                //         header('location: ' . URLROOT . '/customers/login');
-                //     } else {
-                //         die('Registreren is mislukt. Probeer het opnieuw.');
-                //     }
-                // }
 
                 $i++ ;
             
@@ -321,5 +312,114 @@ class Shopowners extends Controller
         unset($_SESSION['email']);
         unset($_SESSION['shopowner_name']);
         header('location:' . URLROOT . '/shopowners/login');
+    }
+
+    public function updateitems() {
+        $data = [
+            'kvk_number'            => '',
+            'shop_name'             => '',
+            'description'           => '',
+            'address'               => '',
+            'house_number'          => '',
+            'postal_code'           => '',
+            'city'                  => '',
+            'country'               => '',
+            'open_from'             => '',
+            'closed_at'             => '',
+            'banner_url'            => '',
+
+
+            'kvk_numberError'       => '',
+            'shop_nameError'        => '',
+            'descriptionError'      => '',
+            'addressError'          => '',
+            'house_numberError'     => '',
+            'postal_codeError'      => '',
+            'cityError'             => '',
+            'countryError'          => '',
+            'open_fromError'        => '',
+            'banner_urlError'       => '',
+            'closed_atError'        => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if (isLoggedInShopOwner()){
+                $KVKNumber = $_SESSION['customer_number'];
+            } else {
+                $KVKNumber = "test";
+            }
+
+            $data = [
+                'kvk_number'            => $KVKNumber,
+                'shop_name'             => trim($_POST['shop_name']),
+                'description'           => trim($_POST['description']),
+                'address'               => trim($_POST['address']),
+                'house_number'          => trim($_POST['house_number']),
+                'postal_code'           => trim($_POST['postal_code']),
+                'city'                  => trim($_POST['city']),
+                'country'               => trim($_POST['country']),
+                'open_from'             => trim($_POST['open_from']),
+                'closed_at'             => trim($_POST['closed_at']),
+                'banner_url'            => trim($_POST['banner_url']),
+
+                'kvk_numberError'       => '',
+                'shop_nameError'        => '',
+                'descriptionError'      => '',
+                'addressError'          => '',
+                'house_numberError'     => '',
+                'postal_codeError'      => '',
+                'cityError'             => '',
+                'countryError'          => '',
+                'open_fromError'        => '',
+                'banner_urlError'       => '',
+                'closed_atError'        => ''
+            ];
+
+            print_r( $data);
+
+            $i = 0 ;
+            foreach ($data as $key => $item) {
+                if (empty($item)) {
+                    # if items contains the word error pass
+                    # else show error message
+                    $key_stripped = str_replace("_", " ", $key);
+                    $key_stripped;
+                    $errorMessage = "Vul het $key_stripped veld in in.";
+
+                    $errorName = $key . "Error";
+                    print $errorMessage;
+
+                    $data = [$errorName => $errorMessage];
+            } 
+             
+                $errorMessages = [
+                    'kvk_numberError',
+                    'shop_nameError',
+                    'descriptionError',
+                    'addressError',
+                    'house_numberError',
+                    'postal_codeError',
+                    'cityError',
+                    'countryError',
+                    'open_fromError',
+                    'banner_urlError',
+                    'closed_atError'] ;
+
+                //if no errors are found continue
+                foreach ($errorMessages as $errorMessage) {
+                    if (!empty($data[$errorMessage])){
+                        die('Registreren is mislukt. Probeer het opnieuw.');
+                    } else {
+                        header('location: ' . URLROOT . '/Shopowners/boeraccountdetails');
+                    }
+                }
+
+                $i++ ;
+            
+        }
+    }
+        $this->view('shopowners/updateitems', $data);
     }
 }

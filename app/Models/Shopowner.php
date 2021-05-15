@@ -39,6 +39,8 @@ class Shopowner
     }
 
     public function createShop($data) {
+        print_r($data);
+
         $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url, created_at)
                               VALUES (:kvk_nnumber, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url, :created_at)');
 
