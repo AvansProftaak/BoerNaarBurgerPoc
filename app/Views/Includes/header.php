@@ -1,3 +1,6 @@
+<?php
+    require_once '../app/Helpers/language_helper.php';
+?>
 <!doctype html>
 <html lang="nl">
 <head>
@@ -45,23 +48,23 @@
                 <ul class="pl-5 ml-5 navbar-nav">
                     <li class="mr-3 pr-3 nav-item nav-text">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/index') !== false) : ?>
-                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/index"><?php echo $lang['home'] ?></a>
+                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/index"><?php echo $lang['home']; ?></a>
                     </li>
                     <li class="mr-3 pr-3 nav-item nav-text">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'pages/about') !== false) : ?>
-                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/about"><?php echo $lang['about'] ?></a>
+                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/pages/about"><?php echo $lang['about']; ?></a>
                     </li>
                     <li class="mr-3 pr-3 nav-item nav-text">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'shops/overview') !== false) : ?>
-                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/overview"><?php echo $lang['shops'] ?></a>
+                         nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/shops/overview"><?php echo $lang['shops']; ?></a>
                     </li>
                     <li class="mr-3 pr-3 nav-item nav-text dropdown">
                         <a class="nav-link nav-text nav-text-login <?php if(strpos($_GET['url'],'pages/contact') !== false) : ?>
-                         nav-active <?php endif; ?> dropdown-toggledropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['contact'] ?></a>
+                         nav-active <?php endif; ?> dropdown-toggledropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $lang['contact']; ?></a>
 
                         <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdownContact">
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/contact">Contactgegevens</a>
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/faq">Veelgestelde vragen</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/contact"><?php echo $lang['contact_details']; ?></a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/pages/faq"><?php echo $lang['faq']; ?></a>
                         </div>
                     </li>
                 </ul>
@@ -76,9 +79,9 @@
                             <?php echo $_SESSION['customer_name']; ?></a>
 
                         <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/orderoverview">Besteloverzicht</a>
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/accountdetails">Mijn Gegevens</a>
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/logout">Uitloggen</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/orderoverview"><?php echo $lang['orders']; ?></a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/accountdetails"><?php echo $lang['customerdetails']; ?></a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/customers/logout"><?php echo $lang['logout']; ?></a>
                         </div>
                     </li>
                     <?php elseif (isset($_SESSION['kvk_number'])) : ?>
@@ -89,19 +92,19 @@
                             <?php echo $_SESSION['shopowner_name']; ?></a>
 
                         <div class="dropdown-menu dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create">Shop aanmaken</a>
-                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout">Uitloggen</a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create"><?php echo $lang['create_shop']; ?></a>
+                            <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout"><?php echo $lang['logout']; ?></a>
                         </div>
                     </li>
                     <?php else : ?>
                     <!-- if logged out -->
                     <li class="nav-item nav-text-login">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'customers/login') !== false) : ?>
-                     nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/login">Log in</a>
+                     nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/login"><?php echo $lang['login']; ?></a>
                     </li>
                     <li class="nav-item nav-text-login">
                         <a class="nav-link nav-text <?php if(strpos($_GET['url'],'customers/register') !== false) : ?>
-                     nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/register">Registreer</a>
+                     nav-active <?php endif; ?>" href="<?php echo URLROOT; ?>/customers/register"><?php echo $lang['register']; ?></a>
                     </li>
                     <?php endif; ?>
                 </ul>
@@ -110,16 +113,12 @@
                 <ul class="navbar-nav">
                     <li class="dropdown">
                         <a id="languageSelector" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php if ($_SESSION['lang'] = 'EN') : ?>
-                            <img src="../img/icon/EN.png" alt="EN" class="langicon">
-                            <?php else : ?>
-                            <img src="../img/icon/NL.png" alt="NL" class="langicon">
-                            <?php endif; ?>
+                            <img src="../img/icon/<?php echo $_SESSION['lang']; ?>.png" alt="<?php echo $_SESSION['lang']; ?>" class="langicon">
                         </a>
 
                         <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown">
-                            <img src="../img/icon/EN.png" alt="EN" class="langicon">
-                            <img src="../img/icon/NL.png" alt="NL" class="langicon">
+                            <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=en"><img src="../img/icon/EN.png" alt="EN" class="langicon"></a>
+                            <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/NL.png" alt="NL" class="langicon"></a>
                         </div>
                     </li>
                 </ul>
