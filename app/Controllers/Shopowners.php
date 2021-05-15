@@ -49,18 +49,24 @@ class Shopowners extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            if (isLoggedInShopOwner()){
+                $KVKNumber = $_SESSION['customer_number'];
+            } else {
+                $KVKNumber = '06989770';
+            }
+
             $data = [
-                'kvk_number'            => trim($_POST['kvk_number']),
+                'kvk_number'            => $KVKNumber,
                 'shop_name'             => trim($_POST['shop_name']),
                 'description'           => trim($_POST['description']),
                 'address'               => trim($_POST['address']),
                 'house_number'          => trim($_POST['house_number']),
                 'postal_code'           => trim($_POST['postal_code']),
                 'city'                  => trim($_POST['city']),
-                'country'               => trim($_POST['country']),
+                'country'               => 'Nederland',
                 'open_from'             => trim($_POST['open_from']),
                 'closed_at'             => trim($_POST['closed_at']),
-                'banner_url'            => trim($_POST['banner_url']),
+                'banner_url'            => "/assets/shopbanners/" . trim($_FILES['banner_url']['name']),
 
                 'kvk_numberError'       => '',
                 'shop_nameError'        => '',
@@ -75,49 +81,56 @@ class Shopowners extends Controller
                 'closed_atError'        => ''
             ];
 
-            //
-            foreach ($data as $item) {
-                if ( str_contains("Error", $item)) {
-                    break;
+            // print_r( $data);
+
+            $i = 0 ;
+            foreach ($data as $key => $item) {
+                if (empty($item)) {
+                    if (strpos($key, "Error") !== false) {
+                        continue;
+                    }
+                    # if items contains the word error pass
+                    # else show error message
+                    $key_stripped = str_replace("_", " ", $key);
+                    $key_stripped;
+                    $errorMessage = "Vul het $key_stripped veld in in.";
+
+                    $errorName = $key . "Error";
+                    print $errorMessage;
+
+                    $data = [$errorName => $errorMessage];
+            } 
+             
+                $errorMessages = [
+                    'kvk_numberError',
+                    'shop_nameError',
+                    'descriptionError',
+                    'addressError',
+                    'house_numberError',
+                    'postal_codeError',
+                    'cityError',
+                    'countryError',
+                    'open_fromError',
+                    'banner_urlError',
+                    'closed_atError'] ;
+
+                //if no errors are found continue
+                foreach ($errorMessages as $errorMessage) {
+                    if (!empty($data[$errorMessage])){
+                        die('Registreren is mislukt. Probeer het opnieuw.');
+                    }
                 }
-                if (empty($data[$item])) {
-                    $itemError = $item . 'Error';
-                    $item = str_replace($item, "", "_");
-                    $errorMessage = "Vul het $item veld in in.";
-                    $data[$itemError] = "Vul het $item veld in in.";
-            }
-
-            $errorMessages = [
-                'kvk_numberError',
-                'shop_nameError',
-                'descriptionError',
-                'addressError',
-                'house_numberError',
-                'postal_codeError',
-                'cityError',
-                'countryError',
-                'open_fromError',
-                'banner_urlError',
-                'closed_atError'] ;
-
-            foreach ($errorMessages as $errorMEssage) {
-                if ($data[$errorMessage]){
-                    die('Registreren is mislukt. Probeer het opnieuw.');
-                }
-            }
-            // //if no errors are found continue
-            // if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
-            //         empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
-
-            //     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
-            //     if ($this->shopownerModel->register($data)) {
-            //         header('location: ' . URLROOT . '/customers/login');
-            //     } else {
-            //         die('Registreren is mislukt. Probeer het opnieuw.');
-            //     }
-            }
+                $i++ ;  
         }
+
+        if ($this->shopOwnerModel->createShop($data)) {
+            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+            $imageFileContents = file_get_contents($imageFile);
+            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+            header('location: ' . URLROOT . '/Shopowners/updateitems');
+        }
+    }
         $this->view('shopowners/create', $data);
     }
 
@@ -306,4 +319,117 @@ class Shopowners extends Controller
         unset($_SESSION['shopowner_name']);
         header('location:' . URLROOT . '/shopowners/login');
     }
+
+    public function updateitems() {
+        $data = [
+            'kvk_number'            => '',
+            'shop_name'             => '',
+            'description'           => '',
+            'address'               => '',
+            'house_number'          => '',
+            'postal_code'           => '',
+            'city'                  => '',
+            'country'               => '',
+            'open_from'             => '',
+            'closed_at'             => '',
+            'banner_url'            => '',
+
+
+            'kvk_numberError'       => '',
+            'shop_nameError'        => '',
+            'descriptionError'      => '',
+            'addressError'          => '',
+            'house_numberError'     => '',
+            'postal_codeError'      => '',
+            'cityError'             => '',
+            'countryError'          => '',
+            'open_fromError'        => '',
+            'banner_urlError'       => '',
+            'closed_atError'        => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if (isLoggedInShopOwner()){
+                $KVKNumber = $_SESSION['customer_number'];
+            } else {
+                $KVKNumber = "test";
+            }
+
+            $data = [
+                'kvk_number'            => $KVKNumber,
+                'shop_name'             => trim($_POST['shop_name']),
+                'description'           => trim($_POST['description']),
+                'address'               => trim($_POST['address']),
+                'house_number'          => trim($_POST['house_number']),
+                'postal_code'           => trim($_POST['postal_code']),
+                'city'                  => trim($_POST['city']),
+                'country'               => trim($_POST['country']),
+                'open_from'             => trim($_POST['open_from']),
+                'closed_at'             => trim($_POST['closed_at']),
+                'banner_url'            => trim($_POST['banner_url']),
+
+                'kvk_numberError'       => '',
+                'shop_nameError'        => '',
+                'descriptionError'      => '',
+                'addressError'          => '',
+                'house_numberError'     => '',
+                'postal_codeError'      => '',
+                'cityError'             => '',
+                'countryError'          => '',
+                'open_fromError'        => '',
+                'banner_urlError'       => '',
+                'closed_atError'        => ''
+            ];
+
+            print_r( $data);
+
+            $i = 0 ;
+            foreach ($data as $key => $item) {
+                if (empty($item)) {
+                    # if items contains the word error pass
+                    # else show error message
+                    $key_stripped = str_replace("_", " ", $key);
+                    $key_stripped;
+                    $errorMessage = "Vul het $key_stripped veld in in.";
+
+                    $errorName = $key . "Error";
+                    print $errorMessage;
+
+                    $data = [$errorName => $errorMessage];
+            } 
+             
+                $errorMessages = [
+                    'kvk_numberError',
+                    'shop_nameError',
+                    'descriptionError',
+                    'addressError',
+                    'house_numberError',
+                    'postal_codeError',
+                    'cityError',
+                    'countryError',
+                    'open_fromError',
+                    'banner_urlError',
+                    'closed_atError'] ;
+
+                //if no errors are found continue
+                foreach ($errorMessages as $errorMessage) {
+                    if (!empty($data[$errorMessage])){
+                        die('Registreren is mislukt. Probeer het opnieuw.');
+                    } else {
+                        header('location: ' . URLROOT . '/Shopowners/boeraccountdetails');
+                    }
+                }
+
+                $i++ ;
+            
+        }
+    }
+        $this->view('shopowners/updateitems', $data);
+    }
+
+    
+
+
 }

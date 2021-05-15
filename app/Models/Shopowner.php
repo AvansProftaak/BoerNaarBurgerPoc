@@ -39,8 +39,8 @@ class Shopowner
     }
 
     public function createShop($data) {
-        $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url, created_at)
-                              VALUES (:kvk_nnumber, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url, :created_at)');
+        $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url)
+                              VALUES (:kvk_number, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url)');
 
         $this->db->bind(':kvk_number', $data['kvk_number']);
         $this->db->bind(':shop_name', $data['shop_name']);
@@ -53,7 +53,6 @@ class Shopowner
         $this->db->bind(':open_from', $data['open_from']);
         $this->db->bind(':closed_at', $data['closed_at']);
         $this->db->bind(':banner_url', $data['banner_url']);
-        $this->db->bind(':created_at', $data['created_at']);
 
         if ($this->db->execute()) {
             return true;
@@ -104,6 +103,20 @@ class Shopowner
         } else {
             return false;
         }
+    }
+    // save shop image
+    function saveFile($filename, $filecontent){
+        $filename = "/assets/shopbanners/" . $filename;
+        $dirname = IMGROOT ;
+        if (strlen($filename)>0){
+            if (!file_exists($dirname)) {
+                mkdir($dirname);
+            }
+            move_uploaded_file($_FILES["banner_url"]["tmp_name"], $dirname . DIRECTORY_SEPARATOR . $filename);
+
+            return -2;
+        }
+        return -1;
     }
 
 }
