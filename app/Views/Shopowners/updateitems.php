@@ -15,6 +15,15 @@
 
                     <form method="POST" action="<?php echo URLROOT; ?>/shopowners/updateitems">
 
+                        <!--
+                        Wat hebben we hier nodig
+                        als eerste moet gekeken worden welke shops de shopowner heeft
+                        deze kunnen selecteren
+                        item toevoegen
+                        bestaande items aanpassen
+                        updaten naar db
+                -->
+
                         <!-- item to sell -->
                         <div class="form-group row mx-1 mb-0">
                             <div class="col-5">
