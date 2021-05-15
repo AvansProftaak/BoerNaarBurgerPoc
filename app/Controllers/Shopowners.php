@@ -63,7 +63,7 @@ class Shopowners extends Controller
                 'house_number'          => trim($_POST['house_number']),
                 'postal_code'           => trim($_POST['postal_code']),
                 'city'                  => trim($_POST['city']),
-                'country'               => trim($_POST['country']),
+                'country'               => 'Nederland',
                 'open_from'             => trim($_POST['open_from']),
                 'closed_at'             => trim($_POST['closed_at']),
                 'banner_url'            => trim($_POST['banner_url']),
@@ -86,6 +86,10 @@ class Shopowners extends Controller
             $i = 0 ;
             foreach ($data as $key => $item) {
                 if (empty($item)) {
+                    if (strpos($key, "Error") !== false) {
+                        print "error found";
+                        continue;
+                    }
                     # if items contains the word error pass
                     # else show error message
                     $key_stripped = str_replace("_", " ", $key);
@@ -115,13 +119,12 @@ class Shopowners extends Controller
                 foreach ($errorMessages as $errorMessage) {
                     if (!empty($data[$errorMessage])){
                         die('Registreren is mislukt. Probeer het opnieuw.');
-                    } elseif ($this->shopOwnerModel->createShop($data)) {
-                        header('location: ' . URLROOT . '/Shopowners/updateitems');
                     }
                 }
-
-                $i++ ;
-            
+                $i++ ;  
+        }
+        if ($this->shopOwnerModel->createShop($data)) {
+            header('location: ' . URLROOT . '/Shopowners/updateitems');
         }
     }
         $this->view('shopowners/create', $data);
