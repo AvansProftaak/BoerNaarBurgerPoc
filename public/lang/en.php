@@ -3,6 +3,10 @@ $lang = array (
 
     //generic
     'here' => 'here',
+    'back' => 'Back',
+    'shops_link' => 'shops',
+    'total' => 'Total',
+    'status' => 'Status',
 
     //header
     'home'            => 'HOME',
@@ -63,4 +67,26 @@ $lang = array (
     'register_left_so' => 'Register as farmer',
     'register_customer' => 'Would you like to register an account to shop at our farmers? Click ',
     'register_customer2' => ' to register.',
+
+    //change password
+    'change_password' => 'Change Password',
+    'pass_form' => 'Please fill out the form to change your password.',
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
+
+    //account details
+    'personal_data' => 'Personal Details',
+    'save_personal_data' => 'Save details',
+
+    //order overview
+    'order' => 'Order',
+    'order_overview' => 'Order overview',
+    'empty_orders' => 'No orders have been placed yet!',
+    'visit_shops' => 'Visit the ',
+    'visit_shops2' => ' of our farmers and discover what Boer naar Burger has to offer!',
+    'go_shops' => 'Go to the shops',
+    'order_info' => 'Orderdetails',
+    'customer_number' => 'Customer number',
+    'order_number' => 'Order number',
+    'order_date' => 'Order date',
 );
