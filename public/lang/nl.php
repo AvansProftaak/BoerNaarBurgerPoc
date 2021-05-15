@@ -7,6 +7,7 @@ $lang = array (
     'shops_link' => 'shops',
     'total' => 'Totaal',
     'status' => 'Status',
+    'contact2' => 'Contact',
 
     //header
     'home'            => 'HOME',
@@ -90,4 +91,21 @@ $lang = array (
     'customer_number' => 'Klantnummer',
     'order_number' => 'Bestelnummer',
     'order_date' => 'Besteldatum',
+
+    //footer
+    'footer_text' => 'Boer naar Burger biedt een platform waarop producten aangeboden worden, die in de huidige maatschappij verloren gaan.
+                      Door deze producten te verhandelen helpen wij boeren van hun overproductie af, en ondersteunen wij onze medemens in moeilijkere tijden.
+                      Daarnaast bieden wij consumenten, producten met een verhaal; (h)eerlijk en betrouwbaar.',
+    'about_us' => 'Over ons',
+    'service' => 'Service',
+    'sitemap' => 'Sitemap',
+    'signup' => 'Meld je aan als klant',
+    'copyright' => '© 2021 Copyright: groep 4A - Deeltijdopleiding Informatica aan Avans Hogeschool Breda',
+    'bnb_address' => 'Burgerkinglaan 232, Breda',
+    'bnb_phone' => '+31 (0)76 - 123 456 78',
+    'bnb_email' => 'info@boernaarburger.ml',
+
+    //footer Shop
+    'sell_products' => 'Ook zelf online producten verkopen?',
+    'reach_out' => 'Neem contact op!'
 );

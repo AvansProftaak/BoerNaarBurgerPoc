@@ -7,6 +7,7 @@ $lang = array (
     'shops_link' => 'shops',
     'total' => 'Total',
     'status' => 'Status',
+    'contact2' => 'Contact',
 
     //header
     'home'            => 'HOME',
@@ -89,4 +90,21 @@ $lang = array (
     'customer_number' => 'Customer number',
     'order_number' => 'Order number',
     'order_date' => 'Order date',
+
+    //footer
+    'footer_text' => 'Boer naar Burger offers a platform with products that normally go to waste in the current society.
+                      By selling these products we help farmers get rid of their overproduce and support our fellow human beings in tough times.
+                      We offer our customers products with a story; delicious and of high standards',
+    'about_us' => 'About us',
+    'service' => 'Service',
+    'sitemap' => 'Sitemap',
+    'signup' => 'Sign up as farmer',
+    'copyright' => '© 2021 Copyright: group 4A - Part time study Informatica at Avans Hogeschool Breda',
+    'bnb_address' => 'Burgerkinglaan 232, Breda',
+    'bnb_phone' => '+31 (0)76 - 123 456 78',
+    'bnb_email' => 'info@boernaarburger.ml',
+
+    //footer Shop
+    'sell_products' => 'Also want to sell your products online?',
+    'reach_out' => 'Get in touch!'
 );
