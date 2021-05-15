@@ -50,8 +50,9 @@ class Shopowners extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             if (isLoggedInShopOwner()){
-                $KVKNumber = $_SESSION['customer_number'];
+                $KVKNumber = $_SESSION['kvk_number'];
             } else {
+                # debugging purpose only
                 $KVKNumber = '06989770';
             }
 
