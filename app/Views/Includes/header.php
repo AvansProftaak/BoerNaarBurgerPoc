@@ -27,6 +27,7 @@
 
     <!-- Styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"> -->
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="lightblue-background">
