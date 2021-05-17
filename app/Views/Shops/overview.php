@@ -10,16 +10,18 @@
 		    <div class="filter-content">
 			    <div class="card-body">
 			        <form>
-                        <?php foreach($data['shops'] as $shop): ?>
+                        <?php foreach($data['cities'] as $city): ?>
                         <!-- locations filter-->
                             <label class="form-check">
-                                <input class="form-check-input" type="checkbox" value="">
+                                <input class="form-check-input" type="radio" name="location" value="<?php echo $city->city ?>" <?php if ((($_GET['location']) == $city->city)) {echo 'checked="checked"';}; ?>>
                                 <span class="form-check-label">
-                                    <?php echo $shop->city ?>
+                                    <?php echo $city->city ?>
                                 </span>
                             </label>
                         <!-- end locations filter -->
                         <?php endforeach; ?>
+                        <button class="btn btn-pink">Zoek</button>
+                        <a class="btn btn-green" href="<?php echo URLROOT; ?>/shops/overview">Reset</a>
                     </form>
 			    </div>
 		    </div>
