@@ -15,10 +15,24 @@ $lang = array (
     'shops'           => 'SHOPS',
     'contact'         => 'CONTACT',
     'contact_details' => 'Contact Details',
-    'faq'             => 'Frequently Asked Questions',
+    'faq'             => 'F A Q',
     'logout'          => 'Log out',
     'login'           => 'Login',
     'register'        => 'Register',
+
+    // index
+    'index_text'       => "We offer healthy and high quality food for a fair price. Daily, and straight from the countryland. <br><br> Tons of fresh and delicious food is thrown away every day; vegetables and fruit that are just not beautiful enough or overproduction that the farmer cannot get rid of at the supermarkets. We say: sin forever! We give these products a destination, because they are just as fresh and tasty. <br><br> Join our initiative and save tens of euros per month, and <strong>make a fist against food waste</strong>",
+    'caroussel-1'     => "I HELP THE FARMER AND IT'S ALSO CHEAPER FOR ME <br>WIN WIN, IF YOU ASK ME!",
+    'caroussel-2'     => "MANY LOCAL PRODUCTS, ALSO BIOLOGIC,<br>DELICIOUS!",
+    'caroussel-3'     => "THIS WAY I WILL RETURN SOMETHING<br>FOR THE DUTCH FARMER",
+    'caroussel-4'     => "EASY TO ORDER, QUICKLY COLLECTION <br>AND EVERYTHING IS FRESH AND IN GOOD CONDITION",
+    'caroussel-5'     => "FINE PRODUCTS AND YOU CLEARLY TASTE THE <br>DIFFERENCE FROM THE SUPERMARKET",
+    'caroussel-6'     => "PURE PRODUCTS, FRESH AND ALSO<br>GOOD FOR THE FARMERS THEMSELVES",
+    'caroussel-7'     => "NICE WEBSITE, GOOD OFFER<br>FANTASTIC QUALITY",
+    'caroussel-8'     => "OUR EXPERIENCE IS GOOD.<br>TASTY AND ORGANIC GROWN",
+    'how_it_works'    => "How does it work?",
+    'sign_in_index'   => "SIGN IN",
+
 
     //customer
     'orders'          => 'Order Overview',

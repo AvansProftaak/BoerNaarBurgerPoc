@@ -1,0 +1,265 @@
+/* HEADER & BODY STYLES */
+
+body,
+html {
+    width: 100%;
+    margin: 0;
+    background-color: #C2F5EB;
+}
+
+* { box-sizing: border-box;}
+
+h2 {
+    text-transform: uppercase;
+}
+
+.rh-flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+
+/* NAVIGATION BAR */
+
+#rh-titel-logo {
+    height: 100%;
+    top: 0;
+    left: 0;
+    float: left;
+    position: absolute;
+    overflow: hidden;
+}
+
+.navigatiebar {
+    background-color:#34744d;
+    text-align: center;
+    top:0;
+    position: fixed;
+    width: 100%;
+    height: 65px !important;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .navigatiebar {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    #rh-titel-logo {
+        display: none;
+    }
+}
+
+.geselecteerdePagina {
+    color:gold !important;
+    font-weight: bold;
+}
+
+.dropButton {
+    background-color: transparent;
+    color: #F0FFF9;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    height: 65px;
+    width: 150px;
+    font-family: 'Dosis', sans-serif;
+    text-decoration: none;
+}
+
+button.dropButton {
+    padding: 0px;
+}
+
+.dropButton a {
+    color: #F0FFF9;
+    text-decoration: none;
+}
+
+.dropButton:hover {
+    color: #E38F88;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.dropButton a:hover {
+    color: #E38F88;
+    transition: 0.4s;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition: 0.4s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34744d;
+    width: 150px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Dosis', sans-serif;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.dropdown-content a:hover {
+    color: #E38F88;
+    font-weight: bold;
+}
+
+.show {
+    display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+    .dropdown {
+        width: 100%;
+        border-bottom: 1px solid #F0FFF9;
+    }
+    .noHover {
+        pointer-events: none;
+    }
+    .dropdown:hover {
+        background-color: #005622;
+        color: white;
+    }
+    .dropdown a:hover {
+        background-color: darkgoldenrod;
+        color: #005622;
+        transition: 0.4s;
+    }
+    .dropdown-content {
+        position: relative;
+        background-color: gold;
+        box-shadow: none;
+    }
+    .dropdown-content .geselecteerdePagina {
+        color:#005622 !important;
+        font-weight: bold;
+    }
+
+    .dropdown-content a {
+        color: #34744d;
+        font-size: 15px;
+    }
+    .dropButton {
+        width: 100%;
+        font-size: 15px;
+        max-width: 180px;
+        padding: 8px 10px;
+        font-family: 'Dosis', sans-serif;
+    }
+    .dropButton:hover {
+        background-color: transparent;
+        color: white;
+    }
+    #bottomNavbar {
+        border-bottom: 3px solid #005622;
+    }
+}
+
+
+/* LANGUAGE MENU STYLE */
+
+.dropdown-language {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.language-menu {
+    min-width: 0;
+    background-color: #34744d;
+    padding: 5px;
+    margin: 0;
+}
+
+
+.dropButtonLang {
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    width: 65px;
+    float: right;
+}
+
+
+.langicon {
+    height: 41px;
+    margin: 12px;
+    transition: 4s;
+    transform: rotate(-360deg);
+}
+
+.langicon:hover {
+    height: 41px;
+    margin: 12px;
+    transition: 2s;
+    transform: rotate(360deg);
+}
+
+.langicon2 {
+    height: 41px;
+    margin: 12px;
+    transition: 1.8s ease-in-out;
+    transform: rotate(-360deg);
+}
+
+.langicon2:hover {
+    height: 55px; 
+    margin: 5px;
+    transition: 0.8s ease-in-out;
+    transform: rotate(360deg);
+}
+
+
+
+.dropButtonLogin {
+    background-color: transparent;
+    color: #F0FFF9;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    height: 65px;
+    width: 150px;
+    font-family: 'Dosis', sans-serif;
+    text-decoration: none;
+}
+
+button.dropButtonLogin a:hover {
+    font-weight: bold !important;
+}
+
+button.dropButtonLogin {
+    padding: 0px;
+}
+
+.dropButtonLogin a {
+    color: #F0FFF9;
+    text-decoration: none;
+}
+
+button.dropButtonLogin:hover {
+    font-weight: 100 !important;
+}
+.dropButtonLogin a:hover {
+    color: #E38F88;
+    transition: 0.4s;
+}
