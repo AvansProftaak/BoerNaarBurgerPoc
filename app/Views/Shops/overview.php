@@ -13,7 +13,7 @@
                         <?php foreach($data['cities'] as $city): ?>
                         <!-- locations filter-->
                             <label class="form-check">
-                                <input class="form-check-input" type="radio" name="location" value="<?php echo $city->city ?>" <?php if ((($_GET['location']) == $city->city)) {echo 'checked="checked"';}; ?>>
+                                <input class="form-check-input" type="radio" name="location" value="<?php echo $city->city ?>" <?php if (isset($_GET['location']) && ((($_GET['location']) == $city->city))) {echo 'checked="checked"';}; ?>>
                                 <span class="form-check-label">
                                     <?php echo $city->city ?>
                                 </span>
