@@ -1,67 +1,7 @@
-<?php include APPROOT."/Views/Includes/header.php"; ?>
+<?php include APPROOT."/Views/Includes/header.php";
 
-<?php
-
-// functie die de formuliervelden valideert en foutmeldingen aanmaakt
-function validate($name, $email, $phone, $message)
-{
-    $errors = array();
-
-    // validatie voor naam
-    if(empty($name))
-        $errors['naam'] = 'U heeft geen naam ingevuld.';
-
-    // validatieregels voor het mailadres
-    if(!strlen($email))
-        $errors['email'] = 'U heeft geen email adres ingevuld.';
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-        $errors['email'] = 'U heeft een ongeldig email adres ingevuld.';
-
-    // validatie voor telefoonnummer
-    if(!strlen($phone))
-        $errors['phone'] = 'U heeft geen telefoonnummer ingevuld.';
-
-    // validatie voor bericht
-    if(empty($message))
-        $errors['message'] = 'U heeft geen bericht ingevuld.';
-
-    // geef de array met foutmeldingen terug
-    return $errors;
-}
-
-// initialisatie // define variables and set to empty values
-$name = '';
-$email = '';
-$phone = '';
-$message = '';
-$errors = array();
-
-// indien het formulier verstuurd is
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    // overschrijf de variabelen met de waarde uit de $_POST array
-    $naam = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $message = $_POST['message'];
-
-    // valideer de ingevulde gegevens
-    $errors = validate($_POST['naam'], $_POST['email'], $_POST['phone'], $_POST['message']);
-
-    // als er geen fouten voortkomen uit de validatie
-    if(!count($errors))
-    {
-        /*
-         * Hier formulier nog verwerken, bijvoorbeeld een email versturen of
-         * de gegevens opslaan in de database
-         */
-
-        // redirect de gebruiker
-        header('Location: confirmation.html');
-        exit;
-    }
-}
 ?>
+
 <!doctype html>
 <html>
 <head>
@@ -69,16 +9,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 </head>
 <body>
-<?php
-if(count($errors)) {
-    echo '<ul id="errors">';
-    foreach($errors as $error) {
-        echo '<li>' . $error . '</li>';
-    }
-    echo '</ul>';
-}
-?>
-
 
 <div class="container-c">
         <div class="form-c">
@@ -126,28 +56,25 @@ if(count($errors)) {
         </div>
 
         <div class="contact-form">
-
-
             <form action="#" method="post">
+
                 <h3 class="title-c">Stuur ons een bericht</h3>
                 <div class="input-container">
-                    <input type="text" placeholder="Naam" name="name" class="input-c" value="<?php echo $name; ?>">
-
+                    <input type="text" placeholder="Naam" name="name" class="input-c" value="<?php echo $_POST["name"]; ?>">
+                    <span class="form-error"><?php if(isset($nameErr)) echo $nameErr;?></span>
                 </div>
-
                 <div class="input-container">
-                    <input type="email" placeholder="Emailadres" name="email" class="input-c" value="<?php echo $email; ?>">
-                </div>
-
-                <div class="input-container">
-                    <input type="tel" placeholder="Telefoonnummer" name="phone" class="input-c" value="<?php echo $phone; ?>">
+                    <input type="email" placeholder="Emailadres" name="email" class="input-c" value="<?php echo $_POST["email"]; ?>">
+                    <span class="form-error"> <?php if(isset($emailErr)) echo $emailErr;?></span>
                 </div>
 
                 <div class="input-container textarea">
-                    <textarea name="message" placeholder="Bericht" class="input-c" <?php echo $message; ?>"></textarea>
+                    <textarea name="message" rows="4" cols="50" placeholder="Bericht" class="input-c" <?php echo $_POST["=message"]; ?>"></textarea>
+                    <span class="form-error"><?php if(isset($messageErr)) echo $messageErr;?></span>
                 </div>
                 <input type="submit" value="Verzenden" class="btn-c">
             </form>
+
         </div>
     </div>
 </div>
