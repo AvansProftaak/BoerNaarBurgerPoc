@@ -1,15 +1,6 @@
+
 .navlogo {
     height: 55px;
-}
-
-.langicon {
-    height: 55px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-.lightblue-background {
-    background-color: #C2F5EB !important;
 }
 
 .navigation-bar {
@@ -34,13 +25,6 @@
     margin-right: 150px;
 }
 
-.language-menu {
-    min-width: 0;
-    background-color: #005622;
-    padding: 5px;
-    margin: 0;
-}
-
 .nav-text-login {
     color: #F0FFF9 !important;
     font-family: 'Dosis', sans-serif;
@@ -62,36 +46,12 @@
     font-weight: bold;
 }
 
-.rh-scaleImage {
-    width: 33%;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
-}
-
 .welcome-images {
     text-align: center;
 }
 
 .logoBnB {
     width: 65%;
-}
-
-#rh-column-links-header {
-    color: rgb(217, 99, 89);
-    text-align: left;
-    font-weight: 1000;
-}
-
-#rh-column-rechts-header {
-    color: rgb(217, 99, 89);
-    text-align: left;
-    font-weight: 1000;
-}
-
-.rh-column-links-tekst {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 0.9vw;
-    text-align: justify;
 }
 
 .modal-text {
@@ -227,7 +187,6 @@
 .footer-content {
     color:whitesmoke;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
 }
 
@@ -1025,3 +984,4 @@ textarea.input{
     color: black;
     font-size: 16px;
 }
+
