@@ -21,6 +21,7 @@ class Pages extends Controller
                 $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
             }
         }
+
         $this->view('pages/index', $data);
     }
 
@@ -30,39 +31,39 @@ class Pages extends Controller
 
     public function contact()
     {
-        $this->view('pages/contact');
+        if (isset($_POST['send-contact'])) {
 
-        // define variables and set to empty values
-        $nameErr = $emailErr = $messageErr = "";
-        $name = $email = $message = "";
+            $data = [
+                'name'                  => trim($_POST['name']),
+                'email'                 => trim($_POST['email']),
+                'message'               => trim($_POST['message']),
+                'nameErr'               => '',
+                'emailErr'              => '',
+                'messageErr'            => '',
+            ];
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["name"])) {
-                $nameErr = 'U heeft geen naam ingevuld.';
-            } else {
-                $name = ($_POST["name"]);
+
+            if (empty($data['name'])) {
+                $data['nameErr'] = 'U heeft geen naam ingevuld.';
             }
 
-            if (empty($_POST["email"])) {
-                $emailErr = 'U heeft geen email adres ingevuld.';
-            }else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-                $emailErr = 'U heeft een ongeldig email adres ingevuld.';
-            } else {
-                $email = ($_POST["email"]);
+            if (empty($data['email'])) {
+                $data['emailErr'] = 'U heeft geen email adres ingevuld.';
+            }else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
+                $data['emailErr'] = 'U heeft een ongeldig email adres ingevuld.';
             }
 
-            if (empty($_POST["message"])) {
-                $nameErr = 'U heeft geen bericht ingevuld.';
-            } else {
-                $name = ($_POST["message"]);
+            if (empty($data['message'])) {
+                $data['messageErr'] = 'U heeft geen bericht ingevuld.';
+            }
 
-
-
+            if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['nameErr'])) {
                 // redirect de gebruiker
-            header('Location: confirmation.html');
-            exit;
+                header('location: ' . URLROOT . '/pages/index');
             }
-            }
+
+        $this->view('pages/contact', $data);
+    }
 
 
 
