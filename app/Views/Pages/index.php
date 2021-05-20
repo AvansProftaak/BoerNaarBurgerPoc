@@ -31,7 +31,7 @@
                             <li data-target="#myCarousel" data-slide-to="7"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div style="background-color: transparent" class="item active";>
+                            <div style="background-color: transparent" class="carousel-item active";>
                                 <q><?php echo $lang['caroussel-1']; ?></q>
                                 <p>DANIËL JANSEN</p>
                                 <div id="rh-sterren">
@@ -42,7 +42,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>                           
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-2']; ?></q>
                                 <p>SARA DARWISH</p>
                                 <div id="rh-sterren">
@@ -53,7 +53,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-3']; ?></q>
                                 <p>ROB VAN DER HORST</p>
                                 <div id="rh-sterren">
@@ -64,7 +64,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-4']; ?></q>
                                 <p>JORIS JANSEN</p>
                                 <div id="rh-sterren">
@@ -75,7 +75,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-5']; ?></q>
                                 <p>PRAM GODAKANDA</p>
                                 <div id="rh-sterren">
@@ -86,7 +86,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-6']; ?></q>
                                 <p>LARS HANEGRAAF</p>
                                 <div id="rh-sterren">
@@ -97,7 +97,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-7']; ?></q>
                                 <p>MOHAMMED ABOUSHIHAB</p>
                                 <div id="rh-sterren">
@@ -108,7 +108,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>                   
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-8']; ?></q>
                                 <p>BART GROOTOONK</p>
                                 <div id="rh-sterren">

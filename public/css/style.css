@@ -517,24 +517,24 @@ html {
 /* TESTIMONIAL HOMEPAGE */
 
 
-.item {
-    height: 240px;
+.carousel-item {
+    height: 200px;
     background-color: transparent;
     box-shadow: none;
     text-align: center;
 }
 
-.item q {
+.carousel-item q {
     font-family: 'Dosis', sans-serif;
-    font-size: 1.9vw;
+    font-size: 1.2vw;
     font-weight: bold;
     font-style: italic;
     color: #005622;
 }
 
-.item p {
+.carousel-item p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.4vw;
+    font-size: 1.0vw;
     font-weight: 600;
     color: #E38F88;
 }
@@ -553,9 +553,10 @@ html {
 
 .carousel-indicators li {
     background-color: white;
-    border-color: #005622;
     width: 10px;
     height: 10px;
+    border: 1px solid #005622;
+    border-radius: 10px;
 }
 
 .carousel-indicators .active {
