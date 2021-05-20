@@ -21,17 +21,26 @@ $lang = array (
     'register'        => 'Registreer',
 
     // index
-    'IndexText'       => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
-    'Caroussel-1'     => "IK HELP DE BOER EN BEN ZELF GOEDKOPER UIT <br>WIN WIN, ALS JE HET MIJ VRAAGT",
-    'Caroussel-2'     => "VEEL LOKALE PRODUCTEN, OOK BIOLOGISCH,<br>HEERLIJK!",
-    'Caroussel-3'     => "OP DEZE MANIER DOE IK IETS TERUG<br>VOOR DE NEDERLANDSE BOER",
-    'Caroussel-4'     => "MAKKELIJK TE BESTELLEN, SNEL AF TE HALEN <br>EN ALLES IS VERS EN IN GOEDE STAAT",
-    'Caroussel-5'     => "PRIMA PRODUCTEN EN JE PROEFT DUIDELIJK<br>VERSCHIL MET DE SUPERMARKT",
-    'Caroussel-6'     => "PURE PRODUCTEN, VERS EN OOK<br>NOG EENS FIJN VOOR DE BOEREN ZELF",
-    'Caroussel-7'     => "PRETTIGE WEBSITE, GOED AANBOD<br>FANTASTISCHE KWALITEIT",
-    'Caroussel-8'     => "ONZE ERVARING IS GOED.<br>LEKKER EN ONBESPOTEN",
+    'index_text'       => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
+    'caroussel-1'     => "IK HELP DE BOER EN BEN ZELF GOEDKOPER UIT <br>WIN WIN, ALS JE HET MIJ VRAAGT",
+    'caroussel-2'     => "VEEL LOKALE PRODUCTEN, OOK BIOLOGISCH,<br>HEERLIJK!",
+    'caroussel-3'     => "OP DEZE MANIER DOE IK IETS TERUG<br>VOOR DE NEDERLANDSE BOER",
+    'caroussel-4'     => "MAKKELIJK TE BESTELLEN, SNEL AF TE HALEN <br>EN ALLES IS VERS EN IN GOEDE STAAT",
+    'caroussel-5'     => "PRIMA PRODUCTEN EN JE PROEFT DUIDELIJK<br>VERSCHIL MET DE SUPERMARKT",
+    'caroussel-6'     => "PURE PRODUCTEN, VERS EN OOK<br>NOG EENS FIJN VOOR DE BOEREN ZELF",
+    'caroussel-7'     => "PRETTIGE WEBSITE, GOED AANBOD<br>FANTASTISCHE KWALITEIT",
+    'caroussel-8'     => "ONZE ERVARING IS GOED.<br>LEKKER EN ONBESPOTEN",
     'how_it_works'    => "Hoe werkt het?",
     'sign_in_index'   => "MELD JE AAN",
+    'find_your_farmer'=> "ZOEK JE BOER",
+    'stop_foodwaste'  => "Begin meteen met het tegengaan van voedselverspilling",
+    'find_a_farmer'   => "Zoek een boer in jouw omgeving",
+    'do_groceries'    => "DOE JE BOODSCHAPPEN",
+    'order_groceries' => "Bestel al je boodschappen en reken de ze af vanuit je winkelmandje",
+    'pick_up_QR'      => "HAAL AF MET QR-CODE",
+    'scan_and_pick'   => "Laat je QR-code scannen door de boer en neem je boodschappen mee naar huis",
+
+
     
 
     //customer
