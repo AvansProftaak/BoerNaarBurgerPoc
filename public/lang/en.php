@@ -15,7 +15,7 @@ $lang = array (
     'shops'           => 'SHOPS',
     'contact'         => 'CONTACT',
     'contact_details' => 'Contact Details',
-    'faq'             => 'F A Q',
+    'faq'             => 'Frequently Asked Questions',
     'logout'          => 'Log out',
     'login'           => 'Login',
     'register'        => 'Register',
@@ -32,6 +32,14 @@ $lang = array (
     'caroussel-8'     => "OUR EXPERIENCE IS GOOD.<br>TASTY AND ORGANIC GROWN",
     'how_it_works'    => "How does it work?",
     'sign_in_index'   => "SIGN IN",
+    'find_your_farmer'=> "FIND YOUR FARMER",
+    'stop_foodwaste'  => "Start fighting food waste right away",
+    'find_a_farmer'   => "Find a farmer in your area",
+    'do_groceries'    => "GO SHOPPING",
+    'order_groceries' => "Order all your groceries and pay them from your shopping cart",
+    'pick_up_QR'      => "COLLECT WITH QR CODE",
+    'scan_and_pick'   => "Have your QR code scanned by the farmer and take your groceries home",
+
 
 
     //customer
