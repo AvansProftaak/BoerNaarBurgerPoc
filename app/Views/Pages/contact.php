@@ -74,7 +74,6 @@
                 </div>
                 <input type="submit" name="send-contact" value="Verzenden" class="btn-c">
             </form>
-
         </div>
     </div>
 </div>
