@@ -14,6 +14,12 @@ class Shop
         return $this->db->resultSet();
     }
 
+    public function getFilteredShops($location) {
+        $this->db->query('SELECT * FROM boer_naar_burger.shops WHERE city = :location');
+        $this->db->bind(':location', $location);
+        return $this->db->resultSet();
+    }
+
     public function getShop($id) {
         $this->db->query('SELECT * FROM boer_naar_burger.shops WHERE shop_number = :id');
         $this->db->bind(':id', $id);

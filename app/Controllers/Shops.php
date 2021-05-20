@@ -15,13 +15,27 @@ class Shops extends Controller
     }
 
     public function overview() {
-        $shops = $this->shopModel->getShops();
+        if (isset($_GET['location'])) {
+        $cities = $this->shopModel->getShops();
+        $filterParam = $_GET['location'];
+        $shops = $this->shopModel->getFilteredShops($filterParam);
 
         $data = [
+            'cities' => $cities,
             'shops' => $shops
         ];
 
         $this->view('shops/overview', $data);
+        } else {
+            $cities = $this->shopModel->getShops();
+            $shops = $this->shopModel->getShops();
+            $data = [
+                'cities' => $cities,
+                'shops' => $shops
+            ];
+
+            $this->view('shops/overview', $data);
+        }
     }
 
     public function step1() {

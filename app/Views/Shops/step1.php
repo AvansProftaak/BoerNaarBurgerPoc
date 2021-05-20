@@ -47,8 +47,19 @@
         <h3 class="font-weight-bolder">Bedrag</h3>
         <h3 class="font-weight-bolder">€<span id="totalAmount">0.00</span></h3>
     </div>
+    <div class="container">
+  <div class="row">
+  <div class="col text-left pt-4 pb-lg-5">
+    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shops/overview">Terug naar Shops</a>
+    </div>
+    <div class="col text-right pt-4 pb-lg-5">
+    <button type="submit" onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
+    </div>
+  </div>
+</div>
     <div class="text-right pt-4 pb-lg-5">
-        <button type="submit" onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
+        
+       
     </div>
 </div>
 <?php include APPROOT."/Views/Includes/footerShop.php"; ?>
