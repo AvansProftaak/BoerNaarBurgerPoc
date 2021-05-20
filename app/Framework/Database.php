@@ -11,8 +11,11 @@ class Database {
     private string $error;
 
     public function __construct() {
+        // set up the database connection
         $conn = 'mysql:host=' . $this->dbHost . ';dbName=' . $this->dbName;
         $options = array(
+            // use a persistent connection to save memory, rather than open new connection with every request
+            // use exception error mode so PDO throws exceptions with clear error information
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
@@ -24,10 +27,12 @@ class Database {
         }
     }
 
+    // allows for querying
     public function query($sql) {
         $this->statement = $this->dbHandler->prepare($sql);
     }
 
+    //bind values & types with PDO param constants. Prevents XSS
     public function bind($parameter, $value, $type = null) {
         switch (is_null($type)) {
             case is_int($value):
@@ -45,20 +50,24 @@ class Database {
         $this->statement->bindValue($parameter, $value, $type);
     }
 
+    // execute the prepared statement
     public function execute() {
         return $this->statement->execute();
     }
 
+    // return an array
     public function resultSet() {
         $this->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // return a specific row as object
     public function single() {
         $this->execute();
         return $this->statement->fetch(PDO::FETCH_OBJ);
     }
 
+    // get the rowcount
     public function rowCount() {
         $this->execute();
         return $this->statement->rowCount();

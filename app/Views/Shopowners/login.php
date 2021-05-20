@@ -1,5 +1,4 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
-
 <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -11,9 +10,9 @@
                     </div>
                 </div>
                 <div class="col pr-2">
-                    <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['login_customer']; ?></h2>
+                    <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['login_shopowner']; ?></h2>
                     <hr class="mx-2">
-                    <form method="POST" action="<?php echo URLROOT; ?>/customers/login">
+                    <form method="POST" action="<?php echo URLROOT; ?>/shopowners/login">
                         <!-- E-mail -->
                         <div class="form-group row mx-1">
                             <div class="col">
@@ -35,8 +34,8 @@
                         <div class="form-group row mb-3">
                             <div class="ml-3 pl-3">
                                 <button type="submit" name="submit" class="btn btn-green px-5"><?php echo $lang['login_button']; ?></button>
-                                <p class="mt-4"><?php echo $lang['no_account']; ?><a href="<?php echo URLROOT; ?>/customers/register"><?php echo $lang['here']; ?></a><?php echo $lang['no_account2']; ?><br>
-                                    <?php echo $lang['login_farmer']; ?><a href="<?php echo URLROOT; ?>/shopowners/login"><?php echo $lang['here']; ?></a>.
+                                <p class="mt-4"><?php echo $lang['no_account']; ?><a href="<?php echo URLROOT; ?>/shopowners/register"><?php echo $lang['here']; ?></a><?php echo $lang['no_account2']; ?><br>
+                                    <?php echo $lang['login_burger']; ?><a href="<?php echo URLROOT; ?>/customers/login"><?php echo $lang['here']; ?></a>.
                                 </p>
                             </div>
                         </div>

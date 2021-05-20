@@ -79,7 +79,7 @@ class Customers extends Controller
                 $data['passwordError'] = 'Wachtwoord moet tenminste 1 cijfer bevatten.';
             }
 
-            //Validate confirm password
+            //Validate confirm passwordf
             if (empty($data['password_confirmation'])) {
                 $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
             } else {

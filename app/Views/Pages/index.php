@@ -1,52 +1,181 @@
-<?php include APPROOT."/Views/Includes/header.php"; ?>
-<div class="container">
-    <div class="welcome-images">
-        <img class="logoBnB" src="../img/logo%20Boer%20naar%20burger_liggend_color.png" alt="logoBnB">
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <h1 id="rh-column-links-header">Welkom bij Boer naar Burger</h1>
-            <p class="rh-column-links-tekst">
-                Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land!
-                <br><br>
-                Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid;
-                groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten.
-                Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br>
-                Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en
-                <strong>maak een vuist tegen voedselverspilling!</strong>
-            </p>
-        </div>
-        <div class="col-6">
-            <h1 id="rh-column-rechts-header">Proof of Concept</h1>
-            <p class="rh-column-links-tekst">
-                In dit proof of concept is het mogelijk om als burger ons platform te ervaren. U kunt zich
-                <a href="<?php echo URLROOT; ?>/customers/register">registreren</a> en <a href="<?php echo URLROOT; ?>/customers/login">inloggen</a> als burger,
-                maar er kan ook ingelogd worden op het (bestaande) test account van Peter, om zijn bestellingen te bekijken.
-                <br><br>
-                E-mail adres: <strong>peterdevries@hotmail.com</strong><br>
-                Wachtwoord: <strong>wachtwoord123</strong>
-                <br><br>
-                Helaas is het (nog) niet mogelijk een bestelling te plaatsen bij een boer, maar de <a href="<?php echo URLROOT; ?>/shops/overview">shops</a> van de reeds
-                geregistreerde boeren zijn zeker alvast te bewonderen.
-                <br><br>
-                Voor het functioneren van deze website is een database vereist. Klik op onderstaande knop om deze aan te maken.<br>
-                <strong>Let op: </strong>Indien de boer_naar_burger database lokaal al bestaat zal deze overschreven worden!
-            </p>
-            <p class="rh-column-links-tekst"><strong><?php echo $data['dbCreated'] ?></strong></p>
+<?php
+    include APPROOT."/Views/Includes/header.php";
+    require_once '../app/Helpers/language_helper.php';
+?>
 
-            <form method="POST" action="<?php echo URLROOT; ?>/pages/index">
-                <div id="loading-spinner" class="spinner-border" role="status" style="display: none;">
-                    <span class="sr-only">Loading...</span>
+
+    <div class="rh-main">
+        <div class="rh-centerBuiten">
+            <img src="../img/graan.png" class="rh-scaleImage" alt="Graan">
+            <img src="../img/koe.png" class="rh-scaleImage" alt="Koe">
+            <img src="../img/sla.png" class="rh-scaleImage" alt="Sla">
+        </div>
+        <div class="rh-centerBuiten">
+            <img class="logoBnB" src="../img/logo Boer naar burger_liggend_color.png" alt="Sla">
+        </div>
+        <div class="rh-row">
+            <div class="rh-column-links">
+                <p id="rh-column-links-header"><?php echo $lang['welcome']; ?></p> 
+                <p id="rh-column-links-tekst"><?php echo $lang['index_text']; ?></p>
+                <hr class="columnLijn" style="margin-top: 50px">
+                <div class="container" style="width: 100%">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                            <li data-target="#myCarousel" data-slide-to="4"></li>
+                            <li data-target="#myCarousel" data-slide-to="5"></li>
+                            <li data-target="#myCarousel" data-slide-to="6"></li>
+                            <li data-target="#myCarousel" data-slide-to="7"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div style="background-color: transparent" class="carousel-item active";>
+                                <q><?php echo $lang['caroussel-1']; ?></q>
+                                <p>DANIËL JANSEN</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>                           
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-2']; ?></q>
+                                <p>SARA DARWISH</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-3']; ?></q>
+                                <p>ROB VAN DER HORST</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-4']; ?></q>
+                                <p>JORIS JANSEN</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-5']; ?></q>
+                                <p>PRAM GODAKANDA</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-6']; ?></q>
+                                <p>LARS HANEGRAAF</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-7']; ?></q>
+                                <p>MOHAMMED ABOUSHIHAB</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>                   
+                            </div>
+                            <div style="background-color: transparent" class="carousel-item">
+                                <q><?php echo $lang['caroussel-8']; ?></q>
+                                <p>BART GROOTOONK</p>
+                                <div id="rh-sterren">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                    <img id="rh-ster" src="../img/icon/ster.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button id="create-db-button" class="btn btn-green px-5" type="submit" onclick="buttonClicked()" name="createDatabase">Maak Database</button>
-            </form>
+                <hr class="columnLijn">
+            </div>
+            <div class="rh-column-rechts">
+                <h2 class="hoewerkthet"><?php echo $lang['how_it_works']; ?></h2>
+                <div class="rh-rij-container">
+                    <div class="rh-rij-text1">
+                        <p class="rh-titel-column"><?php echo $lang['sign_in_index']; ?></p>
+                        <hr class="rh-hr-column">
+                        <img class="rh-column-gif" src="../img/aanmeldknop_boer.gif">
+                        <p class="rh-text-column"><?php echo $lang['stop_foodwaste']; ?></p>
+                        <button onclick="document.location='<?php echo URLROOT; ?>/customers/register'" id="rh-columnButton"><?php echo $lang['signup_button']; ?></button>
+                    </div>
+                    <div class="rh-rij-text2">
+                        <p class="rh-titel-column"><?php echo $lang['find_your_farmer']; ?></p>
+                        <hr class="rh-hr-column">
+                        <a href="regio-keus2.html"><img class="rh-column-map" src="../img/kaart nederland.png"></a>
+                        <p class="rh-text-column"><?php echo $lang['find_a_farmer']; ?></p>
+                    </div>
+                    <div class="rh-rij-text3">
+                        <p class="rh-titel-column"><?php echo $lang['do_groceries']; ?></p>
+                        <hr class="rh-hr-column">
+                        <img class="rh-column-img" src="../img/shopping_cart.png">
+                        <p class="rh-text-column"><?php echo $lang['order_groceries']; ?></p>
+                        <a href="https://www.paypal.com/" target="_blank" >
+                            <img src="../img/icon/Paypal-39_icon.png" alt="Paypal betaling geaccepteerd"  class="rh-column-logos">
+                        </a>&nbsp;
+                        <a href="https://www.apple.com/nl/apple-pay/" target="_blank">
+                            <img src="../img/icon/apple_pay_logo_icon.png" alt="Apple Pay geaccepteerd" class="rh-column-logos">
+                        </a>&nbsp;
+                        <a href="https://www.ideal.nl/" target="_blank" >
+                            <img src="../img/icon/ideal.png" alt="iDeal betaling geaccepteerd" class="rh-column-logos">
+                        </a>&nbsp;
+                        <a href="https://www.mastercard.nl/nl-nl/consumers.html" target="_blank" >
+                            <img src="../img/icon/Mastercard.png" alt="Visa betaling geaccepteerd" class="rh-column-logos">
+                        </a>&nbsp;
+                        <a href="https://www.worldcard.nl/" target="_blank" >
+                            <img src="../img/icon/visa.png" alt="Visa betaling geaccepteerd" class="rh-column-logos">
+                        </a>
+                    </div>
+                    <div class="rh-rij-text4">
+                        <p class="rh-titel-column"><?php echo $lang['pick_up_QR']; ?></p>
+                        <hr class="rh-hr-column">
+                        <img class="rh-column-qr" src="../img/qr-code.png" alt="QR-code naar Boer naar Burger">
+                        <p class="rh-text-column"><?php echo $lang['scan_and_pick']; ?></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="welcome-images mt-3">
-        <img src="../img/graan.png" class="rh-scaleImage" alt="Graan">
-        <img src="../img/koe.png" class="rh-scaleImage" alt="Koe">
-        <img src="../img/sla.png" class="rh-scaleImage" alt="Sla">
-    </div>
 </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <?php include APPROOT."/Views/Includes/footer.php"; ?>
