@@ -1,8 +1,36 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
+
 <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <h2 class="lh-subtitel pt-4"><?php echo $lang['order_overview']; ?></h2>
+
+            <!-- searchbar for orders -->
+            <div class="container">
+                <br/>
+	            <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-5">
+                        <form class="card card-sm">
+                            <div class="card-body row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <i class="fas fa-search h4 text-body"></i>
+                                </div>
+                                <!--end of col-->
+                                <div class="col">
+                                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="<?php echo $lang['searchfield']; ?>">
+                                </div>
+                                <!--end of col-->
+                                <div class="col-auto">
+                                    <button class="btn btn-lg btn-success" type="submit" style='margin-left: 4px'>Zoek</button>
+                                </div>
+                                <!--end of col-->
+                            </div>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </div>
+
             <?php if(!$data['orders']) :?>
             <div class="col-md-12">
                 <div class="pt-5">

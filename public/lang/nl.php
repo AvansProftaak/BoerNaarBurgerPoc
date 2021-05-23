@@ -40,7 +40,8 @@ $lang = array (
     'pick_up_QR'      => "HAAL AF MET QR-CODE",
     'scan_and_pick'   => "Laat je QR-code scannen door de boer en neem je boodschappen mee naar huis",
 
-
+    // searchbar      
+    'searchfield'     => "Ordernummer, product, etc",
     
 
     //customer

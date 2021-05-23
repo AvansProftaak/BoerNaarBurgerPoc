@@ -40,7 +40,7 @@
 <div class='rh-flex-wrapper'>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style='background-color:#34744d'>
-  <a class="navbar-brand" href="#" style='height:65px' >
+  <a class="navbar-brand" href="<?php echo URLROOT; ?>/pages/index" style='height:65px' >
     <img src=../img/logo%20Boer%20naar%20burger_liggend_wit_color.png style='height:100%' alt="logo_bnb">
   </a>
 
@@ -49,7 +49,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" >
       <li class="nav-item">
         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/index"><?php echo $lang['home']; ?></a>
       </li>
@@ -82,9 +82,7 @@
     </ul>
   </div>
 
-    <!-- <form class="form-inline  ">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form> -->
+
   
   <!-- div pushes right side of navbar -->
   <div class="mr-auto"></div>

@@ -79,8 +79,9 @@ html {
     font-size: 1.2em;
 }
 
-
-
+.navbar-collapse {
+    justify-content: center;
+}
 
 
  .nav-text-login {
@@ -868,9 +869,6 @@ html {
     margin-right: auto;
 }
 
-#content-wrap-shop {
-
-}
 
 .profile-photo {
     position: relative;
@@ -1483,3 +1481,17 @@ input:-moz-placeholder {
     font-size: 16px;
 }
 
+/* Search-bar Orders */
+.card {
+  background-color:#C2F5EB; 
+  border: 0px;
+}
+
+.btn-success {
+    background-color: rgb(217, 99, 89);
+    border: none;
+}
+
+.form-control {
+    font-family: 'Dosis', sans-serif;
+}
