@@ -167,4 +167,11 @@ $lang = array (
                         due to overproduction. Boer naar Burger gives these products a new purpose, a reason of existence.
                         We are fully transparent when it comes to the production chain of our products and offer reliability.
                         \'Our\' farmers share these values.',
+
+    //contactformulier
+    'contact_header'    =>  'Contact is easily made',
+    'contact_txt'       =>  'Your personal data will only be used for which you have provided them.',
+    'contact_socials'   =>  'Connect with us',
+    'contact_header2'   =>  'Send us a message',
+    'contact_button'    =>  'Send email',
 );

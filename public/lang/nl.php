@@ -180,4 +180,13 @@ $lang = array (
                         kwijt kan. Boer naar Burger geeft deze producten een nieuw doel, een reden
                         van bestaan. We zijn volledig open over de volledige productie keten en bieden
                         transparantie en vertrouwen. ‘Onze’ boeren, delen onze kernwaarden. ',
+
+
+    //contactformulier
+    'contact_header'    =>  'Contact is zo gelegd',
+    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'   =>  'Connect met ons',
+    'contact_header2'   =>  'Stuur ons een bericht',
+    'contact_button'    =>  'Verzend email',
+
 );
