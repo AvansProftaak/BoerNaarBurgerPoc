@@ -70,4 +70,5 @@ class Pages extends Controller
 public function faq() {
         $this->view('pages/faq');
     }
+    
 }

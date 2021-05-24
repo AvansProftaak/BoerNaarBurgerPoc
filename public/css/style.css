@@ -1487,11 +1487,18 @@ input:-moz-placeholder {
   border: 0px;
 }
 
+
+
 .btn-success {
     background-color: rgb(217, 99, 89);
     border: none;
 }
 
+.btn-success:hover {
+    background-color: #34744D;
+    border-color: #34744D;
+}
 .form-control {
     font-family: 'Dosis', sans-serif;
+    font-weight: bold;
 }

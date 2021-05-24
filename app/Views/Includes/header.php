@@ -62,10 +62,10 @@
         <?php echo $lang['shops']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-hover" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Zeeland</a>
-          <a class="dropdown-item" href="#">West-Brabant</a>
-          <a class="dropdown-item" href="#">Midden-Brabant</a>
-          <a class="dropdown-item" href="#">Oost-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Zeeland</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">West-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Midden-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Oost-Brabant</a>
         </div>
       </li>
 
@@ -137,7 +137,10 @@
         </a>
           <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown" style="padding-right: 2px; border-right-width: 0px; padding-left: 2px; border-left-width: 0px;">
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=en" style='margin-bottom: 2px'><img src="../img/icon/EN.png" alt="EN" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/GER.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/IT.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/ES.png" alt="NL" class="langicon2"></a>
           </div>
     </li>
   </ul>
