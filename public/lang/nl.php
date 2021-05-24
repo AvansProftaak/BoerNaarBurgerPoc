@@ -180,4 +180,41 @@ $lang = array (
                         kwijt kan. Boer naar Burger geeft deze producten een nieuw doel, een reden
                         van bestaan. We zijn volledig open over de volledige productie keten en bieden
                         transparantie en vertrouwen. ‘Onze’ boeren, delen onze kernwaarden. ',
+
+
+    //contactformulier
+    'contact_header'    =>  'Contact is zo gelegd',
+    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'   =>  'Connect met ons',
+    'contact_header2'   =>  'Stuur ons een bericht',
+    'contact_button'    =>  'Verzend email',
+
+
+    //FAQ
+    'veelgestelde_vragen'   =>  'Veelgestelde vragen',
+    'wie_zijn_wij'          =>  'Wie zijn wij?',
+    'wie_zijn_wij_answer'   =>  'Boer naar Burger biedt een platform waarop producten aangeboden worden, 
+                                 die in de huidige maatschappij verloren gaan. Door deze producten te verhandelen helpen wij boeren van hun overproductie af, 
+                                 en ondersteunen wij onze medemens in moeilijkere tijden. 
+                                 Daarnaast bieden wij consumenten, producten met een verhaal; (h)eerlijk en betrouwbaar.',
+    'klacht_melden'         =>  'Waar kan ik een klacht melden?',
+    'klacht_melden_answer'  =>  'Het kan altijd voorkomen dat er iets niet helemaal gaat zoals gepland. 
+                                 We raden je aan om klachten eerst bij ons kenbaar te maken door te mailen naar klachten@boernaarburger.nl.',
+    'betalingen'            =>  'Betalingen',
+    'inc_BTW'               =>  'Zijn alle prijzen inclusief BTW?',
+    'inc_BTW_answer'        =>  'De prijzen die op onze webshop worden weergegeven zijn inclusief BTW.',
+    'bestelling_geplaatst'  =>  'Hoe weet ik of mijn bestelling is geplaatst?',
+    'bestelling_answer'     =>  'Na het afronden van iedere bestelling ontvang je een bevestigingsmail waarin vermeld staat dat je bestelling geplaatst is.',
+    'kortingscode'          =>  'Kan ik ook met een kortingscode of een giftcard betalen?',
+    'kortingscode_answer'   =>  'Uiteraard! Voer tijdens het betalen jouw code in en het bedrag zal automatisch aangepast worden. Onze giftcards zijn 1 jaar geldig.',
+    'bestelling_betalen'    =>  'Hoe kan ik mijn bestelling betalen?',
+    'betalen_answer'        =>  'Wij weten het: betalen is het minst leuke deel van online shoppen. Toch proberen wij ervoor te zorgen dat onze producten jouw geld waard zijn 
+                                 en je er veel plezier van zult hebben. Bij boernaarburger.nl kun je 100% veilig afrekenen 
+                                    en het is ook mogelijk om veilig achteraf te betalen middels Klarna.',
+    'wachtwoord_vergeten'   =>  'Help! Ik ben mijn wachtwoord vergeten.',
+    'wachtwoord_answer'     =>  'Met al die online accounts tegenwoordig, is het niet gek als je je wachtwoord vergeet. 
+                                 Klik op ‘Wachtwoord vergeten’ en vul je emailadres in waarmee je je hebt geregistreerd bij ons. 
+                                 In een ogenblik zul je jouw inloggegevens ontvangen in je inbox. 
+                                 Nu alleen nog je tijdelijke wachtwoord aanpassen naar jouw nieuwe wachtwoord en je kunt er weer tegenaan.',
+
 );
