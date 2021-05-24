@@ -27,30 +27,30 @@
                         <!-- item to sell -->
                         <div class="form-group row mx-1 mb-0">
                             <div class="col-5">
-                                <label for="item_name" class="pl-2 user-data-header">Product<span class="pl-3 text-danger"><?php echo $data['item_nameError'] ?></span></label>
-                                <input id="item_name" type="text" class="form-control rounded-borders <?php if($data['item_nameError']) : ?> is-invalid <?php endif; ?>" name="item_name" placeholder="Aardappelen" autocomplete="item_name">
+                                <label for="item_name" class="pl-2 user-data-header">Product</label>
+                                <input id="item_name" type="text" class="form-control rounded-borders <?php if(isset($data['item_nameError'])) echo $data['item_nameError'];?>" name="item_name" placeholder="Aardappelen" autocomplete="item_name">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- description -->
                             <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van het product<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
-                                <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+                                <label for="description" class="pl-2 user-data-header">beschijving van het product</label>
+                                <input id="description" type="text" class="form-control rounded-borders <?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                             </div>
                         </div><br><br>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="price" class="pl-2 user-data-header">prijs<span class="pl-3 text-danger"><?php echo $data['priceError'] ?></span></label>
-                                <input id="price" type="text" class="form-control rounded-borders <?php if($data['priceError']) : ?> is-invalid <?php endif; ?>" name="price" placeholder="1,50" autocomplete="price">
+                                <label for="price" class="pl-2 user-data-header">prijs</label>
+                                <input id="price" type="text" class="form-control rounded-borders <?php if(isset($data['priceError'])) echo $data['priceError'];?>" name="price" placeholder="1,50" autocomplete="price">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
-                                <label for="stock" class="pl-2 user-data-header">voorraad<span class="pl-3 text-danger"><?php echo $data['stockError'] ?></span></label>
-                                <input id="stock" type="text" class="form-control rounded-borders <?php if($data['stockError']) : ?> is-invalid <?php endif; ?>" name="stock" placeholder="150" autocomplete="stock">
+                                <label for="stock" class="pl-2 user-data-header">voorraad</label>
+                                <input id="stock" type="text" class="form-control rounded-borders <?php if(isset($data['stockError'])) echo $data['stockError'];?>" name="stock" placeholder="150" autocomplete="stock">
                             </div>
                         </div></br>
 
@@ -59,14 +59,14 @@
                             <!-- description -->
                             <div class="col-5">
                                 <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php echo $data['banner_urlError'] ?></span></label>
-                                <input id="banner_url" type="text" class="form-control rounded-borders <?php if($data['banner_urlError']) : ?> is-invalid <?php endif; ?>" name="banner_url" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
+                                <input id="banner_url" type="text" class="form-control rounded-borders <?php if(isset($data['nameErr'])) echo $data['nameErr'];?>" name="banner_url" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
                             </div>
                         </div>
 
                             <!-- Register Button -->
                             <div class="form-group row mb-3 mt-4">
                                 <div class="ml-3 pl-3">
-                                <button type="submit" class="btn btn-green px-5">Registreer winkel</button>
+                                <button type="submit" class="btn btn-green px-5">Voeg item toel</button>
                             </div>
                         </div>
                     </form>

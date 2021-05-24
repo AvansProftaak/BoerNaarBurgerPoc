@@ -119,4 +119,21 @@ class Shopowner
         return -1;
     }
 
+    public function updateItem($data) {
+        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, name, description, stock, price, image_url)
+                              VALUES (:shop_number, :name, :description, :stock, :price, :image_url)');
+
+        $this->db->bind(':shop_number', $data['shop_number']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':stock', $data['stock']);
+        $this->db->bind(':price', $data['price']);
+        $this->db->bind(':image_url', $data['image_url']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
