@@ -15,14 +15,14 @@
 
                     <form method="POST" action="<?php echo URLROOT; ?>/shopowners/updateitems">
 
-                        <!--
+                    <!--
                         Wat hebben we hier nodig
                         als eerste moet gekeken worden welke shops de shopowner heeft
                         deze kunnen selecteren
                         item toevoegen
                         bestaande items aanpassen
                         updaten naar db
-                -->
+                    -->
 
                         <!-- item to sell -->
                         <div class="form-group row mx-1 mb-0">
@@ -35,7 +35,7 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- description -->
                             <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
+                                <label for="description" class="pl-2 user-data-header">beschijving van het product<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
                                 <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                             </div>
                         </div><br><br>
@@ -43,53 +43,16 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="address" class="pl-2 user-data-header">Straatnaam<span class="pl-3 text-danger"><?php echo $data['addressError'] ?></span></label>
-                                <input id="address" type="text" class="form-control rounded-borders <?php if($data['addressError']) : ?> is-invalid <?php endif; ?>" name="address" placeholder="Langedreef" autocomplete="address">
+                                <label for="price" class="pl-2 user-data-header">prijs<span class="pl-3 text-danger"><?php echo $data['priceError'] ?></span></label>
+                                <input id="price" type="text" class="form-control rounded-borders <?php if($data['priceError']) : ?> is-invalid <?php endif; ?>" name="price" placeholder="1,50" autocomplete="price">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
-                                <label for="house_number" class="pl-2 user-data-header">huisnummer<span class="pl-3 text-danger"><?php echo $data['house_numberError'] ?></span></label>
-                                <input id="house_number" type="text" class="form-control rounded-borders <?php if($data['house_numberError']) : ?> is-invalid <?php endif; ?>" name="house_number" placeholder="19" autocomplete="house_number">
+                                <label for="stock" class="pl-2 user-data-header">voorraad<span class="pl-3 text-danger"><?php echo $data['stockError'] ?></span></label>
+                                <input id="stock" type="text" class="form-control rounded-borders <?php if($data['stockError']) : ?> is-invalid <?php endif; ?>" name="stock" placeholder="150" autocomplete="stock">
                             </div>
-                        </div>
-
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- address -->
-                            <div class="col-5">
-                                <label for="postal_code" class="pl-2 user-data-header">Postcode<span class="pl-3 text-danger"><?php echo $data['postal_codeError'] ?></span></label>
-                                <input id="postal_code" type="text" class="form-control rounded-borders <?php if($data['postal_codeError']) : ?> is-invalid <?php endif; ?>" name="postal_code" placeholder="4783RE" autocomplete="postal_code">
-                            </div>
-
-                            <!-- house_number -->
-                            <div class="col-5">
-                                <label for="country" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php echo $data['countryError'] ?></span></label>
-                                <input id="country" type="text" class="form-control rounded-borders <?php if($data['countryError']) : ?> is-invalid <?php endif; ?>" name="country" placeholder="Nederland" autocomplete="country">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- stad -->
-                            <div class="col-5">
-                                <label for="city" class="pl-2 user-data-header">Stad<span class="pl-3 text-danger"><?php echo $data['cityError'] ?></span></label>
-                                <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" name="city" placeholder="Amsterdam" autocomplete="city">
-                            </div>
-                        </div><br><br>
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- address -->
-                            <div class="col-5">
-                                <label for="open_from" class="pl-2 user-data-header">Open vanaf<span class="pl-3 text-danger"><?php echo $data['open_fromError'] ?></span></label>
-                                <input id="open_from" type="text" class="form-control rounded-borders <?php if($data['open_fromError']) : ?> is-invalid <?php endif; ?>" name="open_from" placeholder="9:00" autocomplete="open_from">
-                            </div>
-
-                            <!-- house_number -->
-                            <div class="col-5">
-                                <label for="closed_at" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php echo $data['closed_atError'] ?></span></label>
-                                <input id="closed_at" type="text" class="form-control rounded-borders <?php if($data['closed_atError']) : ?> is-invalid <?php endif; ?>" name="closed_at" placeholder="17:00" autocomplete="closed_at">
-                            </div>
-                        </div><br>
+                        </div></br>
 
                         <h5 class="pt-4 pl-4 data-headers">Optioneel</h5>
                         <div class="form-group row mx-1 mb-0">

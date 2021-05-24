@@ -323,30 +323,13 @@ class Shopowners extends Controller
 
     public function updateitems() {
         $data = [
-            'kvk_number'            => '',
-            'shop_name'             => '',
+            'item_name'            => '',
             'description'           => '',
-            'address'               => '',
-            'house_number'          => '',
-            'postal_code'           => '',
-            'city'                  => '',
-            'country'               => '',
-            'open_from'             => '',
-            'closed_at'             => '',
             'banner_url'            => '',
 
-
-            'kvk_numberError'       => '',
-            'shop_nameError'        => '',
+            'item_nameError'       => '',
             'descriptionError'      => '',
-            'addressError'          => '',
-            'house_numberError'     => '',
-            'postal_codeError'      => '',
-            'cityError'             => '',
-            'countryError'          => '',
-            'open_fromError'        => '',
-            'banner_urlError'       => '',
-            'closed_atError'        => ''
+            'banner_urlError'       => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -360,28 +343,18 @@ class Shopowners extends Controller
 
             $data = [
                 'kvk_number'            => $KVKNumber,
-                'shop_name'             => trim($_POST['shop_name']),
+                'shop_name'             => trim($_POST['item_name']),
                 'description'           => trim($_POST['description']),
-                'address'               => trim($_POST['address']),
-                'house_number'          => trim($_POST['house_number']),
-                'postal_code'           => trim($_POST['postal_code']),
-                'city'                  => trim($_POST['city']),
-                'country'               => trim($_POST['country']),
-                'open_from'             => trim($_POST['open_from']),
-                'closed_at'             => trim($_POST['closed_at']),
+                'price'                 => trim($_POST['price']),
+                'stock'                 => trim($_POST['banner_url']),
                 'banner_url'            => trim($_POST['banner_url']),
 
                 'kvk_numberError'       => '',
-                'shop_nameError'        => '',
+                'item_nameeError'       => '',
                 'descriptionError'      => '',
-                'addressError'          => '',
-                'house_numberError'     => '',
-                'postal_codeError'      => '',
-                'cityError'             => '',
-                'countryError'          => '',
-                'open_fromError'        => '',
-                'banner_urlError'       => '',
-                'closed_atError'        => ''
+                'priceError'            => '',
+                'stockError'            => '',
+                'banner_urlError'       => ''
             ];
 
             print_r( $data);
