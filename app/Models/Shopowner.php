@@ -136,4 +136,18 @@ class Shopowner
             return false;
         }
     }
+
+    public function getMyShop() {
+
+        if (isLoggedInShopOwner()){
+            $KVK = $_SESSION['kvk_number'];
+        } else {
+            # debugging purpose only
+            $KVK = '06989770';
+        }
+        $this->db->query('SELECT * FROM boer_naar_burger.shops WHERE kvk_number = :kvk_number');
+        $this->db->bind(':kvk_number', $KVK);
+        return $this->db->resultSet();
+    }
+
 }

@@ -409,7 +409,10 @@ class Shopowners extends Controller
         $this->view('shopowners/updateitems', $data);
     }
 
-    
+    public function myShops() {
+        $data = $this->shopOwnerModel->getMyShop();
+        $this->view('shopowners/myShops', $data);
+    }
 
 
 }
