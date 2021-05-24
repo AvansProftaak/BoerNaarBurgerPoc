@@ -73,13 +73,13 @@
                 </div>
                 <div class="input-container">
                     <input type="text" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>onderwerp <?php else : ?>subject<?php endif; ?>"
-                           name="onderwerp" class="input-c" value="<?php if (isset($_POST["onderwerp"])) echo $_POST["onderwerp"]; ?>">
+                           name="onderwerp" class="input-c" value="<?php if(isset($_POST['onderwerp'])) echo $_POST['onderwerp'] ?>">
                     <span class="form-error"> <?php if(isset($data['onderwerpErr'])) echo $data['onderwerpErr'];?></span>
                 </div>
 
                 <div class="input-container textarea">
                     <textarea name="message" rows="4" cols="50" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>bericht <?php else : ?>message<?php endif; ?>"
-                              class="input-c"> <?php if (isset($_POST["message"])) echo $_POST["message"]; ?></textarea>
+                              class="input-c"> <?php if(isset($_POST['message'])) echo $_POST['message'] ?></textarea>
                     <span class="form-error"><?php if(isset($data['messageErr'])) echo $data['messageErr'];?></span>
                 </div>
                 <input type="submit" name="send-contact" value="<?php echo $lang['contact_button']; ?>" class="btn-c">

@@ -52,7 +52,7 @@ class Pages extends Controller
 
             if (empty($data['emailFrom'])) {
                 $data['emailErr'] = 'U heeft geen email adres ingevuld.';
-            }else if (!filter_var($data['emailFrom'], FILTER_VALIDATE_EMAIL))
+            } else if (!filter_var($data['emailFrom'], FILTER_VALIDATE_EMAIL))
                 $data['emailErr'] = 'U heeft een ongeldig email adres ingevuld.';
             }
 
@@ -60,11 +60,12 @@ class Pages extends Controller
                 $data['onderwerpErr'] = 'U heeft geen onderwerp ingevuld.';
             }
 
-            if (empty($data['message'])) {
+           if (empty($data['message'])) {
              $data['messageErr'] = 'U heeft geen bericht ingevuld.';
-            }
+           }
 
-            if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr'])&& empty($data['nameErr'])) {
+            if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
+               // echo "<script> alert('Bedankt voor uw bericht, we nemen zo spoedig mogelijk contact met u op.')</script>";
 
                 $mailTo = "info@boernaarburger.ml";
                 $headers = "From: ".$data['emailFrom'];
@@ -73,7 +74,8 @@ class Pages extends Controller
                 mail($mailTo, $data['onderwerp'], $txt, $headers);
 
                 // redirect de gebruiker
-                header('location: ' . URLROOT . '/pages/index?mailsend');
+               header('location: ' . URLROOT . '/pages/index?mailsend');
+
             }
 
         $this->view('pages/contact', $data);

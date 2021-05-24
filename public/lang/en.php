@@ -174,4 +174,31 @@ $lang = array (
     'contact_socials'   =>  'Connect with us',
     'contact_header2'   =>  'Send us a message',
     'contact_button'    =>  'Send email',
+
+
+    //FAQ
+    'veelgestelde_vragen'   =>  'FAQ - Frequently Asked Questions',
+    'wie_zijn_wij'          =>  'Who are we?',
+    'wie_zijn_wij_answer'   =>  'Boer naar Burger offers a platform on which products are offered,
+                                 that are lost in todays society. By trading these products, we help farmers get rid of their overproduction,
+                                 and we support our fellow man in more difficult times.',
+    'klacht_melden'         =>  'Where can I report a complaint?',
+    'klacht_melden_answer'  =>  'It is always possible that something does not go quite as planned.
+                                 We recommend that you first report complaints to us by emailing complaints@boernaarburger.nl.',
+    'betalingen'            =>  'Payments',
+    'inc_BTW'               =>  'Do all prices include VAT?',
+    'inc_BTW_answer'        =>  'The prices displayed on our webshop include VAT.',
+    'bestelling_geplaatst'  =>  'How do I know if my order has been placed?',
+    'bestelling_answer'     =>  'After completing each order, you will receive a confirmation email stating that your order has been placed.',
+    'kortingscode'          =>  'Can I also pay with a discount code or a gift card?',
+    'kortingscode_answer'   =>  'Of course! Enter your code during payment and the amount will be automatically adjusted. Our gift cards are valid for 1 year.',
+    'bestelling_betalen'    =>  'How can I pay for my order?',
+    'betalen_answer'        =>  'We know: paying is the least fun part of online shopping. Nevertheless, we try to ensure that our products are worth your money
+                                 and you will enjoy it a lot. At boernaarburger.nl you can pay 100% safely
+                                 and it is also possible to pay securely afterwards through Klarna.',
+    'wachtwoord_vergeten'   =>  'Help! I forgot my password.',
+    'wachtwoord_answer'     =>  'With all those online accounts nowadays, it is not surprising if you forget your password.
+                                 Click on "Forgotten password" and enter your email address with which you registered with us.
+                                 In a moment you will receive your login details in your inbox.
+                                 Now only change your temporary password to your new password and you can use it again.',
 );
