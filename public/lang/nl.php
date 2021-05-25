@@ -218,4 +218,7 @@ $lang = array (
                                  In een ogenblik zul je jouw inloggegevens ontvangen in je inbox. 
                                  Nu alleen nog je tijdelijke wachtwoord aanpassen naar jouw nieuwe wachtwoord en je kunt er weer tegenaan.',
 
+    //Mail thank you
+    'bedankt_bericht'       =>  'Bedankt voor uw bericht!',
+    'bedankt_sub'           =>  'Een medewerker van Boer naar Burger neemt zo spoedig mogelijk contact met u op.',
 );

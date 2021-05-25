@@ -76,15 +76,16 @@
                            name="onderwerp" class="input-c" value="<?php if(isset($_POST['onderwerp'])) echo $_POST['onderwerp'] ?>">
                     <span class="form-error"> <?php if(isset($data['onderwerpErr'])) echo $data['onderwerpErr'];?></span>
                 </div>
-
                 <div class="input-container textarea">
-                    <textarea name="message" rows="4" cols="50" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>bericht <?php else : ?>message<?php endif; ?>"
-                              class="input-c"> <?php if(isset($_POST['message'])) echo $_POST['message'] ?></textarea>
+                    <textarea  class="input-c" name="message" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>bericht <?php else : ?>message<?php endif; ?>"
+                               rows="5" cols="40"><?php echo htmlspecialchars($data['message']);?></textarea>
                     <span class="form-error"><?php if(isset($data['messageErr'])) echo $data['messageErr'];?></span>
                 </div>
-                <input type="submit" name="send-contact" value="<?php echo $lang['contact_button']; ?>" class="btn-c">
+                 <input type="submit" name="send-contact" value="<?php echo $lang['contact_button']; ?>" class="btn-c">
+                </div>
             </form>
         </div>
     </div>
 </div>
+</body>
 <?php include APPROOT."/Views/Includes/footer.php"; ?>
