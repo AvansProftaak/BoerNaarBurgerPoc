@@ -433,6 +433,7 @@ class Shopowners extends Controller
         if (isLoggedInShopOwner()) {
             $shopowner = $this->shopOwnerModel->getAccountDetails();
             $data = [
+                'kvk_number'            => $_SESSION['kvk_number'],
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
@@ -503,11 +504,11 @@ class Shopowners extends Controller
 
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    if ($this->customerModel->update($data, $shopowner)) {
-                        $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                    if ($this->shopownerModel->update($data, $shopowner)) {
+                        $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
                         header('location: ' . URLROOT . '/shopowners/myshop');
                     } else {
-                        if((strpos($this->customerModel->update($data, $shopowner),'uc_email') !== false)) {
+                        if((strpos($this->shopownerModel->update($data, $shopowner),'uc_email') !== false)) {
                             $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
                         } else {
                             die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
