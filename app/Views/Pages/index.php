@@ -17,6 +17,16 @@
             <div class="rh-column-links">
                 <p id="rh-column-links-header"><?php echo $lang['welcome']; ?></p> 
                 <p id="rh-column-links-tekst"><?php echo $lang['index_text']; ?></p>
+
+                <!-- Create database button -->
+                <form method="POST" action="<?php echo URLROOT; ?>/pages/index">
+                    <div id="loading-spinner" class="spinner-border" role="status" style="display: none;">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <button id="create-db-button" class="lh-button" type="submit" onclick="buttonClicked()"
+                            name="createDatabase"><?php echo $lang['createDatabase']; ?></button>
+                </form>
+
                 <hr class="columnLijn" style="margin-top: 50px">
                 <div class="container" style="width: 100%">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">

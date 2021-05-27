@@ -1,8 +1,11 @@
 <?php
 
+use App\Traits\TranslationTrait;
 
 class Shopowner
 {
+    use TranslationTrait;
+
     private $db;
 
     public function __construct() {
@@ -39,12 +42,15 @@ class Shopowner
     }
 
     public function createShop($data) {
+        $shopName = $this->createOrUpdateTranslation($data['shop_name']);
+        $shopDescription = $this->createOrUpdateTranslation($data['description']);
+
         $this->db->query('INSERT INTO boer_naar_burger.shops (kvk_number, shop_name, description, address, house_number, postal_code, city, country, open_from, closed_at, banner_url)
                               VALUES (:kvk_number, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url)');
 
         $this->db->bind(':kvk_number', $data['kvk_number']);
-        $this->db->bind(':shop_name', $data['shop_name']);
-        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':shop_name', $shopName);
+        $this->db->bind(':description', $shopDescription);
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':house_number', $data['house_number']);
         $this->db->bind(':postal_code', $data['postal_code']);
@@ -149,5 +155,4 @@ class Shopowner
         $this->db->bind(':kvk_number', $KVK);
         return $this->db->resultSet();
     }
-
 }

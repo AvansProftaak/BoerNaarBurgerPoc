@@ -39,6 +39,7 @@ $lang = array (
     'order_groceries' => "Order all your groceries and pay them from your shopping cart",
     'pick_up_QR'      => "COLLECT WITH QR CODE",
     'scan_and_pick'   => "Have your QR code scanned by the farmer and take your groceries home",
+    'createDatabase'  => "Create Database",
 
     //searchbar
     'searchfield'     => "Ordernumber, product, etc.",
