@@ -17,6 +17,14 @@
                     <hr class="mx-2">
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
+                    
+                        <div class="form-group row mx-1">
+                            <!-- company_name -->
+                            <div class="col-5">
+                                <label for="company_name" class="pl-2 user-data-header"><?php echo $lang['company_name']; ?><span class="pl-3 text-danger"><?php if(isset($data['company_nameError'])) echo $data['company_nameError'];?></span></label>
+                                <input id="company_name" type="text" class="form-control rounded-borders <?php if($data['company_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['company_name']; ?>" name="company_name" autocomplete="cname">
+                            </div>
+                        </div>
 
                         <div class="form-group row mx-1">
                             <!-- First Name -->
@@ -103,7 +111,6 @@
                     <hr class="mx-2">
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
-
                         <div class="form-group row mx-1">
                             <!-- First Name -->
                             <div class="col-5">

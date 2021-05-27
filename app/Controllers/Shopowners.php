@@ -434,6 +434,7 @@ class Shopowners extends Controller
             $shopowner = $this->shopOwnerModel->getAccountDetails();
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
+                'company_name'          => $shopowner->company_name,
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
@@ -457,6 +458,7 @@ class Shopowners extends Controller
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
+                    'company_name'          => trim($_POST['company_name']),
                     'first_name'            => trim($_POST['first_name']),
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
@@ -465,6 +467,7 @@ class Shopowners extends Controller
                     'house_number'          => trim($_POST['house_number']),
                     'postal_code'           => trim($_POST['postal_code']),
                     'city'                  => trim($_POST['city']),
+                    'company_nameError'        => '',
                     'firstNameError'        => '',
                     'lastNameError'         => '',
                     'emailError'            => '',
@@ -504,11 +507,13 @@ class Shopowners extends Controller
 
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    if ($this->shopownerModel->update($data, $shopowner)) {
+                    if ($this->shopOwnerModel->update($data, $shopowner)) {
                         $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
-                        header('location: ' . URLROOT . '/shopowners/myshop');
+                        // $this->view('shopowners/accountDetails', $data);
+                        // exit;
+                        header('location: ' . URLROOT . '/shopowners/accountDetails');
                     } else {
-                        if((strpos($this->shopownerModel->update($data, $shopowner),'uc_email') !== false)) {
+                        if((strpos($this->shopOwnerModel->update($data, $shopowner),'uc_email') !== false)) {
                             $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
                         } else {
                             die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
