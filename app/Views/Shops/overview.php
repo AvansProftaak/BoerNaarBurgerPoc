@@ -1,4 +1,6 @@
-<?php include APPROOT."/Views/Includes/header.php"; ?>
+<?php include APPROOT."/Views/Includes/header.php";
+use TranslationTrait;
+?>
 <div class="container">
   <div class="row">
     <div class="col-4">
@@ -35,8 +37,8 @@
             <div class="account-profile-card" style="width: 18rem;">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $shop->shop_name ?></h5>
-                    <p class="card-text"><?php echo $shop->description ?></p>
+                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
+                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
                     <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
                 </div>
             </div>

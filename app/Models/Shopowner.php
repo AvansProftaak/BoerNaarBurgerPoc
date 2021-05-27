@@ -1,8 +1,10 @@
 <?php
 
+use App\Traits\TranslationTrait;
+
 class Shopowner
 {
-    use \App\Traits\TranslationTrait;
+    use TranslationTrait;
 
     private $db;
 

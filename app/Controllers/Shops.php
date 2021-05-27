@@ -1,8 +1,10 @@
 <?php
 
+use App\Traits\TranslationTrait;
 
 class Shops extends Controller
 {
+    use TranslationTrait;
     /**
      * @var mixed
      */

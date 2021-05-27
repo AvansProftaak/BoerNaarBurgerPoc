@@ -5,10 +5,11 @@ namespace App\Traits;
 use Database;
 
 trait TranslationTrait {
-    private $db;
+
+    public $db;
 
     public function __construct() {
-        $this->db = new Database;
+        $this->db = new Database();
     }
 
     protected function createOrUpdateTranslation(array $content, $uuid = null) {
@@ -50,16 +51,18 @@ trait TranslationTrait {
     }
 
     public function getTranslation($uuid, $language) {
-        $this->db->query('SELECT * FROM boer_naar_burger.translations
+        $this->db = new Database();
+        $this->db->query('SELECT content FROM boer_naar_burger.translations
                               WHERE translation_tag = :uuid
                               AND language = :language');
 
         $this->db->bind(':uuid', $uuid);
         $this->db->bind(':language', $language);
-        $result = $this->db->resultSet();
+
+        $result = $this->db->single();
 
         if ($result) {
-            return $result;
+            return $result->content;
         } else {
             return false;
         }
