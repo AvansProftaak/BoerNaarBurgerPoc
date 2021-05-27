@@ -1,7 +1,7 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
     <div class="pt-4">
-        <h3 class="font-weight-bolder">Overzicht bestelling bij <strong><?php echo $data['shop']->shop_name ?></strong></h3>
+        <h3 class="font-weight-bolder">Overzicht bestelling bij <strong><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></strong></h3>
     </div>
 
     <hr class="shop-border m-0 order-overview-width">
@@ -9,13 +9,13 @@
     <div class="pt-2 border-shop order-overview-width">
         <div class="d-flex justify-content-between align-items-baseline border-shop">
             <p class="mb-2">2x</p>
-            <p class="mb-2"><?php echo $data['products'][0]->name ?></p>
-            <p class="mb-2">€<?php echo number_format($data['products'][1]->price*2,2) ?></p>
+            <p class="mb-2"><?php echo $this->getTranslation($data['products'][0]->name, $_SESSION['lang']); ?></p>
+            <p class="mb-2">€<?php echo number_format($data['products'][1]->price*2,2); ?></p>
         </div>
         <div class="pt-2 d-flex justify-content-between align-items-baseline border-shop">
             <p class="mb-2">1x</p>
-            <p class="mb-2"><?php echo $data['products'][1]->name ?></p>
-            <p class="mb-2">€<?php echo $data['products'][1]->price ?></p>
+            <p class="mb-2"><?php echo $this->getTranslation($data['products'][1]->name, $_SESSION['lang']); ?></p>
+            <p class="mb-2">€<?php echo $data['products'][1]->price; ?></p>
         </div>
         <div class="pt-2 d-flex justify-content-between align-items-baseline">
             <p class="mb-2 font-weight-bold">Totaal:</p>

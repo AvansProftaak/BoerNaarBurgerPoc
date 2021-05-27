@@ -1,6 +1,4 @@
-<?php include APPROOT."/Views/Includes/header.php";
-use TranslationTrait;
-?>
+<?php include APPROOT."/Views/Includes/header.php"; ?>
 <div class="container">
   <div class="row">
     <div class="col-4">
