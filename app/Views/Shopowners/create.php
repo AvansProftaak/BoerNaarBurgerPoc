@@ -20,7 +20,8 @@
                         <div class="form-group row mx-1 mb-0">
                             <div class="col-5">
                                 <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php echo $data['shop_nameError'] ?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
                             </div>
                         </div>
 
