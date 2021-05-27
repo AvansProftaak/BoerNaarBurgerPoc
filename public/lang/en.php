@@ -80,6 +80,8 @@ $lang = array (
     'city'             => 'City',
     'company_name'     => 'Company name',
     'kvk_number'       => 'KVK-number',
+    'phone_number'     => 'phone number',
+    'iban'             => 'iban',
 
     //register customer
     'register_left'       => 'Register as customer',

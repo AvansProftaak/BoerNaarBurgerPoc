@@ -439,6 +439,7 @@ class Shopowners extends Controller
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
+                'phone_number'          => $shopowner->phone_number,
                 'address'               => $shopowner->address,
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
@@ -448,6 +449,7 @@ class Shopowners extends Controller
                 'firstNameError'        => '',
                 'lastNameError'         => '',
                 'emailError'            => '',
+                'phone_numberError'     => '',
                 'passwordError'         => '',
                 'currentPasswordError'  => '',
                 'confirmPasswordError'  => ''
@@ -465,6 +467,7 @@ class Shopowners extends Controller
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
                     'password'              => trim($_POST['password']),
+                    'phone_number'          => trim($_POST['phone_number']),
                     'address'               => trim($_POST['address']),
                     'house_number'          => trim($_POST['house_number']),
                     'postal_code'           => trim($_POST['postal_code']),
@@ -474,6 +477,7 @@ class Shopowners extends Controller
                     'firstNameError'        => '',
                     'lastNameError'         => '',
                     'emailError'            => '',
+                    'phone_numberError'     => '',
                     'passwordError'         => '',
                     'confirmPasswordError'  => ''
                 ];
@@ -512,8 +516,7 @@ class Shopowners extends Controller
 
                     if ($this->shopOwnerModel->update($data, $shopowner)) {
                         $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
-                        // $this->view('shopowners/accountDetails', $data);
-                        // exit;
+
                         header('location: ' . URLROOT . '/shopowners/accountDetails');
                     } else {
                         if((strpos($this->shopOwnerModel->update($data, $shopowner),'uc_email') !== false)) {
@@ -525,7 +528,6 @@ class Shopowners extends Controller
                 }
             }
             $this->view('shopowners/accountDetails', $data);
-            print_r($data);
         }
     }
 

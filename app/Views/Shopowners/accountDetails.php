@@ -42,7 +42,7 @@
                         <div class="form-group row mx-1">
                             <!-- iban -->
                             <div class="col-5">
-                                <label for="iban" class="pl-2 user-data-header">IBAN</span></label>
+                                <label for="iban" class="pl-2 user-data-header"><?php echo $lang['iban']; ?><span class="pl-3 text-danger"><?php if(isset($data['ibanError'])) echo $data['ibanError'];?></span></label>
                                 <input id="iban" type="text" class="form-control rounded-borders <?php if($data['ibanError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['iban']; ?>" name="iban" autocomplete="iban">
                             </div>
                         </div>
@@ -58,6 +58,14 @@
                             <div class="col">
                                 <label for="password" class="pl-2 user-data-header"><?php echo $lang['password']; ?><span class="pl-3 text-danger"><?php echo $data['passwordError'] ?></span></label>
                                 <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" autocomplete="passwordd">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mx-1">
+                            <!-- phone_number -->
+                            <div class="col-5">
+                                <label for="phone_number" class="pl-2 user-data-header"><?php echo $lang['phone_number']; ?><span class="pl-3 text-danger"><?php if(isset($data['phone_numberError'])) echo $data['phone_numberError'];?></span></label>
+                                <input id="phone_number" type="text" class="form-control rounded-borders <?php if($data['phone_number']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['phone_number']; ?>" name="phone_number" autocomplete="phonenumber">
                             </div>
                         </div>
 
