@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -12,9 +13,13 @@ $bag = array(
 
 $_SESSION['cart'][] = $bag;
 
+=======
+use App\Traits\TranslationTrait;
+>>>>>>> origin
 
 class Shops extends Controller
 {
+    use TranslationTrait;
     /**
      * @var mixed
      */

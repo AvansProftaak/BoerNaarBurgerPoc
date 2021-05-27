@@ -21,8 +21,10 @@ class Shopowners extends Controller
     public function create() {
         $data = [
             'kvk_number'            => '',
-            'shop_name'             => '',
-            'description'           => '',
+            'shop_name_nl'          => '',
+            'shop_name_en'          => '',
+            'description_nl'        => '',
+            'description_en'        => '',
             'address'               => '',
             'house_number'          => '',
             'postal_code'           => '',
@@ -58,8 +60,16 @@ class Shopowners extends Controller
 
             $data = [
                 'kvk_number'            => $KVKNumber,
-                'shop_name'             => trim($_POST['shop_name']),
-                'description'           => trim($_POST['description']),
+                'shop_name'             =>
+                    [
+                        'NL' => trim($_POST['shop_name_nl']),
+                        'EN' => trim($_POST['shop_name_en'])
+                    ],
+                'description'           =>
+                    [
+                        'NL' => trim($_POST['description_nl']),
+                        'EN' => trim($_POST['description_en'])
+                    ],
                 'address'               => trim($_POST['address']),
                 'house_number'          => trim($_POST['house_number']),
                 'postal_code'           => trim($_POST['postal_code']),

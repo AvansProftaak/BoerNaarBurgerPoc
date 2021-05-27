@@ -3,13 +3,13 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
     <div>
-        <h1 class="shop-title p-2"><?php echo $data['shop']->shop_name ?></h1>
+        <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
     <div>
         <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-100 py-2" alt="shop image"/>
     </div>
     <div class="pt-4">
-        <p><?php echo $data['shop']->description ?></p>
+        <p><?php echo $this->getTranslation($data['shop']->description, $_SESSION['lang']); ?></p>
     </div>
     <div class="py-4">
         <h3 class="shop-products p-2">Producten</h3>
@@ -21,7 +21,7 @@
     <div class="pt-3 border-shop">
         <div class="d-flex justify-content-between align-items-baseline">
             <div class = "product-width">
-                <p><?php echo $product->name ?>
+                <p><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
                     <a data-toggle="collapse" href="#description<?php echo $product->product_number ?>" role="button" aria-expanded="false" aria-controls="description<?php echo $product->product_number ?>">
                         <i class="pl-2 fa fa-chevron-down"></i>
                         <i class="pl-2 fa fa-chevron-up"></i></a></p>
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div id="description<?php echo $product->product_number ?>" class="collapse pt-3 border-shop">
-        <p><?php echo $product->description ?></p>
+        <p><?php echo $this->getTranslation($product->description, $_SESSION['lang']); ?></p>
     </div>
     <!-- Einde Product -->
     <?php endforeach; ?>
