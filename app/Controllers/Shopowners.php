@@ -435,6 +435,7 @@ class Shopowners extends Controller
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'company_name'          => $shopowner->company_name,
+                'iban'                  => $shopowner->iban,
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
@@ -459,6 +460,7 @@ class Shopowners extends Controller
 
                 $data = [
                     'company_name'          => trim($_POST['company_name']),
+                    'iban'                  => trim($_POST['iban']),
                     'first_name'            => trim($_POST['first_name']),
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
@@ -467,7 +469,8 @@ class Shopowners extends Controller
                     'house_number'          => trim($_POST['house_number']),
                     'postal_code'           => trim($_POST['postal_code']),
                     'city'                  => trim($_POST['city']),
-                    'company_nameError'        => '',
+                    'ibanError'             => '',
+                    'company_nameError'     => '',
                     'firstNameError'        => '',
                     'lastNameError'         => '',
                     'emailError'            => '',

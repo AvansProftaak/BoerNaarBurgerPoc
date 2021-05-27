@@ -39,6 +39,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mx-1">
+                            <!-- iban -->
+                            <div class="col-5">
+                                <label for="iban" class="pl-2 user-data-header">IBAN</span></label>
+                                <input id="iban" type="text" class="form-control rounded-borders <?php if($data['ibanError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['iban']; ?>" name="iban" autocomplete="iban">
+                            </div>
+                        </div>
+
                         <!-- E-mail Address -->
                         <div class="form-group row mx-1">
                             <div class="col-5">
