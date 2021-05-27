@@ -1,5 +1,17 @@
 <?php
 
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
+
+$bag = array(
+    "product_id" => $product_id,
+    'price' => $price,
+    'amount' => 0,
+);
+
+$_SESSION['cart'][] = $bag;
+
 
 class Shops extends Controller
 {
@@ -39,6 +51,7 @@ class Shops extends Controller
     }
 
     public function step1() {
+
         if (isset($_GET['shop'])) {
 
             $shop = $this->shopModel->getShop($_GET['shop']);

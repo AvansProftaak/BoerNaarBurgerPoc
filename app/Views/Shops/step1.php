@@ -1,3 +1,5 @@
+<?php var_dump($_SESSION['cart']) ?>
+
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
     <div>
@@ -30,7 +32,8 @@
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <button type="button" class="btn-decrement">-</button>
                 <p id="count<?php echo $product->product_number ?>" class="px-3">0</p>
-                <button type="button" class="btn-increment">+</button>
+                <button type="submit" value="add" class="btn-increment">+</button>
+                <input type="hidden" name="product_number" name="product_id" value="<?php echo $product->product_number ?>">
             </div>
             <div class = "price-width text-right">
                 <p>€<span id="total">0.00</span></p>
