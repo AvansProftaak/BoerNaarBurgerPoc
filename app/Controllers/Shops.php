@@ -161,4 +161,14 @@ class Shops extends Controller
             $this->view('shops/notfound');
         }
     }
+
+    public function shopdistrict() {
+        $shops = $this->shopModel->getShopsWestBrabant();
+
+        $data = ['shops' => $shops];
+
+        $this->view('shops/shopdistrict', $data);
+    }
+
+
 }

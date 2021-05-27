@@ -4,7 +4,6 @@
 ?>
 
 
-
     <div class="rh-main">
         <div class="rh-centerBuiten">
             <img src="../img/graan.png" class="rh-scaleImage" alt="Graan">
@@ -32,7 +31,7 @@
                             <li data-target="#myCarousel" data-slide-to="7"></li>
                         </ol>
                         <div class="carousel-inner">
-                            <div style="background-color: transparent" class="item active";>
+                            <div style="background-color: transparent" class="carousel-item active";>
                                 <q><?php echo $lang['caroussel-1']; ?></q>
                                 <p>DANIËL JANSEN</p>
                                 <div id="rh-sterren">
@@ -43,7 +42,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>                           
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-2']; ?></q>
                                 <p>SARA DARWISH</p>
                                 <div id="rh-sterren">
@@ -54,7 +53,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-3']; ?></q>
                                 <p>ROB VAN DER HORST</p>
                                 <div id="rh-sterren">
@@ -65,7 +64,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-4']; ?></q>
                                 <p>JORIS JANSEN</p>
                                 <div id="rh-sterren">
@@ -76,7 +75,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-5']; ?></q>
                                 <p>PRAM GODAKANDA</p>
                                 <div id="rh-sterren">
@@ -87,7 +86,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-6']; ?></q>
                                 <p>LARS HANEGRAAF</p>
                                 <div id="rh-sterren">
@@ -98,7 +97,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-7']; ?></q>
                                 <p>MOHAMMED ABOUSHIHAB</p>
                                 <div id="rh-sterren">
@@ -109,7 +108,7 @@
                                     <img id="rh-ster" src="../img/icon/ster.png">
                                 </div>                   
                             </div>
-                            <div style="background-color: transparent" class="item">
+                            <div style="background-color: transparent" class="carousel-item">
                                 <q><?php echo $lang['caroussel-8']; ?></q>
                                 <p>BART GROOTOONK</p>
                                 <div id="rh-sterren">
@@ -132,20 +131,20 @@
                         <p class="rh-titel-column"><?php echo $lang['sign_in_index']; ?></p>
                         <hr class="rh-hr-column">
                         <img class="rh-column-gif" src="../img/aanmeldknop_boer.gif">
-                        <p class="rh-text-column">Begin meteen met het tegengaan van voedselverspilling</p>
-                        <button onclick="document.location='login_boer.html'" id="rh-columnButton"><?php echo $lang['signup_button']; ?></button>
+                        <p class="rh-text-column"><?php echo $lang['stop_foodwaste']; ?></p>
+                        <button onclick="document.location='<?php echo URLROOT; ?>/customers/register'" id="rh-columnButton"><?php echo $lang['signup_button']; ?></button>
                     </div>
                     <div class="rh-rij-text2">
-                        <p class="rh-titel-column">ZOEK JE BOER</p>
+                        <p class="rh-titel-column"><?php echo $lang['find_your_farmer']; ?></p>
                         <hr class="rh-hr-column">
                         <a href="regio-keus2.html"><img class="rh-column-map" src="../img/kaart nederland.png"></a>
-                        <p class="rh-text-column">Zoek een boer in jouw omgeving</p>
+                        <p class="rh-text-column"><?php echo $lang['find_a_farmer']; ?></p>
                     </div>
                     <div class="rh-rij-text3">
-                        <p class="rh-titel-column">DOE JE BOODSCHAPPEN</p>
+                        <p class="rh-titel-column"><?php echo $lang['do_groceries']; ?></p>
                         <hr class="rh-hr-column">
                         <img class="rh-column-img" src="../img/shopping_cart.png">
-                        <p class="rh-text-column">Bestel al je boodschappen en reken de ze af vanuit je winkelmandje</p>
+                        <p class="rh-text-column"><?php echo $lang['order_groceries']; ?></p>
                         <a href="https://www.paypal.com/" target="_blank" >
                             <img src="../img/icon/Paypal-39_icon.png" alt="Paypal betaling geaccepteerd"  class="rh-column-logos">
                         </a>&nbsp;
@@ -163,16 +162,20 @@
                         </a>
                     </div>
                     <div class="rh-rij-text4">
-                        <p class="rh-titel-column">HAAL AF MET QR-CODE</p>
+                        <p class="rh-titel-column"><?php echo $lang['pick_up_QR']; ?></p>
                         <hr class="rh-hr-column">
                         <img class="rh-column-qr" src="../img/qr-code.png" alt="QR-code naar Boer naar Burger">
-                        <p class="rh-text-column">Laat je QR-code scannen door de boer en neem je boodschappen mee naar huis</p>
+                        <p class="rh-text-column"><?php echo $lang['scan_and_pick']; ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+</div>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <?php include APPROOT."/Views/Includes/footer.php"; ?>

@@ -1,2 +1,7 @@
 .idea
 app/Config/Config.php
+.DS_Store
+app/.DS_Store
+app/Config/.DS_Store
+public/.DS_Store
+app/Config/Config.php

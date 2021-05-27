@@ -97,32 +97,36 @@ class Shopowners extends Controller
                     $errorMessage = "Vul het $key_stripped veld in in.";
 
                     $errorName = $key . "Error";
-                    print $errorMessage;
 
                     $data = [$errorName => $errorMessage];
+                    print_r($data);
+               }
+               print $i;
+               $i++ ;
             } 
-             
-                $errorMessages = [
-                    'kvk_numberError',
-                    'shop_nameError',
-                    'descriptionError',
-                    'addressError',
-                    'house_numberError',
-                    'postal_codeError',
-                    'cityError',
-                    'countryError',
-                    'open_fromError',
-                    'banner_urlError',
-                    'closed_atError'] ;
+            $errorMessages = [
+                'kvk_numberError',
+                'shop_nameError',
+                'descriptionError',
+                'addressError',
+                'house_numberError',
+                'postal_codeError',
+                'cityError',
+                'countryError',
+                'open_fromError',
+                'banner_urlError',
+                'closed_atError'] ;
+            
 
-                //if no errors are found continue
-                foreach ($errorMessages as $errorMessage) {
-                    if (!empty($data[$errorMessage])){
-                        die('Registreren is mislukt. Probeer het opnieuw.');
-                    }
+            //if no errors are found continue
+            foreach ($errorMessages as $errorMessage) {
+                if (!empty($data[$errorMessage])){
+                    // go back to the create page with data to show alllll the errors
+                    $this->view('shopowners/create', $data);
+                    exit;
                 }
-                $i++ ;  
-        }
+                    
+            }
 
         if ($this->shopOwnerModel->createShop($data)) {
             $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
@@ -290,7 +294,12 @@ class Shopowners extends Controller
 
                 if ($authorizedShopOwner) {
                     $this->createShopOwnerSession($authorizedShopOwner);
+                    $hasShop = $this->shopOwnerModel->getMyShop();
+                    if ($hasShop) {
+                        header('location:' . URLROOT . '/shopowners/myShop');
+                    } else {
                     header('location:' . URLROOT . '/shopowners/create');
+                    }
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
 
@@ -305,6 +314,7 @@ class Shopowners extends Controller
                 'passwordError' => ''
             ];
         }
+
         $this->view('shopowners/login', $data);
     }
 
@@ -323,65 +333,38 @@ class Shopowners extends Controller
 
     public function updateitems() {
         $data = [
-            'kvk_number'            => '',
-            'shop_name'             => '',
+            'item_name'            => '',
             'description'           => '',
-            'address'               => '',
-            'house_number'          => '',
-            'postal_code'           => '',
-            'city'                  => '',
-            'country'               => '',
-            'open_from'             => '',
-            'closed_at'             => '',
             'banner_url'            => '',
 
-
-            'kvk_numberError'       => '',
-            'shop_nameError'        => '',
+            'item_nameError'       => '',
             'descriptionError'      => '',
-            'addressError'          => '',
-            'house_numberError'     => '',
-            'postal_codeError'      => '',
-            'cityError'             => '',
-            'countryError'          => '',
-            'open_fromError'        => '',
-            'banner_urlError'       => '',
-            'closed_atError'        => ''
+            'banner_urlError'       => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             if (isLoggedInShopOwner()){
-                $KVKNumber = $_SESSION['customer_number'];
+                $KVKNumber = $_SESSION['kvk_number'];
             } else {
                 $KVKNumber = "test";
             }
 
             $data = [
                 'kvk_number'            => $KVKNumber,
-                'shop_name'             => trim($_POST['shop_name']),
+                'shop_name'             => trim($_POST['item_name']),
                 'description'           => trim($_POST['description']),
-                'address'               => trim($_POST['address']),
-                'house_number'          => trim($_POST['house_number']),
-                'postal_code'           => trim($_POST['postal_code']),
-                'city'                  => trim($_POST['city']),
-                'country'               => trim($_POST['country']),
-                'open_from'             => trim($_POST['open_from']),
-                'closed_at'             => trim($_POST['closed_at']),
+                'price'                 => trim($_POST['price']),
+                'stock'                 => trim($_POST['banner_url']),
                 'banner_url'            => trim($_POST['banner_url']),
 
                 'kvk_numberError'       => '',
-                'shop_nameError'        => '',
+                'item_nameeError'       => '',
                 'descriptionError'      => '',
-                'addressError'          => '',
-                'house_numberError'     => '',
-                'postal_codeError'      => '',
-                'cityError'             => '',
-                'countryError'          => '',
-                'open_fromError'        => '',
-                'banner_urlError'       => '',
-                'closed_atError'        => ''
+                'priceError'            => '',
+                'stockError'            => '',
+                'banner_urlError'       => ''
             ];
 
             print_r( $data);
@@ -402,35 +385,40 @@ class Shopowners extends Controller
             } 
              
                 $errorMessages = [
-                    'kvk_numberError',
-                    'shop_nameError',
-                    'descriptionError',
-                    'addressError',
-                    'house_numberError',
-                    'postal_codeError',
-                    'cityError',
-                    'countryError',
-                    'open_fromError',
-                    'banner_urlError',
-                    'closed_atError'] ;
+                'kvk_numberError',
+                'item_nameeError',
+                'descriptionError',
+                'priceError',
+                'stockError',
+                'banner_urlError'] ;
 
                 //if no errors are found continue
                 foreach ($errorMessages as $errorMessage) {
                     if (!empty($data[$errorMessage])){
-                        die('Registreren is mislukt. Probeer het opnieuw.');
+                        $this->view('shopowners/updateitems', $data); 
                     } else {
-                        header('location: ' . URLROOT . '/Shopowners/boeraccountdetails');
+                        header('location: ' . URLROOT . '/Shopowners/updateitems');
                     }
                 }
 
                 $i++ ;
             
         }
+        if ($this->shopOwnerModel->createShop($data)) {
+            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+            $imageFileContents = file_get_contents($imageFile);
+            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+            header('location: ' . URLROOT . '/Shopowners/updateitems');
+        }
     }
         $this->view('shopowners/updateitems', $data);
     }
 
-    
+    public function myShop() {
+        $data = $this->shopOwnerModel->getMyShop();
+        $this->view('shopowners/myShop', $data);
+    }
 
 
 }
