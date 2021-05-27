@@ -6,12 +6,6 @@ use Database;
 
 trait TranslationTrait {
 
-    public $db;
-
-    public function __construct() {
-        $this->db = new Database();
-    }
-
     protected function createOrUpdateTranslation(array $content, $uuid = null) {
         // array of available languages
         $languages = explode(',',LANGUAGES);
