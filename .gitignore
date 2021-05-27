@@ -4,3 +4,4 @@ app/Config/Config.php
 app/.DS_Store
 app/Config/.DS_Store
 public/.DS_Store
+app/Config/Config.php
