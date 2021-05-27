@@ -58,7 +58,7 @@
                                                 foreach($items as $item) : ?>
                                                 <div class="pt-2 d-flex justify-content-between align-items-baseline border-shop">
                                                     <p class="mb-2"><?php echo $item->amount ?>x</p>
-                                                    <p class="mb-2"><?php echo $item->product ?> <strong>(<?php echo $item->shop ?>)</strong></p>
+                                                    <p class="mb-2"><?php echo $this->getTranslation($item->product, $_SESSION['lang']); ?> <strong>(<?php echo $this->getTranslation($item->shop, $_SESSION['lang']); ?>)</strong></p>
                                                     <p class="mb-2">€<?php echo $item->price ?></p>
                                                 </div>
                                                 <?php endforeach; ?>
@@ -126,7 +126,7 @@
                                 foreach($items as $item) : ?>
                                 <div class="pt-2 d-flex justify-content-between align-items-baseline border-shop">
                                     <p class="mb-2"><?php echo $item->amount ?>x</p>
-                                    <p class="mb-2"><?php echo $item->product ?> <strong>(<?php echo $item->shop ?>)</strong></p>
+                                    <p class="mb-2"><?php echo $this->getTranslation($item->product, $_SESSION['lang']); ?> <strong>(<?php echo $this->getTranslation($item->shop, $_SESSION['lang']); ?>)</strong></p>
                                     <p class="mb-2">€<?php echo $item->price ?></p>
                                 </div>
                                 <?php endforeach; ?>

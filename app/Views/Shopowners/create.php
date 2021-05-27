@@ -17,18 +17,21 @@
                     <form method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/create">
 
                         <!-- Shop name -->
-                        <div class="form-group row mx-1 mb-0">
+                        <div class="form-group row mx-1">
                             <div class="col-5">
                                 <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name_nl" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name_en" placeholder="Aardappelen loket" autocomplete="shop_name">
                             </div>
                         </div>
 
-                        <div class="form-group row mx-1 mb-0">
+                        <div class="form-group row mx-1">
                             <!-- description -->
                             <div class="col-5">
                                 <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?></span></label>
-                                <input id="description" type="text" class="form-control rounded-borders" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+                                <input id="description_nl" type="text" class="form-control rounded-borders input-icon-nl" name="description_nl" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+                                <input id="description_en" type="text" class="mt-2 form-control rounded-borders input-icon-en" name="description_en" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+
                             </div>
                         </div><br><br>
 
