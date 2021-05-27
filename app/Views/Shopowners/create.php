@@ -19,31 +19,30 @@
                         <!-- Shop name -->
                         <div class="form-group row mx-1 mb-0">
                             <div class="col-5">
-                                <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php echo $data['shop_nameError'] ?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
-                                <input id="shop_name" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
+                                <input id="shop_name" type="text" class="form-control rounded-borders" name="shop_name" placeholder="Aardappelen loket" autocomplete="shop_name">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- description -->
                             <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php echo $data['descriptionError'] ?></span></label>
-                                <input id="description" type="text" class="form-control rounded-borders <?php if($data['descriptionError']) : ?> is-invalid <?php endif; ?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?></span></label>
+                                <input id="description" type="text" class="form-control rounded-borders" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                             </div>
                         </div><br><br>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="address" class="pl-2 user-data-header">Straatnaam<span class="pl-3 text-danger"><?php echo $data['addressError'] ?></span></label>
-                                <input id="address" type="text" class="form-control rounded-borders <?php if($data['addressError']) : ?> is-invalid <?php endif; ?>" name="address" placeholder="Langedreef" autocomplete="address">
+                                <label for="address" class="pl-2 user-data-header">Straatnaam<span class="pl-3 text-danger"><?php if(isset($data['addressError'])) echo $data['addressError'];?></span></label>
+                                <input id="address" type="text" class="form-control rounded-borders" name="address" placeholder="Langedreef" autocomplete="address">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
-                                <label for="house_number" class="pl-2 user-data-header">huisnummer<span class="pl-3 text-danger"><?php echo $data['house_numberError'] ?></span></label>
-                                <input id="house_number" type="text" class="form-control rounded-borders <?php if($data['house_numberError']) : ?> is-invalid <?php endif; ?>" name="house_number" placeholder="19" autocomplete="house_number">
+                                <label for="house_number" class="pl-2 user-data-header">huisnummer<span class="pl-3 text-danger"><?php if(isset($data['house_numberError'])) echo $data['house_numberError'];?></span></label>
+                                <input id="house_number" type="text" class="form-control rounded-borders" name="house_number" placeholder="19" autocomplete="house_number">
                             </div>
                         </div>
 
@@ -51,36 +50,36 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="postal_code" class="pl-2 user-data-header">Postcode<span class="pl-3 text-danger"><?php echo $data['postal_codeError'] ?></span></label>
-                                <input id="postal_code" type="text" class="form-control rounded-borders <?php if($data['postal_codeError']) : ?> is-invalid <?php endif; ?>" name="postal_code" placeholder="4783RE" autocomplete="postal_code">
+                                <label for="postal_code" class="pl-2 user-data-header">Postcode<span class="pl-3 text-danger"><?php if(isset($data['postal_codeError'])) echo $data['postal_codeError'];?></span></label>
+                                <input id="postal_code" type="text" class="form-control rounded-borders" name="postal_code" placeholder="4783RE" autocomplete="postal_code">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
-                                <label for="country" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php echo $data['countryError'] ?></span></label>
-                                <input id="country" type="text" class="form-control rounded-borders <?php if($data['countryError']) : ?> is-invalid <?php endif; ?>" name="country" placeholder="Nederland" autocomplete="country">
+                                <label for="country" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php if(isset($data['countryError'])) echo $data['countryError'];?></span></label>
+                                <input id="country" type="text" class="form-control rounded-borders" name="country" placeholder="Nederland" autocomplete="country">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- stad -->
                             <div class="col-5">
-                                <label for="city" class="pl-2 user-data-header">Stad<span class="pl-3 text-danger"><?php echo $data['cityError'] ?></span></label>
-                                <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" name="city" placeholder="Amsterdam" autocomplete="city">
+                                <label for="city" class="pl-2 user-data-header">Stad<span class="pl-3 text-danger"><?php if(isset($data['cityError'])) echo $data['cityError'];?></span></label>
+                                <input id="city" type="text" class="form-control rounded-borders" name="city" placeholder="Amsterdam" autocomplete="city">
                             </div>
                         </div><br><br>
 
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="open_from" class="pl-2 user-data-header">Open vanaf<span class="pl-3 text-danger"><?php echo $data['open_fromError'] ?></span></label>
-                                <input id="open_from" type="text" class="form-control rounded-borders <?php if($data['open_fromError']) : ?> is-invalid <?php endif; ?>" name="open_from" placeholder="9:00" autocomplete="open_from">
+                                <label for="open_from" class="pl-2 user-data-header">Open vanaf<span class="pl-3 text-danger"><?php if(isset($data['open_fromError'])) echo $data['open_fromError'];?></span></label>
+                                <input id="open_from" type="text" class="form-control rounded-borders" name="open_from" placeholder="9:00" autocomplete="open_from">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
-                                <label for="closed_at" class="pl-2 user-data-header">Land<span class="pl-3 text-danger"><?php echo $data['closed_atError'] ?></span></label>
-                                <input id="closed_at" type="text" class="form-control rounded-borders <?php if($data['closed_atError']) : ?> is-invalid <?php endif; ?>" name="closed_at" placeholder="17:00" autocomplete="closed_at">
+                                <label for="closed_at" class="pl-2 user-data-header">gesloten om<span class="pl-3 text-danger"><?php if(isset($data['closed_atError'])) echo $data['closed_atError'];?></span></label>
+                                <input id="closed_at" type="text" class="form-control rounded-borders" name="closed_at" placeholder="17:00" autocomplete="closed_at">
                             </div>
                         </div><br>
 
@@ -88,8 +87,8 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- description -->
                             <div class="col-5">
-                                <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php echo $data['banner_urlError'] ?></span></label>
-                                <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders <?php if($data['banner_urlError']) : ?> is-invalid <?php endif; ?>" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
+                                <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['banner_urlError'])) echo $data['banner_urlError'];?></span></label>
+                                <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
                             </div>
                         </div>
 
