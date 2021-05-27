@@ -40,7 +40,8 @@ $lang = array (
     'pick_up_QR'      => "COLLECT WITH QR CODE",
     'scan_and_pick'   => "Have your QR code scanned by the farmer and take your groceries home",
 
-
+    //searchbar
+    'searchfield'     => "Ordernumber, product, etc.",
 
     //customer
     'orders'          => 'Order Overview',
@@ -201,4 +202,8 @@ $lang = array (
                                  Click on "Forgotten password" and enter your email address with which you registered with us.
                                  In a moment you will receive your login details in your inbox.
                                  Now only change your temporary password to your new password and you can use it again.',
+
+    //Mail thank you
+    'bedankt_bericht'       =>  'Thank you for getting in touch!',
+    'bedankt_sub'           =>  'An employee from Boer naar Burger will contact you as soon as possible.',
 );

@@ -40,7 +40,7 @@
 <div class='rh-flex-wrapper'>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" style='background-color:#34744d'>
-  <a class="navbar-brand" href="#" style='height:65px' >
+  <a class="navbar-brand" href="<?php echo URLROOT; ?>/pages/index" style='height:65px' >
     <img src=../img/logo%20Boer%20naar%20burger_liggend_wit_color.png style='height:100%' alt="logo_bnb">
   </a>
 
@@ -49,7 +49,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" >
       <li class="nav-item">
         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/index"><?php echo $lang['home']; ?></a>
       </li>
@@ -62,10 +62,10 @@
         <?php echo $lang['shops']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-hover" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Zeeland</a>
-          <a class="dropdown-item" href="#">West-Brabant</a>
-          <a class="dropdown-item" href="#">Midden-Brabant</a>
-          <a class="dropdown-item" href="#">Oost-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Zeeland</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">West-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Midden-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Oost-Brabant</a>
         </div>
       </li>
 
@@ -82,9 +82,7 @@
     </ul>
   </div>
 
-    <!-- <form class="form-inline  ">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form> -->
+
   
   <!-- div pushes right side of navbar -->
   <div class="mr-auto"></div>
@@ -139,7 +137,10 @@
         </a>
           <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown" style="padding-right: 2px; border-right-width: 0px; padding-left: 2px; border-left-width: 0px;">
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=en" style='margin-bottom: 2px'><img src="../img/icon/EN.png" alt="EN" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/GER.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/IT.png" alt="NL" class="langicon2"></a>
+              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/ES.png" alt="NL" class="langicon2"></a>
           </div>
     </li>
   </ul>

@@ -32,17 +32,16 @@ class Pages extends Controller
     public function contact()
     {
         if (isset($_POST['send-contact'])) {
-
             //set variable data
             $data = [
-                'name'                  => htmlspecialchars($_POST['name']),
-                'emailFrom'             => htmlspecialchars($_POST['emailFrom']),
-                'onderwerp'             => htmlspecialchars($_POST['onderwerp']),
-                'message'               => htmlspecialchars($_POST['message']),
-                'nameErr'               => '',
-                'emailErr'              => '',
-                'onderwerpErr'          => '',
-                'messageErr'            => '',
+                'name' => htmlspecialchars($_POST['name']),
+                'emailFrom' => htmlspecialchars($_POST['emailFrom']),
+                'onderwerp' => htmlspecialchars($_POST['onderwerp']),
+                'message' => htmlspecialchars($_POST['message']),
+                'nameErr' => '',
+                'emailErr' => '',
+                'onderwerpErr' => '',
+                'messageErr' => '',
             ];
 
 
@@ -52,7 +51,7 @@ class Pages extends Controller
 
             if (empty($data['emailFrom'])) {
                 $data['emailErr'] = 'U heeft geen email adres ingevuld.';
-            } else if (!filter_var($data['emailFrom'], FILTER_VALIDATE_EMAIL))
+            } else if (!filter_var($data['emailFrom'], FILTER_VALIDATE_EMAIL)){
                 $data['emailErr'] = 'U heeft een ongeldig email adres ingevuld.';
             }
 
@@ -65,25 +64,28 @@ class Pages extends Controller
            }
 
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
-               // echo "<script> alert('Bedankt voor uw bericht, we nemen zo spoedig mogelijk contact met u op.')</script>";
+                // echo "<script> alert('Bedankt voor uw bericht, we nemen zo spoedig mogelijk contact met u op.')</script>";
 
                 $mailTo = "info@boernaarburger.ml";
-                $headers = "From: ".$data['emailFrom'];
-                $txt = "U heeft een email ontvangen van ".$data['name'].".\n\n".$data['message'];
+                $headers = "From: " . $data['emailFrom'];
+                $txt = "U heeft een email ontvangen van " . $data['name'] . ".\n\n" . $data['message'];
 
                 mail($mailTo, $data['onderwerp'], $txt, $headers);
 
                 // redirect de gebruiker
-               header('location: ' . URLROOT . '/pages/index?mailsend');
+                header('location: ' . URLROOT . '/pages/thankyou?mailsend');
 
-            }
+            }}
 
         $this->view('pages/contact', $data);
     }
 
-
+    public function thankyou() {
+        $this->view('pages/thankyou');
+    }
 
 public function faq() {
         $this->view('pages/faq');
     }
+    
 }
