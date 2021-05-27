@@ -1,23 +1,21 @@
-<?php include APPROOT."/Views/Includes/header.php"; ?>
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-    <div class="card mt-2">
-	    <article class="card-group-item">
-		    <header class="card-header">
-			    <h6 class="title">mijn shop</h6>
-		    </header>
-
-        <!-- 
-            here we show the shopowners data
-
-            TODO: make button to go to order overview and to change data 
-
-          -->
-
-        <div class="col-9 pr-2">
-                    <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
+<?php include APPROOT . "/Views/Includes/header.php"; ?>
+<div class="container pt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+        <div class="row account-profile-card">
+                <div class="col-3 text-center pt-4 green-background">
+                    <div>
+                        <div>
+                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
+                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
+                        </div>
+                        <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
+                    </div>
+                </div>
+                <div class="col-9 pr-2">
+                <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
                     <hr class="mx-2">
+
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
 
                         <div class="form-group row mx-1">
@@ -77,44 +75,11 @@
                             <div class="mr-3 pr-3">
                             <a type="button" href="<?php echo URLROOT; ?>/customers/changepassword" class="btn btn-green"><?php echo $lang['change_password']; ?></a>
                             </div>
-
-
-
-
-
-
-
-
-		    <div class="filter-content">
-          <!-- 
-            here we show the shop the shopowner has created
-
-            TODO: make the button go to shop add/remove and update items 
-
-          -->
-			    <div class="card-body" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/myShop">
-                
-                <?php foreach($data as $key => $shop): ?>
-                    <!-- shop card -->
-                    <div class="p-2">
-                        <div class="account-profile-card" style="width: 18rem;">
-                        <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                                <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']);?></p>
-                                <a href="<?php echo $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
-                            </div>
                         </div>
-                    </div>
-                    <!-- end shop card -->
-                    <?php endforeach; ?>
-			    </div>
-		    </div>
-	    </article>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-  </div>
 </div>
-
-
-<?php include APPROOT."/Views/Includes/footer.php"; ?>
+<?php include APPROOT . "/Views/Includes/footer.php"; ?>

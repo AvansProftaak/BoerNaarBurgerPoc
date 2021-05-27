@@ -11,9 +11,6 @@ class Shopowners extends Controller
     public function __construct() {
         $this->shopOwnerModel = $this->model('Shopowner');
         $this->shopModel = $this->model('Shop');
-        // print_r($this->shopownerModel);
-        // print_r($this->shopModel);
-        // $shops = $this->shopModel->getShops();
     }
 
     
@@ -306,7 +303,7 @@ class Shopowners extends Controller
                     $this->createShopOwnerSession($authorizedShopOwner);
                     $hasShop = $this->shopOwnerModel->getMyShop();
                     if ($hasShop) {
-                        header('location:' . URLROOT . '/shopowners/myShop');
+                        header('location:' . URLROOT . '/shopowners/accountDetails');
                     } else {
                     header('location:' . URLROOT . '/shopowners/create');
                     }
@@ -330,6 +327,7 @@ class Shopowners extends Controller
 
     public function createShopOwnerSession ($shopOwner) {
         $_SESSION['kvk_number'] = $shopOwner->kvk_number;
+        $_SESSION['company_name'] = $shopOwner->company_name;
         $_SESSION['email'] = $shopOwner->email;
         $_SESSION['shopowner_name'] = $shopOwner->first_name . ' ' . $shopOwner->last_name;
     }
@@ -430,5 +428,96 @@ class Shopowners extends Controller
         $this->view('shopowners/myShop', $data);
     }
 
+    public function accountDetails() {
+
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails();
+            $data = [
+                'first_name'            => $shopowner->first_name,
+                'last_name'             => $shopowner->last_name,
+                'email'                 => $shopowner->email,
+                'address'               => $shopowner->address,
+                'house_number'          => $shopowner->house_number,
+                'postal_code'           => $shopowner->postal_code,
+                'city'                  => $shopowner->city,
+                'password'              => '',
+                'password_confirmation' => '',
+                'firstNameError'        => '',
+                'lastNameError'         => '',
+                'emailError'            => '',
+                'passwordError'         => '',
+                'currentPasswordError'  => '',
+                'confirmPasswordError'  => ''
+            ];
+
+            
+
+            if (isset($_POST['submit-personal-data'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'first_name'            => trim($_POST['first_name']),
+                    'last_name'             => trim($_POST['last_name']),
+                    'email'                 => trim($_POST['email']),
+                    'password'              => trim($_POST['password']),
+                    'address'               => trim($_POST['address']),
+                    'house_number'          => trim($_POST['house_number']),
+                    'postal_code'           => trim($_POST['postal_code']),
+                    'city'                  => trim($_POST['city']),
+                    'firstNameError'        => '',
+                    'lastNameError'         => '',
+                    'emailError'            => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
+                ];
+
+                //validate first_name
+                if (empty($data['first_name'])) {
+                    $data['firstNameError'] = 'Vul uw voornaam in.';
+                }
+
+                //validate last_name
+                if (empty($data['last_name'])) {
+                    $data['lastNameError'] = 'Vul uw achternaam in.';
+                }
+
+                //validate email
+                if (empty($data['email'])) {
+                    $data['emailError'] = 'Vul uw e-mail adres in.';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
+                }
+
+                // Validate password
+                if(empty($data['password'])) {
+                    $data['passwordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['password'] != password_verify($data['password'], $shopowner->password)) {
+                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                //if no errors are found continue
+                if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
+                        empty($data['emailError'])) && empty($data['passwordError'])) {
+
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->customerModel->update($data, $shopowner)) {
+                        $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                        header('location: ' . URLROOT . '/shopowners/myshop');
+                    } else {
+                        if((strpos($this->customerModel->update($data, $shopowner),'uc_email') !== false)) {
+                            $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
+                        } else {
+                            die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
+                        }
+                    }
+                }
+            }
+            $this->view('shopowners/accountDetails', $data);
+            print_r($data);
+        }
+    }
 
 }
