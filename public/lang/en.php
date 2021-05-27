@@ -207,4 +207,17 @@ $lang = array (
     //Mail thank you
     'bedankt_bericht'       =>  'Thank you for getting in touch!',
     'bedankt_sub'           =>  'An employee from Boer naar Burger will contact you as soon as possible.',
+
+    //Sitemap
+    'Sitemap_info_burger'           =>  'Information consumer',
+    'Sitemap_info_boer'             =>  'Information farmer',
+    'Sitemap_about'                 =>  'About',
+    'Sitemap_registreer_burger'     =>  'Login as consumer',
+    'Sitemap_login_burger'          =>  'Register as consumer',
+    'Sitemap_details_burger'        =>  'My details',
+    'Sitemap_orders_burger'         =>  'My orders',
+    'Sitemap_register_boer'         =>  'Register as farmer',
+    'Sitemap_login_boer'            =>  'Login as farmer',
+    'Sitemap_shop_boer'             =>  'My shop',
+    'Sitemap_contact'               =>  'Get in touch',
 );

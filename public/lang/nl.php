@@ -224,8 +224,15 @@ $lang = array (
     'bedankt_sub'           =>  'Een medewerker van Boer naar Burger neemt zo spoedig mogelijk contact met u op.',
 
     //Sitemap
-    'Sitemap_aanmelden'             =>  'Aanmelden',
+    'Sitemap_info_burger'           =>  'Informatie burger',
+    'Sitemap_info_boer'             =>  'Informatie boer',
     'Sitemap_about'                 =>  'Wie zijn wij',
     'Sitemap_registreer_burger'     =>  'Registreren als burger',
-
+    'Sitemap_login_burger'          =>  'Aanmelden als burger',
+    'Sitemap_details_burger'        =>  'Mijn gegegevens',
+    'Sitemap_orders_burger'         =>  'Mijn bestellingen',
+    'Sitemap_register_boer'         =>  'Registreren als boer',
+    'Sitemap_login_boer'            =>  'Aanmelden als boer',
+    'Sitemap_shop_boer'             =>  'Mijn shop',
+    'Sitemap_contact'               =>  'Neem contact op',
 );
