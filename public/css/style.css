@@ -1502,3 +1502,22 @@ input:-moz-placeholder {
     font-family: 'Dosis', sans-serif;
     font-weight: bold;
 }
+
+/*  SITEMAP */
+
+.sitemap {
+    margin-top: 30px;
+    font-family: 'Dosis', sans-serif;
+    color: #34744d;
+}
+
+.sitemap li a,
+h3 a{
+    color: #34744d;
+}
+
+.sitemap li a:hover,
+h3 a:hover{
+    color: #34744d;
+}
+

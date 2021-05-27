@@ -179,7 +179,7 @@ $lang = array (
 
     //FAQ
     'veelgestelde_vragen'   =>  'FAQ - Frequently Asked Questions',
-    'wie_zijn_wij'          =>  'Who are we?',
+    'wie_zijn_wij'          =>  'About Boer naar Burger?',
     'wie_zijn_wij_answer'   =>  'Boer naar Burger offers a platform on which products are offered,
                                  that are lost in todays society. By trading these products, we help farmers get rid of their overproduction,
                                  and we support our fellow man in more difficult times.',

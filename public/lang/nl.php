@@ -221,4 +221,10 @@ $lang = array (
     //Mail thank you
     'bedankt_bericht'       =>  'Bedankt voor uw bericht!',
     'bedankt_sub'           =>  'Een medewerker van Boer naar Burger neemt zo spoedig mogelijk contact met u op.',
+
+    //Sitemap
+    'Sitemap_aanmelden'             =>  'Aanmelden',
+    'Sitemap_about'                 =>  'Wie zijn wij',
+    'Sitemap_registreer_burger'     =>  'Registreren als burger',
+
 );
