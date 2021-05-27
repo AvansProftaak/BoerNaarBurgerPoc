@@ -29,7 +29,13 @@ class Translation
                               WHERE translation_tag = :uuid');
 
         $this->db->bind(':uuid', $uuid);
-        return $this->db->resultSet();;
+        $result = $this->db->resultSet();
+
+        if ($result) {
+            return $result;
+            } else {
+            return false;
+        }
     }
 
     public function updateTranslation($uuid, $language, $content) {

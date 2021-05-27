@@ -1,8 +1,9 @@
 <?php
 
-
 class Shopowner
 {
+    use \App\Traits\TranslationTrait;
+
     private $db;
 
     public function __construct() {
@@ -43,8 +44,8 @@ class Shopowner
                               VALUES (:kvk_number, :shop_name, :description, :address, :house_number, :postal_code, :city, :country, :open_from, :closed_at, :banner_url)');
 
         $this->db->bind(':kvk_number', $data['kvk_number']);
-        $this->db->bind(':shop_name', $data['shop_name']);
-        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':shop_name', $this->createOrUpdateTranslation($data['shop_name']));
+        $this->db->bind(':description', $this->createOrUpdateTranslation($data['description']));
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':house_number', $data['house_number']);
         $this->db->bind(':postal_code', $data['postal_code']);
