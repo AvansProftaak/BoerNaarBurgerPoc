@@ -1,8 +1,12 @@
 <?php
 
 
+use App\Traits\TranslationTrait;
+
 class Customers extends Controller
 {
+
+    use TranslationTrait;
     /**
      * @var mixed
      */
