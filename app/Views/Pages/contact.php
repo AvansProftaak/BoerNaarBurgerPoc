@@ -78,7 +78,7 @@
                 </div>
                 <div class="input-container textarea">
                     <textarea  class="input-c" name="message" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>bericht <?php else : ?>message<?php endif; ?>"
-                               rows="5" cols="40"><?php echo htmlspecialchars($data['message']);?></textarea>
+                               rows="5" cols="40"><?php if(isset($data['message'])) echo htmlspecialchars($data['message']);?></textarea>
                     <span class="form-error"><?php if(isset($data['messageErr'])) echo $data['messageErr'];?></span>
                 </div>
                  <input type="submit" name="send-contact" value="<?php echo $lang['contact_button']; ?>" class="btn-c">
