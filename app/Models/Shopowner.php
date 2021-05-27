@@ -150,4 +150,17 @@ class Shopowner
         return $this->db->resultSet();
     }
 
+    public function getAccountDetails() {
+        if (isLoggedInShopOwner()){
+            $KVK = $_SESSION['kvk_number'];
+        } else {
+            # debugging purpose only
+            $KVK = '06989770';
+        }
+
+        $this->db->query('SELECT * FROM boer_naar_burger.shop_owners WHERE kvk_number = :kvk_number');
+        $this->db->bind(':kvk_number', $KVK);
+        return $this->db->single();
+    }
+
 }
