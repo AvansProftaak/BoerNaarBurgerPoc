@@ -5,10 +5,10 @@
     <div class="card mt-2">
 	    <article class="card-group-item">
 		    <header class="card-header">
-			    <h6 class="title">mijn shops</h6>
+			    <h6 class="title">mijn shop</h6>
 		    </header>
 		    <div class="filter-content">
-			    <div class="card-body" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/myShops">
+			    <div class="card-body" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/myShop">
                 
                 <?php foreach($data as $key => $shop): ?>
                     <!-- shop card -->

@@ -294,7 +294,12 @@ class Shopowners extends Controller
 
                 if ($authorizedShopOwner) {
                     $this->createShopOwnerSession($authorizedShopOwner);
+                    $hasShop = $this->shopOwnerModel->getMyShop();
+                    if ($hasShop) {
+                        header('location:' . URLROOT . '/shopowners/myShop');
+                    } else {
                     header('location:' . URLROOT . '/shopowners/create');
+                    }
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
 
@@ -309,6 +314,7 @@ class Shopowners extends Controller
                 'passwordError' => ''
             ];
         }
+
         $this->view('shopowners/login', $data);
     }
 
@@ -409,9 +415,9 @@ class Shopowners extends Controller
         $this->view('shopowners/updateitems', $data);
     }
 
-    public function myShops() {
+    public function myShop() {
         $data = $this->shopOwnerModel->getMyShop();
-        $this->view('shopowners/myShops', $data);
+        $this->view('shopowners/myShop', $data);
     }
 
 
