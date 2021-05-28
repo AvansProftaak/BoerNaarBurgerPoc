@@ -28,12 +28,12 @@
                         <div class="form-group row mx-1">
                             <!-- First Name -->
                             <div class="col-5">
-                                <label for="first_name" class="pl-2 user-data-header"><?php echo $lang['first_name']; ?><span class="pl-3 text-danger"><?php echo $data['firstNameError'] ?></span></label>
+                                <label for="first_name" class="pl-2 user-data-header"><?php echo $lang['first_name']; ?><span class="pl-3 text-danger"><?php if($data['firstNameError']) : echo $lang[$data['firstNameError']]; endif;?></span></label>
                                 <input id="first_name" type="text" class="form-control rounded-borders <?php if($data['firstNameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['first_name']; ?>" name="first_name" autocomplete="fname">
                             </div>
                             <!-- Last Name -->
                             <div class="col">
-                                <label for="last_name" class="pl-2 user-data-header"><?php echo $lang['last_name']; ?><span class="pl-3 text-danger"><?php echo $data['lastNameError'] ?></span></label>
+                                <label for="last_name" class="pl-2 user-data-header"><?php echo $lang['last_name']; ?><span class="pl-3 text-danger"><?php if($data['lastNameError']) : echo $lang[$data['lastNameError']]; endif;?></span></label>
                                 <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['lastNameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['last_name']; ?>" name="last_name" autocomplete="lname">
                             </div>
                         </div>
@@ -41,13 +41,13 @@
                         <!-- E-mail Address -->
                         <div class="form-group row mx-1">
                             <div class="col-5">
-                                <label for="email" class="pl-2 user-data-header"><?php echo $lang['email']; ?><span class="pl-3 text-danger"><?php echo $data['emailError'] ?></span></label>
+                                <label for="email" class="pl-2 user-data-header"><?php echo $lang['email']; ?><span class="pl-3 text-danger"><?php if($data['emailError']) : echo $lang[$data['emailError']]; endif;?></span></label>
                                 <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>"
                                        name="email" value="<?php echo $data['email']; ?>" autocomplete="email">
                             </div>
                             <!-- password -->
                             <div class="col">
-                                <label for="password" class="pl-2 user-data-header"><?php echo $lang['password']; ?><span class="pl-3 text-danger"><?php echo $data['passwordError'] ?></span></label>
+                                <label for="password" class="pl-2 user-data-header"><?php echo $lang['password']; ?><span class="pl-3 text-danger"><?php if($data['passwordError']) : echo $lang[$data['passwordError']]; endif;?></span></label>
                                 <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" autocomplete="passwordd">
                             </div>
                         </div>
@@ -74,10 +74,24 @@
                                 <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data['city']; ?>" name="city" autocomplete="city">
                             </div>
                         </div>
+
+                        <!-- Success/failure messages on changing data -->
                         <?php if(isset($_GET['uploadsuccess'])) : ?>
                         <div class="form-group row mx-1">
                             <div class="col alert-success font-weight-bold"><?php echo $lang['upload_success']; ?></div>
                         </div>
+                        <?php endif;
+
+                        if(isset($_GET['success'])) : ?>
+                            <div class="form-group row mx-1">
+                                <div class="col alert-success font-weight-bold"><?php echo $lang['change_success']; ?></div>
+                            </div>
+                        <?php endif;
+
+                        if(isset($_GET['failed'])) : ?>
+                            <div class="form-group row mx-1">
+                                <div class="col alert-danger font-weight-bold"><?php echo $lang['change_failed']; ?></div>
+                            </div>
                         <?php endif; ?>
 
                         <div class="form-group row mb-3 d-flex justify-content-between">

@@ -49,23 +49,23 @@ class Customers extends Controller
 
             //validate first_name
             if (empty($data['first_name'])) {
-                $data['firstNameError'] = 'Vul uw voornaam in.';
+                $data['firstNameError'] = 'firstname_error';
             }
 
             //validate last_name
             if (empty($data['last_name'])) {
-                $data['lastNameError'] = 'Vul uw achternaam in.';
+                $data['lastNameError'] = 'lastname_error';
             }
 
             //validate email
             if (empty($data['email'])) {
-                $data['emailError'] = 'Vul uw e-mail adres in.';
+                $data['emailError'] = 'email_error';
             } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
+                $data['emailError'] = 'email_invalid';
             } else {
                 // check if email exists
                 if ($this->customerModel->findCustomerByEmail($data['email'])) {
-                    $data['emailError'] = 'E-mail adres is al geregistreerd.';
+                    $data['emailError'] = 'email_registered';
                 }
             }
 
@@ -75,19 +75,19 @@ class Customers extends Controller
 
             // Validate password
             if(empty($data['password'])) {
-                $data['passwordError'] = 'Vul een wachtwoord in.';
+                $data['passwordError'] = 'password_error';
             } elseif(strlen($data['password']) < 6) {
-                $data['passwordError'] = 'Wachtwoord moet tenminste 8 karakters bevatten.';
+                $data['passwordError'] = 'password_chars';
             } elseif (preg_match($passwordValidation, $data['password'])) {
-                $data['passwordError'] = 'Wachtwoord moet tenminste 1 cijfer bevatten.';
+                $data['passwordError'] = 'password_number';
             }
 
             //Validate confirm passwordf
             if (empty($data['password_confirmation'])) {
-                $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                $data['confirmPasswordError'] = 'confirm_error';
             } else {
                 if ($data['password'] != $data['password_confirmation']) {
-                    $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                    $data['confirmPasswordError'] = 'confirm_match';
                 }
             }
 
@@ -100,7 +100,7 @@ class Customers extends Controller
                 if ($this->customerModel->register($data)) {
                     header('location: ' . URLROOT . '/customers/login');
                 } else {
-                    die('Registreren is mislukt. Probeer het opnieuw.');
+                    header('location: ' . URLROOT . '/customers/register?failed');
                 }
             }
         }
@@ -126,11 +126,11 @@ class Customers extends Controller
             ];
 
             if (empty($data['email'])) {
-                $data['emailError'] = 'Vul uw e-mail adres in.';
+                $data['emailError'] = 'email_error';
             }
 
             if (empty($data['password'])) {
-                $data['passwordError'] = 'Vul uw wachtwoord in.';
+                $data['passwordError'] = 'password_error';
             }
 
             if (empty($data['emailError']) && empty($data['passwordError'])) {
@@ -140,7 +140,7 @@ class Customers extends Controller
                     $this->createCustomerSession($authorizedCustomer);
                     header('location:' . URLROOT . '/customers/orderoverview');
                 } else {
-                    $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
+                    $data['passwordError'] = 'pass_incorrect';
 
                     $this->view('customers/login', $data);
                 }
@@ -214,27 +214,27 @@ class Customers extends Controller
 
                 //validate first_name
                 if (empty($data['first_name'])) {
-                    $data['firstNameError'] = 'Vul uw voornaam in.';
+                    $data['firstNameError'] = 'firstname_error';
                 }
 
                 //validate last_name
                 if (empty($data['last_name'])) {
-                    $data['lastNameError'] = 'Vul uw achternaam in.';
+                    $data['lastNameError'] = 'lastname_error';
                 }
 
                 //validate email
                 if (empty($data['email'])) {
-                    $data['emailError'] = 'Vul uw e-mail adres in.';
+                    $data['emailError'] = 'email_error';
                 } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-                    $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
+                    $data['emailError'] = 'email_invalid';
                 }
 
                 // Validate password
                 if(empty($data['password'])) {
-                    $data['passwordError'] = 'Vul uw wachtwoord in.';
+                    $data['passwordError'] = 'password_error';
                 } else {
                     if($data['password'] != password_verify($data['password'], $customer->password)) {
-                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                        $data['passwordError'] = 'pass_incorrect';
                     }
                 }
 
@@ -246,12 +246,12 @@ class Customers extends Controller
 
                     if ($this->customerModel->update($data, $customer)) {
                         $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
-                        header('location: ' . URLROOT . '/customers/accountdetails');
+                        header('location: ' . URLROOT . '/customers/accountdetails?success');
                     } else {
                         if((strpos($this->customerModel->update($data, $customer),'uc_email') !== false)) {
-                            $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
+                            $data['emailError'] = 'email_registered';
                         } else {
-                            die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
+                            header('location: ' . URLROOT . '/customers/accountdetails?failed');
                         }
                     }
                 }
@@ -308,7 +308,8 @@ class Customers extends Controller
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $data = [
-            'current_password'          => '',
+                'profile_image_url'     => $customer->profile_image_url,
+                'current_password'      => '',
                 'password'              => '',
                 'password_confirmation' => '',
                 'currentPasswordError'  => '',
@@ -330,23 +331,23 @@ class Customers extends Controller
 
                 // Validate password
                 if(empty($data['current_password'])) {
-                    $data['currentPasswordError'] = 'Vul uw wachtwoord in.';
+                    $data['currentPasswordError'] = 'password_error';
                 } else {
                     if($data['current_password'] != password_verify($data['current_password'], $customer->password)) {
-                        $data['currentPasswordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                        $data['currentPasswordError'] = 'pass_wrong';
                     }
                 }
 
                 if (empty($data['password'])) {
-                    $data['passwordError'] = 'Vul een nieuw wachtwoord in.';
+                    $data['passwordError'] = 'password_new';
                 }
 
                 //Validate confirm password
                 if (empty($data['password_confirmation'])) {
-                    $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                    $data['confirmPasswordError'] = 'confirm_error';
                 } else {
                     if ($data['password'] != $data['password_confirmation']) {
-                        $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                        $data['confirmPasswordError'] = 'confirm_match';
                     }
                 }
 
@@ -356,7 +357,7 @@ class Customers extends Controller
                     if ($this->customerModel->changePassword($data, $customer)) {
                         header('location: ' . URLROOT . '/customers/accountdetails');
                     } else {
-                        die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
+                        header('location: ' . URLROOT . '/customers/changepassword?failed');
                     }
                 }
             }

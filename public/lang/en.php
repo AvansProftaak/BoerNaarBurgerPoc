@@ -113,6 +113,8 @@ $lang = array (
     'image_error3'       => 'Please upload a jpg, jpeg or png image type.',
     'image_error4'       => 'Maximum allowed filesize is 500KB.',
     'upload_success'     => 'Profile picture successfully uploaded.',
+    'change_success'     => 'Your personal details have been changed successfully.',
+    'change_failed'      => 'Something went wrong while changing your personal details. Please try again.',
 
     //order overview
     'order'             => 'Order',
@@ -231,4 +233,21 @@ $lang = array (
     'Sitemap_login_boer'            =>  'Login as farmer',
     'Sitemap_shop_boer'             =>  'My shop',
     'Sitemap_contact'               =>  'Get in touch',
+
+    // Errors
+    'firstname_error'  => 'Please fill out your first name.',
+    'lastname_error'   => 'Please fill out your last name.',
+    'email_error'      => 'Please fill out your e-mail address.',
+    'email_invalid'    => 'Invalid e-mail. Please enter a correct e-mail address.',
+    'email_registered' => 'E-mail address is already registered.',
+    'password_error'   => 'Please fill out a password',
+    'password_chars'   => 'Password needs to contain at least 8 characters.',
+    'password_number'  => 'Password needs to contain at least 1 number.',
+    'password_new'     => 'Please fill out a new password',
+    'confirm_error'    => 'Please confirm your password.',
+    'confirm_match'    => 'The passwords do not match. Please try again.',
+    'register_failed'  => 'Registration failed. Please try again.',
+    'pass_incorrect'   => 'The provided e-mail address or password is incorrect.',
+    'pass_wrong'       => 'The provided password is incorrect. Please try again.',
+    'pass_failed'      => 'Your password could not be changed. Please try again.',
 );
