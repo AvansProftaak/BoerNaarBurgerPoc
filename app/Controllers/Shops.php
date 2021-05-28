@@ -152,9 +152,18 @@ class Shops extends Controller
     }
 
     public function shopdistrict() {
-        $shops = $this->shopModel->getShopsWestBrabant();
+        $shopsZeeland = $this->shopModel->getShopsZeeland();
+        $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
+        $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
+        $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
 
-        $data = ['shops' => $shops];
+        $data = [
+            'shopsZeeland' => $shopsZeeland,
+            'shopsWestBrabant' => $shopsWestBrabant,
+            'shopsMiddenBrabant' => $shopsMiddenBrabant,
+            'shopsOostBrabant' => $shopsOostBrabant,
+
+    ];
 
         $this->view('shops/shopdistrict', $data);
     }
