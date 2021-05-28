@@ -6,7 +6,15 @@
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
                         <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
+                            <img src="
+                                <?php
+                                    if(!isset($data['profile_image_url'])) :
+                                        if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif;
+                                    else :
+                                    echo '../img' . $data['profile_image_url'];
+                                    endif;
+                                ?>"
+                                 alt="Profile Picture" class="profile-photo"/>
                             <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
                         </div>
                         <h3 class="white-text p-3"><?php echo $_SESSION['customer_name']; ?></h3>
@@ -66,6 +74,11 @@
                                 <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data['city']; ?>" name="city" autocomplete="city">
                             </div>
                         </div>
+                        <?php if(isset($_GET['uploadsuccess'])) : ?>
+                        <div class="form-group row mx-1">
+                            <div class="col alert-success font-weight-bold"><?php echo $lang['upload_success']; ?></div>
+                        </div>
+                        <?php endif; ?>
 
                         <div class="form-group row mb-3 d-flex justify-content-between">
                             <div class="ml-3 pl-3">
@@ -87,23 +100,32 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title user-data-header" id="profilePictureModalLabel">Upload foto</h5>
+                <h5 class="modal-title user-data-header" id="profilePictureModalLabel"><?php echo $lang['upload_photo']; ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="#" method="POST">
-                <div class="modal-body modal-text">
-                    <label for="avatar" class="">Een profielfoto uploaden is niet mogelijk in dit proof of concept.</label>
-                    <input type="file" class="form-control-file" id="image" name="avatar">
+            <form action="<?php echo URLROOT; ?>/customers/accountdetails" method="POST" enctype="multipart/form-data">
+                <div class="form-group modal-body modal-text">
+                    <label for="profile_image_url"><?php echo $lang['profile_picture']; ?></label><br>
+                    <span id="image-error" class="text-danger font-weight-bold"><?php if($data['imageError']) : echo $lang[$data['imageError']]; endif; ?></span>
+                    <input type="file" class="form-control-file" id="profile_image_url" name="profile_image_url">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal">Sluiten</button>
-                    <!-- Button is Disabled. Uploading a profile picture is out of scope for this POC -->
-                    <button type="submit" disabled class="btn btn-green px-2">Opslaan</button>
+                    <button type="button" class="btn btn-bnb-secondary" data-dismiss="modal"><?php echo $lang['close']; ?></button>
+                    <button type="submit" name="submit-profile-picture" class="btn btn-green px-2"><?php echo $lang['save']; ?></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    // jquery function that keeps the modal open if errors are displayed
+    $(document).ready(function () {
+        if (document.getElementById('image-error').innerHTML.length > 0) {
+            $('#profilePictureModal').modal('show');
+        }
+    });
+</script>
 <?php include APPROOT . "/Views/Includes/footer.php"; ?>

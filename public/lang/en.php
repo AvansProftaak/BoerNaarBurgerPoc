@@ -8,6 +8,8 @@ $lang = array (
     'total'      => 'Total',
     'status'     => 'Status',
     'contact2'   => 'Contact',
+    'save'       => 'Save',
+    'close'      => 'Close',
 
     //header
     'home'            => 'HOME',
@@ -104,6 +106,13 @@ $lang = array (
     //account details
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',
+    'profile_picture'    => 'Choose a picture to upload as your profile picture.',
+    'upload_photo'       => 'Upload picture',
+    'image_error'        => 'Please upload an image.',
+    'image_error2'       => 'Could not upload image. Please try again.',
+    'image_error3'       => 'Please upload a jpg, jpeg or png image type.',
+    'image_error4'       => 'Maximum allowed filesize is 500KB.',
+    'upload_success'     => 'Profile picture successfully uploaded.',
 
     //order overview
     'order'             => 'Order',

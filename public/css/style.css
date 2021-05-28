@@ -872,6 +872,10 @@ html {
 
 .profile-photo {
     position: relative;
+    object-fit: cover;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
 }
 
 .photo-icon {

@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Traits\TranslationTrait;
 
 class Customers extends Controller
@@ -182,13 +181,15 @@ class Customers extends Controller
                 'postal_code'           => $customer->postal_code,
                 'city'                  => $customer->city,
                 'password'              => '',
+                'profile_image_url'     => $customer->profile_image_url,
                 'password_confirmation' => '',
                 'firstNameError'        => '',
                 'lastNameError'         => '',
                 'emailError'            => '',
                 'passwordError'         => '',
                 'currentPasswordError'  => '',
-                'confirmPasswordError'  => ''
+                'confirmPasswordError'  => '',
+                'imageError'            => '',
             ];
 
             if (isset($_POST['submit-personal-data'])) {
@@ -207,7 +208,8 @@ class Customers extends Controller
                     'lastNameError'         => '',
                     'emailError'            => '',
                     'passwordError'         => '',
-                    'confirmPasswordError'  => ''
+                    'confirmPasswordError'  => '',
+                    'imageError'            => '',
                 ];
 
                 //validate first_name
@@ -254,6 +256,47 @@ class Customers extends Controller
                     }
                 }
             }
+
+            // upload profile picture
+            if (isset($_POST['submit-profile-picture'])) {
+                $file = $_FILES['profile_image_url'];
+                $fileTmp = $_FILES['profile_image_url']['tmp_name'];
+                $fileName = $_FILES['profile_image_url']['name'];
+                $fileError = $_FILES['profile_image_url']['error'];
+                $fileSize = $_FILES['profile_image_url']['size'];
+
+                // get file extension
+                $fileExt = explode('.', $fileName);
+                $realFileExt = strtolower(end($fileExt));
+                $allowedExt = array('jpg', 'jpeg', 'png');
+
+                if (in_array($realFileExt, $allowedExt)) {
+                    if ($fileError === 0) {
+                        if ($fileSize < 500000) {
+
+                            $generatedFileName = uniqid('', true). '.' . $realFileExt;
+                            $filePath = IMGROOT . DIRECTORY_SEPARATOR . 'assets/profile_images/' .  $generatedFileName;
+                            $storedFilePath = '/assets/profile_images/' .  $generatedFileName;
+
+                            move_uploaded_file($fileTmp, $filePath);
+
+                            if($this->customerModel->updateCustomerImage($_SESSION['email'], $storedFilePath)) {
+                                header('location: ' . URLROOT . '/customers/accountdetails?uploadsuccess');
+                            } else {
+                                $data['imageError'] = 'image_error';
+                            }
+
+                        } else {
+                            $data['imageError'] = 'image_error4';
+                        }
+                    } else {
+                        $data['imageError'] = 'image_error2';
+                    }
+                } else {
+                    $data['imageError'] = 'image_error3';
+                }
+            }
+
             $this->view('customers/accountdetails', $data);
         } else {
             $this->login();

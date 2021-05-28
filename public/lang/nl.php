@@ -8,6 +8,8 @@ $lang = array (
     'total'         => 'Totaal',
     'status'        => 'Status',
     'contact2'      => 'Contact',
+    'save'          => 'Opslaan',
+    'close'         => 'Sluiten',
 
     //header
     'home'            => 'HOME',
@@ -106,6 +108,13 @@ $lang = array (
     //account details
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
+    'profile_picture'    => 'Kies een foto om te uploaden als profielfoto.',
+    'upload_photo'       => 'Upload foto',
+    'image_error'        => 'Upload alstublieft een afbeelding.',
+    'image_error2'       => 'Afbeelding kon niet geupload worden. Probeer het opnieuw.',
+    'image_error3'       => 'Upload alstublieft een afbeelding met jpg, jpeg of png extensie.',
+    'image_error4'       => 'Maximale toegestane grootte van de afbeelding is 500KB.',
+    'upload_success'     => 'Profielfoto is succesvol geupload.',
 
     //order overview
     'order'             => 'Bestelling',
