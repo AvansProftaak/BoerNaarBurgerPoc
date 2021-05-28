@@ -81,6 +81,8 @@ $lang = array (
     'city'              => 'Stad',
     'company_name'      => 'Bedrijfsnaam',
     'kvk_number'        => 'KVK-nummer',
+    'phone_number'      => 'telefoon nummer',
+    'iban'              => 'iban',
 
     //register customer
     'register_left'         => 'Registreer als Burger',

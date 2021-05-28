@@ -155,4 +155,42 @@ class Shopowner
         $this->db->bind(':kvk_number', $KVK);
         return $this->db->resultSet();
     }
+
+    public function getAccountDetails() {
+        if (isLoggedInShopOwner()){
+            $KVK = $_SESSION['kvk_number'];
+        } else {
+            # debugging purpose only
+            $KVK = '06989770';
+        }
+
+        $this->db->query('SELECT * FROM boer_naar_burger.shop_owners WHERE kvk_number = :kvk_number');
+        $this->db->bind(':kvk_number', $KVK);
+        return $this->db->single();
+    }
+
+    public function update($data, $shopowner) {
+        $this->db->query('UPDATE boer_naar_burger.shop_owners SET first_name = :first_name, last_name = :last_name,
+                                email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
+                                company_name = :company_name, phone_number = :phone_number, iban = :iban, city = :city WHERE kvk_number = :kvk_number');
+        $this->db->bind(':company_name', $data['company_name']);
+        $this->db->bind(':iban', $data['iban']);
+        $this->db->bind(':phone_number', $data['phone_number']);
+        $this->db->bind(':first_name', $data['first_name']);
+        $this->db->bind(':last_name', $data['last_name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':house_number', $data['house_number']);
+        $this->db->bind(':postal_code', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':kvk_number', $shopowner->kvk_number);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            return $this->error;
+        }
+    }
 }
