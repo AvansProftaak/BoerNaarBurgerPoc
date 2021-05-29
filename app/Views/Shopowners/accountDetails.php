@@ -97,7 +97,7 @@
                                 <button name = "submit-personal-data" type="submit" class="btn btn-green"><?php echo $lang['save_personal_data']; ?></button>
                             </div>
                             <div class="mr-3 pr-3">
-                            <a type="button" href="<?php echo URLROOT; ?>/customers/changepassword" class="btn btn-green"><?php echo $lang['change_password']; ?></a>
+                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/changepassword" class="btn btn-green"><?php echo $lang['change_password']; ?></a>
                             </div>
                         </div>
                     </form>
