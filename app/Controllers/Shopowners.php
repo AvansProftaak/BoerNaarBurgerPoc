@@ -444,6 +444,7 @@ class Shopowners extends Controller
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
                 'city'                  => $shopowner->city,
+                'company_nameError'     => '',
                 'password'              => '',
                 'password_confirmation' => '',
                 'firstNameError'        => '',
@@ -533,8 +534,8 @@ class Shopowners extends Controller
 
     public function changePassword()
     {
-        if (isLoggedIn()) {
-            $shopowner = $this->shopownerModel->getAccountDetails($_SESSION['email']);
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
             $data = [
             'current_password'          => '',
                 'password'              => '',
@@ -581,7 +582,7 @@ class Shopowners extends Controller
                 if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                    if ($this->customerModel->changePassword($data, $shopowner)) {
+                    if ($this->shopOwnerModel->changePassword($data, $shopowner)) {
                         header('location: ' . URLROOT . '/customers/accountdetails');
                     } else {
                         die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');

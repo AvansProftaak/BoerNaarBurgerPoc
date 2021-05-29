@@ -195,9 +195,9 @@ class Shopowner
     }
 
     public function changePassword($data, $shopowner) {
-        $this->db->query('UPDATE boer_naar_burger.shopowners SET password = :password WHERE customer_number = :customer');
+        $this->db->query('UPDATE boer_naar_burger.shop_owners SET password = :password WHERE company_name = :company_name');
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':customer', $shopowner->customer_number);
+        $this->db->bind(':company_name', $shopowner->company_name);
 
         if ($this->db->execute()) {
             return true;

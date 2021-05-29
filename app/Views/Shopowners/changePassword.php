@@ -6,7 +6,7 @@
                 <div class="col-4 text-center pt-4 green-background">
                     <div>
                         <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                        <h3 class="white-text p-3"><?php echo $_SESSION['customer_name']; ?></h3>
+                        <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
                     </div>
                 </div>
                 <div class="col pr-2">
