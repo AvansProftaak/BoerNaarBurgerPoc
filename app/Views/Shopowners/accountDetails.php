@@ -65,7 +65,7 @@
                             <!-- phone_number -->
                             <div class="col-5">
                                 <label for="phone_number" class="pl-2 user-data-header"><?php echo $lang['phone_number']; ?><span class="pl-3 text-danger"><?php if(isset($data['phone_numberError'])) echo $data['phone_numberError'];?></span></label>
-                                <input id="phone_number" type="text" class="form-control rounded-borders <?php if($data['phone_number']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['phone_number']; ?>" name="phone_number" autocomplete="phonenumber">
+                                <input id="phone_number" type="text" class="form-control rounded-borders <?php if($data['phone_numberError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['phone_number']; ?>" name="phone_number" autocomplete="phonenumber">
                             </div>
                         </div>
 
