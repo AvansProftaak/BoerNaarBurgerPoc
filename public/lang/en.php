@@ -104,6 +104,7 @@ $lang = array (
     'new_password'     => 'New password',
 
     //account details
+    'shop_name'          => 'shopname',
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',
     'profile_picture'    => 'Choose a picture to upload as your profile picture.',
