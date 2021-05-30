@@ -119,6 +119,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
     'profile_picture'    => 'Kies een foto om te uploaden als profielfoto.',
