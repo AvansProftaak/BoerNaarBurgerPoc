@@ -641,19 +641,25 @@ html {
 }
 
 
+/*  */
+.rh-subtitle-shops {
+    font-family: 'Dosis', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+}
 
-
-
-
-
+.rh-table-shops {
+    font-family: 'Dosis', sans-serif;
+    padding: 0;
+}
 
 
 .welcome-images {
     text-align: center;
 }
-
 .logoBnB {
-    width: 65%;
+    width: 40%;
 }
 
 .modal-text {

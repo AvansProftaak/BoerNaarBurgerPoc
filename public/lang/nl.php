@@ -43,7 +43,13 @@ $lang = array (
 
     // searchbar      
     'searchfield'     => "Ordernummer, product, etc",
-    
+
+    // shops dropdown menu
+    'our_shops'       => "ONZE SHOPS IN ",
+    'midden_brabant'  => "MIDDEN-BRABANT",
+    'oost_brabant'    => "OOST-BRABANT",
+    'address'         => "adres",
+    'description'     => "beschrijving",
 
     //customer
     'orders'          => 'Besteloverzicht',

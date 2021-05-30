@@ -1,4 +1,20 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
+<!-- 
+testruimte:
+<br><br><br>
+
+<?php
+echo "<pre>";
+foreach ($data['orders'] as $order) {
+print_r($order->completed_at);
+}
+echo "</pre>";
+?>
+
+<br><br><br>
+einde testruimte:
+<br><br><br> -->
+
 
 <div class="container pt-4">
     <div class="row justify-content-center">
@@ -85,6 +101,7 @@
                                         <p class="p-0 m-0">
 
                                         <?php 
+                                        
                                         setlocale(LC_TIME, "");
                                         setlocale(LC_ALL, 'nl_NL');
                                         $orderMoment = strtotime($order->completed_at);
