@@ -88,13 +88,8 @@
                 </div>
             </div>
         </div>
-
                 
-                
-                
-                
-                
-<div class="container pt-4">
+        <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
         <div class="row account-profile-card">
@@ -172,4 +167,9 @@
 </div>
 </div>
 </div>
+                
+                
+                
+                
+
 <?php include APPROOT . "/Views/Includes/footer.php"; ?>

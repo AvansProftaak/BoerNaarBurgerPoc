@@ -435,6 +435,7 @@ class Shopowners extends Controller
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'company_name'          => $shopowner->company_name,
+                'password'              => $shopowner->password,
                 'iban'                  => $shopowner->iban,
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
@@ -446,24 +447,24 @@ class Shopowners extends Controller
                 'city'                  => $shopowner->city,
                 'company_nameError'     => '',
                 'password'              => '',
-                'password_confirmation' => '',
                 'firstNameError'        => '',
                 'lastNameError'         => '',
                 'emailError'            => '',
                 'phone_numberError'     => '',
-                'passwordError'         => '',
-                'currentPasswordError'  => '',
-                'confirmPasswordError'  => ''
+                'passwordError'         => ''
+
             ];
 
             
 
             if (isset($_POST['submit-personal-data'])) {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $shopowner = $this->shopOwnerModel->getAccountDetails();
 
                 $data = [
-                    'company_name'          => trim($_POST['company_name']),
+                    'kvk_number'            => $_SESSION['kvk_number'],
                     'iban'                  => trim($_POST['iban']),
+                    'password'              => "$shopowner->password",
                     'first_name'            => trim($_POST['first_name']),
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
@@ -478,8 +479,7 @@ class Shopowners extends Controller
                     'lastNameError'         => '',
                     'emailError'            => '',
                     'phone_numberError'     => '',
-                    'passwordError'         => '',
-                    'confirmPasswordError'  => ''
+                    'passwordError'         => ''
                 ];
 
                 //validate first_name
@@ -503,7 +503,7 @@ class Shopowners extends Controller
                 if(empty($data['password'])) {
                     $data['passwordError'] = 'Vul uw wachtwoord in.';
                 } else {
-                    if($data['password'] != password_verify($data['password'], $shopowner->password)) {
+                    if($data['password'] !== $data['password']) {
                         $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
                     }
                 }
@@ -512,7 +512,7 @@ class Shopowners extends Controller
                 if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
                         empty($data['emailError'])) && empty($data['passwordError'])) {
 
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
 
                     if ($this->shopOwnerModel->update($data, $shopowner)) {
                         $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
