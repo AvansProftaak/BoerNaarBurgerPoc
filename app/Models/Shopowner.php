@@ -193,4 +193,16 @@ class Shopowner
             return $this->error;
         }
     }
+
+    public function changePassword($data, $shopowner) {
+        $this->db->query('UPDATE boer_naar_burger.shop_owners SET password = :password WHERE company_name = :company_name');
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':company_name', $shopowner->company_name);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

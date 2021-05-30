@@ -444,6 +444,7 @@ class Shopowners extends Controller
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
                 'city'                  => $shopowner->city,
+                'company_nameError'     => '',
                 'password'              => '',
                 'password_confirmation' => '',
                 'firstNameError'        => '',
@@ -530,5 +531,71 @@ class Shopowners extends Controller
             $this->view('shopowners/accountDetails', $data);
         }
     }
+
+    public function changePassword()
+    {
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
+            $data = [
+            'current_password'          => '',
+                'password'              => '',
+                'password_confirmation' => '',
+                'currentPasswordError'  => '',
+                'passwordError'         => '',
+                'confirmPasswordError'  => ''
+            ];
+
+            if (isset($_POST['submit-change-password'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'current_password'      => trim($_POST['current_password']),
+                    'password'              => trim($_POST['password']),
+                    'password_confirmation' => trim($_POST['password_confirmation']),
+                    'currentPasswordError'  => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
+                ];
+
+                // Validate password
+                if(empty($data['current_password'])) {
+                    $data['currentPasswordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['current_password'] != password_verify($data['current_password'], $shopowner->password)) {
+                        $data['currentPasswordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                if (empty($data['password'])) {
+                    $data['passwordError'] = 'Vul een nieuw wachtwoord in.';
+                }
+
+                //Validate confirm password
+                if (empty($data['password_confirmation'])) {
+                    $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                } else {
+                    if ($data['password'] != $data['password_confirmation']) {
+                        $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                    }
+                }
+
+                if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->shopOwnerModel->changePassword($data, $shopowner)) {
+                        header('location: ' . URLROOT . '/customers/accountdetails');
+                    } else {
+                        die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
+                    }
+                }
+            }
+
+        $this->view('shopowners/changepassword', $data);
+        } else {
+            $this->login();
+        }
+    }
+
+
 
 }
