@@ -86,9 +86,9 @@
                             </div>
                         </div><br>
 
-                        <h5 class="pt-4 pl-4 data-headers">Optioneel</h5>
+                        <h5 class="pt-4 pl-4 data-headers">Afbeelding</h5>
                         <div class="form-group row mx-1 mb-0">
-                            <!-- description -->
+                            <!-- photo -->
                             <div class="col-5">
                                 <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['banner_urlError'])) echo $data['banner_urlError'];?></span></label>
                                 <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">

@@ -86,7 +86,8 @@
                         </div>
                     </form>
                 </div>
-                </div>
+            </div>
+        </div>
 
                 
                 
@@ -141,6 +142,15 @@
                                 <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data['city']; ?>" name="city" autocomplete="city">
                             </div>
                         </div>
+
+                        <h5 class="pt-4 pl-4 data-headers">Afbeelding</h5>
+                        <div class="form-group row mx-1 mb-0">
+                            <!-- photo -->
+                            <div class="col-5">
+                                <label for="photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
+                                <input id="photo" type="file" name="photo" class="form-control rounded-borders" placeholder="http://tiniurl.hackmij.com" autocomplete="photo">
+                            </div>
+                        </div></br>
 
                         <div class="form-group row mb-3 d-flex justify-content-between">
                             <div class="ml-3 pl-3">

@@ -411,15 +411,15 @@ class Shopowners extends Controller
 
                 $i++ ;
             
+                }
+            if ($this->shopOwnerModel->createShop($data)) {
+                $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+                $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+                $imageFileContents = file_get_contents($imageFile);
+                $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+                header('location: ' . URLROOT . '/Shopowners/accountdetails');
+            }
         }
-        if ($this->shopOwnerModel->createShop($data)) {
-            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
-            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
-            $imageFileContents = file_get_contents($imageFile);
-            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-            header('location: ' . URLROOT . '/Shopowners/updateitems');
-        }
-    }
         $this->view('shopowners/updateitems', $data);
     }
 
@@ -467,7 +467,6 @@ class Shopowners extends Controller
                     'first_name'            => trim($_POST['first_name']),
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
-                    'password'              => trim($_POST['password']),
                     'phone_number'          => trim($_POST['phone_number']),
                     'address'               => trim($_POST['address']),
                     'house_number'          => trim($_POST['house_number']),
@@ -583,7 +582,7 @@ class Shopowners extends Controller
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                     if ($this->shopOwnerModel->changePassword($data, $shopowner)) {
-                        header('location: ' . URLROOT . '/customers/accountdetails');
+                        header('location: ' . URLROOT . '/shopowners/accountdetails');
                     } else {
                         die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
                     }
