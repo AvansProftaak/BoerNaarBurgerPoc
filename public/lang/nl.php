@@ -8,6 +8,8 @@ $lang = array (
     'total'         => 'Totaal',
     'status'        => 'Status',
     'contact2'      => 'Contact',
+    'save'          => 'Opslaan',
+    'close'         => 'Sluiten',
 
     //header
     'home'            => 'HOME',
@@ -81,6 +83,8 @@ $lang = array (
     'city'              => 'Stad',
     'company_name'      => 'Bedrijfsnaam',
     'kvk_number'        => 'KVK-nummer',
+    'phone_number'      => 'telefoon nummer',
+    'iban'              => 'iban',
 
     //register customer
     'register_left'         => 'Registreer als Burger',
@@ -104,6 +108,15 @@ $lang = array (
     //account details
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
+    'profile_picture'    => 'Kies een foto om te uploaden als profielfoto.',
+    'upload_photo'       => 'Upload foto',
+    'image_error'        => 'Upload alstublieft een afbeelding.',
+    'image_error2'       => 'Afbeelding kon niet geupload worden. Probeer het opnieuw.',
+    'image_error3'       => 'Upload alstublieft een afbeelding met jpg, jpeg of png extensie.',
+    'image_error4'       => 'Maximale toegestane grootte van de afbeelding is 500KB.',
+    'upload_success'     => 'Profielfoto is succesvol geupload.',
+    'change_success'     => 'Uw gegevens zijn succesvol gewijzigd.',
+    'change_failed'      => 'Uw gegevens konden niet worden opgeslagen. Probeer het opnieuw.',
 
     //order overview
     'order'             => 'Bestelling',
@@ -222,4 +235,34 @@ $lang = array (
     //Mail thank you
     'bedankt_bericht'       =>  'Bedankt voor uw bericht!',
     'bedankt_sub'           =>  'Een medewerker van Boer naar Burger neemt zo spoedig mogelijk contact met u op.',
+
+    //Sitemap
+    'Sitemap_info_burger'           =>  'Informatie burger',
+    'Sitemap_info_boer'             =>  'Informatie boer',
+    'Sitemap_about'                 =>  'Wie zijn wij',
+    'Sitemap_registreer_burger'     =>  'Registreren als burger',
+    'Sitemap_login_burger'          =>  'Aanmelden als burger',
+    'Sitemap_details_burger'        =>  'Mijn gegegevens',
+    'Sitemap_orders_burger'         =>  'Mijn bestellingen',
+    'Sitemap_register_boer'         =>  'Registreren als boer',
+    'Sitemap_login_boer'            =>  'Aanmelden als boer',
+    'Sitemap_shop_boer'             =>  'Mijn shop',
+    'Sitemap_contact'               =>  'Neem contact op',
+
+    // Errors
+    'firstname_error'  => 'Vul uw voornaam in.',
+    'lastname_error'   => 'Vul uw achternaam in.',
+    'email_error'      => 'Vul uw e-mail adres in.',
+    'email_invalid'    => 'Ongeldig e-mail adres. Vul een correct e-mail adres in.',
+    'email_registered' => 'E-mail adres is al geregistreerd.',
+    'password_error'   => 'Vul een wachtwoord in.',
+    'password_chars'   => 'Wachtwoord moet tenminste 8 karakters bevatten.',
+    'password_number'  => 'Wachtwoord moet tenminste 1 cijfer bevatten.',
+    'password_new'     => 'Vul een nieuw wachtwoord in.',
+    'confirm_error'    => 'Bevestig uw wachtwoord.',
+    'confirm_match'    => 'De wachtwoorden komen niet overeen. Probeer het opnieuw.',
+    'register_failed'  => 'Registratie is mislukt. Probeer het opnieuw.',
+    'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
+    'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
+    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.'
 );

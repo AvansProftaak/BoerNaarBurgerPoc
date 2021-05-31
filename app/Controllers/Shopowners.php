@@ -11,9 +11,6 @@ class Shopowners extends Controller
     public function __construct() {
         $this->shopOwnerModel = $this->model('Shopowner');
         $this->shopModel = $this->model('Shop');
-        // print_r($this->shopownerModel);
-        // print_r($this->shopModel);
-        // $shops = $this->shopModel->getShops();
     }
 
     
@@ -306,7 +303,7 @@ class Shopowners extends Controller
                     $this->createShopOwnerSession($authorizedShopOwner);
                     $hasShop = $this->shopOwnerModel->getMyShop();
                     if ($hasShop) {
-                        header('location:' . URLROOT . '/shopowners/myShop');
+                        header('location:' . URLROOT . '/shopowners/accountDetails');
                     } else {
                     header('location:' . URLROOT . '/shopowners/create');
                     }
@@ -330,6 +327,7 @@ class Shopowners extends Controller
 
     public function createShopOwnerSession ($shopOwner) {
         $_SESSION['kvk_number'] = $shopOwner->kvk_number;
+        $_SESSION['company_name'] = $shopOwner->company_name;
         $_SESSION['email'] = $shopOwner->email;
         $_SESSION['shopowner_name'] = $shopOwner->first_name . ' ' . $shopOwner->last_name;
     }
@@ -413,15 +411,15 @@ class Shopowners extends Controller
 
                 $i++ ;
             
+                }
+            if ($this->shopOwnerModel->createShop($data)) {
+                $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+                $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+                $imageFileContents = file_get_contents($imageFile);
+                $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+                header('location: ' . URLROOT . '/Shopowners/accountdetails');
+            }
         }
-        if ($this->shopOwnerModel->createShop($data)) {
-            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
-            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
-            $imageFileContents = file_get_contents($imageFile);
-            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-            header('location: ' . URLROOT . '/Shopowners/updateitems');
-        }
-    }
         $this->view('shopowners/updateitems', $data);
     }
 
@@ -429,6 +427,174 @@ class Shopowners extends Controller
         $data = $this->shopOwnerModel->getMyShop();
         $this->view('shopowners/myShop', $data);
     }
+
+    public function accountDetails() {
+
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails();
+            $data = [
+                'kvk_number'            => $_SESSION['kvk_number'],
+                'company_name'          => $shopowner->company_name,
+                'password'              => $shopowner->password,
+                'iban'                  => $shopowner->iban,
+                'first_name'            => $shopowner->first_name,
+                'last_name'             => $shopowner->last_name,
+                'email'                 => $shopowner->email,
+                'phone_number'          => $shopowner->phone_number,
+                'address'               => $shopowner->address,
+                'house_number'          => $shopowner->house_number,
+                'postal_code'           => $shopowner->postal_code,
+                'city'                  => $shopowner->city,
+                'company_nameError'     => '',
+                'password'              => '',
+                'firstNameError'        => '',
+                'lastNameError'         => '',
+                'emailError'            => '',
+                'phone_numberError'     => '',
+                'passwordError'         => ''
+
+            ];
+
+            
+
+            if (isset($_POST['submit-personal-data'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $shopowner = $this->shopOwnerModel->getAccountDetails();
+
+                $data = [
+                    'kvk_number'            => $_SESSION['kvk_number'],
+                    'iban'                  => trim($_POST['iban']),
+                    'password'              => "$shopowner->password",
+                    'first_name'            => trim($_POST['first_name']),
+                    'last_name'             => trim($_POST['last_name']),
+                    'email'                 => trim($_POST['email']),
+                    'phone_number'          => trim($_POST['phone_number']),
+                    'address'               => trim($_POST['address']),
+                    'house_number'          => trim($_POST['house_number']),
+                    'postal_code'           => trim($_POST['postal_code']),
+                    'city'                  => trim($_POST['city']),
+                    'ibanError'             => '',
+                    'company_nameError'     => '',
+                    'firstNameError'        => '',
+                    'lastNameError'         => '',
+                    'emailError'            => '',
+                    'phone_numberError'     => '',
+                    'passwordError'         => ''
+                ];
+
+                //validate first_name
+                if (empty($data['first_name'])) {
+                    $data['firstNameError'] = 'Vul uw voornaam in.';
+                }
+
+                //validate last_name
+                if (empty($data['last_name'])) {
+                    $data['lastNameError'] = 'Vul uw achternaam in.';
+                }
+
+                //validate email
+                if (empty($data['email'])) {
+                    $data['emailError'] = 'Vul uw e-mail adres in.';
+                } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
+                }
+
+                // Validate password
+                if(empty($data['password'])) {
+                    $data['passwordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['password'] !== $data['password']) {
+                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                //if no errors are found continue
+                if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
+                        empty($data['emailError'])) && empty($data['passwordError'])) {
+
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
+
+                    if ($this->shopOwnerModel->update($data, $shopowner)) {
+                        $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
+
+                        header('location: ' . URLROOT . '/shopowners/accountDetails');
+                    } else {
+                        if((strpos($this->shopOwnerModel->update($data, $shopowner),'uc_email') !== false)) {
+                            $data['emailError'] = 'Er bestaat al een account met dit e-mail adres.';
+                        } else {
+                            die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
+                        }
+                    }
+                }
+            }
+            $this->view('shopowners/accountDetails', $data);
+        }
+    }
+
+    public function changePassword()
+    {
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
+            $data = [
+            'current_password'          => '',
+                'password'              => '',
+                'password_confirmation' => '',
+                'currentPasswordError'  => '',
+                'passwordError'         => '',
+                'confirmPasswordError'  => ''
+            ];
+
+            if (isset($_POST['submit-change-password'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'current_password'      => trim($_POST['current_password']),
+                    'password'              => trim($_POST['password']),
+                    'password_confirmation' => trim($_POST['password_confirmation']),
+                    'currentPasswordError'  => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
+                ];
+
+                // Validate password
+                if(empty($data['current_password'])) {
+                    $data['currentPasswordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['current_password'] != password_verify($data['current_password'], $shopowner->password)) {
+                        $data['currentPasswordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                if (empty($data['password'])) {
+                    $data['passwordError'] = 'Vul een nieuw wachtwoord in.';
+                }
+
+                //Validate confirm password
+                if (empty($data['password_confirmation'])) {
+                    $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                } else {
+                    if ($data['password'] != $data['password_confirmation']) {
+                        $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                    }
+                }
+
+                if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->shopOwnerModel->changePassword($data, $shopowner)) {
+                        header('location: ' . URLROOT . '/shopowners/accountdetails');
+                    } else {
+                        die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
+                    }
+                }
+            }
+
+        $this->view('shopowners/changepassword', $data);
+        } else {
+            $this->login();
+        }
+    }
+
 
 
 }

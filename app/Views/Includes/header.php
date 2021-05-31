@@ -17,6 +17,7 @@
     <script src="../js/bootstrap.js" defer></script>
     <script src="../js/app.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
 
     <!-- Icon -->
     <link rel ="icon" href = '../img/icon/favicon.ico' type = "image/favicon">
