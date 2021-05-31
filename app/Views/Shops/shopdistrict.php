@@ -9,17 +9,28 @@
 
 <div class='container '>
     <div class='row justify-content-center rh-div-shopspage'>
-        <div class='col-8' style='text-align: justify'>
+        
+        <?php if (isset($_SESSION['customer_number'])) : ?>
+            <div class='col-10' style='text-align: justify'>
+            <p><?php echo $lang['hello']; ?><b><?php echo $_SESSION['customer_name']; ?></b>,</p>
+            <?php elseif (!isset($_SESSION['customer_number'])) : ?>
+                <div class='col-8' style='text-align: justify'>
+                <p><?php echo $lang['hello_new_customer']; ?>,</p>
+        <?php endif; ?>
             <p><?php echo $lang['shops_text']; ?></p>
                 <div style='text-align: center'>
                 <?php echo $lang['shops_text2']; ?><br>
+                    <?php if (!isset($_SESSION['customer_number'])) : ?>
                     <strong><u><?php echo $lang['shops_text3']; ?></u></strong>
+                    <?php endif; ?>
                 </div>
         </div>
+        <?php if (!isset($_SESSION['customer_number'])) : ?>
         <div class='col-2'>          
             <button style='width: 90%; margin-top: 20px; margin-bottom: 20px' onclick="document.location='<?php echo URLROOT; ?>/customers/register'" class="rh-login-register-shopspage"><?php echo $lang['register']; ?></button>      
             <button style='width: 90%' onclick="document.location='<?php echo URLROOT; ?>/customers/login'" class="rh-login-register-shopspage"><?php echo $lang['login_button']; ?></button>
         </div>
+        <?php endif; ?>
     </div>     
     <br><br>
 </div>

@@ -47,6 +47,8 @@ $lang = array (
     'searchfield'     => "Ordernummer, product, etc",
 
     // shops Rob
+    'hello'           => "Hallo ",
+    'hello_new_customer'=> "Hallo nieuwe klant",
     'our_shops'       => "ONZE SHOPS IN ",
     'midden_brabant'  => "MIDDEN-BRABANT",
     'oost_brabant'    => "OOST-BRABANT",

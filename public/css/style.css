@@ -1595,10 +1595,12 @@ h3 a:hover{
 background-color: #dfaeaa;
 border-radius: 10px;
 border: 1px solid #005622;
+transition: 0.4s;
 }
 
 .rh-tablerow-style:hover {
     background-color: gold;
+    transition: 0.4s;
 }
 
 .rh-clickable-row {
