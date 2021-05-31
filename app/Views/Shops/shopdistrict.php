@@ -2,11 +2,30 @@
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
 ?>
+
 <div class="col-12">
     <img class="mx-auto d-block" style="max-width:40%" src="../img/logo Boer naar burger_liggend_color.png" alt="Sla">
 </div>
 
-<p> Hier komt een stukje tekst </p>
+<div class='container '>
+    <div class='row justify-content-center rh-div-shopspage'>
+        <div class='col-8' style='text-align: justify'>
+            <p><?php echo $lang['shops_text']; ?></p>
+                <div style='text-align: center'>
+                <?php echo $lang['shops_text2']; ?><br>
+                    <strong><u><?php echo $lang['shops_text3']; ?></u></strong>
+                </div>
+        </div>
+        <div class='col-2'>          
+            <button style='width: 90%; margin-top: 20px; margin-bottom: 20px' onclick="document.location='<?php echo URLROOT; ?>/customers/register'" class="rh-login-register-shopspage"><?php echo $lang['register']; ?></button>      
+            <button style='width: 90%' onclick="document.location='<?php echo URLROOT; ?>/customers/login'" class="rh-login-register-shopspage"><?php echo $lang['login_button']; ?></button>
+        </div>
+    </div>     
+    <br><br>
+</div>
+
+<hr class="columnLijn">
+<br><br>
 
 <?php if (isset($_GET['shopLinksZeeland'])) : ?>
 <h1 class="rh-subtitle-shops"><?php echo $lang['our_shops']; ?>ZEELAND</h1>
@@ -17,69 +36,128 @@
             <?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
             <h1 class="rh-subtitle-shops"><?php echo $lang['our_shops']; ?><?php echo $lang['oost_brabant']; ?></h1>
 <?php endif; ?>
+<br>
 
-<table style="font-family: 'Dosis', sans-serif;">
-  <tr>
-    <th class='col-3' style='padding:0'><?php echo ucwords($lang['company_name']) ?></th>
-    <th class='col-2' style='padding:0'><?php echo ucwords($lang['address']) ?></th>
-    <th class='col-2' style='padding:0'><?php echo ucwords($lang['zipcode']) ?></th>
-    <th class='col-2' style='padding:0'><?php echo ucwords($lang['city']) ?></th>
-    <th class='col-3' style='padding:0'><?php echo ucwords($lang['description']) ?></th>
-  </tr>
+<div class='col-12 row justify-content-center'>
+    <div class='col-11'>
+        <table style="font-family: 'Montserrat', sans-serif">
+        <tr class='rh-tablehead-style'>
+            <th class='col-3' style='padding-left: 0.75rem'><?php echo ucwords($lang['company_name']) ?></th>
+            <th class='col-2'><?php echo ucwords($lang['address']) ?></th>
+            <th class='col-2'><?php echo ucwords($lang['zipcode']) ?></th>
+            <th class='col-2'><?php echo ucwords($lang['city']) ?></th>
+            <th class='col-3'><?php echo ucwords($lang['description']) ?></th>
+        </tr>
 
-<?php if (isset($_GET['shopLinksZeeland'])) : ?>
-    <?php foreach($data['shopsZeeland'] as $shop): ?>
-    <tr>
-        <td class='col-3' style='padding:0'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
-        <td class='col-2' style='padding:0'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
-        <td class='col-2' style='padding:0'><?php echo $shop->postal_code?></td>
-        <td class='col-2' style='padding:0'><?php echo ucwords($shop->city) ?></td>
-        <td class='col-3' style='padding:0'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+        <?php if (isset($_GET['shopLinksZeeland'])) : ?>
+            <?php if (!isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsZeeland'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
 
-<?php elseif (isset($_GET['shopLinksWestBrabant'])) : ?>
-    <?php foreach($data['shopsWestBrabant'] as $shop): ?>
-    <tr>
-        <td><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
-        <td><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
-        <td><?php echo $shop->postal_code?></td>
-        <td><?php echo ucwords($shop->city) ?></td>
-        <td><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+            <?php elseif (isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsZeeland'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
 
-<?php elseif (isset($_GET['shopLinksMiddenBrabant'])) : ?>
-    <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
-    <tr>
-        <td><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
-        <td><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
-        <td><?php echo $shop->postal_code?></td>
-        <td><?php echo ucwords($shop->city) ?></td>
-        <td><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+        <?php elseif (isset($_GET['shopLinksWestBrabant'])) : ?>
+            <?php if (!isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsWestBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
 
-<?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
-    <?php foreach($data['shopsOostBrabant'] as $shop): ?>
-    <tr>
-        <td><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
-        <td><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
-        <td><?php echo $shop->postal_code?></td>
-        <td><?php echo ucwords($shop->city) ?></td>
-        <td><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+            <?php elseif (isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsWestBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style rh-clickable-row' onclick="window.location='<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>'">
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
 
-<?php else : ?>
-<h1 class="rh-subtitle-shops"> Error 404</h1>
+        <?php elseif (isset($_GET['shopLinksMiddenBrabant'])) : ?>
+            <?php if (!isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
 
-<?php endif; ?>
+            <?php elseif (isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
 
+        <?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
+            <?php if (!isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsOostBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
+
+            <?php elseif (!isset($_SESSION['customer_number'])) : ?>
+                <?php foreach($data['shopsOostBrabant'] as $shop): ?>
+                <tr class='rh-tablerow-style'>
+                    <td class='col-3' style='padding-left: 0.75rem'><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang'])?></td>
+                    <td class='col-2'><?php echo ucwords($shop->address) . " " . $shop->house_number?></td>
+                    <td class='col-2'><?php echo $shop->postal_code?></td>
+                    <td class='col-2'><?php echo ucwords($shop->city) ?></td>
+                    <td class='col-3'><?php echo $this->getTranslation($shop->description, $_SESSION['lang'])?></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
+
+        <?php else : ?>
+            <meta http-equiv="refresh" content="0; URL='<?php echo URLROOT; ?>/pages/index'"/> 
+
+        <?php endif; ?>
+    </div>
+</div>      
+
+<br><br>
 <hr class="columnLijn">
+
 
 <?php require_once APPROOT."/Views/Includes/footer.php";?>
