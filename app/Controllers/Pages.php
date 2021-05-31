@@ -84,8 +84,12 @@ class Pages extends Controller
         $this->view('pages/thankyou');
     }
 
-public function faq() {
+    public function faq() {
         $this->view('pages/faq');
     }
-    
+
+
+    public function sitemap() {
+        $this->view('pages/sitemap');
+    }
 }

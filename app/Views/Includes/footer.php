@@ -41,8 +41,8 @@
                 <div class="px-5 pt-3 mx-5 col footer-content">
                     <div>
                         <h2 class="h2-footer"><?php echo $lang['service']; ?></h2>
-                        <li><a href="<?php echo URLROOT; ?>/pages/index" class="a-footer"><?php echo $lang['sitemap']; ?></a></li>
-                        <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer"><?php echo $lang['faq']; ?></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/pages/sitemap" class="a-footer"><?php echo $lang['sitemap']; ?></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/pages/faq" class="a-footer"><?php echo $lang['faq']; ?></a></li>
                         <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer"><?php echo $lang['contact2']; ?></a></li>
                         <br/>
                         <a href="<?php echo URLROOT; ?>/shopowners/register" class="btn btn-pink">

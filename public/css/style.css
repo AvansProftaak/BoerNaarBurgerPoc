@@ -878,6 +878,10 @@ html {
 
 .profile-photo {
     position: relative;
+    object-fit: cover;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
 }
 
 .photo-icon {
@@ -1507,6 +1511,24 @@ input:-moz-placeholder {
 .form-control {
     font-family: 'Dosis', sans-serif;
     font-weight: bold;
+}
+
+/*  SITEMAP */
+
+.sitemap {
+    margin-top: 30px;
+    font-family: 'Dosis', sans-serif;
+    color: #34744d;
+}
+
+.sitemap li a,
+h3 a{
+    color: #34744d;
+}
+
+.sitemap li a:hover,
+h3 a:hover{
+    color: #34744d;
 }
 
 .input-icon-nl {

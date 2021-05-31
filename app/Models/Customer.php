@@ -102,6 +102,17 @@ class Customer
         }
     }
 
+    function updateCustomerImage($email, $url){
+        $this->db->query('UPDATE boer_naar_burger.customers SET profile_image_url = :url WHERE email = :email');
 
+        $this->db->bind(':url', $url);
+        $this->db->bind(':email', $email);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
