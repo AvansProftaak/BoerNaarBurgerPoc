@@ -411,15 +411,15 @@ class Shopowners extends Controller
 
                 $i++ ;
             
+                }
+            if ($this->shopOwnerModel->createShop($data)) {
+                $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+                $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+                $imageFileContents = file_get_contents($imageFile);
+                $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+                header('location: ' . URLROOT . '/Shopowners/accountdetails');
+            }
         }
-        if ($this->shopOwnerModel->createShop($data)) {
-            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
-            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
-            $imageFileContents = file_get_contents($imageFile);
-            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-            header('location: ' . URLROOT . '/Shopowners/updateitems');
-        }
-    }
         $this->view('shopowners/updateitems', $data);
     }
 
@@ -435,6 +435,7 @@ class Shopowners extends Controller
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'company_name'          => $shopowner->company_name,
+                'password'              => $shopowner->password,
                 'iban'                  => $shopowner->iban,
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
@@ -444,29 +445,29 @@ class Shopowners extends Controller
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
                 'city'                  => $shopowner->city,
+                'company_nameError'     => '',
                 'password'              => '',
-                'password_confirmation' => '',
                 'firstNameError'        => '',
                 'lastNameError'         => '',
                 'emailError'            => '',
                 'phone_numberError'     => '',
-                'passwordError'         => '',
-                'currentPasswordError'  => '',
-                'confirmPasswordError'  => ''
+                'passwordError'         => ''
+
             ];
 
             
 
             if (isset($_POST['submit-personal-data'])) {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $shopowner = $this->shopOwnerModel->getAccountDetails();
 
                 $data = [
-                    'company_name'          => trim($_POST['company_name']),
+                    'kvk_number'            => $_SESSION['kvk_number'],
                     'iban'                  => trim($_POST['iban']),
+                    'password'              => "$shopowner->password",
                     'first_name'            => trim($_POST['first_name']),
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
-                    'password'              => trim($_POST['password']),
                     'phone_number'          => trim($_POST['phone_number']),
                     'address'               => trim($_POST['address']),
                     'house_number'          => trim($_POST['house_number']),
@@ -478,8 +479,7 @@ class Shopowners extends Controller
                     'lastNameError'         => '',
                     'emailError'            => '',
                     'phone_numberError'     => '',
-                    'passwordError'         => '',
-                    'confirmPasswordError'  => ''
+                    'passwordError'         => ''
                 ];
 
                 //validate first_name
@@ -503,7 +503,7 @@ class Shopowners extends Controller
                 if(empty($data['password'])) {
                     $data['passwordError'] = 'Vul uw wachtwoord in.';
                 } else {
-                    if($data['password'] != password_verify($data['password'], $shopowner->password)) {
+                    if($data['password'] !== $data['password']) {
                         $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
                     }
                 }
@@ -512,7 +512,7 @@ class Shopowners extends Controller
                 if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
                         empty($data['emailError'])) && empty($data['passwordError'])) {
 
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
 
                     if ($this->shopOwnerModel->update($data, $shopowner)) {
                         $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
@@ -530,5 +530,71 @@ class Shopowners extends Controller
             $this->view('shopowners/accountDetails', $data);
         }
     }
+
+    public function changePassword()
+    {
+        if (isLoggedInShopOwner()) {
+            $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
+            $data = [
+            'current_password'          => '',
+                'password'              => '',
+                'password_confirmation' => '',
+                'currentPasswordError'  => '',
+                'passwordError'         => '',
+                'confirmPasswordError'  => ''
+            ];
+
+            if (isset($_POST['submit-change-password'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'current_password'      => trim($_POST['current_password']),
+                    'password'              => trim($_POST['password']),
+                    'password_confirmation' => trim($_POST['password_confirmation']),
+                    'currentPasswordError'  => '',
+                    'passwordError'         => '',
+                    'confirmPasswordError'  => ''
+                ];
+
+                // Validate password
+                if(empty($data['current_password'])) {
+                    $data['currentPasswordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['current_password'] != password_verify($data['current_password'], $shopowner->password)) {
+                        $data['currentPasswordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                if (empty($data['password'])) {
+                    $data['passwordError'] = 'Vul een nieuw wachtwoord in.';
+                }
+
+                //Validate confirm password
+                if (empty($data['password_confirmation'])) {
+                    $data['confirmPasswordError'] = 'Bevestig uw wachtwoord.';
+                } else {
+                    if ($data['password'] != $data['password_confirmation']) {
+                        $data['confirmPasswordError'] = 'De wachtwoorden komen niet overeen. Probeer het opnieuw.';
+                    }
+                }
+
+                if (empty($data['currentPasswordError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    if ($this->shopOwnerModel->changePassword($data, $shopowner)) {
+                        header('location: ' . URLROOT . '/shopowners/accountdetails');
+                    } else {
+                        die('Wachtwoord wijzigen mislukt. Probeer het opnieuw.');
+                    }
+                }
+            }
+
+        $this->view('shopowners/changepassword', $data);
+        } else {
+            $this->login();
+        }
+    }
+
+
 
 }

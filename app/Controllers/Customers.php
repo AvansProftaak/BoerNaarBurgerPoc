@@ -375,7 +375,7 @@ class Customers extends Controller
 
             $data = [
                 'orders'        => $orders,
-                'customer'      => $customer
+                'customer'      => $customer,
             ];
 
             $this->view('customers/orderoverview', $data);
@@ -383,26 +383,39 @@ class Customers extends Controller
             $this->login();
         }
     }
+
     public function orderMoment() {
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
 
-            setlocale(LC_TIME, "");
-            setlocale(LC_ALL, 'nl_NL');
-
-            $orderMoment = strtotime($orders->completed_at);                                    
-            $date = strftime("%A %d %B %Y", $orderMoment);
-            $time = strftime("%H:%M", $orderMoment);
-
-                $data = [
-                    'orders'      => $orders,
-                    'customer'    => $customer,
-                    'date'        => $date,
-                    'time'        => $time,
+            $data = [
+                'orders'        => $orders,
+                'customer'      => $customer,
             ];
 
-            $this->view('customers/orderoverview', $data);
+            $ordermoment = $this->$data['orders'];
+
+            $this->view('customers/orderoverview', $ordermoment);
+        } else {
+            $this->login();
         }
     }
+
+    // public function orderMoment() {
+    //     $orders = $this->orderModel->getCustomerOrders($customer);
+        
+    //     setlocale(LC_TIME, "");
+    //     setlocale(LC_ALL, 'nl_NL');
+
+    //     $orderMoment = strtotime($orders->completed_at);                                    
+    //     $date = strftime("%A %d %B %Y", $orderMoment);
+    //     $time = strftime("%H:%M", $orderMoment);
+
+    //     return $date;
+    //     return $time;
+
+    //     $this->view('customers/orderoverview', $data);
+        
+    // }
 }

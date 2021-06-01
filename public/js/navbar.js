@@ -34,3 +34,8 @@ window.onclick = function (event) {
         }
     }
 }
+
+
+
+// Clickable tables SHOPS page
+
