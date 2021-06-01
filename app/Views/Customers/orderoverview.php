@@ -1,19 +1,5 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
-<!-- 
-testruimte:
-<br><br><br>
 
-<?php
-echo "<pre>";
-foreach ($data['orders'] as $order) {
-print_r($order->completed_at);
-}
-echo "</pre>";
-?>
-
-<br><br><br>
-einde testruimte:
-<br><br><br> -->
 
 
 <div class="container pt-4">
