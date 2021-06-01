@@ -375,7 +375,8 @@ class Customers extends Controller
 
             $data = [
                 'orders'        => $orders,
-                'customer'      => $customer
+                'customer'      => $customer,
+                'datumtijd'     => $orders->completed_at,
             ];
 
             $this->view('customers/orderoverview', $data);
@@ -383,26 +384,20 @@ class Customers extends Controller
             $this->login();
         }
     }
-    public function orderMoment() {
-        if (isLoggedIn()) {
-            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-            $orders = $this->orderModel->getCustomerOrders($customer);
+    // public function orderMoment() {
+    //     $orders = $this->orderModel->getCustomerOrders($customer);
+        
+    //     setlocale(LC_TIME, "");
+    //     setlocale(LC_ALL, 'nl_NL');
 
-            setlocale(LC_TIME, "");
-            setlocale(LC_ALL, 'nl_NL');
+    //     $orderMoment = strtotime($orders->completed_at);                                    
+    //     $date = strftime("%A %d %B %Y", $orderMoment);
+    //     $time = strftime("%H:%M", $orderMoment);
 
-            $orderMoment = strtotime($orders->completed_at);                                    
-            $date = strftime("%A %d %B %Y", $orderMoment);
-            $time = strftime("%H:%M", $orderMoment);
+    //     return $date;
+    //     return $time;
 
-                $data = [
-                    'orders'      => $orders,
-                    'customer'    => $customer,
-                    'date'        => $date,
-                    'time'        => $time,
-            ];
-
-            $this->view('customers/orderoverview', $data);
-        }
-    }
+    //     $this->view('customers/orderoverview', $data);
+        
+    // }
 }

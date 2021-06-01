@@ -63,10 +63,10 @@
         <?php echo $lang['shops']; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-hover" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Zeeland</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">West-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Midden-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Oost-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksZeeland=a_value">Zeeland</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksWestBrabant=a_value">West-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksMiddenBrabant=a_value">Midden-Brabant</a>
+          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksOostBrabant=a_value">Oost-Brabant</a>
         </div>
       </li>
 
@@ -139,9 +139,6 @@
           <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown" style="padding-right: 2px; border-right-width: 0px; padding-left: 2px; border-left-width: 0px;">
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=en" style='margin-bottom: 2px'><img src="../img/icon/EN.png" alt="EN" class="langicon2"></a>
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/GER.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/IT.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/ES.png" alt="NL" class="langicon2"></a>
           </div>
     </li>
   </ul>
