@@ -376,7 +376,6 @@ class Customers extends Controller
             $data = [
                 'orders'        => $orders,
                 'customer'      => $customer,
-                'datumtijd'     => $orders->completed_at,
             ];
 
             $this->view('customers/orderoverview', $data);
@@ -384,6 +383,25 @@ class Customers extends Controller
             $this->login();
         }
     }
+
+    public function orderMoment() {
+        if (isLoggedIn()) {
+            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+            $orders = $this->orderModel->getCustomerOrders($customer);
+
+            $data = [
+                'orders'        => $orders,
+                'customer'      => $customer,
+            ];
+
+            $ordermoment = $this->$data['orders'];
+
+            $this->view('customers/orderoverview', $ordermoment);
+        } else {
+            $this->login();
+        }
+    }
+
     // public function orderMoment() {
     //     $orders = $this->orderModel->getCustomerOrders($customer);
         

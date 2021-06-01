@@ -33,22 +33,28 @@ class Shop
     }
 
     public function getShopsZeeland() {
-        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "43%") OR (postal_code LIKE "44%") OR (postal_code LIKE "45%"))');
+        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "43%") OR (postal_code LIKE "44%") OR (postal_code LIKE "45%")) ORDER BY City');
         return $this->db->resultSet();
     }
 
     public function getShopsWestBrabant() {
-        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "46%") OR (postal_code LIKE "47%") OR (postal_code LIKE "48%") OR (postal_code LIKE "49%"))');
+        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "46%") OR (postal_code LIKE "47%") OR (postal_code LIKE "48%") OR (postal_code LIKE "49%")) ORDER BY City');
         return $this->db->resultSet();
     }
 
     public function getShopsMiddenBrabant() {
-        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "50%") OR (postal_code LIKE "51%") OR (postal_code LIKE "52%"))');
+        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "50%") OR (postal_code LIKE "51%") OR (postal_code LIKE "52%")) ORDER BY City');
         return $this->db->resultSet();
     }
 
     public function getShopsOostBrabant() {
-        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "53%") OR (postal_code LIKE "54%") OR (postal_code LIKE "55%") OR (postal_code LIKE "56%") OR (postal_code LIKE "57%") OR (postal_code LIKE "58%") OR (postal_code LIKE "60%"))');
+        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops WHERE ((postal_code LIKE "53%") OR (postal_code LIKE "54%") OR (postal_code LIKE "55%") OR (postal_code LIKE "56%") OR (postal_code LIKE "57%") OR (postal_code LIKE "58%") OR (postal_code LIKE "60%")) ORDER BY City');
+        return $this->db->resultSet();
+    }
+    
+    public function getShopsAll() {
+        $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops ORDER BY City');
         return $this->db->resultSet();
     }
 }
+

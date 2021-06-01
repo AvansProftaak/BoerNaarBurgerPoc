@@ -1,6 +1,4 @@
-
-
-    <?php
+<?php
     require_once '../app/Helpers/language_helper.php';
 ?>
 
@@ -58,16 +56,9 @@
         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><?php echo $lang['about']; ?></a>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   >
-        <?php echo $lang['shops']; ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksAll=a_valuey" ><?php echo $lang['shops']; ?>
         </a>
-        <div class="dropdown-menu dropdown-menu-hover" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksZeeland=a_value">Zeeland</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksWestBrabant=a_value">West-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksMiddenBrabant=a_value">Midden-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksOostBrabant=a_value">Oost-Brabant</a>
-        </div>
       </li>
 
       <li class="nav-item dropdown">

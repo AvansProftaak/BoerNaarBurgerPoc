@@ -48,15 +48,17 @@ $lang = array (
 
     // shops Rob
     'hello'           => "Hallo ",
-    'hello_new_customer'=> "Hallo nieuwe klant",
-    'our_shops'       => "ONZE SHOPS IN ",
-    'midden_brabant'  => "MIDDEN-BRABANT",
-    'oost_brabant'    => "OOST-BRABANT",
+    'hello_new_customer'=> "Hallo vreemdeling",
+    'our_shops'       => "onze shops in ",
+    'midden_brabant'  => "Midden-Brabant",
+    'oost_brabant'    => "Oost-Brabant",
+    'shops_all'       => "ALLE BOER NAAR BURGER SHOPS",
+    'shops_all2'      => "ALLE SHOPS",
     'address'         => "adres",
     'description'     => "beschrijving",
     'shops_text'      => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
-    'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?",
-    'shops_text3'     => "Sluit u dan nu aan bij Boer naar Burger!",
+    'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
+
 
     //customer
     'orders'          => 'Besteloverzicht',
