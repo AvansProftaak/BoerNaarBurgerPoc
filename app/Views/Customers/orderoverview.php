@@ -1,5 +1,7 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
 
+
+
 <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -85,6 +87,7 @@
                                         <p class="p-0 m-0">
 
                                         <?php 
+                                        
                                         setlocale(LC_TIME, "");
                                         setlocale(LC_ALL, 'nl_NL');
                                         $orderMoment = strtotime($order->completed_at);

@@ -1,6 +1,4 @@
-
-
-    <?php
+<?php
     require_once '../app/Helpers/language_helper.php';
 ?>
 
@@ -58,16 +56,9 @@
         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><?php echo $lang['about']; ?></a>
       </li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   >
-        <?php echo $lang['shops']; ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksAll=a_valuey" ><?php echo $lang['shops']; ?>
         </a>
-        <div class="dropdown-menu dropdown-menu-hover" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Zeeland</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">West-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Midden-Brabant</a>
-          <a class="dropdown-item" href="<?php echo URLROOT; ?>/shops/shopdistrict">Oost-Brabant</a>
-        </div>
       </li>
 
       <li class="nav-item dropdown">
@@ -139,9 +130,6 @@
           <div class="dropdown-menu language-menu" aria-labelledby="navbarDropdown" style="padding-right: 2px; border-right-width: 0px; padding-left: 2px; border-left-width: 0px;">
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=en" style='margin-bottom: 2px'><img src="../img/icon/EN.png" alt="EN" class="langicon2"></a>
               <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/NL.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/GER.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl" style='margin-bottom: 2px'><img src="../img/icon/IT.png" alt="NL" class="langicon2"></a>
-              <a href="<?php echo URLROOT . '/' . $_GET['url'] ?>?lang=nl"><img src="../img/icon/ES.png" alt="NL" class="langicon2"></a>
           </div>
     </li>
   </ul>

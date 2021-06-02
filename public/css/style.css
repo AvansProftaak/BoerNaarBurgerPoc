@@ -195,7 +195,7 @@ html {
 
 #rh-column-links-header {
     font-family: 'Dosis', sans-serif;
-    color: rgb(217, 99, 89);
+    color: #E38F88;
     text-align: left;
     font-size: 2.7vw;
     font-weight: 1000;
@@ -263,7 +263,7 @@ html {
     top: 0;
     left: 0;
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 10px;
     margin: 1.5% 0.5% 0.5% 1.5%;
@@ -277,8 +277,8 @@ html {
 }
 
 #rh-columnButton{
-    background-color: rgb(217, 99, 89);
-    color: white;
+    background-color: #E38F88;
+    color: whitesmoke;
     border-radius: 20px;
     padding: 3%;
     width: 80%;
@@ -302,7 +302,7 @@ html {
     top: 0;
     right: 0;
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 10px;
     margin: 1.5% 1.5% 0.5% 0.5%;
@@ -326,7 +326,7 @@ html {
     bottom: 0;
     left: 0;
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 10px;
     margin: 0.5% 0.5% 1.5% 1.5%;
@@ -356,7 +356,7 @@ html {
     bottom: 0;
     right: 0;
     text-align: center;
-    background-color: white;
+    background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 10px;
     margin: 0.5% 1.5% 1.5% 0.5%;
@@ -463,7 +463,7 @@ html {
         background-color: transparent;
     }
     .hoewerkthet {
-        color: rgb(217, 99, 89);
+        color: #E38F88;
         font-weight: bold;
         font-size: 26px;
         text-decoration: underline ;
@@ -553,7 +553,7 @@ html {
 }
 
 .carousel-indicators li {
-    background-color: white;
+    background-color: whitesmoke;
     width: 10px;
     height: 10px;
     border: 1px solid #005622;
@@ -641,19 +641,25 @@ html {
 }
 
 
+/*  */
+.rh-subtitle-shops {
+    font-family: 'Dosis', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+}
 
-
-
-
-
+.rh-table-shops {
+    font-family: 'Dosis', sans-serif;
+    padding: 0;
+}
 
 
 .welcome-images {
     text-align: center;
 }
-
 .logoBnB {
-    width: 65%;
+    width: 40%;
 }
 
 .modal-text {
@@ -760,17 +766,17 @@ html {
 
 .btn-pink {
     color: whitesmoke;
-    background-color: rgb(217, 99, 89);
-    border-color: rgb(217, 99, 89);
+    background-color: #E38F88;
+    border-color: #E38F88;
     border-radius: 12px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-pink:hover {
-    background-color: #ba554c;
-    border-color: #ba554c;
+    background-color: gold;
+    border-color: #005622;
     border-radius: 12px;
-    color: whitesmoke;
+    color: black;
 }
 
 .btn-pink:focus,
@@ -808,7 +814,7 @@ html {
 
 
 .a-footer {
-    color: white;
+    color: whitesmoke;
 }
 
 .a-footer:hover {
@@ -843,14 +849,6 @@ html {
 #content-wrap {
     padding-bottom: 425px;    /* Footer height */
 }
-
-/* #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #005622;
-    height: 425px;
-} */
 
 #footer-shop {
     position: absolute;
@@ -1104,8 +1102,8 @@ p {
 
 
 .lh-button {
-    background-color: rgb(217, 99, 89);
-    color: white;
+    background-color: #E38F88;
+    color: whitesmoke;
     border-radius: 20px;
     padding: 10px;
     width: 250px;
@@ -1172,7 +1170,7 @@ form-c{
 }
 
 .title-c{
-    color: white;
+    color: whitesmoke;
     font-weight: 500;
     font-size: 1.5rem;
     line-height: 1;
@@ -1189,10 +1187,10 @@ form-c{
 .input-c{
     width: 100%;
     outline: none;
-    border: 2px solid white;
+    border: 2px solid whitesmoke;
     background: none;
     padding: 0.6rem 1.2rem;
-    color: white;
+    color: whitesmoke;
     font-weight: 500;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
@@ -1206,7 +1204,7 @@ textarea.input{
     border-radius: 22px;
     resize: none;
     overflow-y: auto;
-    color: white;
+    color: whitesmoke;
 }
 
 .input-container label{
@@ -1215,7 +1213,7 @@ textarea.input{
     left: 15px;
     transform: translateY(-50%);
     padding: 0 0.4rem;
-    color: white;
+    color: whitesmoke;
     font-size: 0.9rem;
     font-weight: 400;
     pointer-events: none;
@@ -1228,21 +1226,21 @@ textarea.input{
     transform: translateY(0);
 }
 input::-webkit-input-placeholder{
-    color:white;
+    color:whitesmoke;
 }
 input:-moz-placeholder {
-    color:white;
+    color:whitesmoke;
 }
 
 ::placeholder {
-    color:white;
+    color:whitesmoke;
 }
 
 
 .btn-c{
     padding: 5px;
-    background-color: white;
-    border: 2px solid white;
+    background-color: whitesmoke;
+    border: 2px solid whitesmoke;
     font-size: 0.95rem;
     color: #34744D;
     line-height: 1;
@@ -1255,7 +1253,7 @@ input:-moz-placeholder {
 
 .btn-c:hover{
     background-color: transparent;
-    color: white;
+    color: whitesmoke;
 }
 .form-error{
     color: #c2f4eb;
@@ -1322,7 +1320,7 @@ input:-moz-placeholder {
     height: 35px;
     border-radius: 5px;
     background: #34744D;
-    color: white;
+    color: whitesmoke;
     text-align: center;
     line-height: 35px;
     margin-right: 0.5rem;
@@ -1433,7 +1431,7 @@ input:-moz-placeholder {
     display: flex;
     margin: 10px 0;
     align-items: center;
-    background-color: white;
+    background-color: whitesmoke;
     font-family: 'Dosis', sans-serif;
     font-weight: bold;
 }
@@ -1494,12 +1492,12 @@ input:-moz-placeholder {
 
 
 .btn-success {
-    background-color: rgb(217, 99, 89);
+    background-color: #E38F88;
     border: none;
 }
 
 .btn-success:hover {
-    background-color: #34744D;
+    background-color: gold;
     border-color: #34744D;
 }
 .form-control {
@@ -1540,3 +1538,151 @@ h3 a:hover{
     font-weight: 800;
     color: #E38F88;
 }
+
+.rh-div-shopspage {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1vw;
+}
+  
+.rh-div-shopspage:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+  }
+
+.rh-bold-win-shopspage {
+    font-weight: 800;
+    font-family: 'Dosis', sans-serif; 
+    color: #005622;
+    padding-left: 20px;
+    font-size: 1.4vw;
+}
+
+.rh-win-shopspage {
+    color: #E38F88;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 800; 
+    font-size: 1.4vw;
+}
+
+.rh-login-register-shopspage {
+    background-color: #E38F88;
+    color: whitesmoke;
+    border-radius: 20px;
+    font-size: 1.4vw;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.4s;
+    border: 1px solid #005622;
+}
+
+
+.rh-login-register-shopspage:hover {
+    background-color:gold;
+    border: 1px solid #005622;
+    color: black;
+}
+
+.rh-tablehead-style {
+    background-color: #005622;
+    border-radius: 10px;
+    border: 1px solid #005622;
+    color: #C3E3DA;
+}
+
+.rh-tablerow-style {
+    background-color: #34744D;
+    border-radius: 10px;
+    border: 1px solid #005622;
+    transition: 0.4s;
+    color: #C3E3DA;
+}
+
+.rh-tablerow-style:hover {
+    background-color: #E38F88;
+    transition: 0.4s;
+    color:black
+}
+
+.rh-clickable-row {
+    cursor: pointer;
+}
+
+.rh-shops-topbuttons {
+    background-color: #E38F88;
+    color: whitesmoke;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.4s;
+    border: 1px solid #005622;
+}
+
+.rh-shops-topbuttons:hover {
+    background-color:gold;
+    border: 1px solid #005622;
+    color: black;    
+}
+
+.rh-shops-topbuttons-all {
+    background-color: #e26f65;
+    color: whitesmoke;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.4s;
+    border: 1px solid #005622;
+}
+
+.rh-shops-topbuttons-all:hover {
+    background-color:gold;
+    border: 1px solid #005622;
+    color: black;    
+}
+
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+    

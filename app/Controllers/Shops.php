@@ -172,12 +172,14 @@ class Shops extends Controller
         $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
         $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
         $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
+        $shopsAll = $this->shopModel->getShopsAll();
 
         $data = [
             'shopsZeeland' => $shopsZeeland,
             'shopsWestBrabant' => $shopsWestBrabant,
             'shopsMiddenBrabant' => $shopsMiddenBrabant,
             'shopsOostBrabant' => $shopsOostBrabant,
+            'shopsAll' => $shopsAll,
 
     ];
 

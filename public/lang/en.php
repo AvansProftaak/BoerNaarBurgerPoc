@@ -46,6 +46,19 @@ $lang = array (
     //searchbar
     'searchfield'     => "Ordernumber, product, etc.",
 
+    // shops Rob
+    'hello'           => "Hi ",
+    'hello_new_customer'=> "Hi stranger",
+    'our_shops'       => "OUR SHOPS IN ",
+    'midden_brabant'  => "Middle-Brabant",
+    'oost_brabant'    => "East-Brabant",
+    'shops_all'       => "ALL BOER NAAR BURGER SHOPS",
+    'shops_all2'      => "ALL SHOPS",
+    'address'         => "address",
+    'description'     => "description",
+    'shops_text'      => "At Boer naar Burger we work together with our farmers towards a better future, a future without waste. Many farmers from Zeeland and North-Brabant believe in this project and join Boer naar Burger. By offering products that would otherwise have ended up on the waste pile, a win-win-win situation is created.",
+    'shops_text2'     => "Curious about the farmers in your area?<br> <b>Select the area of ​​your preference</b>",
+
     //customer
     'orders'          => 'Order Overview',
     'customerdetails' => 'Personal Details',
