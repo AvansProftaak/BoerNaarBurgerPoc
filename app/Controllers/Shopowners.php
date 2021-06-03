@@ -18,7 +18,7 @@ class Shopowners extends Controller
     public function create() {
 
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
 
         $data = [
@@ -154,7 +154,7 @@ class Shopowners extends Controller
     public function register() {
 
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
 
         $data = [
@@ -283,7 +283,7 @@ class Shopowners extends Controller
     public function login() {
 
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
 
         $data = [
@@ -356,7 +356,7 @@ class Shopowners extends Controller
 
     public function updateitems() {
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
         $data = [
             'item_name'            => '',
@@ -443,7 +443,7 @@ class Shopowners extends Controller
 
     public function myShop() {
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
         $data = $this->shopOwnerModel->getMyShop();
         $this->view('shopowners/myShop', $data);
@@ -602,7 +602,7 @@ class Shopowners extends Controller
     public function changePassword()
     {
         if (isLoggedIn()){
-            $this->view('pages/index');
+            header('location: ' . URLROOT . '/pages/index');
         }
         
         if (isLoggedInShopOwner()) {
