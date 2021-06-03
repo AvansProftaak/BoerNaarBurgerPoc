@@ -110,8 +110,8 @@
                         <div class="form-group row mx-1">
                             <!-- company_name -->
                             <div class="col-5">
-                                <label for="company_name" class="pl-2 user-data-header"><?php echo $lang['company_name']; ?><span class="pl-3 text-danger"><?php echo $data['company_nameError'] ?></span></label>
-                                <input id="company_name" type="text" class="form-control rounded-borders <?php if($data['company_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['company_name']; ?>" name="company_name" autocomplete="cname">
+                                <label for="shop_name" class="pl-2 user-data-header"><?php echo $lang['shop_name']; ?><span class="pl-3 text-danger"><?php echo $data['shop_nameError'] ?></span></label>
+                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name']; ?>" name="shop_name" autocomplete="sname">
                             </div>
                         </div>
 
@@ -149,7 +149,7 @@
 
                         <div class="form-group row mb-3 d-flex justify-content-between">
                             <div class="ml-3 pl-3">
-                            <button name = "submit-personal-data" type="submit" class="btn btn-green"><?php echo $lang['save_personal_data']; ?></button>
+                            <button name = "submit-company-data" type="submit" class="btn btn-green"><?php echo $lang['save_personal_data']; ?></button>
                             </div>
                             <div class="mr-3 pr-3">
                             <a type="button" href="<?php echo URLROOT; ?>/shopowners/accountetails" class="btn btn-green">bestellingen</a>

@@ -16,6 +16,12 @@ class Shopowners extends Controller
     
 
     public function create() {
+
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+
+        }
+
         $data = [
             'kvk_number'            => '',
             'shop_name_nl'          => '',
@@ -147,6 +153,11 @@ class Shopowners extends Controller
     }
 
     public function register() {
+
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+        }
+
         $data = [
             'first_name'            => '',
             'last_name'             => '',
@@ -271,6 +282,12 @@ class Shopowners extends Controller
     }
 
     public function login() {
+
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+            $this->view('pages/index');
+        }
+
         $data = [
             'email'         => '',
             'password'      => '',
@@ -340,6 +357,9 @@ class Shopowners extends Controller
     }
 
     public function updateitems() {
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+        }
         $data = [
             'item_name'            => '',
             'description'           => '',
@@ -424,6 +444,9 @@ class Shopowners extends Controller
     }
 
     public function myShop() {
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+        }
         $data = $this->shopOwnerModel->getMyShop();
         $this->view('shopowners/myShop', $data);
     }
@@ -432,8 +455,11 @@ class Shopowners extends Controller
 
         if (isLoggedInShopOwner()) {
             $shopowner = $this->shopOwnerModel->getAccountDetails();
+            $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
+
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
+                'shop_name'             => $shop->shop_name,
                 'company_name'          => $shopowner->company_name,
                 'password'              => $shopowner->password,
                 'iban'                  => $shopowner->iban,
@@ -451,11 +477,10 @@ class Shopowners extends Controller
                 'lastNameError'         => '',
                 'emailError'            => '',
                 'phone_numberError'     => '',
-                'passwordError'         => ''
+                'passwordError'         => '',
+                'shop_nameError'        => ''
 
             ];
-
-            
 
             if (isset($_POST['submit-personal-data'])) {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -466,6 +491,7 @@ class Shopowners extends Controller
                     'iban'                  => trim($_POST['iban']),
                     'password'              => "$shopowner->password",
                     'first_name'            => trim($_POST['first_name']),
+                    'country'               => 'NL',
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
                     'phone_number'          => trim($_POST['phone_number']),
@@ -527,12 +553,60 @@ class Shopowners extends Controller
                     }
                 }
             }
+
+            if (isset($_POST['submit-company-data'])) {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
+                $shopowner = $this->shopOwnerModel->getAccountDetails();
+
+                $data = [
+                    'kvk_number'            => $_SESSION['kvk_number'],
+                    'shop_name'             => trim($_POST['shop_name']),
+                    'country'               => 'NL',
+                    'address'               => trim($_POST['address']),
+                    'house_number'          => trim($_POST['house_number']),
+                    'postal_code'           => trim($_POST['postal_code']),
+                    'city'                  => trim($_POST['city']),
+                    'password'              => "$shopowner->password",
+                    'shop_nameError'        => ''
+                ];
+
+                print_r($data);
+                
+
+                // Validate password
+                if(empty($data['password'])) {
+                    $data['passwordError'] = 'Vul uw wachtwoord in.';
+                } else {
+                    if($data['password'] !== $data['password']) {
+                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
+                    }
+                }
+
+                //if no errors are found continue
+                if (empty($data['firstNameError'])) {
+
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
+
+                    if ($this->shopModel->updateShop($data, $shop)) {
+                        $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
+
+                        header('location: ' . URLROOT . '/shopowners/accountDetails');
+                    } else {
+                        die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
+                    }
+                }
+            }
             $this->view('shopowners/accountDetails', $data);
         }
     }
 
     public function changePassword()
     {
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+        }
+        
         if (isLoggedInShopOwner()) {
             $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
             $data = [

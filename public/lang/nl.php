@@ -122,6 +122,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
     'profile_picture'    => 'Kies een foto om te uploaden als profielfoto.',
@@ -280,5 +281,9 @@ $lang = array (
     'register_failed'  => 'Registratie is mislukt. Probeer het opnieuw.',
     'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
-    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.'
+    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+
+    //shop step 1
+    'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
+                          account hebben. Registreer of login alstublieft.',
 );

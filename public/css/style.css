@@ -917,6 +917,10 @@ html {
     background-color: #005622;
 }
 
+.shop-login-warning {
+    border-radius: 12px; !important
+}
+
 a[aria-expanded=true] .fa-chevron-down {
     display: none;
 }
@@ -1646,5 +1650,14 @@ h3 a:hover{
     margin-bottom: 30px;
 }
 
-
-    
+.search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
