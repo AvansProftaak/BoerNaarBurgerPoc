@@ -16,6 +16,11 @@ class Shopowners extends Controller
     
 
     public function create() {
+
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
+
         $data = [
             'kvk_number'            => '',
             'shop_name_nl'          => '',
@@ -147,6 +152,11 @@ class Shopowners extends Controller
     }
 
     public function register() {
+
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
+
         $data = [
             'first_name'            => '',
             'last_name'             => '',
@@ -271,6 +281,11 @@ class Shopowners extends Controller
     }
 
     public function login() {
+
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
+
         $data = [
             'email'         => '',
             'password'      => '',
@@ -340,6 +355,9 @@ class Shopowners extends Controller
     }
 
     public function updateitems() {
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
         $data = [
             'item_name'            => '',
             'description'           => '',
@@ -424,6 +442,9 @@ class Shopowners extends Controller
     }
 
     public function myShop() {
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
         $data = $this->shopOwnerModel->getMyShop();
         $this->view('shopowners/myShop', $data);
     }
@@ -580,6 +601,10 @@ class Shopowners extends Controller
 
     public function changePassword()
     {
+        if (isLoggedIn()){
+            $this->view('pages/index');
+        }
+        
         if (isLoggedInShopOwner()) {
             $shopowner = $this->shopOwnerModel->getAccountDetails($_SESSION['kvk_number']);
             $data = [
