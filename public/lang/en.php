@@ -45,6 +45,7 @@ $lang = array (
 
     //searchbar
     'searchfield'     => "Ordernumber, product, etc.",
+    'search'          => "Search",
 
     // shops Rob
     'hello'           => "Hi ",
@@ -58,6 +59,8 @@ $lang = array (
     'description'     => "description",
     'shops_text'      => "At Boer naar Burger we work together with our farmers towards a better future, a future without waste. Many farmers from Zeeland and North-Brabant believe in this project and join Boer naar Burger. By offering products that would otherwise have ended up on the waste pile, a win-win-win situation is created.",
     'shops_text2'     => "Curious about the farmers in your area?<br> <b>Select the area of ​​your preference</b>",
+    'searchfield_shops' => "Search for city or product...",
+    'no_search_string'=> "No search input found",
 
     //customer
     'orders'          => 'Order Overview',
@@ -264,4 +267,7 @@ $lang = array (
     'pass_incorrect'   => 'The provided e-mail address or password is incorrect.',
     'pass_wrong'       => 'The provided password is incorrect. Please try again.',
     'pass_failed'      => 'Your password could not be changed. Please try again.',
+
+    //shop step 1
+    'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
 );

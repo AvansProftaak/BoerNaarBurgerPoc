@@ -1,5 +1,7 @@
 <?php
     require_once '../app/Helpers/language_helper.php';
+    setlocale(LC_TIME, "");
+    setlocale(LC_ALL, 'nl_NL'); 
 ?>
 
 

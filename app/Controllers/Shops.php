@@ -16,29 +16,38 @@ class Shops extends Controller
         $this->customerModel = $this->model('Customer');
     }
 
-    public function overview() {
-        if (isset($_GET['location'])) {
-        $cities = $this->shopModel->getShops();
-        $filterParam = $_GET['location'];
-        $shops = $this->shopModel->getFilteredShops($filterParam);
-
-        $data = [
-            'cities' => $cities,
-            'shops' => $shops
-        ];
-
-        $this->view('shops/overview', $data);
-        } else {
+    public function shopdistrict() {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $shopsZeeland = $this->shopModel->getShopsZeeland();
+            $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
+            $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
+            $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
+            $shopsAll = $this->shopModel->getShopsAll();
             $cities = $this->shopModel->getShops();
             $shops = $this->shopModel->getShops();
             $data = [
                 'cities' => $cities,
-                'shops' => $shops
+                'shops' => $shops,
+                'shopsZeeland' => $shopsZeeland,
+                'shopsWestBrabant' => $shopsWestBrabant,
+                'shopsMiddenBrabant' => $shopsMiddenBrabant,
+                'shopsOostBrabant' => $shopsOostBrabant,
+                'shopsAll' => $shopsAll,
             ];
 
-            $this->view('shops/overview', $data);
+            $this->view('shops/shopdistrict', $data);
+
+            if (isset($_POST['searchfield_shops'])) {
+                $data = [
+                    'query'                 => $_POST['searchfield_shops'],
+                ];
+                
+                $this->shopModel->saveSearch($data);
+        $this->view('shops/shopdistrict', $data);
+
+        }   
         }
-    }
+
 
     public function step1() {
         if (isset($_GET['shop'])) {
@@ -133,11 +142,9 @@ class Shops extends Controller
 
     public function failure() {
         if (isset($_GET['shop'])) {
-
             $shop = $this->shopModel->getShop($_GET['shop']);
-
             if($shop) {
-
+                
                 $data = [
                     'shop'      => $shop,
                 ];
@@ -150,25 +157,4 @@ class Shops extends Controller
             $this->view('shops/notfound');
         }
     }
-
-    public function shopdistrict() {
-        $shopsZeeland = $this->shopModel->getShopsZeeland();
-        $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
-        $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
-        $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
-        $shopsAll = $this->shopModel->getShopsAll();
-
-        $data = [
-            'shopsZeeland' => $shopsZeeland,
-            'shopsWestBrabant' => $shopsWestBrabant,
-            'shopsMiddenBrabant' => $shopsMiddenBrabant,
-            'shopsOostBrabant' => $shopsOostBrabant,
-            'shopsAll' => $shopsAll,
-
-    ];
-
-        $this->view('shops/shopdistrict', $data);
-    }
-
-
 }
