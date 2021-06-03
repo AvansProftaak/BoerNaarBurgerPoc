@@ -901,7 +901,7 @@ html {
     height: 30px;
 }
 
-.navigation-bar-shop {
+.navigation-bar-shop {e
     background-color: #005622;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
@@ -915,6 +915,10 @@ html {
     font-weight: bold;
     color: whitesmoke;
     background-color: #005622;
+}
+
+.shop-login-warning {
+    border-radius: 12px; !important
 }
 
 a[aria-expanded=true] .fa-chevron-down {
@@ -1685,4 +1689,3 @@ h3 a:hover{
     color:white;
     text-decoration:none;
     }
-    

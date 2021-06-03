@@ -63,7 +63,7 @@ function updateTotal() {
     let productPrices = [];
 
     for (let i = 0; i < productTotals.length; i++){
-        //loop through the array to get all the chosen select values
+        //loop through the array to get all the chosen values
         productPrices.push(parseFloat(productTotals[i].innerText));
     }
 

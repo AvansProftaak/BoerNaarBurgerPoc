@@ -264,4 +264,7 @@ $lang = array (
     'pass_incorrect'   => 'The provided e-mail address or password is incorrect.',
     'pass_wrong'       => 'The provided password is incorrect. Please try again.',
     'pass_failed'      => 'Your password could not be changed. Please try again.',
+
+    //shop step 1
+    'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
 );

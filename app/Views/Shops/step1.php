@@ -1,5 +1,14 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
+    <?php if (!isLoggedIn()) : ?>
+        <div class="col alert-danger font-weight-bold p-4 shop-login-warning"><?php echo $lang['login_mandatory']; ?><br><br>
+            <div class="d-flex justify-content-between align-items-baseline">
+            <a href="<?php echo URLROOT; ?>/customers/login"><button name="loginButton" class="btn btn-green px-5"><?php echo $lang['login_button']; ?></button></a>
+            <a href="<?php echo URLROOT; ?>/customers/register"><button name="registerButton" class="btn btn-green px-5"><?php echo $lang['register_button']; ?></button></a>
+            </div>
+        </div>
+
+    <?php endif; ?>
     <div>
         <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
@@ -53,7 +62,7 @@
     <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shops/overview">Terug naar Shops</a>
     </div>
     <div class="col text-right pt-4 pb-lg-5">
-    <button type="submit" onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
+    <button type="submit" <?php if (!isLoggedIn()) echo 'disabled style="cursor: not-allowed;"'; ?> onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
     </div>
   </div>
 </div>
