@@ -26,6 +26,12 @@ class Shop
         return $this->db->single();
     }
 
+    public function getMyShop($kvk_number) {
+        $this->db->query('SELECT * FROM boer_naar_burger.shops WHERE kvk_number = :kvk_number');
+        $this->db->bind(':kvk_number', $kvk_number);
+        return $this->db->single();
+    }
+
     public function getShopProducts($shop) {
         $this->db->query('SELECT * FROM boer_naar_burger.products WHERE shop_number = :shop_number');
         $this->db->bind(':shop_number', $shop->shop_number);
@@ -55,6 +61,26 @@ class Shop
     public function getShopsAll() {
         $this->db->query('SELECT shop_name, shop_number, address, house_number, postal_code, city, description FROM boer_naar_burger.shops ORDER BY City');
         return $this->db->resultSet();
+    }
+
+    public function updateShop($data, $shop) {
+        $this->db->query('UPDATE boer_naar_burger.shops SET shop_name = :shop_name, address = :address, house_number = :house_number, postal_code = :postal_code,
+                                city = :city, country = :country WHERE kvk_number = :kvk_number');
+        $this->db->bind(':shop_name', $data['shop_name']);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':house_number', $data['house_number']);
+        $this->db->bind(':postal_code', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':country', $data['country']);
+        $this->db->bind(':kvk_number', $data['kvk_number']);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            return $this->error;
+        }
     }
 }
 
