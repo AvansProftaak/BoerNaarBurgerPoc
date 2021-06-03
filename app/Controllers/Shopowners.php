@@ -471,6 +471,10 @@ class Shopowners extends Controller
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
                 'city'                  => $shopowner->city,
+                'shop_address'          => $shop->address,
+                'shop_house_number'     => $shop->house_number,
+                'shop_postal_code'      => $shop->postal_code,
+                'shop_city'             => $shop->city,
                 'company_nameError'     => '',
                 'password'              => '',
                 'firstNameError'        => '',
@@ -499,6 +503,11 @@ class Shopowners extends Controller
                     'house_number'          => trim($_POST['house_number']),
                     'postal_code'           => trim($_POST['postal_code']),
                     'city'                  => trim($_POST['city']),
+                    'shop_address'          => $shop->shop_address,
+                    'shop_house_number'     => $shop->house_number,
+                    'shop_postal_code'      => $shop->postal_code,
+                    'shop_city'             => $shop->city,
+                    'shop_country'          => 'NL',
                     'ibanError'             => '',
                     'company_nameError'     => '',
                     'firstNameError'        => '',
@@ -562,16 +571,16 @@ class Shopowners extends Controller
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
                     'shop_name'             => trim($_POST['shop_name']),
-                    'country'               => 'NL',
-                    'address'               => trim($_POST['address']),
-                    'house_number'          => trim($_POST['house_number']),
-                    'postal_code'           => trim($_POST['postal_code']),
-                    'city'                  => trim($_POST['city']),
+                    'shop_country'               => 'NL',
+                    'shop_address'               => trim($_POST['shop_address']),
+                    'shop_house_number'          => trim($_POST['shop_house_number']),
+                    'shop_postal_code'           => trim($_POST['shop_postal_code']),
+                    'shop_city'                  => trim($_POST['shop_city']),
                     'password'              => "$shopowner->password",
                     'shop_nameError'        => ''
                 ];
 
-                print_r($data);
+                #
                 
 
                 // Validate password

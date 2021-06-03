@@ -118,23 +118,23 @@
                         <div class="form-group row mx-1">
                             <!-- Street -->
                             <div class="col-4">
-                                <label for="address" class="pl-2 user-data-header"><?php echo $lang['street']; ?></label>
-                                <input id="address" type="text" class="form-control rounded-borders" value="<?php echo $data['address']; ?>" name="address" autocomplete="street">
+                                <label for="shop_address" class="pl-2 user-data-header"><?php echo $lang['street']; ?></label>
+                                <input id="shop_address" type="text" class="form-control rounded-borders" value="<?php echo $data['shop_address']; ?>" name="shop_address" autocomplete="shop_address">
                             </div>
                             <!-- Housenumber -->
                             <div class="col-2">
-                                <label for="house_number" class="pl-2 user-data-header"><?php echo $lang['house_number']; ?></label>
-                                <input id="house_number" type="text" class="form-control rounded-borders" value="<?php echo $data['house_number']; ?>" name="house_number" autocomplete="housenumber">
+                                <label for="shop_house_number" class="pl-2 user-data-header"><?php echo $lang['house_number']; ?></label>
+                                <input id="shop_house_number" type="text" class="form-control rounded-borders" value="<?php echo $data['shop_house_number']; ?>" name="shop_house_number" autocomplete="shop_house_number">
                             </div>
                             <!-- Zipcode -->
                             <div class="col-sm-2">
-                                <label for="postal_code" class="pl-2 user-data-header"><?php echo $lang['zipcode']; ?></label>
-                                <input id="postal_code" type="text" class="form-control rounded-borders" value="<?php echo $data['postal_code']; ?>" name="postal_code" autocomplete="postal_code">
+                                <label for="shop_postal_code" class="pl-2 user-data-header"><?php echo $lang['zipcode']; ?></label>
+                                <input id="shop_postal_code" type="text" class="form-control rounded-borders" value="<?php echo $data['shop_postal_code']; ?>" name="shop_postal_code" autocomplete="shop_postal_code">
                             </div>
                             <!-- City -->
                             <div class="col">
-                                <label for="city" class="pl-2 user-data-header"><?php echo $lang['city']; ?></label>
-                                <input id="city" type="text" class="form-control rounded-borders" value="<?php echo $data['city']; ?>" name="city" autocomplete="city">
+                                <label for="shop_city" class="pl-2 user-data-header"><?php echo $lang['city']; ?></label>
+                                <input id="shop_city" type="text" class="form-control rounded-borders" value="<?php echo $data['shop_city']; ?>" name="shop_city" autocomplete="shop_city">
                             </div>
                         </div>
 
@@ -142,8 +142,8 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- photo -->
                             <div class="col-5">
-                                <label for="photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
-                                <input id="photo" type="file" name="photo" class="form-control rounded-borders" placeholder="http://tiniurl.hackmij.com" autocomplete="photo">
+                                <label for="shop_photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
+                                <input id="shop_photo" type="file" name="shop_photo" class="form-control rounded-borders" placeholder="downloads/picturename" autocomplete="shop_photo">
                             </div>
                         </div></br>
 
