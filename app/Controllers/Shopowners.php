@@ -19,6 +19,7 @@ class Shopowners extends Controller
 
         if (isLoggedIn()){
             header('location: ' . URLROOT . '/pages/index');
+
         }
 
         $data = [
@@ -284,6 +285,7 @@ class Shopowners extends Controller
 
         if (isLoggedIn()){
             header('location: ' . URLROOT . '/pages/index');
+            $this->view('pages/index');
         }
 
         $data = [
