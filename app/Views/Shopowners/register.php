@@ -18,12 +18,12 @@
                             <!-- First Name -->
                             <div class="col-5">
                                 <label for="first_name" class="pl-2 user-data-header"><?php echo $lang['first_name']; ?>*<span class="pl-3 text-danger"><?php echo $data['firstNameError'] ?></span></label>
-                                <input id="first_name" type="text" class="form-control rounded-borders <?php if($data['firstNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Jan" name="first_name" autocomplete="fname">
+                                <input id="first_name" type="text" class="form-control rounded-borders <?php if($data['firstNameError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['first_name']))echo $data['first_name']; ?>" placeholder="Henk" name="first_name" autocomplete="fname">
                             </div>
                             <!-- Last Name -->
                             <div class="col">
                                 <label for="last_name" class="pl-2 user-data-header"><?php echo $lang['last_name']; ?>*<span class="pl-3 text-danger"><?php echo $data['lastNameError'] ?></span></label>
-                                <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['lastNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Bakker" name="last_name" autocomplete="lname">
+                                <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['lastnameError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['last_name']))echo $data['last_name']; ?>" placeholder="Bakker" name="last_name" autocomplete="lname">
                             </div>
                         </div>
 
@@ -31,8 +31,7 @@
                         <div class="form-group row mx-1">
                             <div class="col-5">
                                 <label for="email" class="pl-2 user-data-header"><?php echo $lang['email']; ?>*<span class="pl-3 text-danger"><?php echo $data['emailError'] ?></span></label>
-                                <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>"
-                                       name="email" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>email@voorbeeld.nl <?php else : ?>email@example.com<?php endif; ?>" autocomplete="email">
+                                <input id="email" type="text" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['email']))echo $data['email']; ?>" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>email@voorbeeld.nl <?php else : ?>email@example.com<?php endif; ?>" name="email" autocomplete="email">
                             </div>
 
                             <!-- Password -->
@@ -54,35 +53,35 @@
                             <!-- Street -->
                             <div class="col-4">
                                 <label for="address" class="pl-2 user-data-header"><?php echo $lang['street']; ?></label>
-                                <input id="address" type="text" class="form-control rounded-borders" placeholder="Langedreef" name="address" autocomplete="street">
+                                <input id="address" type="text" class="form-control rounded-borders <?php if($data['addressError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['address']))echo $data['address']; ?>" placeholder="Langedreef" name="address" autocomplete="address">
                             </div>
                             <!-- Housenumber -->
                             <div class="col-2">
                                 <label for="house_number" class="pl-2 user-data-header"><?php echo $lang['house_number']; ?></label>
-                                <input id="house_number" type="text" class="form-control rounded-borders" placeholder="19" name="house_number" autocomplete="housenumber">
+                                <input id="house_number" type="text" class="form-control rounded-borders <?php if($data['houseNumberError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['house_number']))echo $data['house_number']; ?>" placeholder="19" name="house_number" autocomplete="house_number">
                             </div>
                             <!-- Zipcode -->
                             <div class="col-sm-2">
                                 <label for="postal_code" class="pl-2 user-data-header"><?php echo $lang['zipcode']; ?></label>
-                                <input id="postal_code" type="text" class="form-control rounded-borders" placeholder="4783RE" name="postal_code" autocomplete="postal_code">
+                                <input id="postal_code" type="text" class="form-control rounded-borders <?php if($data['postalCodeError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['postal_code']))echo $data['postal_code']; ?>" placeholder="4875FE" name="postal_code" autocomplete="postal_code">
                             </div>
                             <!-- City -->
                             <div class="col">
                                 <label for="city" class="pl-2 user-data-header"><?php echo $lang['city']; ?></label>
-                                <input id="city" type="text" class="form-control rounded-borders" placeholder="Amsterdam" name="city" autocomplete="city">
+                                <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['city']))echo $data['city']; ?>" placeholder="Breda" name="city" autocomplete="city">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1">
                             <!-- Company Name -->
                             <div class="col-5">
-                                <label for="first_name" class="pl-2 user-data-header"><?php echo $lang['company_name']; ?>*<span class="pl-3 text-danger"><?php echo $data['companyNameError'] ?></span></label>
-                                <input id="first_name" type="text" class="form-control rounded-borders <?php if($data['companyNameError']) : ?> is-invalid <?php endif; ?>" placeholder="Veehouderij Janssen B.V." name="company_name" autocomplete="company_name">
+                                <label for="company_name" class="pl-2 user-data-header"><?php echo $lang['company_name']; ?>*<span class="pl-3 text-danger"><?php echo $data['companyNameError'] ?></span></label>
+                                <input id="company_name" type="text" class="form-control rounded-borders <?php if($data['companyNameError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['company_name']))echo $data['company_name']; ?>" placeholder="Henks friet paleis" name="company_name" autocomplete="company_name">
                             </div>
                             <!-- KVK Number -->
                             <div class="col">
-                                <label for="last_name" class="pl-2 user-data-header"><?php echo $lang['kvk_number']; ?>*<span class="pl-3 text-danger"><?php echo $data['kvkNumberError'] ?></span></label>
-                                <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['kvkNumberError']) : ?> is-invalid <?php endif; ?>" placeholder="12345678" name="kvk_number" autocomplete="kvk_number">
+                                <label for="kvk_number" class="pl-2 user-data-header"><?php echo $lang['kvk_number']; ?>*<span class="pl-3 text-danger"><?php echo $data['kvkNumberError'] ?></span></label>
+                                <input id="kvk_number" type="text" class="form-control rounded-borders <?php if($data['kvkNumberError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['kvk_number']))echo $data['kvk_number']; ?>" placeholder="12345678" name="kvk_number" autocomplete="kvk_number">
                             </div>
                         </div>
 
