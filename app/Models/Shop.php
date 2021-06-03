@@ -72,7 +72,9 @@ class Shop
             return true;
         } else {
             return false;
-          
+        }
+    }
+
     public function updateShop($data, $shop) {
         $this->db->query('UPDATE boer_naar_burger.shops SET shop_name = :shop_name, address = :address, house_number = :house_number, postal_code = :postal_code,
                                 city = :city, country = :country WHERE kvk_number = :kvk_number');
