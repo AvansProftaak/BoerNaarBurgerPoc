@@ -27,13 +27,4 @@ class Order
         return $this->db->resultSet();
     }
 
-    
-    public function searchOrders($order_number) {
-        $this->db->query("SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number");
-        $this->db->bind(':order_number', $order_number->order_number);
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
 }

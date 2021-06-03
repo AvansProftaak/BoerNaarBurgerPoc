@@ -1,7 +1,5 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
 
-
-
 <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -21,7 +19,7 @@
                                     <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="<?php echo $lang['searchfield']; ?>" name='searchorders'>
                                 </div>
                                 <div class="col-auto">
-                                    <button class="btn btn-lg btn-success" type="submit" style='margin-left: 4px'>Zoek</button>
+                                    <button class="btn btn-lg btn-success" type="submit" style='margin-left: 4px'><?php echo $lang['search']; ?></button>
                                 </div>                               
                             </div>
                         </form>
@@ -84,19 +82,13 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
-                                        <p class="p-0 m-0">
+                                        <p class="p-0 m-0"> 
+                                            <?php 
+                                            $orderMoment = strtotime($order->completed_at);
+                                            $date = strftime("%A %d %B %Y", $orderMoment);
+                                            $time = strftime("%H:%M", $orderMoment);
+                                            echo $date . " om " .  $time . " uur" ?>
 
-                                        <?php 
-                                        
-                                        setlocale(LC_TIME, "");
-                                        setlocale(LC_ALL, 'nl_NL');
-                                        $orderMoment = strtotime($order->completed_at);
-                                        
-                                        $date = strftime("%A %d %B %Y", $orderMoment);
-                                        $time = strftime("%H:%M", $orderMoment);
-                                        echo $date . " om " .  $time . " uur"
-                                        ?>
-                                        
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
@@ -158,7 +150,14 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
-                                        <p class="p-0 m-0"><?php echo $order->completed_at ?></p>
+                                        <p class="p-0 m-0">                                            
+                                            <?php                                             
+                                                $orderMoment = strtotime($order->completed_at);
+                                                $date = strftime("%A %d %B %Y", $orderMoment);
+                                                $time = strftime("%H:%M", $orderMoment);
+                                                echo $date . " om " .  $time . " uur" 
+                                            ?> 
+                                        </p>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="p-0 m-0"><?php echo $lang['status']; ?>:</p>
