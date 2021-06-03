@@ -17,6 +17,7 @@ class Shops extends Controller
     }
 
     public function shopdistrict() {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $shopsZeeland = $this->shopModel->getShopsZeeland();
             $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
             $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
@@ -35,6 +36,16 @@ class Shops extends Controller
             ];
 
             $this->view('shops/shopdistrict', $data);
+
+            if (isset($_POST['searchfield_shops'])) {
+                $data = [
+                    'query'                 => $_POST['searchfield_shops'],
+                ];
+                
+                $this->shopModel->saveSearch($data);
+        $this->view('shops/shopdistrict', $data);
+
+        }   
         }
 
 
@@ -146,25 +157,4 @@ class Shops extends Controller
             $this->view('shops/notfound');
         }
     }
-
-    public function saveSearch() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data = [
-                'query'                 => trim($_POST['searchfield_shops']),
-            ];
-
-            $this->shopModel->saveSearch($data);
-        }
- 
-        if (isset($_POST['searchfield_shops'])) {
-                $data = [
-                    'query'                 => $_POST['searchfield_shops'],
-                ];
-                $this->shopModel->saveSearch($data);
-        $this->view('shops/shopdistrict', $data);
-
-        }   
-    }   
 }

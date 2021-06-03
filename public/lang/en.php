@@ -45,6 +45,7 @@ $lang = array (
 
     //searchbar
     'searchfield'     => "Ordernumber, product, etc.",
+    'search'          => "Search",
 
     // shops Rob
     'hello'           => "Hi ",

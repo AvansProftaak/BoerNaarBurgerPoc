@@ -59,8 +59,7 @@ class Shop
 
     public function saveSearch($search) {
         $this->db->query('INSERT INTO boer_naar_burger.search_queries (query) VALUES (:query)');
-        return $this->db->resultSet();
-
+        // return $this->db->resultSet();
         $this->db->bind(':query', $search['query']);
 
         if ($this->db->execute()) {

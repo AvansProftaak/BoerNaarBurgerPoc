@@ -11,6 +11,7 @@
         <button class="col-2 rh-shops-topbuttons" onclick="document.location='<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksOostBrabant=a_value'"><?php echo $lang['oost_brabant']; ?></button>
         <button class="col-2 rh-shops-topbuttons-all" onclick="document.location='<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksAll=a_value'"><?php echo ucfirst($lang['shops_all2']); ?></button>
     </div>
+    <br>
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-7">
             <form method='post' class="card card-sm">
@@ -22,7 +23,7 @@
                         <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="<?php echo $lang['searchfield_shops']; ?>" name='searchfield_shops'>
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-lg btn-success" type="submit" style='margin-left: 4px; border: 1px solid #005622'>Zoek</button>
+                        <button class="btn btn-lg btn-success" type="submit" style='margin-left: 4px; border: 1px solid #005622'><?php echo $lang['search']; ?></button>
                     </div>                               
                 </div>
             </form>
@@ -33,9 +34,6 @@
 <div class="col-12">
     <img class="mx-auto d-block" style="max-width:40%" src="../img/logo Boer naar burger_liggend_color.png" alt="Sla">
 </div>
-
-
-
 
 <div class='container '>
     <div class='row justify-content-center rh-div-shopspage'>

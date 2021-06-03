@@ -372,50 +372,20 @@ class Customers extends Controller
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
+            $orderMoment = $orders->completed_at;
+            
 
             $data = [
                 'orders'        => $orders,
                 'customer'      => $customer,
+                'orderMoment'   => $orderMoment
             ];
+            
+            
 
             $this->view('customers/orderoverview', $data);
         } else {
             $this->login();
-        }
+        } 
     }
-
-    public function orderMoment() {
-        if (isLoggedIn()) {
-            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-            $orders = $this->orderModel->getCustomerOrders($customer);
-
-            $data = [
-                'orders'        => $orders,
-                'customer'      => $customer,
-            ];
-
-            $ordermoment = $this->$data['orders'];
-
-            $this->view('customers/orderoverview', $ordermoment);
-        } else {
-            $this->login();
-        }
-    }
-
-    // public function orderMoment() {
-    //     $orders = $this->orderModel->getCustomerOrders($customer);
-        
-    //     setlocale(LC_TIME, "");
-    //     setlocale(LC_ALL, 'nl_NL');
-
-    //     $orderMoment = strtotime($orders->completed_at);                                    
-    //     $date = strftime("%A %d %B %Y", $orderMoment);
-    //     $time = strftime("%H:%M", $orderMoment);
-
-    //     return $date;
-    //     return $time;
-
-    //     $this->view('customers/orderoverview', $data);
-        
-    // }
 }
