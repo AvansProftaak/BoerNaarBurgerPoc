@@ -16,10 +16,10 @@
 
     <?php foreach($data['products'] as $product): ?>
     <!-- Start Product -->
-    <div class="pt-3 border-shop">
+    <div class="product pt-3 border-shop">
         <div class="d-flex justify-content-between align-items-baseline">
-            <div class = "product-width">
-                <p><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
+            <div class ="product-width">
+                <p class="product"><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
                     <a data-toggle="collapse" href="#description<?php echo $product->product_number ?>" role="button" aria-expanded="false" aria-controls="description<?php echo $product->product_number ?>">
                         <i class="pl-2 fa fa-chevron-down"></i>
                         <i class="pl-2 fa fa-chevron-up"></i></a></p>
@@ -29,11 +29,11 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <button type="button" class="btn-decrement">-</button>
-                <p id="count<?php echo $product->product_number ?>" class="px-3">0</p>
+                <p id="quantity" class="px-3">0</p>
                 <button type="button" class="btn-increment">+</button>
             </div>
             <div class = "price-width text-right">
-                <p>€<span id="total">0.00</span></p>
+                <p>€<span class="total">0.00</span></p>
             </div>
         </div>
     </div>
