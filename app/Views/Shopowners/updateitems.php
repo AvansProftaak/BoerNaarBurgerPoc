@@ -1,78 +1,65 @@
-<?php include APPROOT . "/Views/Includes/header.php"; ?>
-<div class="container pt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="row account-profile-card">
-                <div class="col-3 text-center pt-4 green-background">
-                    <div>
-                        <img src="../img/logo_Boer_naar_burger.jpg" alt="Profile Picture" class="w-75"/>
-                        <h3 class="white-text p-3">Pas uw shop aan</h3>
-                    </div>
-                </div>
-                <div class="col-9 pr-2">
-                    <h2 class="pt-4 pl-4 data-headers">Shop registreren</h2>
-                    <hr class="mx-2">
+<?php include APPROOT."/Views/Includes/headerShop.php"; ?>
+<div class="page-container-shop">
+    <div>
+        <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
+    </div>
+    <div>
+        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-100 py-2" alt="shop image"/>
+    </div>
+    <div class="pt-4">
+        <p><?php echo $this->getTranslation($data['shop']->description, $_SESSION['lang']); ?></p>
+    </div>
+    <div class="py-4">
+        <h3 class="shop-products p-2">Producten</h3>
+    </div>
+    <hr class="shop-border m-0">
 
-                    <form method="POST" action="<?php echo URLROOT; ?>/shopowners/updateitems">
-
-                    <!--
-                        Wat hebben we hier nodig
-                        als eerste moet gekeken worden welke shops de shopowner heeft
-                        deze kunnen selecteren
-                        item toevoegen
-                        bestaande items aanpassen
-                        updaten naar db
-                    -->
-
-                        <!-- item to sell -->
-                        <div class="form-group row mx-1 mb-0">
-                            <div class="col-5">
-                                <label for="item_name" class="pl-2 user-data-header">Product</label>
-                                <input id="item_name" type="text" class="form-control rounded-borders <?php if(isset($data['item_nameError'])) echo $data['item_nameError'];?>" name="item_name" placeholder="Aardappelen" autocomplete="item_name">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- description -->
-                            <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van het product</label>
-                                <input id="description" type="text" class="form-control rounded-borders <?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?>" name="description" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
-                            </div>
-                        </div><br><br>
-
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- address -->
-                            <div class="col-5">
-                                <label for="price" class="pl-2 user-data-header">prijs</label>
-                                <input id="price" type="text" class="form-control rounded-borders <?php if(isset($data['priceError'])) echo $data['priceError'];?>" name="price" placeholder="1,50" autocomplete="price">
-                            </div>
-
-                            <!-- house_number -->
-                            <div class="col-5">
-                                <label for="stock" class="pl-2 user-data-header">voorraad</label>
-                                <input id="stock" type="text" class="form-control rounded-borders <?php if(isset($data['stockError'])) echo $data['stockError'];?>" name="stock" placeholder="150" autocomplete="stock">
-                            </div>
-                        </div></br>
-
-                        <h5 class="pt-4 pl-4 data-headers">Optioneel</h5>
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- description -->
-                            <div class="col-5">
-                                <label for="banner_url" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php echo $data['banner_urlError'] ?></span></label>
-                                <input id="banner_url" type="text" class="form-control rounded-borders <?php if(isset($data['nameErr'])) echo $data['nameErr'];?>" name="banner_url" placeholder="http://tiniurl.hackmij.com" autocomplete="banner_url">
-                            </div>
-                        </div>
-
-                            <!-- Register Button -->
-                            <div class="form-group row mb-3 mt-4">
-                                <div class="ml-3 pl-3">
-                                <button type="submit" class="btn btn-green px-5">Voeg item toel</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <?php foreach($data['products'] as $product): ?>
+    <!-- Start Product -->
+    <div class="pt-3 border-shop">
+        <div class="d-flex justify-content-between align-items-baseline">
+            <div class = "product-width">
+                <p><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
+                    <a data-toggle="collapse" href="#description<?php echo $product->product_number ?>" role="button" aria-expanded="false" aria-controls="description<?php echo $product->product_number ?>">
+                        <i class="pl-2 fa fa-chevron-down"></i>
+                        <i class="pl-2 fa fa-chevron-up"></i></a></p>
+            </div>
+            <div class = "price-width">
+                <p>€<span id="price"><?php echo $product->price ?></span></p>
+            </div>
+            <div class="d-flex justify-content-center align-items-baseline shop-width">
+                <button type="button" class="btn-decrement">-</button>
+                <p id="count<?php echo $product->product_number ?>" class="px-3">0</p>
+                <button type="button" class="btn-increment">+</button>
+            </div>
+            <div class = "price-width text-right">
+                <p>€<span id="total">0.00</span></p>
             </div>
         </div>
     </div>
+    <div id="description<?php echo $product->product_number ?>" class="collapse pt-3 border-shop">
+        <p><?php echo $this->getTranslation($product->description, $_SESSION['lang']); ?></p>
+    </div>
+    <!-- Einde Product -->
+    <?php endforeach; ?>
+
+    <div class="d-flex justify-content-between pt-4">
+        <h3 class="font-weight-bolder">Bedrag</h3>
+        <h3 class="font-weight-bolder">€<span id="totalAmount">0.00</span></h3>
+    </div>
+    <div class="container">
+  <div class="row">
+  <div class="col text-left pt-4 pb-lg-5">
+    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shops/overview">Terug naar Shops</a>
+    </div>
+    <div class="col text-right pt-4 pb-lg-5">
+    <button type="submit" onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
+    </div>
+  </div>
 </div>
-<?php include APPROOT . "/Views/Includes/footer.php"; ?>
+    <div class="text-right pt-4 pb-lg-5">
+        
+       
+    </div>
+</div>
+<?php include APPROOT."/Views/Includes/footerShop.php"; ?>

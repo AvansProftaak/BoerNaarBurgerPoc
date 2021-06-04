@@ -146,7 +146,7 @@ class Shopowners extends Controller
             $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
             $imageFileContents = file_get_contents($imageFile);
             $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-            header('location: ' . URLROOT . '/Shopowners/updateitems');
+            header('location: ' . URLROOT . '/Shopowners/accountdetails');
         }
     }
         $this->view('shopowners/create', $data);
