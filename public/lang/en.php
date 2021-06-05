@@ -202,11 +202,16 @@ $lang = array (
                         \'Our\' farmers share these values.',
 
     //contactformulier
-    'contact_header'    =>  'Contact is easily made',
-    'contact_txt'       =>  'Your personal data will only be used for which you have provided them.',
-    'contact_socials'   =>  'Connect with us',
-    'contact_header2'   =>  'Send us a message',
-    'contact_button'    =>  'Send email',
+    'contact_header'        =>  'Contact is easily made',
+    'contact_txt'           =>  'Your personal data will only be used for which you have provided them.',
+    'contact_socials'       =>  'Connect with us',
+    'contact_header2'       =>  'Send us a message',
+    'contact_button'        =>  'Send email',
+    'contactname_error'     =>  'Enter your name',
+    'contactemail_error'    =>  'Enter your emailadres',
+    'contactemail_error2'   =>  'Enter a valid emailadres',
+    'contactsubject_error'  =>  'Enter your subject',
+    'contactmessage_error'  =>  'Enter your message',
 
 
     //FAQ
