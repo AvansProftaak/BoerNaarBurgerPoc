@@ -10,23 +10,23 @@ class Admin
     }
 
     public function login($email, $password) {
-        $this->db->query('SELECT * FROM boer_naar_burger.admin WHERE email = :email');
+        $this->db->query('SELECT * FROM boer_naar_burger.admins WHERE email = :email');
 
         $this->db->bind(':email', $email);
-        $admin = $this->db->single();
+        $admins = $this->db->single();
 
-        if($admin) {
-            $hashedPassword = $admin->password;
+        if($admins) {
+            $hashedPassword = $admins->password;
 
             if (password_verify($password, $hashedPassword)) {
-                return $admin;
+                return $admins;
             } else {
                 return false;
             }
         } else {
             return false;
         }
-    }*/
+    }
 
 
 }

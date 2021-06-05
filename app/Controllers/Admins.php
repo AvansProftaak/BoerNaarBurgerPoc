@@ -5,25 +5,27 @@ class Admins extends Controller
 
     private $adminModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->adminModel = $this->model('Admin');
     }
 
-    public function login() {
+    public function login()
+    {
         $data = [
-            'email'         => '',
-            'password'      => '',
-            'emailError'    => '',
+            'email' => '',
+            'password' => '',
+            'emailError' => '',
             'passwordError' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'email'         => trim($_POST['email']),
-                'password'      => trim($_POST['password']),
-                'emailError'    => '',
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'emailError' => '',
                 'passwordError' => ''
             ];
 
@@ -39,56 +41,56 @@ class Admins extends Controller
                 $authorizedAdmin = $this->adminModel->login($data['email'], $data['password']);
 
                 if ($authorizedAdmin) {
-                   // $this->createAdminSession($authorizedAdmin);
-                    header('location:' . URLROOT . '/admin/login');
+                    $this->createAdminSession($authorizedAdmin);
+                    header('location:' . URLROOT . '/admins/adminpanel');
                 } else {
                     $data['passwordError'] = 'pass_incorrect';
 
-                    $this->view('admin/login', $data);
+                    $this->view('admins/login', $data);
                 }
             }
         } else {
             $data = [
-                'email'         => '',
-                'password'      => '',
-                'emailError'    => '',
+                'email' => '',
+                'password' => '',
+                'emailError' => '',
                 'passwordError' => ''
             ];
         }
-        $this->view('admin/login', $data);
+        $this->view('admins/login', $data);
     }
 
-   /* public function createAdminSession ($customer) {
-        $_SESSION['customer_number'] = $customer->customer_number;
-        $_SESSION['email'] = $customer->email;
-        $_SESSION['customer_name'] = $customer->first_name . ' ' . $customer->last_name;
-    }
+    public function createAdminSession ($admins) {
+         $_SESSION['admin_number'] = $admins->admin_number;
+         $_SESSION['admin_email'] = $admins->email;
+     }
 
-    public function logout() {
-        unset($_SESSION['customer_number']);
-        unset($_SESSION['email']);
-        unset($_SESSION['customer_name']);
-        header('location:' . URLROOT . '/customers/login');
-    }
+     public function logout() {
+         unset($_SESSION['admin_number']);
+         unset($_SESSION['admin_email']);
+         header('location:' . URLROOT . '/admins/login');
+     }
 
-    public function Overview() {
-        if (isLoggedIn()) {
-            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-            $orders = $this->orderModel->getCustomerOrders($customer);
-            $orderMoment = $orders->completed_at;
-            
+    public function AdminPanel()
+    {
+        if (isLoggedInAdmin()) {
+            /*  $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
+             $orders = $this->orderModel->getCustomerOrders($customer);
+             $orderMoment = $orders->completed_at;
 
-            $data = [
-                'orders'        => $orders,
-                'customer'      => $customer,
-                'orderMoment'   => $orderMoment
-            ];
-            
-            
 
-            $this->view('admin/overview', $data);
-        } else {
-            $this->login();
+              $data = [
+                  'orders'        => $orders,
+                  'customer'      => $customer,
+                  'orderMoment'   => $orderMoment
+              ];
+              */
+
+
+            $this->view('admins/adminpanel');
+                } else {
+           $this->login();
+            }
         }
-    }*/
+
 }
