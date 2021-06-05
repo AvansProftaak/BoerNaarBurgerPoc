@@ -8,6 +8,8 @@ $lang = array (
     'total'         => 'Totaal',
     'status'        => 'Status',
     'contact2'      => 'Contact',
+    'save'          => 'Opslaan',
+    'close'         => 'Sluiten',
 
     //header
     'home'            => 'HOME',
@@ -19,6 +21,47 @@ $lang = array (
     'logout'          => 'Uitloggen',
     'login'           => 'Log in',
     'register'        => 'Registreer',
+
+    // index
+    'index_text'       => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
+    'caroussel-1'     => "IK HELP DE BOER EN BEN ZELF GOEDKOPER UIT <br>WIN WIN, ALS JE HET MIJ VRAAGT",
+    'caroussel-2'     => "VEEL LOKALE PRODUCTEN, OOK BIOLOGISCH,<br>HEERLIJK!",
+    'caroussel-3'     => "OP DEZE MANIER DOE IK IETS TERUG<br>VOOR DE NEDERLANDSE BOER",
+    'caroussel-4'     => "MAKKELIJK TE BESTELLEN, SNEL AF TE HALEN <br>EN ALLES IS VERS EN IN GOEDE STAAT",
+    'caroussel-5'     => "PRIMA PRODUCTEN EN JE PROEFT DUIDELIJK<br>VERSCHIL MET DE SUPERMARKT",
+    'caroussel-6'     => "PURE PRODUCTEN, VERS EN OOK<br>NOG EENS FIJN VOOR DE BOEREN ZELF",
+    'caroussel-7'     => "PRETTIGE WEBSITE, GOED AANBOD<br>FANTASTISCHE KWALITEIT",
+    'caroussel-8'     => "ONZE ERVARING IS GOED.<br>LEKKER EN ONBESPOTEN",
+    'how_it_works'    => "Hoe werkt het?",
+    'sign_in_index'   => "MELD JE AAN",
+    'find_your_farmer'=> "ZOEK JE BOER",
+    'stop_foodwaste'  => "Begin meteen met het tegengaan van voedselverspilling",
+    'find_a_farmer'   => "Zoek een boer in jouw omgeving",
+    'do_groceries'    => "DOE JE BOODSCHAPPEN",
+    'order_groceries' => "Bestel al je boodschappen en reken de ze af vanuit je winkelmandje",
+    'pick_up_QR'      => "HAAL AF MET QR-CODE",
+    'scan_and_pick'   => "Laat je QR-code scannen door de boer en neem je boodschappen mee naar huis",
+    'createDatabase'  => "Database aanmaken",
+
+    // searchbar      
+    'searchfield'     => "Ordernummer, product, etc",
+    'search'          => "Zoek",
+
+    // shops Rob
+    'hello'           => "Hallo ",
+    'hello_new_customer'=> "Hallo vreemdeling",
+    'our_shops'       => "onze shops in ",
+    'midden_brabant'  => "Midden-Brabant",
+    'oost_brabant'    => "Oost-Brabant",
+    'shops_all'       => "ALLE BOER NAAR BURGER SHOPS",
+    'shops_all2'      => "ALLE SHOPS",
+    'address'         => "adres",
+    'description'     => "beschrijving",
+    'shops_text'      => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
+    'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
+    'searchfield_shops' => "Zoek op plaatsnaam of product...",
+    'no_search_string'=> "Geen zoekopdracht ingevoerd!",
+
 
     //customer
     'orders'          => 'Besteloverzicht',
@@ -56,6 +99,8 @@ $lang = array (
     'city'              => 'Stad',
     'company_name'      => 'Bedrijfsnaam',
     'kvk_number'        => 'KVK-nummer',
+    'phone_number'      => 'telefoon nummer',
+    'iban'              => 'iban',
 
     //register customer
     'register_left'         => 'Registreer als Burger',
@@ -77,8 +122,18 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
+    'profile_picture'    => 'Kies een foto om te uploaden als profielfoto.',
+    'upload_photo'       => 'Upload foto',
+    'image_error'        => 'Upload alstublieft een afbeelding.',
+    'image_error2'       => 'Afbeelding kon niet geupload worden. Probeer het opnieuw.',
+    'image_error3'       => 'Upload alstublieft een afbeelding met jpg, jpeg of png extensie.',
+    'image_error4'       => 'Maximale toegestane grootte van de afbeelding is 500KB.',
+    'upload_success'     => 'Profielfoto is succesvol geupload.',
+    'change_success'     => 'Uw gegevens zijn succesvol gewijzigd.',
+    'change_failed'      => 'Uw gegevens konden niet worden opgeslagen. Probeer het opnieuw.',
 
     //order overview
     'order'             => 'Bestelling',
@@ -157,4 +212,78 @@ $lang = array (
                         kwijt kan. Boer naar Burger geeft deze producten een nieuw doel, een reden
                         van bestaan. We zijn volledig open over de volledige productie keten en bieden
                         transparantie en vertrouwen. ‘Onze’ boeren, delen onze kernwaarden. ',
+
+
+    //contactformulier
+    'contact_header'    =>  'Contact is zo gelegd',
+    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'   =>  'Connect met ons',
+    'contact_header2'   =>  'Stuur ons een bericht',
+    'contact_button'    =>  'Verzend email',
+
+
+    //FAQ
+    'veelgestelde_vragen'   =>  'Veelgestelde vragen',
+    'wie_zijn_wij'          =>  'Wie zijn wij?',
+    'wie_zijn_wij_answer'   =>  'Boer naar Burger biedt een platform waarop producten aangeboden worden, 
+                                 die in de huidige maatschappij verloren gaan. Door deze producten te verhandelen helpen wij boeren van hun overproductie af, 
+                                 en ondersteunen wij onze medemens in moeilijkere tijden. 
+                                 Daarnaast bieden wij consumenten, producten met een verhaal; (h)eerlijk en betrouwbaar.',
+    'klacht_melden'         =>  'Waar kan ik een klacht melden?',
+    'klacht_melden_answer'  =>  'Het kan altijd voorkomen dat er iets niet helemaal gaat zoals gepland. 
+                                 We raden je aan om klachten eerst bij ons kenbaar te maken door te mailen naar klachten@boernaarburger.nl.',
+    'betalingen'            =>  'Betalingen',
+    'inc_BTW'               =>  'Zijn alle prijzen inclusief BTW?',
+    'inc_BTW_answer'        =>  'De prijzen die op onze webshop worden weergegeven zijn inclusief BTW.',
+    'bestelling_geplaatst'  =>  'Hoe weet ik of mijn bestelling is geplaatst?',
+    'bestelling_answer'     =>  'Na het afronden van iedere bestelling ontvang je een bevestigingsmail waarin vermeld staat dat je bestelling geplaatst is.',
+    'kortingscode'          =>  'Kan ik ook met een kortingscode of een giftcard betalen?',
+    'kortingscode_answer'   =>  'Uiteraard! Voer tijdens het betalen jouw code in en het bedrag zal automatisch aangepast worden. Onze giftcards zijn 1 jaar geldig.',
+    'bestelling_betalen'    =>  'Hoe kan ik mijn bestelling betalen?',
+    'betalen_answer'        =>  'Wij weten het: betalen is het minst leuke deel van online shoppen. Toch proberen wij ervoor te zorgen dat onze producten jouw geld waard zijn 
+                                 en je er veel plezier van zult hebben. Bij boernaarburger.nl kun je 100% veilig afrekenen 
+                                    en het is ook mogelijk om veilig achteraf te betalen middels Klarna.',
+    'wachtwoord_vergeten'   =>  'Help! Ik ben mijn wachtwoord vergeten.',
+    'wachtwoord_answer'     =>  'Met al die online accounts tegenwoordig, is het niet gek als je je wachtwoord vergeet. 
+                                 Klik op ‘Wachtwoord vergeten’ en vul je emailadres in waarmee je je hebt geregistreerd bij ons. 
+                                 In een ogenblik zul je jouw inloggegevens ontvangen in je inbox. 
+                                 Nu alleen nog je tijdelijke wachtwoord aanpassen naar jouw nieuwe wachtwoord en je kunt er weer tegenaan.',
+
+    //Mail thank you
+    'bedankt_bericht'       =>  'Bedankt voor uw bericht!',
+    'bedankt_sub'           =>  'Een medewerker van Boer naar Burger neemt zo spoedig mogelijk contact met u op.',
+
+    //Sitemap
+    'Sitemap_info_burger'           =>  'Informatie burger',
+    'Sitemap_info_boer'             =>  'Informatie boer',
+    'Sitemap_about'                 =>  'Wie zijn wij',
+    'Sitemap_registreer_burger'     =>  'Registreren als burger',
+    'Sitemap_login_burger'          =>  'Aanmelden als burger',
+    'Sitemap_details_burger'        =>  'Mijn gegegevens',
+    'Sitemap_orders_burger'         =>  'Mijn bestellingen',
+    'Sitemap_register_boer'         =>  'Registreren als boer',
+    'Sitemap_login_boer'            =>  'Aanmelden als boer',
+    'Sitemap_shop_boer'             =>  'Mijn shop',
+    'Sitemap_contact'               =>  'Neem contact op',
+
+    // Errors
+    'firstname_error'  => 'Vul uw voornaam in.',
+    'lastname_error'   => 'Vul uw achternaam in.',
+    'email_error'      => 'Vul uw e-mail adres in.',
+    'email_invalid'    => 'Ongeldig e-mail adres. Vul een correct e-mail adres in.',
+    'email_registered' => 'E-mail adres is al geregistreerd.',
+    'password_error'   => 'Vul een wachtwoord in.',
+    'password_chars'   => 'Wachtwoord moet tenminste 8 karakters bevatten.',
+    'password_number'  => 'Wachtwoord moet tenminste 1 cijfer bevatten.',
+    'password_new'     => 'Vul een nieuw wachtwoord in.',
+    'confirm_error'    => 'Bevestig uw wachtwoord.',
+    'confirm_match'    => 'De wachtwoorden komen niet overeen. Probeer het opnieuw.',
+    'register_failed'  => 'Registratie is mislukt. Probeer het opnieuw.',
+    'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
+    'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
+    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+
+    //shop step 1
+    'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
+                          account hebben. Registreer of login alstublieft.',
 );

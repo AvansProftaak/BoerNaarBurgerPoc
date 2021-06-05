@@ -5,7 +5,15 @@
             <div class="row account-profile-card">
                 <div class="col-4 text-center pt-4 green-background">
                     <div>
-                        <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
+                        <img src="
+                                <?php
+                        if(!isset($data['profile_image_url'])) :
+                            if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif;
+                        else :
+                            echo '../img' . $data['profile_image_url'];
+                        endif;
+                        ?>"
+                             alt="Profile Picture" class="profile-photo"/>
                         <h3 class="white-text p-3"><?php echo $_SESSION['customer_name']; ?></h3>
                     </div>
                 </div>
@@ -18,21 +26,27 @@
                         </div>
                         <!-- Current Password -->
                         <div class="col">
-                            <label for="current_password" class="pl-2 user-data-header"><?php echo $lang['current_password']; ?><span class="pl-3 text-danger user-data-header"><?php echo $data['currentPasswordError'] ?></span></label>
+                            <label for="current_password" class="pl-2 user-data-header"><?php echo $lang['current_password']; ?><span class="pl-3 text-danger user-data-header"><?php if($data['currentPasswordError']) : echo $lang[$data['currentPasswordError']]; endif;?></span></label>
                             <input id="current_password" type="password" class="form-control rounded-borders <?php if($data['currentPasswordError']) : ?> is-invalid <?php endif; ?>" name="current_password" autocomplete="current_password">
                         </div>
 
                         <!-- New Password -->
                         <div class="col">
-                            <label for="password" class="pl-2 user-data-header"><?php echo $lang['new_password']; ?><span class="pl-3 text-danger user-data-header"><?php echo $data['passwordError'] ?></span></label>
+                            <label for="password" class="pl-2 user-data-header"><?php echo $lang['new_password']; ?><span class="pl-3 text-danger user-data-header"><?php if($data['passwordError']) : echo $lang[$data['passwordError']]; endif;?></span></label>
                             <input id="password2" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" autocomplete="new-password">
                         </div>
 
                         <!-- Confirm New Password -->
                         <div class="col mb-3">
-                            <label for="password-confirm" class="pl-2 user-data-header"><?php echo $lang['password_confirm']; ?><span class="pl-3 text-danger user-data-header"><?php echo $data['confirmPasswordError'] ?></span></label>
+                            <label for="password-confirm" class="pl-2 user-data-header"><?php echo $lang['password_confirm']; ?><span class="pl-3 text-danger user-data-header"><?php if($data['confirmPasswordError']) : echo $lang[$data['confirmPasswordError']]; endif;?></span></label>
                             <input id="password_confirmation" type="password" class="form-control rounded-borders <?php if($data['confirmPasswordError']) : ?> is-invalid <?php endif; ?>" name="password_confirmation" autocomplete="new-password">
                         </div>
+
+                        <?php if(isset($_GET['failed'])) : ?>
+                        <div class="form-group row mx-1">
+                            <div class="col alert-danger font-weight-bold"><?php echo $lang['pass_failed']; ?></div>
+                        </div>
+                        <?php endif; ?>
 
                         <!-- Submit Button -->
                         <div class="form-group row mb-3 justify-content-between">

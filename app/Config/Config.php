@@ -9,3 +9,5 @@ define('APPROOT', dirname(dirname(__FILE__)));
 define('IMGROOT', dirname(dirname(dirname(__FILE__))) . '\public\img');
 define('URLROOT', 'http://localhost/BoerNaarBurgerPoc');
 define('SITENAME', 'Boer naar Burger');
+
+define('LANGUAGES', 'NL, EN');

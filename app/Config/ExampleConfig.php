@@ -10,7 +10,12 @@ define('DB_NAME', 'boer_naar_burger');
 
 // The URLROOT defines the location of the root folder. Please make sure this directs to the BoerNaarBurgerPoc folder
 // APPROOT should define the app folder, eg: E:\XAMPP\htdocs\BoerNaarBurgerPoc\app
+// IMGROOT should define the img folder in the public directory
 
 define('APPROOT', dirname(dirname(__FILE__)));
+define('IMGROOT', dirname(dirname(dirname(__FILE__))) . '\public\img');
 define('URLROOT', 'http://localhost/BoerNaarBurgerPoc');
 define('SITENAME', 'Boer naar Burger');
+
+// Available languages for Boer naar Burger
+define('LANGUAGES', 'NL, EN');

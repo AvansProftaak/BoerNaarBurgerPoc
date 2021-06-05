@@ -26,4 +26,5 @@ class Order
 
         return $this->db->resultSet();
     }
+
 }

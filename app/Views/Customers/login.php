@@ -1,4 +1,5 @@
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
+
 <div class="container pt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -16,7 +17,7 @@
                         <!-- E-mail -->
                         <div class="form-group row mx-1">
                             <div class="col">
-                                <label for="email" class="pl-2 user-data-header"><?php echo $lang['email']; ?><span class="pl-3 text-danger user-data-header"><?php echo $data['emailError'] ?></span></label>
+                                <label for="email" class="pl-2 user-data-header"><?php echo $lang['email']; ?><span class="pl-3 text-danger user-data-header"><?php if($data['emailError']) : echo $lang[$data['emailError']]; endif;?></span></label>
                                 <input id="email" type="email" class="form-control rounded-borders <?php if($data['emailError']) : ?> is-invalid <?php endif; ?>"
                                        name="email" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>email@voorbeeld.nl <?php else : ?>email@example.com<?php endif; ?>" autocomplete="email">
                             </div>
@@ -25,7 +26,7 @@
                         <!-- password -->
                         <div class="form-group row mx-1">
                             <div class="col">
-                                <label for="password" class="pl-2 user-data-header"><?php echo $lang['password']; ?><span class="pl-3 text-danger user-data-header"><?php echo $data['passwordError'] ?></span></label>
+                                <label for="password" class="pl-2 user-data-header"><?php echo $lang['password']; ?><span class="pl-3 text-danger user-data-header"><?php if($data['passwordError']) : echo $lang[$data['passwordError']]; endif;?></span></label>
                                 <input id="password" type="password" class="form-control rounded-borders <?php if($data['passwordError']) : ?> is-invalid <?php endif; ?>" name="password" autocomplete="current-password">
                             </div>
                         </div>
