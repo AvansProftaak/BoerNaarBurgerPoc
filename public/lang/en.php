@@ -117,6 +117,7 @@ $lang = array (
     'new_password'     => 'New password',
 
     //account details
+    'my_shop'            => 'Shop overview',
     'shop_name'          => 'shopname',
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',

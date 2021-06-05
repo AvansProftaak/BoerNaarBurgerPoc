@@ -18,6 +18,14 @@
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
 
+                    <div class="form-group row mx-1">
+                            <!-- company Name -->
+                            <div class="col-5">
+                                <label for="company_name" class="pl-2 user-data-header"><?php echo $lang['company_name']; ?><span class="pl-3 text-danger"><?php echo $data['company_nameError'] ?></span></label>
+                                <input id="company_name" type="text" class="form-control rounded-borders <?php if($data['company_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['company_name']; ?>" name="company_name" autocomplete="cname">
+                            </div>
+                        </div>
+
                         <div class="form-group row mx-1">
                             <!-- First Name -->
                             <div class="col-5">
@@ -107,13 +115,24 @@
                     <hr class="mx-2">
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
-                        <div class="form-group row mx-1">
-                            <!-- company_name -->
+
+                    <div class="form-group row mx-1">
                             <div class="col-5">
-                                <label for="shop_name" class="pl-2 user-data-header"><?php echo $lang['shop_name']; ?><span class="pl-3 text-danger"><?php echo $data['shop_nameError'] ?></span></label>
-                                <input id="shop_name" type="text" class="form-control rounded-borders <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name']; ?>" name="shop_name" autocomplete="sname">
+                                <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
+                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_nl']; ?>" name="shop_name_nl" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_en']; ?>" name="shop_name_en" placeholder="Aardappelen loket" autocomplete="shop_name">
                             </div>
                         </div>
+
+                        <div class="form-group row mx-1">
+                            <!-- description -->
+                            <div class="col-5">
+                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?></span></label>
+                                <input id="description_nl" type="text" class="mt-2 form-control rounded-borders input-icon-nl <?php if($data['description_nlError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['description_nl']; ?>" name="description_nl" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+                                <input id="description_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['description_enError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['description_en']; ?>" name="description_en" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
+
+                            </div>
+                        </div><br><br>
 
                         <div class="form-group row mx-1">
                             <!-- Street -->
@@ -142,8 +161,8 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- photo -->
                             <div class="col-5">
-                                <label for="shop_photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
-                                <input id="shop_photo" type="file" name="shop_photo" class="form-control rounded-borders" placeholder="downloads/picturename" autocomplete="shop_photo">
+                                <label for="photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
+                                <input id="photo" type="file" name="photo" class="form-control rounded-borders" placeholder="/Downloads/mooiplaatje" autocomplete="photo">
                             </div>
                         </div></br>
 

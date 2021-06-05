@@ -1,7 +1,10 @@
 <?php
 
+use App\Traits\TranslationTrait;
+
 class Shopowners extends Controller
 {
+    use TranslationTrait;
     /**
      * @var mixed
      */
@@ -318,6 +321,7 @@ class Shopowners extends Controller
 
                 if ($authorizedShopOwner) {
                     $this->createShopOwnerSession($authorizedShopOwner);
+                    
                     $hasShop = $this->shopOwnerModel->getMyShop();
                     if ($hasShop) {
                         header('location:' . URLROOT . '/shopowners/accountDetails');
@@ -326,7 +330,6 @@ class Shopowners extends Controller
                     }
                 } else {
                     $data['passwordError'] = 'Het opgegeven e-mailadres of wachtwoord is incorrect.';
-
                     $this->view('shopowners/login', $data);
                 }
             }
@@ -360,87 +363,104 @@ class Shopowners extends Controller
         if (isLoggedIn()){
             header('location: ' . URLROOT . '/pages/index');
         }
-        $data = [
-            'item_name'            => '',
-            'description'           => '',
-            'banner_url'            => '',
+        // $data = [
+        //     'item_name'            => '',
+        //     'description'           => '',
+        //     'banner_url'            => '',
 
-            'item_nameError'       => '',
-            'descriptionError'      => '',
-            'banner_urlError'       => ''
-        ];
+        //     'item_nameError'       => '',
+        //     'descriptionError'      => '',
+        //     'banner_urlError'       => ''
+        // ];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            if (isLoggedInShopOwner()){
-                $KVKNumber = $_SESSION['kvk_number'];
-            } else {
-                $KVKNumber = "test";
-            }
+        //     if (isLoggedInShopOwner()){
+        //         $KVKNumber = $_SESSION['kvk_number'];
+        //     } else {
+        //         $KVKNumber = "test";
+        //     }
 
-            $data = [
-                'kvk_number'            => $KVKNumber,
-                'shop_name'             => trim($_POST['item_name']),
-                'description'           => trim($_POST['description']),
-                'price'                 => trim($_POST['price']),
-                'stock'                 => trim($_POST['banner_url']),
-                'banner_url'            => trim($_POST['banner_url']),
+        //     $data = [
+        //         'kvk_number'            => $KVKNumber,
+        //         'shop_name'             => trim($_POST['item_name']),
+        //         'description'           => trim($_POST['description']),
+        //         'price'                 => trim($_POST['price']),
+        //         'stock'                 => trim($_POST['banner_url']),
+        //         'banner_url'            => trim($_POST['banner_url']),
 
-                'kvk_numberError'       => '',
-                'item_nameeError'       => '',
-                'descriptionError'      => '',
-                'priceError'            => '',
-                'stockError'            => '',
-                'banner_urlError'       => ''
-            ];
+        //         'kvk_numberError'       => '',
+        //         'item_nameeError'       => '',
+        //         'descriptionError'      => '',
+        //         'priceError'            => '',
+        //         'stockError'            => '',
+        //         'banner_urlError'       => ''
+        //     ];
 
-            print_r( $data);
+        //     print_r( $data);
 
-            $i = 0 ;
-            foreach ($data as $key => $item) {
-                if (empty($item)) {
-                    # if items contains the word error pass
-                    # else show error message
-                    $key_stripped = str_replace("_", " ", $key);
-                    $key_stripped;
-                    $errorMessage = "Vul het $key_stripped veld in in.";
+        //     $i = 0 ;
+        //     foreach ($data as $key => $item) {
+        //         if (empty($item)) {
+        //             # if items contains the word error pass
+        //             # else show error message
+        //             $key_stripped = str_replace("_", " ", $key);
+        //             $key_stripped;
+        //             $errorMessage = "Vul het $key_stripped veld in in.";
 
-                    $errorName = $key . "Error";
-                    print $errorMessage;
+        //             $errorName = $key . "Error";
+        //             print $errorMessage;
 
-                    $data = [$errorName => $errorMessage];
-            } 
+        //             $data = [$errorName => $errorMessage];
+        //     } 
              
-                $errorMessages = [
-                'kvk_numberError',
-                'item_nameeError',
-                'descriptionError',
-                'priceError',
-                'stockError',
-                'banner_urlError'] ;
+        //         $errorMessages = [
+        //         'kvk_numberError',
+        //         'item_nameeError',
+        //         'descriptionError',
+        //         'priceError',
+        //         'stockError',
+        //         'banner_urlError'] ;
 
-                //if no errors are found continue
-                foreach ($errorMessages as $errorMessage) {
-                    if (!empty($data[$errorMessage])){
-                        $this->view('shopowners/updateitems', $data); 
-                    } else {
-                        header('location: ' . URLROOT . '/Shopowners/updateitems');
-                    }
-                }
+        //         //if no errors are found continue
+        //         foreach ($errorMessages as $errorMessage) {
+        //             if (!empty($data[$errorMessage])){
+        //                 $this->view('shopowners/updateitems', $data); 
+        //             } else {
+        //                 header('location: ' . URLROOT . '/Shopowners/updateitems');
+        //             }
+        //         }
 
-                $i++ ;
+        //         $i++ ;
             
-                }
-            if ($this->shopOwnerModel->createShop($data)) {
-                $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
-                $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
-                $imageFileContents = file_get_contents($imageFile);
-                $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-                header('location: ' . URLROOT . '/Shopowners/accountdetails');
+        //         }
+        //     if ($this->shopOwnerModel->createShop($data)) {
+        //         $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+        //         $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+        //         $imageFileContents = file_get_contents($imageFile);
+        //         $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+        //         header('location: ' . URLROOT . '/Shopowners/accountdetails');
+        //     }
+        // }
+
+            $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
+
+            if($shop) {
+
+                $products = $this->shopModel->getShopProducts($shop);
+
+                
+                $data = [
+                    'shop'      => $shop,
+                    'products'  => $products
+                ];
+
+                $this->view('shopowners/updateitems', $data);
             }
-        }
-        $this->view('shopowners/updateitems', $data);
+        
+
+        
     }
 
     public function myShop() {
@@ -456,10 +476,23 @@ class Shopowners extends Controller
         if (isLoggedInShopOwner()) {
             $shopowner = $this->shopOwnerModel->getAccountDetails();
             $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
-
+            
             $data = [
                 'kvk_number'            => $_SESSION['kvk_number'],
-                'shop_name'             => $shop->shop_name,
+                'shop_name'             =>
+                    [
+                        'NL' => $this->getTranslation($shop->shop_name, 'nl'),
+                        'EN' => $this->getTranslation($shop->shop_name, 'en')
+                    ],
+                    'description'           =>
+                    [
+                        'NL' => $this->getTranslation($shop->description, 'nl'),
+                        'EN' => $this->getTranslation($shop->description, 'en')
+                    ],
+                'shop_name_nl'          => $this->getTranslation($shop->shop_name, 'nl'),
+                'shop_name_en'          => $this->getTranslation($shop->shop_name, 'en'),
+                'description_nl'        => $this->getTranslation($shop->description, 'nl'),
+                'description_en'        => $this->getTranslation($shop->description, 'en'),
                 'company_name'          => $shopowner->company_name,
                 'password'              => $shopowner->password,
                 'iban'                  => $shopowner->iban,
@@ -486,15 +519,19 @@ class Shopowners extends Controller
 
             ];
 
+            
+
             if (isset($_POST['submit-personal-data'])) {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $shopowner = $this->shopOwnerModel->getAccountDetails();
 
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
+                    'company_name'          => trim($_POST['company_name']),
                     'iban'                  => trim($_POST['iban']),
                     'password'              => "$shopowner->password",
                     'first_name'            => trim($_POST['first_name']),
+                    'city'                  => trim($_POST['city']),
                     'country'               => 'NL',
                     'last_name'             => trim($_POST['last_name']),
                     'email'                 => trim($_POST['email']),
@@ -502,8 +539,7 @@ class Shopowners extends Controller
                     'address'               => trim($_POST['address']),
                     'house_number'          => trim($_POST['house_number']),
                     'postal_code'           => trim($_POST['postal_code']),
-                    'city'                  => trim($_POST['city']),
-                    'shop_address'          => $shop->shop_address,
+                    'shop_address'          => $shop->address,
                     'shop_house_number'     => $shop->house_number,
                     'shop_postal_code'      => $shop->postal_code,
                     'shop_city'             => $shop->city,
@@ -517,6 +553,7 @@ class Shopowners extends Controller
                     'passwordError'         => ''
                 ];
 
+                
                 //validate first_name
                 if (empty($data['first_name'])) {
                     $data['firstNameError'] = 'Vul uw voornaam in.';
@@ -534,15 +571,6 @@ class Shopowners extends Controller
                     $data['emailError'] = 'Ongeldig e-mail adres. Vul een correct e-mail adres in.';
                 }
 
-                // Validate password
-                if(empty($data['password'])) {
-                    $data['passwordError'] = 'Vul uw wachtwoord in.';
-                } else {
-                    if($data['password'] !== $data['password']) {
-                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
-                    }
-                }
-
                 //if no errors are found continue
                 if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
                         empty($data['emailError'])) && empty($data['passwordError'])) {
@@ -551,7 +579,6 @@ class Shopowners extends Controller
 
                     if ($this->shopOwnerModel->update($data, $shopowner)) {
                         $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
-
                         header('location: ' . URLROOT . '/shopowners/accountDetails');
                     } else {
                         if((strpos($this->shopOwnerModel->update($data, $shopowner),'uc_email') !== false)) {
@@ -567,10 +594,24 @@ class Shopowners extends Controller
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
                 $shopowner = $this->shopOwnerModel->getAccountDetails();
+                $shopnames = [      'NL' => trim($_POST['shop_name_nl']),
+                                    'EN' => trim($_POST['shop_name_en'])];
+
+                $descriptions = [   'NL' =>trim($_POST['description_nl']),
+                                    'EN' =>trim($_POST['description_en'])];
+
+                
 
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
-                    'shop_name'             => trim($_POST['shop_name']),
+                    'shop_name'             =>
+                    [
+                        'NL' => $this->createOrUpdateTranslation($shopnames, $shop->shop_name)
+                    ],
+                    'description'           =>
+                    [
+                        'NL' => $this->createOrUpdateTranslation($descriptions,$shop->description)
+                    ],
                     'shop_country'               => 'NL',
                     'shop_address'               => trim($_POST['shop_address']),
                     'shop_house_number'          => trim($_POST['shop_house_number']),
@@ -580,17 +621,6 @@ class Shopowners extends Controller
                     'shop_nameError'        => ''
                 ];
 
-                #
-                
-
-                // Validate password
-                if(empty($data['password'])) {
-                    $data['passwordError'] = 'Vul uw wachtwoord in.';
-                } else {
-                    if($data['password'] !== $data['password']) {
-                        $data['passwordError'] = 'Het opgegeven wachtwoord is incorrect.';
-                    }
-                }
 
                 //if no errors are found continue
                 if (empty($data['firstNameError'])) {
