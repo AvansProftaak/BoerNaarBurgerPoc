@@ -670,5 +670,4 @@ class Shopowners extends Controller
     }
 
 
-
 }
