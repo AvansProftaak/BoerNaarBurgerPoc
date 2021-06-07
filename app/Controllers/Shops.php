@@ -70,6 +70,14 @@ class Shops extends Controller
         } else {
             $this->view('shops/notfound');
         }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            var_dump($_POST);
+//            foreach ($_POST['product'] as $key => $value) {
+//                $product[] = $_POST['product'][$key];
+//                var_dump($product);
+//            }
+        }
     }
 
     public function step2() {
