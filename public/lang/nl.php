@@ -71,6 +71,7 @@ $lang = array (
     'create_shop' => 'Shop Aanmaken',
 
     //shop header
+    'product'  => 'product',
     'products' => 'Producten',
     'data'     => 'Gegevens',
     'payment'  => 'Betaling',
@@ -290,7 +291,19 @@ $lang = array (
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
     'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
 
+    //products
+    'product_name'              => 'Naam van het product',
+    'product_price'             => 'prijs van het product',
+    'product_description'       => 'Beschrijving van het product',
+    'product_stock'             => 'Voorraad',
+    'product_image'             => 'Foto',
+    'product_image_label'       => 'Selecteer een foto',
+    'product_update'            => 'Aanpassingen opslaan',
+    'product_delete'            => 'Verwijder product',
+    'product_add'               => 'Nieuw product'
+
     //shop step 1
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
 );
+

@@ -70,6 +70,7 @@ $lang = array (
     'create_shop' => 'Create Shop',
 
     //shop header
+    'product'  => 'product',
     'products' => 'Products',
     'data'     => 'Personal Details',
     'payment'  => 'Payment',
@@ -275,6 +276,17 @@ $lang = array (
     'pass_wrong'       => 'The provided password is incorrect. Please try again.',
     'pass_failed'      => 'Your password could not be changed. Please try again.',
 
+    //products
+    'product_name'              => 'Naam van het product',
+    'product_price'             => 'prijs van het product',
+    'product_description'       => 'Beschrijving van het product',
+    'product_stock'             => 'Voorraad',
+    'product_image'             => 'Image',
+    'product_image_label'       => 'Select a foto',
+    'product_update'            => 'Update product',
+    'product_delete'            => 'Remove product',
+    'product_add'               => 'Add product'
+  
     //shop step 1
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
 );
