@@ -7,19 +7,18 @@
     <hr class="shop-border m-0 order-overview-width">
 
     <div class="pt-2 border-shop order-overview-width">
-        <div class="d-flex justify-content-between align-items-baseline border-shop">
-            <p class="mb-2">2x</p>
-            <p class="mb-2"><?php echo $this->getTranslation($data['products'][0]->name, $_SESSION['lang']); ?></p>
-            <p class="mb-2">€<?php echo number_format($data['products'][1]->price*2,2); ?></p>
-        </div>
+        <?php foreach ($data['orderDetails'] as $orderItem): ?>
+        <!-- start orderdetails row -->
         <div class="pt-2 d-flex justify-content-between align-items-baseline border-shop">
-            <p class="mb-2">1x</p>
-            <p class="mb-2"><?php echo $this->getTranslation($data['products'][1]->name, $_SESSION['lang']); ?></p>
-            <p class="mb-2">€<?php echo $data['products'][1]->price; ?></p>
+            <p class="mb-2"><?php echo $orderItem->amount; ?>x</p>
+            <p class="mb-2"><?php echo $this->getTranslation($orderItem->product, $_SESSION['lang']); ?></p>
+            <p class="mb-2">€<?php echo $orderItem->price; ?></p>
         </div>
+        <!-- end orderdetails row -->
+        <?php endforeach; ?>
         <div class="pt-2 d-flex justify-content-between align-items-baseline">
-            <p class="mb-2 font-weight-bold">Totaal:</p>
-            <p class="mb-2 font-weight-bold">€<?php echo number_format($data['products'][1]->price + $data['products'][1]->price*2,2) ?></p>
+            <p class="mb-2 font-weight-bold"><?php echo $lang['total']; ?>:</p>
+            <p class="mb-2 font-weight-bold">€<?php echo $data['order']->orderamount_incl_tax; ?></p>
         </div>
     </div>
 

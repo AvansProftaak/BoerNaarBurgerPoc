@@ -66,4 +66,11 @@ class Order
         }
     }
 
+    public function getOrder($orderNumber) {
+        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $orderNumber);
+
+        return $this->db->single();
+    }
+
 }

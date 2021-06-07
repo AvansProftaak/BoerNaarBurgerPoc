@@ -68,6 +68,7 @@ class Shops extends Controller
                 ];
 
                 $orderNumber = $this->orderModel->postOrder($data);
+                $_SESSION['order_number'] = $orderNumber;
 
                 foreach ($_POST['product'] as $key => $value) {
                     $product = $this->orderModel->getProduct($_POST['product_number'][$key]);
@@ -103,31 +104,48 @@ class Shops extends Controller
         }
     }
 
-    public function step2() {
+    public function step2()
+    {
         $customer = '';
+
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']) ? $this->customerModel->getAccountDetails($_SESSION['email']) : null;
-        }
-        if (isset($_GET['shop'])) {
 
-            $shop = $this->shopModel->getShop($_GET['shop']);
+            if (isset($_GET['shop'])) {
+                $shop = $this->shopModel->getShop($_GET['shop']);
 
-            if($shop) {
+                if ($shop) {
+                    if (isset($_SESSION['order_number'])) {
 
-                $products = $this->shopModel->getShopProducts($shop);
+                        //retrieve order information
+                        $order = $this->orderModel->getOrder($_SESSION['order_number']);
+                        $orderDetails = $this->orderModel->getOrderDetails($order);
 
-                $data = [
-                    'shop'      => $shop,
-                    'products'  => $products,
-                    'customer'  => $customer
-                ];
+                        $products = $this->shopModel->getShopProducts($shop);
 
-                $this->view('shops/step2', $data);
+                        $data = [
+                            'shop'         => $shop,
+                            'order'        => $order,
+                            'orderDetails' => $orderDetails,
+                            'customer'     => $customer
+                        ];
+
+                        $this->view('shops/step2', $data);
+                    } else {
+                        // no order session exists, so user cannot be in step 2.
+                        $this->step1();
+                    }
+                } else {
+                    //shop doesn't exist
+                    $this->view('shops/notfound');
+                }
             } else {
+                // no shop in get parameter, so not found
                 $this->view('shops/notfound');
             }
         } else {
-            $this->view('shops/notfound');
+            // if user is not logged in redirect to shop homepage with login error message
+            $this->step1();
         }
     }
 
