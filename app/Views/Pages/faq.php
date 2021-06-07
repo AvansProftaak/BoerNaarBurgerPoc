@@ -1,4 +1,11 @@
 <?php include APPROOT."/Views/Includes/header.php"; ?>
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/pram-faq.js" defer></script>
+</head>
+<body>
 <div class="container">
     <h2 class="faq-h2"><?php echo $lang['veelgestelde_vragen']; ?></h2>
     <div class="accordion">
@@ -59,5 +66,6 @@
         <p><?php echo $lang['wachtwoord_answer']; ?></p>
     </div>
 </div>
-<script src="../js/pram-faq.js" defer></script>
+</body>
+
 <?php include APPROOT."/Views/Includes/footer.php"; ?>

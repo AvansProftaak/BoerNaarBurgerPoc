@@ -217,11 +217,16 @@ $lang = array (
 
 
     //contactformulier
-    'contact_header'    =>  'Contact is zo gelegd',
-    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
-    'contact_socials'   =>  'Connect met ons',
-    'contact_header2'   =>  'Stuur ons een bericht',
-    'contact_button'    =>  'Verzend email',
+    'contact_header'        =>  'Contact is zo gelegd',
+    'contact_txt'           =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'       =>  'Connect met ons',
+    'contact_header2'       =>  'Stuur ons een bericht',
+    'contact_button'        =>  'Verzend email',
+    'contactname_error'     =>  'Vul uw naam in',
+    'contactemail_error'    =>  'Vul uw emailadres in',
+    'contactemail_error2'   =>  'Vul een geldig emailadres in',
+    'contactsubject_error'  =>  'Vul een onderwerp in',
+    'contactmessage_error'  =>  'Vul een bericht in',
 
 
     //FAQ

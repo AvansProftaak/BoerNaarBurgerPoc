@@ -203,11 +203,16 @@ $lang = array (
                         \'Our\' farmers share these values.',
 
     //contactformulier
-    'contact_header'    =>  'Contact is easily made',
-    'contact_txt'       =>  'Your personal data will only be used for which you have provided them.',
-    'contact_socials'   =>  'Connect with us',
-    'contact_header2'   =>  'Send us a message',
-    'contact_button'    =>  'Send email',
+    'contact_header'        =>  'Contact is easily made',
+    'contact_txt'           =>  'Your personal data will only be used for which you have provided them.',
+    'contact_socials'       =>  'Connect with us',
+    'contact_header2'       =>  'Send us a message',
+    'contact_button'        =>  'Send email',
+    'contactname_error'     =>  'Enter your name',
+    'contactemail_error'    =>  'Enter your emailadres',
+    'contactemail_error2'   =>  'Enter a valid emailadres',
+    'contactsubject_error'  =>  'Enter your subject',
+    'contactmessage_error'  =>  'Enter your message',
 
 
     //FAQ
@@ -244,8 +249,8 @@ $lang = array (
     'Sitemap_info_burger'           =>  'Information consumer',
     'Sitemap_info_boer'             =>  'Information farmer',
     'Sitemap_about'                 =>  'About',
-    'Sitemap_registreer_burger'     =>  'Login as consumer',
-    'Sitemap_login_burger'          =>  'Register as consumer',
+    'Sitemap_registreer_burger'     =>  'Login as customer',
+    'Sitemap_login_burger'          =>  'Register as customer',
     'Sitemap_details_burger'        =>  'My details',
     'Sitemap_orders_burger'         =>  'My orders',
     'Sitemap_register_boer'         =>  'Register as farmer',
