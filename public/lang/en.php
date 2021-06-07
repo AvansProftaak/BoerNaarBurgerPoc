@@ -97,6 +97,7 @@ $lang = array (
     'kvk_number'       => 'KVK-number',
     'phone_number'     => 'phone number',
     'iban'             => 'iban',
+    'company_data'      => 'company data',
 
     //register customer
     'register_left'       => 'Register as customer',

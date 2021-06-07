@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="col-9 pr-2">
-                <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
+                <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['company_data']; ?></h2>
                     <hr class="mx-2">
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
