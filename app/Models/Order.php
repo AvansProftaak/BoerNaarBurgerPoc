@@ -37,7 +37,7 @@ class Order
         $this->db->bind(':status', 'PENDING');
 
         if ($this->db->execute()) {
-            return $this->db->lastInsertdId();
+            return $this->db->lastInsertId();
         } else {
             return false;
         }

@@ -73,7 +73,7 @@ class Database {
         return $this->statement->rowCount();
     }
 
-    public function lastInsertdId() {
+    public function lastInsertId() {
         return $this->dbHandler->lastInsertId();
     }
 }
