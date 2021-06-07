@@ -372,20 +372,24 @@ class Customers extends Controller
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
-            $orderMoment = $orders->completed_at;
             
 
             $data = [
                 'orders'        => $orders,
                 'customer'      => $customer,
-                'orderMoment'   => $orderMoment
             ];
-            
-            
 
             $this->view('customers/orderoverview', $data);
         } else {
             $this->login();
         } 
+    }
+
+    public function invoice(){
+        $data = [
+
+        ];
+
+        $this->view('customers/invoice', $data);
     }
 }

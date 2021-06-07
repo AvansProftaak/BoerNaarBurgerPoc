@@ -11,7 +11,7 @@
             <img src="../img/sla.png" class="rh-scaleImage" alt="Sla">
         </div>
         <div class="rh-centerBuiten">
-            <img class="logoBnB" src="../img/logo Boer naar burger_liggend_color.png" alt="Sla">
+            <img class="logoBnB" src="../img/logo Boer naar burger_liggend_color.png" alt="Logo">
         </div>
         <div class="rh-row">
             <div class="rh-column-links">
