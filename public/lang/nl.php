@@ -68,6 +68,7 @@ $lang = array (
     'create_shop' => 'Shop Aanmaken',
 
     //shop header
+    'product'  => 'product',
     'products' => 'Producten',
     'data'     => 'Gegevens',
     'payment'  => 'Betaling',
@@ -280,5 +281,20 @@ $lang = array (
     'register_failed'  => 'Registratie is mislukt. Probeer het opnieuw.',
     'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
-    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.'
+    'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+
+    //products
+    'product_name'              => 'Naam van het product',
+    'product_price'             => 'prijs van het product',
+    'product_description'       => 'Beschrijving van het product',
+    'product_stock'             => 'Voorraad',
+    'product_image'             => 'Foto',
+    'product_image_label'       => 'Selecteer een foto',
+    'product_update'            => 'Aanpassingen opslaan',
+    'product_delete'            => 'Verwijder product',
+    'product_add'               => 'Nieuw product'
+
+    
+
 );
+
