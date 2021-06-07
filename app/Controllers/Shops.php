@@ -25,6 +25,7 @@ class Shops extends Controller
             $shopsAll = $this->shopModel->getShopsAll();
             $cities = $this->shopModel->getShops();
             $shops = $this->shopModel->getShops();
+            
             $data = [
                 'cities' => $cities,
                 'shops' => $shops,
