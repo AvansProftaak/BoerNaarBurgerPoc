@@ -100,6 +100,7 @@ $lang = array (
     'kvk_number'       => 'KVK-number',
     'phone_number'     => 'phone number',
     'iban'             => 'iban',
+    'company_data'      => 'company data',
 
     //register customer
     'register_left'       => 'Register as customer',
@@ -120,6 +121,7 @@ $lang = array (
     'new_password'     => 'New password',
 
     //account details
+    'my_shop'            => 'Shop overview',
     'shop_name'          => 'shopname',
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',

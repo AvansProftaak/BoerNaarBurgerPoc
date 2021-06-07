@@ -101,6 +101,7 @@ $lang = array (
     'kvk_number'        => 'KVK-nummer',
     'phone_number'      => 'telefoon nummer',
     'iban'              => 'iban',
+    'company_data'      => 'bedrijfs gegevens',
 
     //register customer
     'register_left'         => 'Registreer als Burger',
@@ -122,6 +123,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'my_shop'            => 'Shop overzicht',
     'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',

@@ -170,12 +170,14 @@ class Shopowner
     }
 
     public function update($data, $shopowner) {
+
+
         $this->db->query('UPDATE boer_naar_burger.shop_owners SET first_name = :first_name, last_name = :last_name,
-                                email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
-                                company_name = :company_name, phone_number = :phone_number, password = :password, iban = :iban, city = :city, country = :country WHERE kvk_number = :kvk_number');
-        $this->db->bind(':company_name', $data['company_name']);
-        $this->db->bind(':password', $data['password']);
+                                company_name = :company_name, email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
+                                phone_number = :phone_number, iban = :iban, city = :city, country = :country WHERE kvk_number = :kvk_number');
+        // $this->db->bind(':password', $data['password']);
         $this->db->bind(':iban', $data['iban']);
+        $this->db->bind(':company_name', $data['company_name']);
         $this->db->bind(':country', $data['country']);
         $this->db->bind(':phone_number', $data['phone_number']);
         $this->db->bind(':first_name', $data['first_name']);
