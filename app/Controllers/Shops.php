@@ -10,10 +10,12 @@ class Shops extends Controller
      */
     private $shopModel;
     private $customerModel;
+    private $orderModel;
 
     public function __construct() {
         $this->shopModel = $this->model('Shop');
         $this->customerModel = $this->model('Customer');
+        $this->orderModel = $this->model('Order');
     }
 
     public function shopdistrict() {
@@ -51,23 +53,51 @@ class Shops extends Controller
 
 
     public function step1() {
-        if (isset($_GET['shop'])) {
 
+        if (isset($_GET['shop'])) {
+            //get shop
             $shop = $this->shopModel->getShop($_GET['shop']);
 
+            // click next button on shop step 1 -> post order & order items
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                $data = [
+                    'customer_number' => $_SESSION['customer_number'],
+                    'order_amount_incl_tax' => $_POST['orderTotal'],
+                    'orderError' => ''
+                ];
+
+                $orderNumber = $this->orderModel->postOrder($data);
+
+                foreach ($_POST['product'] as $key => $value) {
+                    $product = $this->orderModel->getProduct($_POST['product_number'][$key]);
+                    $price = $_POST['totalProduct'][$key];
+                    $amount = $_POST['product'][$key];
+
+                    if(!$this->orderModel->postOrderItem($orderNumber, $product, $price, $amount)) {
+                        $data['orderError'] = 'order_error';
+                    }
+                }
+                header('location: ' . URLROOT . '/shops/step2?shop=' . $shop->shop_number);
+            }
+
+            // if a shop is found
             if($shop) {
 
                 $products = $this->shopModel->getShopProducts($shop);
 
                 $data = [
-                    'shop'      => $shop,
-                    'products'  => $products
+                    'shop'                  => $shop,
+                    'products'              => $products,
+                    'order_amount_incl_tax' => '0.00',
+                    'orderError'            => ''
                 ];
 
                 $this->view('shops/step1', $data);
             } else {
                 $this->view('shops/notfound');
             }
+            //if no shop is found
         } else {
             $this->view('shops/notfound');
         }

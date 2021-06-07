@@ -10,6 +10,7 @@ $lang = array (
     'contact2'      => 'Contact',
     'save'          => 'Opslaan',
     'close'         => 'Sluiten',
+    'next'          => 'Verder',
 
     //header
     'home'            => 'HOME',
@@ -290,6 +291,7 @@ $lang = array (
     'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
     'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+    'order_error'      => 'Er is iets misgegaan. Probeer het opnieuw',
 
     //products
     'product_name'              => 'Naam van het product',
@@ -305,5 +307,6 @@ $lang = array (
     //shop step 1
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
+    'back_to_shops'   => 'Terug naar Shops',
 );
 
