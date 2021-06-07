@@ -104,8 +104,8 @@
           </a>
             <div class="dropdown-menu dropdown-menu-hover dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['personal_data']; ?></a>
-              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/productovervieuw"><?php echo $lang['products']; ?></a>
-              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accoutdetails"><?php echo $lang['orders']; ?></a>
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['orders']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create"><?php echo $lang['create_shop']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout"><?php echo $lang['logout']; ?></a>
             </div>
