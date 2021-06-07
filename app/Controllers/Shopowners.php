@@ -359,7 +359,7 @@ class Shopowners extends Controller
         header('location:' . URLROOT . '/shopowners/login');
     }
 
-    public function updateitems() {
+    public function productoverview() {
         if (isLoggedIn()){
             header('location: ' . URLROOT . '/pages/index');
         }
@@ -426,9 +426,9 @@ class Shopowners extends Controller
         //         //if no errors are found continue
         //         foreach ($errorMessages as $errorMessage) {
         //             if (!empty($data[$errorMessage])){
-        //                 $this->view('shopowners/updateitems', $data); 
+        //                 $this->view('shopowners/productoverview', $data); 
         //             } else {
-        //                 header('location: ' . URLROOT . '/Shopowners/updateitems');
+        //                 header('location: ' . URLROOT . '/Shopowners/productoverview');
         //             }
         //         }
 
@@ -456,7 +456,7 @@ class Shopowners extends Controller
                     'products'  => $products
                 ];
 
-                $this->view('shopowners/updateitems', $data);
+                $this->view('shopowners/productoverview', $data);
             }
         
 
