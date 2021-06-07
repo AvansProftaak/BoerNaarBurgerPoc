@@ -174,7 +174,7 @@
                             <a type="button" href="<?php echo URLROOT; ?>/shopowners/accountetails" class="btn btn-green">bestellingen</a>
                             </div>
                             <div class="mr-3 pr-3">
-                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/updateitems" class="btn btn-green">update items</a>
+                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/productoverview" class="btn btn-green">Beheer producten</a>
                             </div>
                         </div>
                     </form>
