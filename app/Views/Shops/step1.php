@@ -23,6 +23,7 @@
     </div>
     <hr class="shop-border m-0">
 
+    <form>
     <?php foreach($data['products'] as $product): ?>
     <!-- Start Product -->
     <div class="product pt-3 border-shop">
@@ -38,7 +39,7 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <button type="button" class="btn-decrement">-</button>
-                <p id="quantity" class="px-3">0</p>
+                <input id="quantity" class="product-input px-3" name="product[]" disabled value="0">
                 <button type="button" class="btn-increment">+</button>
             </div>
             <div class = "price-width text-right">
@@ -64,11 +65,6 @@
     <div class="col text-right pt-4 pb-lg-5">
     <button type="submit" <?php if (!isLoggedIn()) echo 'disabled style="cursor: not-allowed;"'; ?> onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
     </div>
-  </div>
-</div>
-    <div class="text-right pt-4 pb-lg-5">
-        
-       
-    </div>
+    </form>
 </div>
 <?php include APPROOT."/Views/Includes/footerShop.php"; ?>

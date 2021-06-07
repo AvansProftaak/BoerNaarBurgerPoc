@@ -985,6 +985,12 @@ a[aria-expanded=false] .fa-chevron-up {
     color: whitesmoke;
 }
 
+.product-input {
+    border: none;
+    background-color: transparent;
+    max-width: 40px;
+}
+
 .btn-decrement:hover {
     background-color: #00471c;
     border-color: #00471c;

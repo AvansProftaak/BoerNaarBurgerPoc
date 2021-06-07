@@ -27,12 +27,12 @@ function addToCartClicked(event) {
     let product = button.parentElement.parentElement;
     let price = parseFloat(product.querySelector('#price').innerText);
     let quantityElement = product.querySelector('#quantity');
-    let quantity = quantityElement.innerText;
+    let quantity = quantityElement.value;
 
     quantity++;
 
     let total = price * quantity;
-    quantityElement.innerText = quantity;
+    quantityElement.value = quantity;
     product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
 
     updateTotal();
@@ -43,14 +43,14 @@ function removeFromCartClicked(event) {
     let product = button.parentElement.parentElement;
     let price = parseFloat(product.querySelector('#price').innerText);
     let quantityElement = product.querySelector('#quantity');
-    let quantity = quantityElement.innerText;
+    let quantity = quantityElement.value;
 
     if (quantity > 0) {
         quantity--;
 
         let total = price * quantity;
 
-        quantityElement.innerText = quantity;
+        quantityElement.value = quantity;
         product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
     }
     updateTotal()
