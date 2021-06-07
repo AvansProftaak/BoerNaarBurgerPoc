@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="col-9 pr-2">
-                <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
+                <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['company_data']; ?></h2>
                     <hr class="mx-2">
 
                     <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
@@ -174,7 +174,7 @@
                             <a type="button" href="<?php echo URLROOT; ?>/shopowners/accountetails" class="btn btn-green">bestellingen</a>
                             </div>
                             <div class="mr-3 pr-3">
-                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/updateitems" class="btn btn-green">update items</a>
+                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/productoverview" class="btn btn-green">Beheer producten</a>
                             </div>
                         </div>
                     </form>
