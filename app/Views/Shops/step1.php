@@ -41,6 +41,7 @@
                     <button type="button" class="btn-decrement">-</button>
                     <label for="quantity"></label>
                     <input type="text" id="quantity" class="product-input px-3" name="product[]" value="0" readonly/>
+                    <input type="hidden" name="product_number[]" value="<?php echo $product->product_number; ?>"/>
                     <button type="button" class="btn-increment">+</button>
                 </div>
                 <div class = "price-width text-right">
@@ -67,7 +68,8 @@
             <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shops/overview">Terug naar Shops</a>
         </div>
         <div class="col text-right pt-4 pb-lg-5">
-            <button type="submit" name="submit" <?php if (!isLoggedIn()) echo 'disabled style="cursor: not-allowed;"'; ?> class="btn btn-green btn-padding">Verder</button>
+            <button id="submit-button" type="submit" name="submit" <?php if (!isLoggedIn()) echo 'disabled style="cursor: not-allowed;"'; ?> class="btn btn-green btn-padding">Verder</button>
+            <span class="pl-3 text-danger user-data-header"><?php if($data['orderError']) : echo $lang[$data['orderError']]; endif;?></span>
         </div>
     </form>
 </div>

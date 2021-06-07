@@ -20,6 +20,8 @@ function ready() {
         let button = removeProductButtons[i];
         button.addEventListener('click', removeFromCartClicked);
     }
+
+    updateTotal();
 }
 
 function addToCartClicked(event) {
@@ -69,5 +71,11 @@ function updateTotal() {
     }
 
    shopTotal.value = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
-    console.log(shopTotal.value);
+
+    // next button disabled when ordervalue is 0
+    if(shopTotal.value === '0.00') {
+        document.getElementById('submit-button').disabled = true
+    } else {
+        document.getElementById('submit-button').disabled = false
+    }
 }
