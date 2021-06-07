@@ -40,11 +40,11 @@
                 <div class="d-flex justify-content-center align-items-baseline shop-width">
                     <button type="button" class="btn-decrement">-</button>
                     <label for="quantity"></label>
-                    <input type="text" id="quantity" class="product-input px-3" name="quantity" value="0" disabled>
+                    <input type="text" id="quantity" class="product-input px-3" name="product[]" value="0" readonly/>
                     <button type="button" class="btn-increment">+</button>
                 </div>
                 <div class = "price-width text-right">
-                    <p>€<span class="total">0.00</span></p>
+                    <p>€<input type="text" class="total total-input" value="0.00" name="totalProduct[]" readonly /></p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,10 @@
 
         <div class="d-flex justify-content-between pt-4">
             <h3 class="font-weight-bolder">Bedrag</h3>
-            <h3 class="font-weight-bolder">€<span id="totalAmount">0.00</span></h3>
+            <h3 class="font-weight-bolder">
+                €<label for="totalAmount"></label>
+                <input type="text" id="totalAmount" value="0.00" readonly name="orderTotal" class="order-total-input"/>
+            </h3>
         </div>
         <div class="container">
         <div class="row">

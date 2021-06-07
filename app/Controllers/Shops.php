@@ -72,11 +72,10 @@ class Shops extends Controller
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            foreach ($_POST['product'] as $key => $value) {
+                $product = $_POST['product'][$key];
+            }
             var_dump($_POST);
-//            foreach ($_POST['product'] as $key => $value) {
-//                $product[] = $_POST['product'][$key];
-//                var_dump($product);
-//            }
         }
     }
 

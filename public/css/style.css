@@ -991,6 +991,18 @@ a[aria-expanded=false] .fa-chevron-up {
     max-width: 40px;
 }
 
+.order-total-input {
+    border: none;
+    background-color: transparent;
+    max-width: 85px;
+}
+
+.total-input {
+    border: none;
+    background-color: transparent;
+    max-width: 60px;
+}
+
 .btn-decrement:hover {
     background-color: #00471c;
     border-color: #00471c;

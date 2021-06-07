@@ -33,7 +33,7 @@ function addToCartClicked(event) {
 
     let total = price * quantity;
     quantityElement.value = quantity;
-    product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
+    product.getElementsByClassName('total')[0].value = total.toFixed(2);
 
     updateTotal();
 }
@@ -51,7 +51,7 @@ function removeFromCartClicked(event) {
         let total = price * quantity;
 
         quantityElement.value = quantity;
-        product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
+        product.getElementsByClassName('total')[0].value = total.toFixed(2);
     }
     updateTotal()
 }
@@ -64,8 +64,10 @@ function updateTotal() {
 
     for (let i = 0; i < productTotals.length; i++){
         //loop through the array to get all the chosen values
-        productPrices.push(parseFloat(productTotals[i].innerText));
+        productPrices.push(parseFloat(productTotals[i].value));
+        console.log(productPrices);
     }
 
-   shopTotal.innerText = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
+   shopTotal.value = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
+    console.log(shopTotal.value);
 }
