@@ -73,6 +73,8 @@ class Shop
         } else {
             return false;
         }
+
+
     }
 
     public function updateShop($data, $shop) {

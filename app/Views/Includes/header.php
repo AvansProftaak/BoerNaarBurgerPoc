@@ -118,7 +118,8 @@
                   <?php echo $_SESSION['admin_email']; ?>
               </a>
               <div class="dropdown-menu dropdown-menu-hover dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/admins/logout"><?php echo $lang['logout']; ?></a>
+                  <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/admins/adminpanel">Adminpanel</a>
+                  <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/admins/logout"><?php echo $lang['logout']; ?></a>
               </div>
           </li>
     <!-- if logged out -->

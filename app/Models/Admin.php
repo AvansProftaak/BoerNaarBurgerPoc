@@ -27,6 +27,9 @@ class Admin
             return false;
         }
     }
-
+    public function getAllQueries() {
+        $this->db->query('SELECT DISTINCT query_id, query_moment, query FROM boer_naar_burger.search_queries ORDER BY query_id;');
+        return $this->db->resultSet();
+    }
 
 }

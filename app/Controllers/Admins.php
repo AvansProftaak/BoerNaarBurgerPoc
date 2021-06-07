@@ -74,20 +74,15 @@ class Admins extends Controller
     public function AdminPanel()
     {
         if (isLoggedInAdmin()) {
-            /*  $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-             $orders = $this->orderModel->getCustomerOrders($customer);
-             $orderMoment = $orders->completed_at;
 
+            $allQueries = $this->adminModel->getAllQueries();
 
-              $data = [
-                  'orders'        => $orders,
-                  'customer'      => $customer,
-                  'orderMoment'   => $orderMoment
+            $data = [
+                'allQueries' => $allQueries
               ];
-              */
 
 
-            $this->view('admins/adminpanel');
+            $this->view('admins/adminpanel', $data);
                 } else {
            $this->login();
             }
