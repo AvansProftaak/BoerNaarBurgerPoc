@@ -10,6 +10,7 @@ $lang = array (
     'contact2'   => 'Contact',
     'save'       => 'Save',
     'close'      => 'Close',
+    'next'       => 'Next Step',
 
     //header
     'home'            => 'HOME',
@@ -273,4 +274,5 @@ $lang = array (
 
     //shop step 1
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
+    'back_to_shops'   => 'Back to Shops',
 );
