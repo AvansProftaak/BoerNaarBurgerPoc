@@ -1,7 +1,7 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
     <div class="pt-4">
-        <h3 class="font-weight-bolder"><?php echo $lang['order_view']; ?>><strong><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></strong></h3>
+        <h3 class="font-weight-bolder"><?php echo $lang['order_view']; ?><strong><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></strong></h3>
     </div>
 
     <hr class="shop-border m-0 order-overview-width">
