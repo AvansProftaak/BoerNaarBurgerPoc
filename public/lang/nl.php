@@ -11,6 +11,7 @@ $lang = array (
     'save'          => 'Opslaan',
     'close'         => 'Sluiten',
     'next'          => 'Verder',
+    'cancel'        => 'Annuleren',
 
     //header
     'home'            => 'HOME',
@@ -310,9 +311,50 @@ $lang = array (
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
 
-    //shop step 1
+    //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
     'back_to_shops'   => 'Terug naar Shops',
+    'edit_failed'     => 'Gegevens wijzigen mislukt. Probeer het opnieuw.',
+    'edit_success'    => 'Uw gegevens zijn succesvol gewijzigd.',
+    'pay'             => 'Betalen',
+    't_and_c'         => 'gebruikersvoorwaarden',
+    'privacy_policy'  => 'privacybeleid',
+    'and_the'         => ' en het ',
+    'of_bnb'          => ' van Boer naar Burger',
+    'agree_terms'     => 'Ik ga akkoord met de ',
+    'payment_method'  => 'Selecteer Betaalmethode',
+    'edit_details'    => 'Wijzig Gegevens',
+    'your_details'    => 'Uw gegevens',
+    'order_view'      => 'Overzicht bestelling bij ',
+    'accept_consents' => 'Om verder te gaan moet u ons privacybeleid en gebruikersvoorwaarden accepteren.',
+    'payment_failed'  => 'Betaling kon niet worden gestart. Probeer het opnieuw.',
+    'test_phase'      => 'Testfase',
+    'develop_phase'   => 'Boer naar Burger bevindt zich nog in de ontwikkelfase. Het is momenteel (nog) niet mogelijk 
+                          daadwerkelijk een bestelling te plaatsen. Indien u op de hoogte gehouden wilt worden over Boer 
+                          naar Burger stuur een bericht naar ',
+    'success'         => 'Success',
+    'failed'          => 'Failed',
+    'simulate_pay'    => 'Kies hieronder om een betaling te simuleren.',
+    'finalize_fail'   => 'De betaling kon niet afgerond worden. Probeer het opnieuw.',
+    'payment_success' => 'Betaling gelukt!',
+    'thanks'          => 'Bedankt voor uw bestelling bij ',
+    'order_complete'  => '. Uw bestelling is succesvol afgerond. Binnen enkele minuten ontvangt
+                          u een bevestiging op het door u opgegeven e-mail adres.',
+    'attention'       => 'Let op!',
+    'spam_1'          => ' Soms wordt e-mail onderschept door een spamfilter. Controleer daarom ook uw spambox
+                          indien u binnen enkele minuten geen e-mail ontvangen heeft. Niks ontvangen? Neem ',
+    'spam_2'          => ' op met Boer naar Burger.',
+    'contact_lower'   => 'contact',
+    'back_to_view'    => 'Terug naar het overzicht',
+    'payment_cancel'  => 'Betaling geannuleerd',
+    'cancel_text'     => 'Uw betaling is geannuleerd. Ga terug naar de shop om een nieuwe bestelling te plaatsen.',
+    'problems'        => 'Heeft u problemen met betalen? Neem dan ',
+
+    //payment methods
+    'ideal'      => 'iDEAL',
+    'mastercard' => 'Mastercard',
+    'visa'       => 'Visa Card',
+    'paypal'     => 'PayPal',
 );
 

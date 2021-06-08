@@ -997,6 +997,10 @@ a[aria-expanded=false] .fa-chevron-up {
     max-width: 85px;
 }
 
+.hide-button {
+    display: none;
+}
+
 .total-input {
     border: none;
     background-color: transparent;

@@ -11,6 +11,7 @@ $lang = array (
     'save'       => 'Save',
     'close'      => 'Close',
     'next'       => 'Next Step',
+    'cancel'     => 'Cancel',
 
     //header
     'home'            => 'HOME',
@@ -291,7 +292,48 @@ $lang = array (
     'product_delete'            => 'Remove product',
     'product_add'               => 'Add product',
   
-    //shop step 1
+    //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
     'back_to_shops'   => 'Back to Shops',
+    'edit_failed'     => 'Personal details could not be updated. Please try again.',
+    'edit_success'    => 'You personal details have been saved successfully.',
+    'pay'             => 'Start Payment',
+    't_and_c'         => 'terms and conditions',
+    'privacy_policy'  => 'privacy policy',
+    'and_the'         => ' and the ',
+    'of_bnb'          => ' of Boer naar Burger',
+    'agree_terms'     => 'I agree with the ',
+    'payment_method'  => 'Select Payment Method',
+    'edit_details'    => 'Edit Details',
+    'your_details'    => 'Personal Details',
+    'order_view'      => 'Order overview with ',
+    'accept_consents' => 'You are required to accept our privacy policy and terms & conditions to continue.',
+    'payment_failed'  => 'Payment could not be started. Please try again.',
+    'test_phase'      => 'Test Phase',
+    'develop_phase'   => 'Boer naar Burger is still in development. Currently it is not (yet) possible to actually 
+                          order any products. If you wish to be informed regarding the progress of Boer naar Burger, 
+                          please send a message to ',
+    'success'         => 'Success',
+    'failed'          => 'Failed',
+    'simulate_pay'    => 'Choose below to simulate a payment.',
+    'finalize_fail'   => 'Could not finalize payment. Please try again.',
+    'payment_success' => 'Payment successful!',
+    'thanks'          => 'Thank you for your order with ',
+    'order_complete'  => '. Your order has been completed successfully. Within a few minutes you will receive a 
+                         confirmation e-mail on the provided e-mail address.',
+    'attention'       => 'Attention!',
+    'spam_1'          => ' Sometimes the e-mail is intercepted by a spam filter. Please check your spambox as well. 
+                         Received nothing? Please ',
+    'spam_2'          => ' Boer naar Burger.',
+    'contact_lower'   => 'contact',
+    'back_to_view'    => 'Back to shop overview',
+    'payment_cancel'  => 'Payment cancelled',
+    'cancel_text'     => 'Your payment has been cancelled. Go back to the shop to place a new order.',
+    'problems'        => 'Are you having troubles with the payment? Please ',
+
+    //payment methods
+    'ideal'      => 'iDEAL',
+    'mastercard' => 'Mastercard',
+    'visa'       => 'Visa Card',
+    'paypal'     => 'PayPal',
 );

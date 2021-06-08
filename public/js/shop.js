@@ -21,7 +21,14 @@ function ready() {
         button.addEventListener('click', removeFromCartClicked);
     }
 
-    updateTotal();
+    if (window.location.href.indexOf('step1') !== -1) {
+        updateTotal();
+    }
+
+    let editDetailsButton = document.getElementById('edit-details-button');
+    if (editDetailsButton) {
+        editDetailsButton.addEventListener('click', editDetails);
+    }
 }
 
 function addToCartClicked(event) {
@@ -67,7 +74,6 @@ function updateTotal() {
     for (let i = 0; i < productTotals.length; i++){
         //loop through the array to get all the chosen values
         productPrices.push(parseFloat(productTotals[i].value));
-        console.log(productPrices);
     }
 
    shopTotal.value = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
@@ -78,4 +84,38 @@ function updateTotal() {
     } else {
         document.getElementById('submit-button').disabled = false
     }
+}
+
+// function to allow customerdata to be edited in shop step 2, and show password
+function editDetails() {
+    // show password field/save button and hide edit button
+    let editButtons = document.querySelectorAll('.hide-button');
+    for (let i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.remove('hide-button');
+    }
+
+    document.querySelector('#edit-details-button').classList.add('hide-button');
+
+    // loop over disabled fields and enable them.
+    let disabledInputs = document.querySelectorAll('.input-field');
+    for (let i = 0; i < disabledInputs.length; i++) {
+        disabledInputs[i].removeAttribute('disabled');
+    }
+}
+
+// cancel editing customerdata and disabling inputs
+function cancelEdit() {
+    let enabledInputs = document.querySelectorAll('.input-field');
+    for (let i = 0; i < enabledInputs.length; i++) {
+        enabledInputs[i].setAttribute('disabled', 'disabled');
+    }
+
+    document.querySelector('#edit-details-button').classList.remove('hide-button');
+
+    let editButtons = document.getElementsByClassName('edit-buttons');
+    for (let i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.add('hide-button');
+    }
+
+    document.querySelector('#password-field').classList.add('hide-button');
 }
