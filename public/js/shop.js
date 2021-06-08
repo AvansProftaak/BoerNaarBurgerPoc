@@ -116,4 +116,6 @@ function cancelEdit() {
     for (let i = 0; i < editButtons.length; i++) {
         editButtons[i].classList.add('hide-button');
     }
+
+    document.querySelector('#password-field').classList.add('hide-button');
 }
