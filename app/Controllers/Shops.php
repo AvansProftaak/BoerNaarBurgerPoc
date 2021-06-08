@@ -11,11 +11,13 @@ class Shops extends Controller
     private $shopModel;
     private $customerModel;
     private $orderModel;
+    private $paymentModel;
 
     public function __construct() {
         $this->shopModel = $this->model('Shop');
         $this->customerModel = $this->model('Customer');
         $this->orderModel = $this->model('Order');
+        $this->paymentModel = $this->model('Payment');
     }
 
     public function shopdistrict() {
@@ -240,22 +242,61 @@ class Shops extends Controller
     }
 
     public function step3() {
-        if (isset($_GET['shop'])) {
+        if (isLoggedIn()) {
+            if (isset($_GET['shop'])) {
 
-            $shop = $this->shopModel->getShop($_GET['shop']);
+                $shop = $this->shopModel->getShop($_GET['shop']);
 
-            if($shop) {
+                if (isset($_SESSION['payment_number'])) {
+                    $payment = $this->paymentModel->getPayment($_SESSION['payment_number']);
+                    $order = $this->orderModel->getOrder($payment->order_number);
 
-                $data = [
-                    'shop'      => $shop,
-                ];
+                    // finalize payment and order
+                    if (isset($_POST['success'])) {
+                        if ($this->paymentModel->completePayment($payment) && $this->orderModel->completeOrder($order)) {
+                            unset($_SESSION['order_number']);
+                            unset($_SESSION['payment_number']);
+                            header('location: ' . URLROOT . '/shops/success?shop=' . $shop->shop_number);
+                        } else {
+                            header('location: ' . URLROOT . '/shops/step3?shop=' . $shop->shop_number . '&failed');
+                        }
+                    }
 
-                $this->view('shops/step3', $data);
+                    // cancel payment and order
+                    if (isset($_POST['failed'])) {
+                        if ($this->paymentModel->cancelPayment($payment) && $this->orderModel->cancelOrder($order)) {
+                            unset($_SESSION['order_number']);
+                            unset($_SESSION['payment_number']);
+                            header('location: ' . URLROOT . '/shops/failure?shop=' . $shop->shop_number);
+                        } else {
+                            header('location: ' . URLROOT . '/shops/step3?shop=' . $shop->shop_number . '&failed');
+                        }
+                    }
+
+                } else {
+                    // payment session doesnt exist so go back to step 2
+                    header('location: ' . URLROOT . '/shops/step2?shop=' . $shop->shop_number . '&paymentfailed');
+                }
+
+                // check if shop exists
+                if($shop) {
+                    $data = [
+                        'shop' => $shop,
+                    ];
+
+                    // load the view
+                    $this->view('shops/step3', $data);
+                } else {
+                    //no shop found
+                    $this->view('shops/notfound');
+                }
             } else {
+                //no shop found
                 $this->view('shops/notfound');
             }
         } else {
-            $this->view('shops/notfound');
+            // if user is not logged in go to step 1
+            $this->step1();
         }
     }
 
@@ -323,7 +364,7 @@ class Shops extends Controller
             'status'            => 'PENDING'
         ];
 
-        if (!$this->orderModel->postPayment($data)) {
+        if (!$this->paymentModel->postPayment($data)) {
             return false;
         }
 

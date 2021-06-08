@@ -323,6 +323,14 @@ $lang = array (
     'order_view'      => 'Overzicht bestelling bij ',
     'accept_consents' => 'Om verder te gaan moet u ons privacybeleid en gebruikersvoorwaarden accepteren.',
     'payment_failed'  => 'Betaling kon niet worden gestart. Probeer het opnieuw.',
+    'test_phase'      => 'Testfase',
+    'develop_phase'   => 'Boer naar Burger bevindt zich nog in de ontwikkelfase. Het is momenteel (nog) niet mogelijk 
+                          daadwerkelijk een bestelling te plaatsen. Indien u op de hoogte gehouden wilt worden over Boer 
+                          naar Burger stuur een bericht naar ',
+    'success'         => 'Success',
+    'failed'          => 'Failed',
+    'simulate_pay'    => 'Kies hieronder om een betaling te simuleren.',
+    'finalize_fail'   => 'De betaling kon niet afgerond worden. Probeer het opnieuw.',
 
     //payment methods
     'ideal'      => 'iDEAL',

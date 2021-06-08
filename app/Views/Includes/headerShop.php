@@ -73,6 +73,18 @@ require_once '../app/Helpers/language_helper.php';
                             <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. <?php echo $lang['payment']; ?></a>
                         </li>
                     </ul>
+                    <?php else : ?>
+                    <ul class="pl-1 ml-5 navbar-nav">
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text">2. <?php echo $lang['data']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text">3. <?php echo $lang['payment']; ?></a>
+                        </li>
+                    </ul>
                     <?php endif; ?>
 
                     <!-- Language selector -->

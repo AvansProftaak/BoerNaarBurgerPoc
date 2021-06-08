@@ -4,7 +4,6 @@
 class Order
 {
     private $db;
-    private $pdo;
 
     public function __construct() {
         $this->db = new Database;
@@ -73,20 +72,33 @@ class Order
         return $this->db->single();
     }
 
-    public function postPayment($payment) {
-        $this->db->query('INSERT INTO boer_naar_burger.payments (order_number, payment_method, total_amount, status)
-                              VALUES (:order_number, :payment_method, :total_amount, :status)');
+    public function completeOrder($order) {
+        $this->db->query('UPDATE boer_naar_burger.orders
+                              SET status = \'COMPLETED\', completed_at = NOW()
+                              WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order->order_number);
 
-        $this->db->bind(':order_number', $payment['order_number']);
-        $this->db->bind(':payment_method', $payment['payment_method']);
-        $this->db->bind(':total_amount', $payment['total_amount']);
-        $this->db->bind(':status', $payment['status']);
-
-        if ($this->db->execute()) {
-            $_SESSION['payment_number'] = $this->db->lastInsertId();
+        try {
+            $this->db->execute();
             return true;
-        } else {
-            return false;
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            return $this->error;
+        }
+    }
+
+    public function cancelOrder($order) {
+        $this->db->query('UPDATE boer_naar_burger.orders
+                              SET status = \'CANCELED\'
+                              WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order->order_number);
+
+        try {
+            $this->db->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->error = $e->getMessage();
+            return $this->error;
         }
     }
 }

@@ -307,6 +307,14 @@ $lang = array (
     'order_view'      => 'Order overview with ',
     'accept_consents' => 'You are required to accept our privacy policy and terms & conditions to continue.',
     'payment_failed'  => 'Payment could not be started. Please try again.',
+    'test_phase'      => 'Test Phase',
+    'develop_phase'   => 'Boer naar Burger is still in development. Currently it is not (yet) possible to actually 
+                          order any products. If you wish to be informed regarding the progress of Boer naar Burger, 
+                          please send a message to ',
+    'success'         => 'Success',
+    'failed'          => 'Failed',
+    'simulate_pay'    => 'Choose below to simulate a payment.',
+    'finalize_fail'   => 'Could not finalize payment. Please try again.',
 
     //payment methods
     'ideal'      => 'iDEAL',
