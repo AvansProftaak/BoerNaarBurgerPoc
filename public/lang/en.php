@@ -11,6 +11,7 @@ $lang = array (
     'save'       => 'Save',
     'close'      => 'Close',
     'next'       => 'Next Step',
+    'cancel'     => 'Cancel',
 
     //header
     'home'            => 'HOME',
@@ -289,7 +290,25 @@ $lang = array (
     'product_delete'            => 'Remove product',
     'product_add'               => 'Add product',
   
-    //shop step 1
+    //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
     'back_to_shops'   => 'Back to Shops',
+    'edit_failed'     => 'Personal details could not be updated. Please try again.',
+    'edit_success'    => 'You personal details have been saved successfully.',
+    'pay'             => 'Start Payment',
+    't_and_c'         => 'terms and conditions',
+    'privacy_policy'  => 'privacy policy',
+    'and_the'         => ' and the ',
+    'of_bnb'          => ' of Boer naar Burger',
+    'agree_terms'     => 'I agree with the ',
+    'payment_method'  => 'Select Payment Method',
+    'edit_details'    => 'Edit Details',
+    'your_details'    => 'Personal Details',
+    'order_view'      => 'Order overview with ',
+
+    //payment methods
+    'ideal'      => 'iDEAL',
+    'mastercard' => 'Mastercard',
+    'visa'       => 'Visa Card',
+    'paypal'     => 'PayPal',
 );

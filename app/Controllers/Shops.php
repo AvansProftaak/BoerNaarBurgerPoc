@@ -53,7 +53,7 @@ class Shops extends Controller
 
 
     public function step1() {
-
+        //check for get parameter shop and retrieve shop from db and load it
         if (isset($_GET['shop'])) {
             //get shop
             $shop = $this->shopModel->getShop($_GET['shop']);
@@ -67,9 +67,11 @@ class Shops extends Controller
                     'orderError' => ''
                 ];
 
+                // save order and set ordernumber in session
                 $orderNumber = $this->orderModel->postOrder($data);
                 $_SESSION['order_number'] = $orderNumber;
 
+                // for each selected product create an order item
                 foreach ($_POST['product'] as $key => $value) {
                     $product = $this->orderModel->getProduct($_POST['product_number'][$key]);
                     $price = $_POST['totalProduct'][$key];
@@ -108,20 +110,86 @@ class Shops extends Controller
     {
         $customer = '';
 
+        // check if customer is logged in and retrieve customer details for form
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']) ? $this->customerModel->getAccountDetails($_SESSION['email']) : null;
 
+            //check for correct shop in get parameter
             if (isset($_GET['shop'])) {
                 $shop = $this->shopModel->getShop($_GET['shop']);
 
+                if (isset($_POST['edit-details'])) {
+                    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                    $data = [
+                        'first_name'            => trim($_POST['first_name']),
+                        'last_name'             => trim($_POST['last_name']),
+                        'email'                 => trim($_POST['email']),
+                        'password'              => trim($_POST['password']),
+                        'address'               => trim($_POST['address']),
+                        'house_number'          => trim($_POST['house_number']),
+                        'postal_code'           => trim($_POST['postal_code']),
+                        'city'                  => trim($_POST['city']),
+                        'firstNameError'        => '',
+                        'lastNameError'         => '',
+                        'emailError'            => '',
+                        'passwordError'         => '',
+                    ];
+
+                    //validate first_name
+                    if (empty($data['first_name'])) {
+                        $data['firstNameError'] = 'firstname_error';
+                    }
+
+                    //validate last_name
+                    if (empty($data['last_name'])) {
+                        $data['lastNameError'] = 'lastname_error';
+                    }
+
+                    //validate email
+                    if (empty($data['email'])) {
+                        $data['emailError'] = 'email_error';
+                    } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                        $data['emailError'] = 'email_invalid';
+                    }
+
+                    // Validate password
+                    if(empty($data['password'])) {
+                        $data['passwordError'] = 'password_error';
+                    } else {
+                        if($data['password'] != password_verify($data['password'], $customer->password)) {
+                            $data['passwordError'] = 'pass_incorrect';
+                        }
+                    }
+
+                    if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
+                            empty($data['emailError'])) && empty($data['passwordError'])) {
+
+                        if ($this->customerModel->update($data, $customer)) {
+                            $_SESSION['customer_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                            header('location: ' . URLROOT . '/shops/step2?shop=' . $shop->shop_number . '&success');
+                        } else {
+                            if((strpos($this->customerModel->update($data, $customer),'uc_email') !== false)) {
+                                $data['emailError'] = 'email_registered';
+                            } else {
+                                header('location: ' . URLROOT . '/shops/step2?shop=' . $shop->shop_number . '&failed');
+                            }
+                        }
+                    }
+                }
+
                 if ($shop) {
+
+                    if (isset($_POST['payment'])) {
+                        // start payment code comes here
+                    }
+
+                    // if an order is in session, continue, else redirect to step 1.
                     if (isset($_SESSION['order_number'])) {
 
-                        //retrieve order information
+                        //retrieve order information and details
                         $order = $this->orderModel->getOrder($_SESSION['order_number']);
                         $orderDetails = $this->orderModel->getOrderDetails($order);
-
-                        $products = $this->shopModel->getShopProducts($shop);
 
                         $data = [
                             'shop'         => $shop,
@@ -130,6 +198,7 @@ class Shops extends Controller
                             'customer'     => $customer
                         ];
 
+                        // pass order details to the view
                         $this->view('shops/step2', $data);
                     } else {
                         // no order session exists, so user cannot be in step 2.

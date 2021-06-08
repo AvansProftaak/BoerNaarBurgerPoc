@@ -11,6 +11,7 @@ $lang = array (
     'save'          => 'Opslaan',
     'close'         => 'Sluiten',
     'next'          => 'Verder',
+    'cancel'        => 'Annuleren',
 
     //header
     'home'            => 'HOME',
@@ -304,9 +305,27 @@ $lang = array (
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
 
-    //shop step 1
+    //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
     'back_to_shops'   => 'Terug naar Shops',
+    'edit_failed'     => 'Gegevens wijzigen mislukt. Probeer het opnieuw.',
+    'edit_success'    => 'Uw gegevens zijn succesvol gewijzigd.',
+    'pay'             => 'Betalen',
+    't_and_c'         => 'gebruikersvoorwaarden',
+    'privacy_policy'  => 'privacybeleid',
+    'and_the'         => ' en het ',
+    'of_bnb'          => ' van Boer naar Burger',
+    'agree_terms'     => 'Ik ga akkoord met de ',
+    'payment_method'  => 'Selecteer Betaalmethode',
+    'edit_details'    => 'Wijzig Gegevens',
+    'your_details'    => 'Uw gegevens',
+    'order_view'      => 'Overzicht bestelling bij ',
+
+    //payment methods
+    'ideal'      => 'iDEAL',
+    'mastercard' => 'Mastercard',
+    'visa'       => 'Visa Card',
+    'paypal'     => 'PayPal',
 );
 
