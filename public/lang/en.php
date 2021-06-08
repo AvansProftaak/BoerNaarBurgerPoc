@@ -45,7 +45,7 @@ $lang = array (
     'createDatabase'  => "Create Database",
 
     //searchbar
-    'searchfield'     => "Ordernumber, product, etc.",
+    'searchfield'     => "Search for a ordernumber...",
     'search'          => "Search",
 
     // shops Rob
@@ -149,6 +149,7 @@ $lang = array (
     'order_number'      => 'Order number',
     'order_date'        => 'Order date',
     'open_invoice'      => 'Open invoice',
+    'welcome_overview'  => 'Nice to welcome you as a member of Boer naar Burger. This is your personal overview page.<br><br>On the right side of this page you will find your historical orders. However, if you know your order number, you can also search by order number.<br><br>At the top right, in the navigation bar, you can change the language and your account details.',
 
     //footer
     'footer_text'   => 'Boer naar Burger offers a platform with products that normally go to waste in the current society.
