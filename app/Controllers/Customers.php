@@ -411,9 +411,6 @@ class Customers extends Controller
                 'payment_status'    => $payment->status,
                 'item'              => $item,
                 'product_item'      => $productItem,
-                // 'product_name'      => $productItem->name,
-                // 'product_price'     => $productItem->price,
-                // 'product_amount'    => $productItem->amount,
                 'order_price'       => $order->orderamount_excl_tax,
                 'order_price_tax'   => $order->orderamount_incl_tax,
             ];

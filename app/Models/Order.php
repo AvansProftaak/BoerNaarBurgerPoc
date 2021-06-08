@@ -38,7 +38,11 @@ class Order
     public function getCustomerFromOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE customer_number = :customer_number');
         $this->db->bind(':customer_number', $order->customer_number);
-    public function postOrder($order) {
+        
+        return $this->db->single();
+    }
+    
+        public function postOrder($order) {
         $this->db->query('INSERT INTO boer_naar_burger.orders (customer_number, orderamount_incl_tax, status)
                               VALUES (:customer_number, :order_amount_incl_tax, :status)');
 
@@ -108,11 +112,5 @@ class Order
         }
     }
 
-    public function getOrder($orderNumber) {
-        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
-        $this->db->bind(':order_number', $orderNumber);
-
-        return $this->db->single();
-    }
 
 }
