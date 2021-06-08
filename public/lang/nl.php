@@ -10,6 +10,7 @@ $lang = array (
     'contact2'      => 'Contact',
     'save'          => 'Opslaan',
     'close'         => 'Sluiten',
+    'next'          => 'Verder',
 
     //header
     'home'            => 'HOME',
@@ -71,6 +72,7 @@ $lang = array (
     'create_shop' => 'Shop Aanmaken',
 
     //shop header
+    'product'  => 'product',
     'products' => 'Producten',
     'data'     => 'Gegevens',
     'payment'  => 'Betaling',
@@ -101,6 +103,7 @@ $lang = array (
     'kvk_number'        => 'KVK-nummer',
     'phone_number'      => 'telefoon nummer',
     'iban'              => 'iban',
+    'company_data'      => 'bedrijfs gegevens',
 
     //register customer
     'register_left'         => 'Registreer als Burger',
@@ -122,6 +125,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'my_shop'            => 'Shop overzicht',
     'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
     'save_personal_data' => 'Gegevens opslaan',
@@ -216,11 +220,16 @@ $lang = array (
 
 
     //contactformulier
-    'contact_header'    =>  'Contact is zo gelegd',
-    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
-    'contact_socials'   =>  'Connect met ons',
-    'contact_header2'   =>  'Stuur ons een bericht',
-    'contact_button'    =>  'Verzend email',
+    'contact_header'        =>  'Contact is zo gelegd',
+    'contact_txt'           =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'       =>  'Connect met ons',
+    'contact_header2'       =>  'Stuur ons een bericht',
+    'contact_button'        =>  'Verzend email',
+    'contactname_error'     =>  'Vul uw naam in',
+    'contactemail_error'    =>  'Vul uw emailadres in',
+    'contactemail_error2'   =>  'Vul een geldig emailadres in',
+    'contactsubject_error'  =>  'Vul een onderwerp in',
+    'contactmessage_error'  =>  'Vul een bericht in',
 
 
     //FAQ
@@ -283,8 +292,22 @@ $lang = array (
     'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
     'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+    'order_error'      => 'Er is iets misgegaan. Probeer het opnieuw',
+
+    //products
+    'product_name'              => 'Naam van het product',
+    'product_price'             => 'prijs van het product',
+    'product_description'       => 'Beschrijving van het product',
+    'product_stock'             => 'Voorraad',
+    'product_image'             => 'Foto',
+    'product_image_label'       => 'Selecteer een foto',
+    'product_update'            => 'Aanpassingen opslaan',
+    'product_delete'            => 'Verwijder product',
+    'product_add'               => 'Nieuw product',
 
     //shop step 1
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
+    'back_to_shops'   => 'Terug naar Shops',
 );
+

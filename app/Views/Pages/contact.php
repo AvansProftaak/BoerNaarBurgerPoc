@@ -63,23 +63,23 @@
                     <input type="text" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>naam <?php else : ?>name<?php endif; ?>"
                            name="name" class="input-c" value="<?php if (isset($_SESSION['customer_number']))  echo $_SESSION['customer_name'];
                     else if (isset($_POST["name"])) echo $_POST["name"]; ?>">
-                    <span class="form-error"><?php if(isset($data['nameErr'])) echo $data['nameErr'];?></span>
+                    <span class="form-error"><?php if(isset($data['nameErr'])) echo $lang[$data['nameErr']];?></span>
                 </div>
                 <div class="input-container">
                     <input type="email" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>email@voorbeeld.nl <?php else : ?>email@example.com<?php endif; ?>"
                            name="emailFrom" class="input-c" value="<?php if (isset($_SESSION['customer_number']))  echo $_SESSION['email'];
                     else if (isset($_POST["emailFrom"])) echo $_POST["emailFrom"]; ?>">
-                     <span class="form-error"> <?php if(isset($data['emailErr'])) echo $data['emailErr'];?></span>
+                     <span class="form-error"> <?php if(isset($data['emailErr'])) echo $lang[$data['emailErr']];?></span>
                 </div>
                 <div class="input-container">
                     <input type="text" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>onderwerp <?php else : ?>subject<?php endif; ?>"
                            name="onderwerp" class="input-c" value="<?php if(isset($_POST['onderwerp'])) echo $_POST['onderwerp'] ?>">
-                    <span class="form-error"> <?php if(isset($data['onderwerpErr'])) echo $data['onderwerpErr'];?></span>
+                    <span class="form-error"> <?php if(isset($data['onderwerpErr'])) echo $lang[$data['onderwerpErr']];?></span>
                 </div>
                 <div class="input-container textarea">
                     <textarea  class="input-c" name="message" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>bericht <?php else : ?>message<?php endif; ?>"
                                rows="5" cols="40"><?php if(isset($data['message'])) echo htmlspecialchars($data['message']);?></textarea>
-                    <span class="form-error"><?php if(isset($data['messageErr'])) echo $data['messageErr'];?></span>
+                    <span class="form-error"><?php if(isset($data['messageErr'])) echo $lang[$data['messageErr']];?></span>
                 </div>
                  <input type="submit" name="send-contact" value="<?php echo $lang['contact_button']; ?>" class="btn-c">
                 </div>

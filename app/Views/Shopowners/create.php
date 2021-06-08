@@ -1,4 +1,4 @@
-
+<!-- make a check to see if ower already has shop -->
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
 <div class="container pt-4">
     <div class="row justify-content-center">
@@ -38,7 +38,7 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- address -->
                             <div class="col-5">
-                                <label for="address" class="pl-2 user-data-header">Straatnaam<span class="pl-3 text-danger"><?php if(isset($data['addressError'])) echo $data['addressError'];?></span></label>
+                                <label for="address" class="pl-2 user-data-header"><?php echo $lang['street']; ?><span class="pl-3 text-danger"><?php if(isset($data['addressError'])) echo $data['addressError'];?></span></label>
                                 <input id="address" type="text" class="form-control rounded-borders" name="address" placeholder="Langedreef" autocomplete="address">
                             </div>
 

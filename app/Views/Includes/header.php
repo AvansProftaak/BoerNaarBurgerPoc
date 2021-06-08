@@ -103,11 +103,25 @@
             <?php echo $_SESSION['shopowner_name']; ?>
           </a>
             <div class="dropdown-menu dropdown-menu-hover dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['personal_data']; ?></a>
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['orders']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create"><?php echo $lang['create_shop']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout"><?php echo $lang['logout']; ?></a>
             </div>
         </li>
 
+          <!-- if logged in admin -->
+      <?php elseif (isset($_SESSION['admin_number'])) : ?>
+          <li class="nav-item nav-text-login nav-text dropdown">
+              <a id="navbarDropdown" class="nav-text-login nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php echo $_SESSION['admin_email']; ?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-hover dropdown-right dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/admins/adminpanel">Adminpanel</a>
+                  <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/admins/logout"><?php echo $lang['logout']; ?></a>
+              </div>
+          </li>
     <!-- if logged out -->
       <?php else : ?>
         <li class="nav-item nav-text-login">

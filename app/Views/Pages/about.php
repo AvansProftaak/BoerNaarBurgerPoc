@@ -1,4 +1,12 @@
 <?php include APPROOT."/Views/Includes/header.php"; ?>
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
 <div class="lh-main">
     <div class="lh-row">
         <h2 class="lh-subtitel"><?php echo $lang['about_title']; ?></h2>
@@ -47,4 +55,5 @@
         </div>
     </div>
 </div>
+</body>
 <?php include APPROOT."/Views/Includes/footer.php"; ?>

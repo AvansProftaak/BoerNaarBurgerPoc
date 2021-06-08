@@ -72,4 +72,9 @@ class Database {
         $this->execute();
         return $this->statement->rowCount();
     }
+
+    // functions returns last id (auto increment PK)
+    public function lastInsertId() {
+        return $this->dbHandler->lastInsertId();
+    }
 }

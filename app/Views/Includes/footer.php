@@ -44,6 +44,7 @@
                         <li><a href="<?php echo URLROOT; ?>/pages/sitemap" class="a-footer"><?php echo $lang['sitemap']; ?></a></li>
                         <li><a href="<?php echo URLROOT; ?>/pages/faq" class="a-footer"><?php echo $lang['faq']; ?></a></li>
                         <li><a href="<?php echo URLROOT; ?>/pages/contact" class="a-footer"><?php echo $lang['contact2']; ?></a></li>
+                        <li><a href="<?php echo URLROOT; ?>/admins/login" class="a-footer">Login Admin</a></li>
                         <br/>
                         <a href="<?php echo URLROOT; ?>/shopowners/register" class="btn btn-pink">
                             <?php echo $lang['signup']; ?>
