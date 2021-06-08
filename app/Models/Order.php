@@ -28,7 +28,21 @@ class Order
         return $this->db->resultSet();
     }
 
-    public function postOrder($order) {
+    public function getOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order);
+    
+        return $this->db->single();
+    }
+
+    public function getCustomerFromOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE customer_number = :customer_number');
+        $this->db->bind(':customer_number', $order->customer_number);
+        
+        return $this->db->single();
+    }
+    
+        public function postOrder($order) {
         $this->db->query('INSERT INTO boer_naar_burger.orders (customer_number, orderamount_incl_tax, status)
                               VALUES (:customer_number, :order_amount_incl_tax, :status)');
 
@@ -50,6 +64,38 @@ class Order
         return $this->db->single();
     }
 
+    public function getItemsFromOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.items WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order);
+
+        return $this->db->single();
+    }
+
+    public function getProductsFromItems($item) {
+        $this->db->query('SELECT * FROM boer_naar_burger.products WHERE product_number = :product_number');
+        $this->db->bind(':product_number', $item->product_number);
+
+        return $this->db->single();
+    }
+
+    public function getPaymentFromOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.payments WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order);
+    
+        return $this->db->single();
+    }
+
+    public function productList($order_number) {
+        $this->db->query('  SELECT items.amount as amount, items.price as price, products.name as name
+                            FROM boer_naar_burger.items
+                            JOIN boer_naar_burger.products ON products.product_number = items.product_number
+                            WHERE items.order_number = :order_number');
+        $this->db->bind(':order_number', $order_number);
+    
+        return $this->db->resultSet();
+    }
+
+
     public function postOrderItem($orderNumber, $product, $price, $amount) {
         $this->db->query('INSERT INTO boer_naar_burger.items (order_number, product_number, price, amount)
                               VALUES (:order_number, :product_number, :price, :amount)');
@@ -66,11 +112,5 @@ class Order
         }
     }
 
-    public function getOrder($orderNumber) {
-        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
-        $this->db->bind(':order_number', $orderNumber);
-
-        return $this->db->single();
-    }
 
 }

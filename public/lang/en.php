@@ -148,6 +148,7 @@ $lang = array (
     'customer_number'   => 'Customer number',
     'order_number'      => 'Order number',
     'order_date'        => 'Order date',
+    'open_invoice'      => 'Open invoice',
 
     //footer
     'footer_text'   => 'Boer naar Burger offers a platform with products that normally go to waste in the current society.

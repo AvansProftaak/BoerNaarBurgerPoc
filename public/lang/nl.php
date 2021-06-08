@@ -150,6 +150,7 @@ $lang = array (
     'customer_number'   => 'Klantnummer',
     'order_number'      => 'Bestelnummer',
     'order_date'        => 'Besteldatum',
+    'open_invoice'      => 'Open factuur',
 
     //footer
     'footer_text'   => 'Boer naar Burger biedt een platform waarop producten aangeboden worden, die in de huidige maatschappij verloren gaan.

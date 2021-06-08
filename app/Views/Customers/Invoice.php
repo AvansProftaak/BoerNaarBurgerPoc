@@ -1,8 +1,15 @@
+<?php
+    require_once '../app/Helpers/language_helper.php';
+    setlocale(LC_TIME, "");
+    setlocale(LC_ALL, 'nl_NL'); 
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Factuurnummer</title>
+		<title>Ordernummer <?php echo $data['order_number']?></title>
 
 		<style>
 			.invoice-box {
@@ -100,7 +107,7 @@
 	</head>
 
 	<body>
-		<div class="invoice-box">
+	    <div class="invoice-box">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
 					<td colspan="2">
@@ -111,10 +118,15 @@
                                    
 								</td>
 
-								<td>
-									Invoice #: 123<br />
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+								<td>									
+                                    <b>Orderdatum:</b> <?php 
+                                                    $orderMoment = strtotime($data['completed_at']);
+                                                    $date = strftime("%d %B %Y", $orderMoment);
+                                                    $time = strftime("%H:%M", $orderMoment);
+                                                    echo $date
+                                                ?><br />
+									<b>Ordernummer:</b> #<?php echo $data['order_number']?> 
+
 								</td>
 							</tr>
 						</table>
@@ -126,15 +138,16 @@
 						<table>
 							<tr>
 								<td>
-									Sparksuite, Inc.<br />
-									12345 Sunny Road<br />
-									Sunnyville, CA 12345
+									Boer naar Burger B.V.<br />
+									Burgerkinglaan 232<br />
+									4811 BB Breda
 								</td>
 
 								<td>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
+                                <?php echo $data['first_name'] . " " . $data['last_name']?><br />
+                                <?php echo $data['address'] . " " . $data['house_number']?><br />
+								<?php echo $data['postal_code'] . " " . $data['city']?><br />
+                                <?php echo $data['email']?>
 								</td>
 							</tr>
 						</table>
@@ -142,45 +155,37 @@
 				</tr>
 
 				<tr class="heading">
-					<td>Payment Method</td>
+					<td>Betalingsmethode</td>
 
-					<td>Check #</td>
+					<td>Status #</td>
 				</tr>
 
 				<tr class="details">
-					<td>Check</td>
+					<td><?php echo $data['payment_method']?></td>
 
-					<td>1000</td>
+					<td><?php echo $data['payment_status']?></td>
 				</tr>
 
 				<tr class="heading">
 					<td>Item</td>
 
-					<td>Price</td>
+					<td>Prijs</td>
 				</tr>
-
+                <?php foreach ($data['product_item'] as $productItem) : ?> 
 				<tr class="item">
-					<td>Website design</td>
+					<td><?php echo $this->getTranslation($productItem->name, $_SESSION['lang'])?></td>
 
-					<td>$300.00</td>
+					<td><?php echo "€ " . $productItem->price?></td>
 				</tr>
+                <?php endforeach; ?>
 
-				<tr class="item">
-					<td>Hosting (3 months)</td>
-
-					<td>$75.00</td>
-				</tr>
-
-				<tr class="item last">
-					<td>Domain name (1 year)</td>
-
-					<td>$10.00</td>
-				</tr>
 
 				<tr class="total">
 					<td></td>
 
-					<td>Total: $385.00</td>
+					<td>Totaal incl. BTW: <?php echo "€ " . $data['order_price_tax']?><br />
+                        <span style='font-weight:100'>9% BTW: <?php echo "€ " . number_format(($data['order_price_tax'] - $data['order_price']), 2); ?></span><br />
+                        <span style='font-weight:100'>Totaal excl. BTW: <?php echo "€ " . number_format($data['order_price'], 2);?></span></td>
 				</tr>
 			</table>
             <img src="../img/logo Boer naar burger_liggend_color.png" alt="Logo" style="max-width: 50%; display: block; margin: 0 auto">
