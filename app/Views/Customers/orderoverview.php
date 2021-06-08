@@ -2,12 +2,10 @@
 
 <div class="container col-12">
     <div class="row justify-content-center">
-        <div class="col-xl-3 rh-div-shopspage" style='margin-top: 100px'>
+        <div class="col-xl-3 rh-div-shopspage" style='margin-top: 100px; left:20px'>
             <div style='text-align: justify'>
                 <p><?php echo $lang['hello']; ?><b><?php echo $_SESSION['customer_name']; ?></b>,</p>
-                <br>Leuk dat je lid bent van Boer naar Burger. 
-                Dit is je overzichtspagina. Aan de rechterzijde van deze pagina vind je je historische bestellingen. <br>
-                Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.
+                <br><?php echo $lang['welcome_overview']; ?>
             </div>
         </div>
             <div class="col-xl-9">
@@ -92,10 +90,28 @@
                                             <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
                                             <p class="p-0 m-0"> 
                                                 <?php 
-                                                $orderMoment = strtotime($order->completed_at);
-                                                $date = strftime("%A %d %B %Y", $orderMoment);
-                                                $time = strftime("%H:%M", $orderMoment);
-                                                echo $date . " om " .  $time . " uur" ?>
+                                                    if ($_GET['lang'] == "en") {
+                                                        $orderMoment = strtotime($order->completed_at);
+                                                        $date = strftime("%A %d %B %Y", $orderMoment);
+                                                        $time = strftime("%I:%M %p", $orderMoment);                                                        
+                                                       
+                                                        setlocale(LC_TIME, "");
+                                                        setlocale(LC_ALL, 'en_GB');
+
+                                                        echo $date . " at " .  $time ;
+
+                                                    } else {
+                                                            setlocale(LC_TIME, "");
+                                                            setlocale(LC_ALL, 'nl_NL'); 
+                                                   
+                                                            $orderMoment = strtotime($order->completed_at);
+                                                            $date = strftime("%A %d %B %Y", $orderMoment);
+                                                            $time = strftime("%H:%M", $orderMoment);
+
+
+
+                                                            echo $date . " om " .  $time . " uur"; }
+                                                            ?>
 
                                             </p>
                                         </div>
@@ -104,7 +120,7 @@
                                             <p class="p-0 m-0"><?php echo $order->status ?></p>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <a href="<?php echo URLROOT . '/customers/invoice?order='. $order->order_number ?>" class=" rh-shops-topbuttons" style='border-radius: 0px; font-size: 13px'><?php echo $lang['open_invoice']; ?></a>
+                                            <a href="<?php echo URLROOT . '/customers/invoice?order='. $order->order_number ?>" target="_blank" class=" rh-shops-topbuttons" style='border-radius: 0px; font-size: 13px'><?php echo $lang['open_invoice']; ?></a>
                                         </div>
                                     </div>
                                 </div>
