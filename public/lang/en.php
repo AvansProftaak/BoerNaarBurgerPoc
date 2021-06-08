@@ -315,6 +315,19 @@ $lang = array (
     'failed'          => 'Failed',
     'simulate_pay'    => 'Choose below to simulate a payment.',
     'finalize_fail'   => 'Could not finalize payment. Please try again.',
+    'payment_success' => 'Payment successful!',
+    'thanks'          => 'Thank you for your order with ',
+    'order_complete'  => '. Your order has been completed successfully. Within a few minutes you will receive a 
+                         confirmation e-mail on the provided e-mail address.',
+    'attention'       => 'Attention!',
+    'spam_1'          => ' Sometimes the e-mail is intercepted by a spam filter. Please check your spambox as well. 
+                         Received nothing? Please ',
+    'spam_2'          => ' Boer naar Burger.',
+    'contact_lower'   => 'contact',
+    'back_to_view'    => 'Back to shop overview',
+    'payment_cancel'  => 'Payment cancelled',
+    'cancel_text'     => 'Your payment has been cancelled. Go back to the shop to place a new order.',
+    'problems'        => 'Are you having troubles with the payment? Please ',
 
     //payment methods
     'ideal'      => 'iDEAL',

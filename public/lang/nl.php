@@ -331,6 +331,19 @@ $lang = array (
     'failed'          => 'Failed',
     'simulate_pay'    => 'Kies hieronder om een betaling te simuleren.',
     'finalize_fail'   => 'De betaling kon niet afgerond worden. Probeer het opnieuw.',
+    'payment_success' => 'Betaling gelukt!',
+    'thanks'          => 'Bedankt voor uw bestelling bij ',
+    'order_complete'  => '. Uw bestelling is succesvol afgerond. Binnen enkele minuten ontvangt
+                          u een bevestiging op het door u opgegeven e-mail adres.',
+    'attention'       => 'Let op!',
+    'spam_1'          => ' Soms wordt e-mail onderschept door een spamfilter. Controleer daarom ook uw spambox
+                          indien u binnen enkele minuten geen e-mail ontvangen heeft. Niks ontvangen? Neem ',
+    'spam_2'          => ' op met Boer naar Burger.',
+    'contact_lower'   => 'contact',
+    'back_to_view'    => 'Terug naar het overzicht',
+    'payment_cancel'  => 'Betaling geannuleerd',
+    'cancel_text'     => 'Uw betaling is geannuleerd. Ga terug naar de shop om een nieuwe bestelling te plaatsen.',
+    'problems'        => 'Heeft u problemen met betalen? Neem dan ',
 
     //payment methods
     'ideal'      => 'iDEAL',
