@@ -292,7 +292,8 @@ $lang = array (
     'product_image_label'       => 'Selecteer een foto',
     'product_update'            => 'Aanpassingen opslaan',
     'product_delete'            => 'Verwijder product',
-    'product_add'               => 'Nieuw product'
+    'product_add'               => 'Nieuw product',
+    'product_management'        => 'product beheer'
 
     
 

@@ -269,13 +269,14 @@ $lang = array (
     'pass_failed'      => 'Your password could not be changed. Please try again.',
 
     //products
-    'product_name'              => 'Naam van het product',
-    'product_price'             => 'prijs van het product',
-    'product_description'       => 'Beschrijving van het product',
-    'product_stock'             => 'Voorraad',
+    'product_name'              => 'Product name',
+    'product_price'             => 'Product price',
+    'product_description'       => 'product description',
+    'product_stock'             => 'stock',
     'product_image'             => 'Image',
     'product_image_label'       => 'Select a foto',
     'product_update'            => 'Update product',
     'product_delete'            => 'Remove product',
-    'product_add'               => 'Add product'
+    'product_add'               => 'Add product',
+    'product_management'        => 'product management'
 );

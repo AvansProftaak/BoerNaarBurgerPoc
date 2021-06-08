@@ -209,4 +209,33 @@ class Shopowner
             return false;
         }
     }
+
+    public function addProduct($data) {
+        // get shop number and shtuuf needs to be donne
+        // $shopName = $this->createOrUpdateTranslation($data['shop_name']);
+        // $shopDescription = $this->createOrUpdateTranslation($data['description']);
+
+        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, product_name,  shop_name, description, stock, price, image_url)
+                              VALUES (:shop_number, :product_name, :shop_name, :description, :stock, :price, :image_url)');
+
+        // notes shop_name and descriptio have to be the links to translations 
+        // here we are we need to get the right data at the right place
+        $this->db->bind(':kvk_number', $data['kvk_number']);
+        // $this->db->bind(':shop_name', $shopName);
+        // $this->db->bind(':description', $shopDescription);
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':house_number', $data['house_number']);
+        $this->db->bind(':postal_code', $data['postal_code']);
+        $this->db->bind(':city', $data['city']);
+        $this->db->bind(':country', $data['country']);
+        $this->db->bind(':open_from', $data['open_from']);
+        $this->db->bind(':closed_at', $data['closed_at']);
+        $this->db->bind(':banner_url', $data['banner_url']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+}
 }

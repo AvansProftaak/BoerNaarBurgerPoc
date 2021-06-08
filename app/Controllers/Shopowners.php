@@ -752,6 +752,124 @@ class Shopowners extends Controller
         }
     }
 
+    public function addProduct() {
 
+        if (isLoggedIn()){
+            header('location: ' . URLROOT . '/pages/index');
+
+        }
+
+        $data = [
+            'product_name_nl'        => '',
+            'product_name_en'       => '',
+            'product_description_nl'        => '',
+            'product_description_en'        => '',
+            'product_price'         => '',
+            'product_stock'         => '',
+            'product_image'         => '',
+
+            'product_name_nlError'   => '',
+            'product_name_enError'  => '',
+            'product_description_nlError'   => '',
+            'product_description_enError'   => '',
+            'product_priceError'    => '',
+            'product_stockError'    => '',
+            'product_imageError'    => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if (isLoggedInShopOwner()){
+                $KVKNumber = $_SESSION['kvk_number'];
+            } else {
+                # debugging purpose only
+                $KVKNumber = '06989770';
+            }
+
+            print_r($_POST);
+
+            $data = [
+                'kvk_number'            => $KVKNumber,
+                'product_name'             =>
+                    [
+                        'NL' => trim($_POST['product_name_nl']),
+                        'EN' => trim($_POST['product_name_en'])
+                    ],
+                'product_description'           =>
+                    [
+                        'NL' => trim($_POST['product_description_nl']),
+                        'EN' => trim($_POST['product_description_en'])
+                    ],
+                'product_price'               => trim($_POST['product_price']),
+                'product_stock'          => trim($_POST['product_stock']),
+                'product_image'            => "/assets/shopbanners/" . trim($_FILES['product_image']['name']),
+
+                'product_nameError'     => '',
+                'product_name_nlError'  => '',
+                'product_name_enError'  => '',
+                'product_descriptionError'   => '',
+                'product_description_nlError'   => '',
+                'product_description_enError'   => '',
+                'product_priceError'    => '',
+                'product_stockError'    => '',
+                'product_imageError'    => ''
+            ];
+
+            // print_r( $data);
+
+            $i = 0 ;
+            foreach ($data as $key => $item) {
+                if (empty($item)) {
+                    if (strpos($key, "Error") !== false) {
+                        continue;
+                    }
+                    # if items contains the word error pass
+                    # else show error message
+                    $key_stripped = str_replace("_", " ", $key);
+                    $key_stripped;
+                    $errorMessage = "Vul het $key_stripped veld in in.";
+
+                    $errorName = $key . "Error";
+
+                    $data = [$errorName => $errorMessage];
+                    print_r($data);
+               }
+               print $i;
+               $i++ ;
+            } 
+            $errorMessages = [
+                'product_nameError'     => '',
+                'product_name_nlError'  => '',
+                'product_name_enError'  => '',
+                'product_descriptionError'   => '',
+                'product_description_nlError'   => '',
+                'product_description_enError'   => '',
+                'product_priceError'    => '',
+                'product_stockError'    => '',
+                'product_imageError'    => ''] ;
+            
+
+            //if no errors are found continue
+            foreach ($errorMessages as $errorMessage) {
+                if (!empty($data[$errorMessage])){
+                    // go back to the create page with data to show alllll the errors
+                    $this->view('shopowners/addProduct', $data);
+                    exit;
+                }
+                    
+            }
+
+        if ($this->shopOwnerModel->addProduct($data)) {
+            exit();
+            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+            $imageFileContents = file_get_contents($imageFile);
+            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+            header('location: ' . URLROOT . '/Shopowners/addProduct');
+        }
+    }
+        $this->view('shopowners/addProduct', $data);
+    }
 
 }
