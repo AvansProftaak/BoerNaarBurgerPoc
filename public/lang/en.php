@@ -305,6 +305,8 @@ $lang = array (
     'edit_details'    => 'Edit Details',
     'your_details'    => 'Personal Details',
     'order_view'      => 'Order overview with ',
+    'accept_consents' => 'You are required to accept our privacy policy and terms & conditions to continue.',
+    'payment_failed'  => 'Payment could not be started. Please try again.',
 
     //payment methods
     'ideal'      => 'iDEAL',

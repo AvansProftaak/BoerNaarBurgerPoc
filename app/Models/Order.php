@@ -54,10 +54,10 @@ class Order
         $this->db->query('INSERT INTO boer_naar_burger.items (order_number, product_number, price, amount)
                               VALUES (:order_number, :product_number, :price, :amount)');
 
-        $this->db->bind('order_number', $orderNumber);
-        $this->db->bind('product_number', $product->product_number);
-        $this->db->bind('price', $price);
-        $this->db->bind('amount', $amount);
+        $this->db->bind(':order_number', $orderNumber);
+        $this->db->bind(':product_number', $product->product_number);
+        $this->db->bind(':price', $price);
+        $this->db->bind(':amount', $amount);
 
         if ($this->db->execute()) {
             return true;
@@ -73,4 +73,20 @@ class Order
         return $this->db->single();
     }
 
+    public function postPayment($payment) {
+        $this->db->query('INSERT INTO boer_naar_burger.payments (order_number, payment_method, total_amount, status)
+                              VALUES (:order_number, :payment_method, :total_amount, :status)');
+
+        $this->db->bind(':order_number', $payment['order_number']);
+        $this->db->bind(':payment_method', $payment['payment_method']);
+        $this->db->bind(':total_amount', $payment['total_amount']);
+        $this->db->bind(':status', $payment['status']);
+
+        if ($this->db->execute()) {
+            $_SESSION['payment_number'] = $this->db->lastInsertId();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

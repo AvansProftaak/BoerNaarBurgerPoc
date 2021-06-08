@@ -321,6 +321,8 @@ $lang = array (
     'edit_details'    => 'Wijzig Gegevens',
     'your_details'    => 'Uw gegevens',
     'order_view'      => 'Overzicht bestelling bij ',
+    'accept_consents' => 'Om verder te gaan moet u ons privacybeleid en gebruikersvoorwaarden accepteren.',
+    'payment_failed'  => 'Betaling kon niet worden gestart. Probeer het opnieuw.',
 
     //payment methods
     'ideal'      => 'iDEAL',
