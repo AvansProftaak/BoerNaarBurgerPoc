@@ -8,7 +8,6 @@
                 <br>Leuk dat je lid bent van Boer naar Burger. 
                 Dit is je overzichtspagina. Aan de rechterzijde van deze pagina vind je je historische bestellingen. <br>
                 Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.
-                <button onclick="document.location='<?php echo URLROOT; ?>/customers/invoice'" id="rh-columnButton">Invoice</button>
             </div>
         </div>
             <div class="col-xl-9">
@@ -103,6 +102,9 @@
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['status']; ?>:</p>
                                             <p class="p-0 m-0"><?php echo $order->status ?></p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="<?php echo URLROOT . '/customers/invoice?order='. $order->order_number ?>" class=" rh-shops-topbuttons" style='border-radius: 0px; font-size: 13px'><?php echo $lang['open_invoice']; ?></a>
                                         </div>
                                     </div>
                                 </div>

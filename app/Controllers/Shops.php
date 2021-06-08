@@ -44,9 +44,9 @@ class Shops extends Controller
                 ];
                 
                 $this->shopModel->saveSearch($data);
-        $this->view('shops/shopdistrict', $data);
+                $this->view('shops/shopdistrict', $data);
 
-        }   
+            }   
         }
 
 
