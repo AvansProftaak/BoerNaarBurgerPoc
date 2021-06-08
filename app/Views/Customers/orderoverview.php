@@ -90,7 +90,7 @@
                                             <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
                                             <p class="p-0 m-0"> 
                                                 <?php 
-                                                    if ($_GET['lang'] == "en") {
+                                                    if ($_SESSION['lang'] == "en") {
                                                         $orderMoment = strtotime($order->completed_at);
                                                         $date = strftime("%A %d %B %Y", $orderMoment);
                                                         $time = strftime("%I:%M %p", $orderMoment);                                                        
