@@ -27,6 +27,7 @@ class Order
         return $this->db->resultSet();
     }
 
+    // Deze functie haalt de ordergegevens uit de database via een GET
     public function getOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
         $this->db->bind(':order_number', $order);
@@ -34,13 +35,7 @@ class Order
         return $this->db->single();
     }
 
-    public function getAllOrders() {
-        $this->db->query('SELECT order_number FROM boer_naar_burger.orders');
-    
-        return $this->db->resultSet();
-    }
-
-
+   // Deze functie haalt gegevens van een klant uit een order
     public function getCustomerFromOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE customer_number = :customer_number');
         $this->db->bind(':customer_number', $order->customer_number);
@@ -70,6 +65,7 @@ class Order
         return $this->db->single();
     }
 
+    // Deze functie haalt met de input uit een GET (ordernummer) data op van items, gekoppeld is aan een order. In principe om in de invoice te verwerken
     public function getItemsFromOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.items WHERE order_number = :order_number');
         $this->db->bind(':order_number', $order);
@@ -77,13 +73,8 @@ class Order
         return $this->db->single();
     }
 
-    public function getProductsFromItems($item) {
-        $this->db->query('SELECT * FROM boer_naar_burger.products WHERE product_number = :product_number');
-        $this->db->bind(':product_number', $item->product_number);
 
-        return $this->db->single();
-    }
-
+        // Deze functie haalt met de input uit een GET (ordernummer) data op van een betaling dat is gekoppeld aan een order. In principe om in de invoice te verwerken
     public function getPaymentFromOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.payments WHERE order_number = :order_number');
         $this->db->bind(':order_number', $order);
@@ -91,6 +82,7 @@ class Order
         return $this->db->single();
     }
 
+    // Deze functie haalt met de input uit een GET (ordernummer) data op van een product dat gekoppeld is aan een item. In principe om in de invoice te verwerken
     public function productList($order_number) {
         $this->db->query('  SELECT items.amount as amount, items.price as total_item_price, products.name as name, products.price as price
                             FROM boer_naar_burger.items

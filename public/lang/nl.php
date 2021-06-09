@@ -156,6 +156,11 @@ $lang = array (
     'welcome_overview'      => 'Leuk dat je lid bent van Boer naar Burger. Dit is je persoonlijke overzichtspagina.<br><br>Aan de rechterzijde van deze pagina vind je je historische bestellingen. Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.<br><br>Rechtsboven, in de navigatiebalk, kun de taal en je accountgegevens aanpassen.',
     'ordernr_unknown'       => "Ordernummer onbekend.",
     'ordernr_input'         => "Voer géén of een ander ordernummer in.",
+    'overview_completed'    => "VOLTOOID",
+    'overview_canceled'     => "GEANNULEERD",
+    'overview_pending'      => "OPEN",
+    'overview_expired'      => "VERLOPEN",
+
 
     //footer
     'footer_text'   => 'Boer naar Burger biedt een platform waarop producten aangeboden worden, die in de huidige maatschappij verloren gaan.
