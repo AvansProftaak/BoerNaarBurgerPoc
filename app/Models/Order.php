@@ -34,6 +34,13 @@ class Order
         return $this->db->single();
     }
 
+    public function getAllOrders() {
+        $this->db->query('SELECT order_number FROM boer_naar_burger.orders');
+    
+        return $this->db->resultSet();
+    }
+
+
     public function getCustomerFromOrder($order) {
         $this->db->query('SELECT * FROM boer_naar_burger.customers WHERE customer_number = :customer_number');
         $this->db->bind(':customer_number', $order->customer_number);
@@ -85,7 +92,7 @@ class Order
     }
 
     public function productList($order_number) {
-        $this->db->query('  SELECT items.amount as amount, items.price as price, products.name as name
+        $this->db->query('  SELECT items.amount as amount, items.price as total_item_price, products.name as name, products.price as price
                             FROM boer_naar_burger.items
                             JOIN boer_naar_burger.products ON products.product_number = items.product_number
                             WHERE items.order_number = :order_number');

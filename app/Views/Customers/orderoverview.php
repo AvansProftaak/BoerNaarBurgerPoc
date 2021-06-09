@@ -94,15 +94,10 @@
                                                         $orderMoment = strtotime($order->completed_at);
                                                         $date = strftime("%A %d %B %Y", $orderMoment);
                                                         $time = strftime("%I:%M %p", $orderMoment);                                                        
-                                                       
-                                                        setlocale(LC_TIME, "");
-                                                        setlocale(LC_ALL, 'en_GB');
 
                                                         echo $date . " at " .  $time ;
 
                                                     } else {
-                                                            setlocale(LC_TIME, "");
-                                                            setlocale(LC_ALL, 'nl_NL'); 
                                                    
                                                             $orderMoment = strtotime($order->completed_at);
                                                             $date = strftime("%A %d %B %Y", $orderMoment);
@@ -179,11 +174,20 @@
                                             <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
                                             <p class="p-0 m-0">                                            
                                                 <?php                                             
-                                                    $orderMoment = strtotime($order->completed_at);
-                                                    $date = strftime("%A %d %B %Y", $orderMoment);
-                                                    $time = strftime("%H:%M", $orderMoment);
-                                                    echo $date . " om " .  $time . " uur" 
-                                                ?> 
+                                                    if ($_SESSION['lang'] == "en") {
+                                                        $orderMoment = strtotime($order->completed_at);
+                                                        $date = strftime("%A %d %B %Y", $orderMoment);
+                                                        $time = strftime("%I:%M %p", $orderMoment);                                                        
+
+                                                        echo $date . " at " .  $time ;
+
+                                                    } else {                                                   
+                                                        $orderMoment = strtotime($order->completed_at);
+                                                        $date = strftime("%A %d %B %Y", $orderMoment);
+                                                        $time = strftime("%H:%M", $orderMoment);
+
+                                                        echo $date . " om " .  $time . " uur"; }
+                                                ?>
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between">
@@ -202,7 +206,7 @@
                         <?php if ($searchResults == 0) : ?>
                         <div class="col-md-12 justify-content-center">
                             <br><br>
-                            <h4 class="rh-h4-orderonbekend">Ordernummer onbekend.<br>Voer géén of een ander ordernummer in.</h4>
+                            <h4 class="rh-h4-orderonbekend"><?php echo $lang['ordernr_unknown']; ?><br><?php echo $lang['ordernr_input']; ?></h4>
                         </div>  
                         <hr>    
                         <?php endif; ?>
