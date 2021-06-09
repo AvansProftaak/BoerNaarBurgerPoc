@@ -1,9 +1,11 @@
+<!-- Hier haalt hij de header op  --> 
 <?php include APPROOT . "/Views/Includes/header.php"; ?>
 
 <div class="container col-12">
     <div class="row justify-content-center">
         <div class="col-xl-3 rh-div-shopspage" style='margin-top: 100px; left:20px'>
             <div style='text-align: justify'>
+                <!-- Hier geeft hij de naam van de klant weer, als hij ingelogd is  -->  
                 <p><?php echo $lang['hello']; ?><b><?php echo $_SESSION['customer_name']; ?></b>,</p>
                 <br><?php echo $lang['welcome_overview']; ?>
             </div>
@@ -48,6 +50,7 @@
                         <?php  if (empty($_POST['searchorders'])) : ?>
                         <?php foreach($data['orders'] as $order): ?>
                         <div class="col-md-12">
+
                             <div class="pt-5">
                                 <h3 class="shop-products p-2"><?php echo $lang['order'] . ' ' . $order->order_number ?>
                                     <a data-toggle="collapse" href="#order-id<?php echo $order->order_number ?>" role="button" aria-expanded="true" aria-controls="order-id<?php echo $order->order_number ?>">
@@ -56,8 +59,10 @@
                                     </a>
                                 </h3>
                             </div>
+
                             <div id="order-id<?php echo $order->order_number ?>" class="collapsed">
                                 <div class="row">
+
                                     <div class="col">
                                         <h4 class="pt-2 font-weight-bold"><?php echo $lang['products']; ?></h4>
                                         <div class="border-shop">
@@ -76,6 +81,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col">
                                         <h4 class="pt-2 font-weight-bold"><?php echo $lang['order_info']; ?></h4>
                                         <div class="d-flex justify-content-between">
@@ -89,6 +95,7 @@
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
                                             <p class="p-0 m-0"> 
+                                                <!-- Hier vertaald hij de datum/tijd uit de database naar leesbare datum/tijd in Engels of Nederlands  -->  
                                                 <?php 
                                                     if ($_SESSION['lang'] == "en") {
                                                         $orderMoment = strtotime($order->completed_at);
@@ -98,26 +105,36 @@
                                                         echo $date . " at " .  $time ;
 
                                                     } else {
-                                                   
-                                                            $orderMoment = strtotime($order->completed_at);
-                                                            $date = strftime("%A %d %B %Y", $orderMoment);
-                                                            $time = strftime("%H:%M", $orderMoment);
+                                                        $orderMoment = strtotime($order->completed_at);
+                                                        $date = strftime("%A %d %B %Y", $orderMoment);
+                                                        $time = strftime("%H:%M", $orderMoment);
 
-
-
-                                                            echo $date . " om " .  $time . " uur"; }
-                                                            ?>
-
+                                                        echo $date . " om " .  $time . " uur"; } 
+                                                ?>
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['status']; ?>:</p>
-                                            <p class="p-0 m-0"><?php echo $order->status ?></p>
+                                            <p class="p-0 m-0">   
+                                                <!-- Hier vertaald hij de orderstatus uit de database naar Engels of Nederlands  -->                                            
+                                                <?php 
+                                                    if ($order->status == "COMPLETED") {
+                                                        echo $lang['overview_completed'];
+                                                    } elseif ($order->status == "CANCELED") {
+                                                        echo $lang['overview_canceled'];	
+                                                    } elseif ($order->status == "PENDING") {
+                                                        echo $lang['overview_pending'];
+                                                    } elseif ($order->status == "EXPIRED") {
+                                                        echo $lang['overview_expired']; }
+                                                ?>                                                                                      
+                                            </p>
                                         </div>
                                         <div class="d-flex justify-content-between">
+                                            <!-- Hier geeft hij de URL een GETTER op 'order' zodat deze data in de invoice opgehaald kan worden  -->  
                                             <a href="<?php echo URLROOT . '/customers/invoice?order='. $order->order_number ?>" target="_blank" class=" rh-shops-topbuttons" style='border-radius: 0px; font-size: 13px'><?php echo $lang['open_invoice']; ?></a>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -142,6 +159,7 @@
                             </div>
                             <div id="order-id<?php echo $order->order_number ?>" class="collapsed">
                                 <div class="row">
+
                                     <div class="col">
                                         <h4 class="pt-2 font-weight-bold"><?php echo $lang['products']; ?></h4>
                                         <div class="border-shop">
@@ -160,6 +178,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col">
                                         <h4 class="pt-2 font-weight-bold"><?php echo $lang['order_info']; ?></h4>
                                         <div class="d-flex justify-content-between">
@@ -172,7 +191,8 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['order_date']; ?>:</p>
-                                            <p class="p-0 m-0">                                            
+                                            <p class="p-0 m-0">  
+                                                <!-- Hier vertaald hij de datum/tijd uit de database naar leesbare datum/tijd in Engels of Nederlands  -->                                          
                                                 <?php                                             
                                                     if ($_SESSION['lang'] == "en") {
                                                         $orderMoment = strtotime($order->completed_at);
@@ -196,6 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>   
                         </div>                                                    
                         <?php $searchResults++; endif;?>
@@ -203,20 +224,17 @@
                     </div>
                 </div>
                 
-                        <?php if ($searchResults == 0) : ?>
-                        <div class="col-md-12 justify-content-center">
-                            <br><br>
-                            <h4 class="rh-h4-orderonbekend"><?php echo $lang['ordernr_unknown']; ?><br><?php echo $lang['ordernr_input']; ?></h4>
-                        </div>  
-                        <hr>    
-                        <?php endif; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>                    
-                    
-            </div>
+            <?php if ($searchResults == 0) : ?>
+            <div class="col-md-12 justify-content-center">
+                <br><br>
+                <h4 class="rh-h4-orderonbekend"><?php echo $lang['ordernr_unknown']; ?><br><?php echo $lang['ordernr_input']; ?></h4>
+            </div>  
+            <hr>    
+            <?php endif; ?>
+            <?php endif; ?>
+        </div>
+    </div>                        
+</div>
 
-
-
-
+<!-- Hier haalt hij de footer op  --> 
 <?php include APPROOT . "/Views/Includes/footer.php"; ?>
