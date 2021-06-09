@@ -72,8 +72,6 @@ class Shop
         } else {
             return false;
         }
-
-
     }
 
 
@@ -95,5 +93,12 @@ class Shop
             $this->error = $e->getMessage();
             return $this->error;
         }
+    }
+
+    public function getAllShopCities($city) {
+        $result = $this->db->query('SELECT city FROM boer_naar_burger.shops WHERE city = :city');
+        $this->db->bind(':city', $city);
+
+        return $this->db->resultSet();
     }
 }
