@@ -387,7 +387,7 @@ class Customers extends Controller
 
     public function invoice(){
         if (isset($_GET['order'])) {
-
+            $allOrders = $this->orderModel->getAllOrders();
             $order = $this->orderModel->getOrder($_GET['order']);
             $customer = $this->orderModel->getCustomerFromOrder($order);
             $item = $this->orderModel->getItemsFromOrder($_GET['order']);
@@ -397,8 +397,10 @@ class Customers extends Controller
 
 
             $data = [
+                'allOrders'         => $allOrders,
                 'order_number'      => $item->order_number,
                 'completed_at'      => $order->completed_at,
+                'customer_number'   => $customer->customer_number,
                 'first_name'        => $customer->first_name,
                 'last_name'         => $customer->last_name,
                 'address'           => $customer->address,
@@ -417,7 +419,7 @@ class Customers extends Controller
 
 
         $this->view('customers/invoice', $data);
-        }
+        } 
     }
 }
 

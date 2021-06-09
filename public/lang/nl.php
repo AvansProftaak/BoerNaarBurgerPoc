@@ -25,7 +25,7 @@ $lang = array (
     'register'        => 'Registreer',
 
     // index
-    'index_text'       => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
+    'index_text'      => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
     'caroussel-1'     => "IK HELP DE BOER EN BEN ZELF GOEDKOPER UIT <br>WIN WIN, ALS JE HET MIJ VRAAGT",
     'caroussel-2'     => "VEEL LOKALE PRODUCTEN, OOK BIOLOGISCH,<br>HEERLIJK!",
     'caroussel-3'     => "OP DEZE MANIER DOE IK IETS TERUG<br>VOOR DE NEDERLANDSE BOER",
@@ -46,23 +46,24 @@ $lang = array (
     'createDatabase'  => "Database aanmaken",
 
     // searchbar      
-    'searchfield'     => "Zoek een ordernummer...",
+    'searchfield'     => "Zoek op ordernummer...",
     'search'          => "Zoek",
 
     // shops Rob
-    'hello'           => "Hallo ",
+    'hello'             => "Hallo ",
     'hello_new_customer'=> "Hallo vreemdeling",
-    'our_shops'       => "onze shops in ",
-    'midden_brabant'  => "Midden-Brabant",
-    'oost_brabant'    => "Oost-Brabant",
-    'shops_all'       => "ALLE BOER NAAR BURGER SHOPS",
-    'shops_all2'      => "ALLE SHOPS",
-    'address'         => "adres",
-    'description'     => "beschrijving",
-    'shops_text'      => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
-    'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
+    'our_shops'         => "onze shops in ",
+    'midden_brabant'    => "Midden-Brabant",
+    'oost_brabant'      => "Oost-Brabant",
+    'shops_all'         => "ALLE BOER NAAR BURGER SHOPS",
+    'shops_all2'        => "ALLE SHOPS",
+    'address'           => "adres",
+    'description'       => "beschrijving",
+    'shops_text'        => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
+    'shops_text2'       => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
     'searchfield_shops' => "Zoek op plaatsnaam of product...",
-    'no_search_string'=> "Geen zoekopdracht ingevoerd!",
+    'no_search_string'  => "Geen zoekopdracht ingevoerd!",
+    'go_to_shop'        => 'Ga naar de shop',
 
 
     //customer
@@ -141,22 +142,20 @@ $lang = array (
     'change_failed'      => 'Uw gegevens konden niet worden opgeslagen. Probeer het opnieuw.',
 
     //order overview
-    'order'             => 'Bestelling',
-    'order_overview'    => 'Overzicht Bestellingen',
-    'empty_orders'      => 'Er zijn nog geen bestellingen geplaatst!',
-    'visit_shops'       => 'Bezoek de ',
-    'visit_shops2'      => ' van onze boeren en ontdek wat Boer naar Burger jou te bieden heeft!',
-    'go_shops'          => 'Ga naar de shops',
-    'order_info'        => 'Bestelinformatie',
-    'customer_number'   => 'Klantnummer',
-    'order_number'      => 'Bestelnummer',
-    'order_date'        => 'Besteldatum',
-    'open_invoice'      => 'Open factuur',
-    'welcome_overview'   => 'Leuk dat je lid bent van Boer naar Burger. 
-    Dit is je persoonlijke overzichtspagina.<br><br>
-    Aan de rechterzijde van deze pagina vind je je historische bestellingen.
-    Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.<br><br>
-    Rechtsboven, in de navigatiebalk, kun de taal en je accountgegevens aanpassen.',
+    'order'                 => 'Bestelling',
+    'order_overview'        => 'Overzicht Bestellingen',
+    'empty_orders'          => 'Er zijn nog geen bestellingen geplaatst!',
+    'visit_shops'           => 'Bezoek de ',
+    'visit_shops2'          => ' van onze boeren en ontdek wat Boer naar Burger jou te bieden heeft!',
+    'go_shops'              => 'Ga naar de shops',
+    'order_info'            => 'Bestelinformatie',
+    'customer_number'       => 'Klantnummer',
+    'order_number'          => 'Bestelnummer',
+    'order_date'            => 'Besteldatum',
+    'open_invoice'          => 'Open factuur',
+    'welcome_overview'      => 'Leuk dat je lid bent van Boer naar Burger. Dit is je persoonlijke overzichtspagina.<br><br>Aan de rechterzijde van deze pagina vind je je historische bestellingen. Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.<br><br>Rechtsboven, in de navigatiebalk, kun de taal en je accountgegevens aanpassen.',
+    'ordernr_unknown'       => "Ordernummer onbekend.",
+    'ordernr_input'         => "Voer géén of een ander ordernummer in.",
 
     //footer
     'footer_text'   => 'Boer naar Burger biedt een platform waarop producten aangeboden worden, die in de huidige maatschappij verloren gaan.
@@ -356,5 +355,20 @@ $lang = array (
     'mastercard' => 'Mastercard',
     'visa'       => 'Visa Card',
     'paypal'     => 'PayPal',
+
+    // invoice
+    'invoice_payment_method'    => "Betalingsmethode",
+    'invoice_price'             => "Totaal",
+    'invoice_total_tax'         => "Bedrag incl. BTW:",
+    'invoice_total_no_tax'      => "Bedrag excl. BTW:",
+    'invoice_tax'               => "9% BTW:",
+    'invoice_unitprice'         => "Prijs",
+    'invoice_quantity'          => "Aantal",
+    'invoice_payment_success'   => "GESLAAGD",
+    'invoice_payment_fail'      => "MISLUKT",
+    'invoice_404_error'         => "De pagina die u zoekt is niet gevonden.",
+    'invoice_back_to_home'      => "Terug naar Home",
+    'invoice_page_not_found'    => " Pagina niet gevonden",
+
 );
 
