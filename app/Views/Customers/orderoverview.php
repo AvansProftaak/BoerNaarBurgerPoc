@@ -212,7 +212,22 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['status']; ?>:</p>
-                                            <p class="p-0 m-0"><?php echo $order->status ?></p>
+                                            <p class="p-0 m-0">                                                <!-- Hier vertaald hij de orderstatus uit de database naar Engels of Nederlands  -->                                            
+                                                <?php 
+                                                    if ($order->status == "COMPLETED") {
+                                                        echo $lang['overview_completed'];
+                                                    } elseif ($order->status == "CANCELED") {
+                                                        echo $lang['overview_canceled'];	
+                                                    } elseif ($order->status == "PENDING") {
+                                                        echo $lang['overview_pending'];
+                                                    } elseif ($order->status == "EXPIRED") {
+                                                        echo $lang['overview_expired']; }
+                                                ?>  
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <!-- Hier geeft hij de URL een GETTER op 'order' zodat deze data in de invoice opgehaald kan worden  -->  
+                                            <a href="<?php echo URLROOT . '/customers/invoice?order='. $order->order_number ?>" target="_blank" class=" rh-shops-topbuttons" style='border-radius: 0px; font-size: 13px'><?php echo $lang['open_invoice']; ?></a>
                                         </div>
                                     </div>
                                 </div>
