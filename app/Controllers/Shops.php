@@ -22,36 +22,37 @@ class Shops extends Controller
 
     public function shopdistrict() {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $shopsZeeland = $this->shopModel->getShopsZeeland();
-            $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
-            $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
-            $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
-            $shopsAll = $this->shopModel->getShopsAll();
-            $cities = $this->shopModel->getShops();
-            $shops = $this->shopModel->getShops();
+        $shopsZeeland = $this->shopModel->getShopsZeeland();
+        $shopsWestBrabant = $this->shopModel->getShopsWestBrabant();
+        $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
+        $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
+        $shopsAll = $this->shopModel->getShopsAll();
+    
+        $data = [
+            'shopsZeeland' => $shopsZeeland,
+            'shopsWestBrabant' => $shopsWestBrabant,
+            'shopsMiddenBrabant' => $shopsMiddenBrabant,
+            'shopsOostBrabant' => $shopsOostBrabant,
+            'shopsAll' => $shopsAll,
+        ];
+
+        $this->view('shops/shopdistrict', $data);
+
+        if (isset($_POST['searchfield_shops'])) {
+
+            $cities = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
             
-            $data = [
-                'cities' => $cities,
-                'shops' => $shops,
-                'shopsZeeland' => $shopsZeeland,
-                'shopsWestBrabant' => $shopsWestBrabant,
-                'shopsMiddenBrabant' => $shopsMiddenBrabant,
-                'shopsOostBrabant' => $shopsOostBrabant,
-                'shopsAll' => $shopsAll,
-            ];
+            if ($cities == false) {
 
-            $this->view('shops/shopdistrict', $data);
-
-            if (isset($_POST['searchfield_shops'])) {
                 $data = [
                     'query'                 => $_POST['searchfield_shops'],
-                ];
-                
-                $this->shopModel->saveSearch($data);
-                $this->view('shops/shopdistrict', $data);
-
-            }   
-        }
+                        ];
+        
+            $this->shopModel->saveSearch($data);
+            $this->view('shops/shopdistrict', $data);
+            }            
+        }   
+    }
 
 
     public function step1() {

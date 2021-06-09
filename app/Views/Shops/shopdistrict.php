@@ -1,6 +1,8 @@
 <?php
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
+
+
 ?>
 
 
@@ -103,14 +105,6 @@
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
                     <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
-                </div>
-            </div>   
-            <?php elseif ($shop->product == ucfirst($_POST['searchfield_shops'])) : ?>
-            <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
-                <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
                 </div>
             </div>   
             <?php endif; ?>

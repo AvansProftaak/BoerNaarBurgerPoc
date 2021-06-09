@@ -106,12 +106,12 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td style='text-align: right'>
+					<td style='text-align: right; padding-left: 150px'>
 						<b><?php echo $lang['invoice_total_tax']; ?></b><br />
 						<?php echo $lang['invoice_tax']; ?><br />
 						<?php echo $lang['invoice_total_no_tax']; ?><br />
 					</td>
-					<td>
+					<td >
 						<b><?php echo "€ " . $data['order_price_tax'] ?></b><br />
 						<?php echo "€ " . number_format(($data['order_price_tax'] - $data['order_price']), 2) ?><br />
 						<?php echo "€ " . number_format($data['order_price'], 2) ?></td>

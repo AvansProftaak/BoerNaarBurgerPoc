@@ -61,7 +61,7 @@ $lang = array (
     'description'       => "description",
     'shops_text'        => "At Boer naar Burger we work together with our farmers towards a better future, a future without waste. Many farmers from Zeeland and North-Brabant believe in this project and join Boer naar Burger. By offering products that would otherwise have ended up on the waste pile, a win-win-win situation is created.",
     'shops_text2'       => "Curious about the farmers in your area?<br> <b>Select the area of ​​your preference</b>",
-    'searchfield_shops' => "Search for city or product...",
+    'searchfield_shops' => "Search for city...",
     'no_search_string'  => "No search input found",
     'go_to_shop'        => 'Enter the shop',
 
