@@ -20,6 +20,15 @@ function ready() {
         let button = removeProductButtons[i];
         button.addEventListener('click', removeFromCartClicked);
     }
+
+    if (window.location.href.indexOf('step1') !== -1) {
+        updateTotal();
+    }
+
+    let editDetailsButton = document.getElementById('edit-details-button');
+    if (editDetailsButton) {
+        editDetailsButton.addEventListener('click', editDetails);
+    }
 }
 
 function addToCartClicked(event) {
@@ -27,13 +36,13 @@ function addToCartClicked(event) {
     let product = button.parentElement.parentElement;
     let price = parseFloat(product.querySelector('#price').innerText);
     let quantityElement = product.querySelector('#quantity');
-    let quantity = quantityElement.innerText;
+    let quantity = quantityElement.value;
 
     quantity++;
 
     let total = price * quantity;
-    quantityElement.innerText = quantity;
-    product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
+    quantityElement.value = quantity;
+    product.getElementsByClassName('total')[0].value = total.toFixed(2);
 
     updateTotal();
 }
@@ -43,15 +52,15 @@ function removeFromCartClicked(event) {
     let product = button.parentElement.parentElement;
     let price = parseFloat(product.querySelector('#price').innerText);
     let quantityElement = product.querySelector('#quantity');
-    let quantity = quantityElement.innerText;
+    let quantity = quantityElement.value;
 
     if (quantity > 0) {
         quantity--;
 
         let total = price * quantity;
 
-        quantityElement.innerText = quantity;
-        product.getElementsByClassName('total')[0].innerText = total.toFixed(2);
+        quantityElement.value = quantity;
+        product.getElementsByClassName('total')[0].value = total.toFixed(2);
     }
     updateTotal()
 }
@@ -64,8 +73,49 @@ function updateTotal() {
 
     for (let i = 0; i < productTotals.length; i++){
         //loop through the array to get all the chosen values
-        productPrices.push(parseFloat(productTotals[i].innerText));
+        productPrices.push(parseFloat(productTotals[i].value));
     }
 
-   shopTotal.innerText = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
+   shopTotal.value = productPrices.reduce((a, b) => a + b, 0).toFixed(2);
+
+    // next button disabled when ordervalue is 0
+    if(shopTotal.value === '0.00') {
+        document.getElementById('submit-button').disabled = true
+    } else {
+        document.getElementById('submit-button').disabled = false
+    }
+}
+
+// function to allow customerdata to be edited in shop step 2, and show password
+function editDetails() {
+    // show password field/save button and hide edit button
+    let editButtons = document.querySelectorAll('.hide-button');
+    for (let i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.remove('hide-button');
+    }
+
+    document.querySelector('#edit-details-button').classList.add('hide-button');
+
+    // loop over disabled fields and enable them.
+    let disabledInputs = document.querySelectorAll('.input-field');
+    for (let i = 0; i < disabledInputs.length; i++) {
+        disabledInputs[i].removeAttribute('disabled');
+    }
+}
+
+// cancel editing customerdata and disabling inputs
+function cancelEdit() {
+    let enabledInputs = document.querySelectorAll('.input-field');
+    for (let i = 0; i < enabledInputs.length; i++) {
+        enabledInputs[i].setAttribute('disabled', 'disabled');
+    }
+
+    document.querySelector('#edit-details-button').classList.remove('hide-button');
+
+    let editButtons = document.getElementsByClassName('edit-buttons');
+    for (let i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.add('hide-button');
+    }
+
+    document.querySelector('#password-field').classList.add('hide-button');
 }

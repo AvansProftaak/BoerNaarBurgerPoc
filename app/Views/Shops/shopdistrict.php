@@ -1,7 +1,10 @@
 <?php
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
+
+
 ?>
+
 
 <div class='container'>
     <div class='row col-lg-12 justify-content-between'>
@@ -94,87 +97,46 @@
     <div class="p-2 row justify-content-between">
      
     <?php if (isset($_POST['searchfield_shops'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>
-            <?php foreach ($data['shopsAll'] as $shop) : ?> 
-                <?php if ($shop->city == ucfirst($_POST['searchfield_shops'])) : ?>
-                <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
-                    <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                        <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    </div>
-                </div>    
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>          
-            <?php foreach ($data['shopsAll'] as $shop) : ?> 
-                <?php if ($shop->city == ucfirst($_POST['searchfield_shops'])) : ?>
-                <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
-                    <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                        <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                        <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
-                    </div>
-                </div>    
-                <?php endif; ?>
-            <?php endforeach; ?> 
-        <?php endif; ?>
-
-    <!-- bij gebruik van de omgeving-keuzebuttons -->
-    <?php elseif (isset($_GET['shopLinksZeeland'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>
-            <?php foreach($data['shopsZeeland'] as $shop): ?>
+        <?php foreach ($data['shopsAll'] as $shop) : ?> 
+            <?php if ($shop->city == ucfirst($_POST['searchfield_shops'])) : ?>
             <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
-            </div>
-            <?php endforeach; ?>
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>
+            </div>   
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+    <!-- bij gebruik van de omgeving-keuzebuttons -->
+    <!-- ZEELAND -->
+    <?php elseif (isset($_GET['shopLinksZeeland'])) : ?>
             <?php foreach($data['shopsZeeland'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
             </div>
             <?php endforeach; ?>
-        <?php endif; ?>
-
+    <!-- WEST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksWestBrabant'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>                
             <?php foreach($data['shopsWestBrabant'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-            
-
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>
-            <?php foreach($data['shopsWestBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
-                <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        <?php endif; ?>
-
+    <!-- MIDDEN-BRABANT -->
     <?php elseif (isset($_GET['shopLinksMiddenBrabant'])) : ?>
         <?php if (!isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
@@ -183,12 +145,10 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-
         <?php elseif (isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
@@ -196,13 +156,13 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-
+    <!-- OOST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
         <?php if (!isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsOostBrabant'] as $shop): ?>
@@ -211,12 +171,10 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-
         <?php elseif (isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsOostBrabant'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
@@ -224,13 +182,13 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-
+    <!-- ALLE SHOPS -->
     <?php elseif (isset($_GET['shopLinksAll'])) : ?>
         <?php if (!isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsAll'] as $shop): ?>
@@ -239,12 +197,10 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-
         <?php elseif (isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsAll'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem; margin-bottom: 30px">
@@ -252,7 +208,7 @@
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
                     <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                    <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green"><?php echo $lang['go_to_shop']; ?></a>
                 </div>
             </div>
             <?php endforeach; ?>

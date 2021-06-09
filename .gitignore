@@ -7,3 +7,4 @@ app/Config/Config.php
 /vendor/
 public/img/assets/shopbanners/
 public/img/assets/profile_images/
+app/Config/Config.php
