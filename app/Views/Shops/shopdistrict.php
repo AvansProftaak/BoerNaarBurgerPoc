@@ -2,6 +2,12 @@
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
 
+    // echo "<pre>";
+    // var_dump($search);
+    // var_dump($data['search']);
+    // echo "</pre>";
+
+
 
 ?>
 
@@ -82,13 +88,18 @@
                             <?php elseif (isset($_GET['shopLinksAll'])) : ?>
                                 <h1 class="rh-subtitle-shops"><?php echo $lang['shops_all']; ?></h1>
         <?php endif; ?>
-    <?php else : ?>                
-        <?php if (empty($_POST['searchfield_shops'])) : ?>
-        <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['no_search_string']); ?></h1> 
-            <?php elseif (isset($_POST['searchfield_shops'])) : ?>
-            <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['our_shops']); ?><?php echo strtoupper($_POST['searchfield_shops']) ?></h1>
-        <?php endif; ?>
+        <?php else : ?>                
+            <?php if (empty($_POST['searchfield_shops'])) : ?>
+                <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['no_search_string']); ?></h1> 
+            <?php elseif ($data['search'] == FALSE) : ?>
+                <p class="rh-h4-orderonbekend">
+                    OP DIT MOMENT HEBBEN WIJ HIER NOG GEEN AANGESLOTEN BOEREN<br>
+                    WIL JE OP DE HOOGTE GEHOUDEN WORDEN VAN ONZE ONTWIKKELINGEN, MELD JE DAN AAN VOOR DE MAILINGLIST</p>
+            <?php elseif ($data['search'] == TRUE) : ?>
+                <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['our_shops']); ?><?php echo strtoupper($_POST['searchfield_shops']) ?></h1>
+            <?php endif; ?>
     <?php endif; ?>
+    </div>
 
     <br>
 <hr class="columnLijn">
@@ -98,7 +109,7 @@
      
     <?php if (isset($_POST['searchfield_shops'])) : ?>
         <?php foreach ($data['shopsAll'] as $shop) : ?> 
-            <?php if ($shop->city == ucfirst($_POST['searchfield_shops'])) : ?>
+            <?php if ($shop->city == ucwords(strtolower($_POST['searchfield_shops']))) : ?>
             <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">

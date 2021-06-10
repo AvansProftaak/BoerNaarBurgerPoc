@@ -109,6 +109,7 @@
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/products/importproduct"><?php echo $lang['import_nav']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['orders']; ?></a>
+              <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/orderoverview"><?php echo $lang['orders']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/create"><?php echo $lang['create_shop']; ?></a>
               <a class="dropdown-item dropdown-right-item" href="<?php echo URLROOT; ?>/shopowners/logout"><?php echo $lang['logout']; ?></a>
             </div>
