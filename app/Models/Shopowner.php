@@ -125,24 +125,6 @@ class Shopowner
         return -1;
     }
 
-    public function updateItem($data) {
-        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, name, description, stock, price, image_url)
-                              VALUES (:shop_number, :name, :description, :stock, :price, :image_url)');
-
-        $this->db->bind(':shop_number', $data['shop_number']);
-        $this->db->bind(':name', $data['name']);
-        $this->db->bind(':description', $data['description']);
-        $this->db->bind(':stock', $data['stock']);
-        $this->db->bind(':price', $data['price']);
-        $this->db->bind(':image_url', $data['image_url']);
-
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function getMyShop() {
 
         if (isLoggedInShopOwner()){
@@ -202,6 +184,49 @@ class Shopowner
         $this->db->query('UPDATE boer_naar_burger.shop_owners SET password = :password WHERE company_name = :company_name');
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':company_name', $shopowner->company_name);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function addProduct($data) {
+
+        $productName = $this->createOrUpdateTranslation($data['product_name']);
+        $productDescription = $this->createOrUpdateTranslation($data['product_description']);
+
+        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, name, description, stock, price)
+                              VALUES (:shop_number, :name, :description, :stock, :price)');
+
+        // notes shop_name and descriptio have to be the links to translations 
+        // here we are we need to get the right data at the right place
+        $this->db->bind(':shop_number', $data['shop_number']);
+        $this->db->bind(':name', $productName);
+        $this->db->bind(':description', $productDescription);
+        $this->db->bind(':stock', $data['product_stock']);
+        $this->db->bind(':price', $data['product_price']);
+
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function updateItem($data) {
+        $productName = $this->createOrUpdateTranslation($data['product_name']);
+        $productDescription = $this->createOrUpdateTranslation($data['product_description']);
+
+        $this->db->query('UPDATE boer_naar_burger.products SET name = :name, description = :description, stock = :stock, price = :price
+                         WHERE product_number = :product_number');
+
+        $this->db->bind(':product_number', $data['product_number']);
+        $this->db->bind(':name', $productName);
+        $this->db->bind(':description', $productDescription);
+        $this->db->bind(':stock', $data['product_stock']);
+        $this->db->bind(':price', $data['product_price']);
 
         if ($this->db->execute()) {
             return true;

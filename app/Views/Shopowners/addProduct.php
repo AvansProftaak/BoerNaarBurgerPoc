@@ -11,10 +11,10 @@
                     </div>
                 </div>
                 <div class="col-9 pr-2">
-                    <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['product_update']; ?></h2>
+                    <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['product_add']; ?></h2>
                     <hr class="mx-2">
 
-                    <form method="POST" enctype="multipart/form-data" action="<?php echo URLROOT . '/shopowners/editproduct?product=' . $_GET['product'] ?>">
+                    <form method="POST" enctype="multipart/form-data" action="<?php echo URLROOT; ?>/shopowners/addproduct">
 
                         <!-- Shop name -->
                         <div class="form-group row mx-1">
@@ -51,7 +51,7 @@
                             <!-- eddit Button -->
                             <div class="form-group row mb-3 mt-4">
                                 <div class="ml-3 pl-3">
-                                <button type="submit" formmethod="post" class="btn btn-green px-5"><?php echo $lang['product_update_button']; ?></button>
+                                <button type="submit" class="btn btn-green px-5"><?php echo $lang['product_add']; ?></button>
                                 <a class="btn btn-green px-5 " href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
                             </div>
                         </div>

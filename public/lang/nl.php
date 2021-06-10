@@ -311,9 +311,12 @@ $lang = array (
     'product_stock'             => 'Voorraad',
     'product_image'             => 'Foto',
     'product_image_label'       => 'Selecteer een foto',
-    'product_update'            => 'Aanpassingen opslaan',
+    'product_change'            => 'aanpassen',
+    'product_update'            => 'Pas uw product aan',
+    'product_update_button'     => 'Aanpassingen opslaan',
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
+    'product_management'        => 'product beheer',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
