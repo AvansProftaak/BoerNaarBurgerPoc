@@ -746,7 +746,12 @@ public function editProduct() {
         header('location: ' . URLROOT . '/pages/index');
 
     }
+    if (isset($_GET['delete'])) {
+        if($this->shopOwnerModel->deleteProduct($_GET['delete'])) {
+            $this->view('shopowners/productoverview');
+        }
     
+    }
     if (isset($_GET['product'])) {
         $data = [
             'product_name_nl'        => '',
