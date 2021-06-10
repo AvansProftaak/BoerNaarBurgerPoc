@@ -30,13 +30,16 @@ class Shops extends Controller
             $shopsMiddenBrabant = $this->shopModel->getShopsMiddenBrabant();
             $shopsOostBrabant = $this->shopModel->getShopsOostBrabant();
             $shopsAll = $this->shopModel->getShopsAll();
+            $search = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
         
+
             $data = [
-                'shopsZeeland' => $shopsZeeland,
-                'shopsWestBrabant' => $shopsWestBrabant,
-                'shopsMiddenBrabant' => $shopsMiddenBrabant,
-                'shopsOostBrabant' => $shopsOostBrabant,
-                'shopsAll' => $shopsAll,
+                'shopsZeeland'  => $shopsZeeland,
+                'shopsWestBrabant'  => $shopsWestBrabant,
+                'shopsMiddenBrabant'    => $shopsMiddenBrabant,
+                'shopsOostBrabant'      => $shopsOostBrabant,
+                'shopsAll'              => $shopsAll,
+                'search'                => $search
             ];
 
             $this->view('shops/shopdistrict', $data);
@@ -47,9 +50,9 @@ class Shops extends Controller
         // Hier wordt het weggeschreven als query in de database.
         // De $data variabele geeft de resultaten als key mee aan de view en de shopModel
             if (isset($_POST['searchfield_shops'])) {
-
-                $cities = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
             
+                $cities = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
+
                 if ($cities == false) {
 
                     $data = [

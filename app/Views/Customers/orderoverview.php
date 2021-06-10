@@ -212,7 +212,8 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <p class="p-0 m-0"><?php echo $lang['status']; ?>:</p>
-                                            <p class="p-0 m-0">                                                <!-- Hier vertaald hij de orderstatus uit de database naar Engels of Nederlands  -->                                            
+                                            <p class="p-0 m-0">                                                
+                                                <!-- Hier vertaald hij de orderstatus uit de database naar Engels of Nederlands  -->                                            
                                                 <?php 
                                                     if ($order->status == "COMPLETED") {
                                                         echo $lang['overview_completed'];
@@ -238,7 +239,8 @@
                         <?php endforeach; ?>
                     </div>
                 </div>
-                
+
+            <!-- Als ordernummer niet overeenkomt met de data  -->    
             <?php if ($searchResults == 0) : ?>
             <div class="col-md-12 justify-content-center">
                 <br><br>

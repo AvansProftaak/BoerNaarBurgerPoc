@@ -215,6 +215,7 @@ class Shopowner
             return false;
         }
     }
+
     public function updateItem($data) {
         $productName = $this->createOrUpdateTranslation($data['product_name']);
         $productDescription = $this->createOrUpdateTranslation($data['product_description']);
@@ -234,4 +235,36 @@ class Shopowner
             return false;
         }
     }
+
+    public function shopownerOrders($kvk_number) {
+    
+        $this->db->query('  SELECT i.order_number as order_number, i.product_number as product_number, p.name as product_name,  i.amount as amount, c.first_name as first_name, c.last_name as last_name, c.phone_number as phone_number, o.created_at as order_date
+                            FROM boer_naar_burger.shops as s
+                            JOIN boer_naar_burger.products as p on p.shop_number = s.shop_number
+                            JOIN boer_naar_burger.items as i on i.product_number = p.product_number
+                            JOIN boer_naar_burger.orders as o on o.order_number = i.order_number
+                            JOIN boer_naar_burger.customers as c on c.customer_number = o.customer_number
+                            WHERE s.kvk_number = :kvk_number
+                            ORDER BY order_number');
+        $this->db->bind(':kvk_number', $kvk_number);
+
+        return $this->db->resultSet();
+                        
+    }
+
 }
+
+
+
+// $this->db->query('  SELECT items.amount as amount, items.price as total_item_price, products.name as name, products.price as price
+// FROM boer_naar_burger.items
+// JOIN boer_naar_burger.products ON products.product_number = items.product_number
+// WHERE items.order_number = :order_number');
+// $this->db->bind(':order_number', $order_number);
+
+// $this->db->query('SELECT i.order_number, i.price, p.name as product, s.shop_name as shop, i.amount
+// FROM boer_naar_burger.items as i
+// JOIN boer_naar_burger.products as p on p.product_number = i.product_number
+// JOIN boer_naar_burger.shops as s on s.shop_number = p.shop_number
+// WHERE i.order_number = :order_number');
+// $this->db->bind(':order_number', $order->order_number);

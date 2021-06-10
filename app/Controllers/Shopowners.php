@@ -853,5 +853,25 @@ public function editProduct() {
     }
     $this->view('shopowners/editproduct');
 }
+    public function orderOverview(){
+        if (isLoggedInShopOwner()) {
+            $orders = $this->shopOwnerModel->shopownerOrders($_SESSION['kvk_number']);
+
+            $data = [
+                'orders' => $orders
+
+            ];
+
+            echo "<pre>";
+            var_dump($data['orders']);
+            echo "</pre>";
+            die();
+
+        $this->view('shopowners/orderoverview', $data);
+        
+        } else {
+            $this->login();
+        }
+    }
 
 }
