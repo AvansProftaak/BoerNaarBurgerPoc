@@ -193,9 +193,7 @@ class Shopowner
     }
 
     public function addProduct($data) {
- 
-    
-        // $shopNumber = $shop->shop_number;
+
         $productName = $this->createOrUpdateTranslation($data['product_name']);
         $productDescription = $this->createOrUpdateTranslation($data['product_description']);
 
@@ -218,16 +216,17 @@ class Shopowner
         }
     }
     public function updateItem($data) {
-        $this->db->query('UPDATE boer_naar_burger.shop_owners SET password = :password WHERE company_name = :company_name');
-        $this->db->query('UPDATE boer_naar_burger.products SET (shop_number, name, description, stock, price)
-                              VALUES (:shop_number, :name, :description, :stock, :price)');
+        $productName = $this->createOrUpdateTranslation($data['product_name']);
+        $productDescription = $this->createOrUpdateTranslation($data['product_description']);
 
-        $this->db->bind(':shop_number', $data['shop_number']);
-        $this->db->bind(':name', $data['name']);
-        $this->db->bind(':description', $data['description']);
-        $this->db->bind(':stock', $data['stock']);
-        $this->db->bind(':price', $data['price']);
-        $this->db->bind(':image_url', $data['image_url']);
+        $this->db->query('UPDATE boer_naar_burger.products SET name = :name, description = :description, stock = :stock, price = :price
+                         WHERE product_number = :product_number');
+
+        $this->db->bind(':product_number', $data['product_number']);
+        $this->db->bind(':name', $productName);
+        $this->db->bind(':description', $productDescription);
+        $this->db->bind(':stock', $data['product_stock']);
+        $this->db->bind(':price', $data['product_price']);
 
         if ($this->db->execute()) {
             return true;
