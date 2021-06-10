@@ -341,7 +341,7 @@ class Shopowners extends Controller
             unset($_SESSION['customer_number']);
             unset($_SESSION['email']);
             unset($_SESSION['customer_name']);
-        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email']) {
+        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email'])) {
             unset($_SESSION['admin_number']);
             unset($_SESSION['admin_email']);
         }
