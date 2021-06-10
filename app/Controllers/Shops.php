@@ -39,7 +39,7 @@ class Shops extends Controller
                 'shopsAll' => $shopsAll,
             ];
 
-            $this->view('shops/shopdistrict', $data);\
+            $this->view('shops/shopdistrict', $data);
 
         // Deze functie is ook gekoppeld aan de shopdistrict.php. 
         // Hij checkt met de isset of er iets is ingevuld in de searchbar. Hij geeft deze waarde mee met de getAllShopCities functie.  
