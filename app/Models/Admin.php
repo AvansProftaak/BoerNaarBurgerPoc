@@ -27,11 +27,15 @@ class Admin
             return false;
         }
     }
+
+    //functie om alle zoekresultaten die in de Db zijn opgeslagen op te halen
+    ///die zijn zoekresultaten die geen resultaat teruggaven
     public function getAllQueries() {
         $this->db->query('SELECT DISTINCT query_id, query_moment, query FROM boer_naar_burger.search_queries ORDER BY query_id;');
         return $this->db->resultSet();
     }
 
+    //funtie om de zoekresultaten te verwijderen uit de database
     public function truncateTable() {
         $this->db->query('TRUNCATE boer_naar_burger.search_queries');
         if ($this->db->execute()) {
