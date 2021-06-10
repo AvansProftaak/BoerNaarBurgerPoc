@@ -1,5 +1,11 @@
 <?php include APPROOT."/Views/Includes/header.php";?>
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
 
+    </head>
+<body>
     <div class="rh-main">
 
         <div class="sitemap">
@@ -18,7 +24,7 @@
                     <li><a href="<?php echo URLROOT; ?>/shopowners/login"><?php echo $lang['Sitemap_login_boer']; ?></a></li>
                     <li><a href="<?php echo URLROOT; ?>/shopowners/myshop"><?php echo $lang['Sitemap_shop_boer']; ?></a></li>
             <br>
-            <h3><a href="<?php echo URLROOT; ?>/shops/overview">Shops</a></h3>
+            <h3><a href="<?php echo URLROOT; ?>/shops/shopdistrict">Shops</a></h3>
             <br>
                 <h3><a href="<?php echo URLROOT; ?>/pages/about"><?php echo $lang['Sitemap_about']; ?></a></h3>
             <br>
@@ -29,4 +35,5 @@
         </div>
      
     </div>
+</body>
 <?php include APPROOT."/Views/Includes/footer.php"; ?>

@@ -2,7 +2,14 @@
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
 ?>
-
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 
     <div class="rh-main">
         <div class="rh-centerBuiten">
@@ -11,7 +18,7 @@
             <img src="../img/sla.png" class="rh-scaleImage" alt="Sla">
         </div>
         <div class="rh-centerBuiten">
-            <img class="logoBnB" src="../img/logo Boer naar burger_liggend_color.png" alt="Sla">
+            <img class="logoBnB" src="../img/logo Boer naar burger_liggend_color.png" alt="Logo">
         </div>
         <div class="rh-row">
             <div class="rh-column-links">
@@ -184,8 +191,7 @@
 
 </div>
 
+</body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <?php include APPROOT."/Views/Includes/footer.php"; ?>

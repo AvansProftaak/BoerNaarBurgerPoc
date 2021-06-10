@@ -1,5 +1,14 @@
 <?php include APPROOT."/Views/Includes/headerShop.php"; ?>
 <div class="page-container-shop">
+    <?php if (!isLoggedIn()) : ?>
+        <div class="col alert-danger font-weight-bold p-4 shop-login-warning"><?php echo $lang['login_mandatory']; ?><br><br>
+            <div class="d-flex justify-content-between align-items-baseline">
+            <a href="<?php echo URLROOT; ?>/customers/login"><button name="loginButton" class="btn btn-green px-5"><?php echo $lang['login_button']; ?></button></a>
+            <a href="<?php echo URLROOT; ?>/customers/register"><button name="registerButton" class="btn btn-green px-5"><?php echo $lang['register_button']; ?></button></a>
+            </div>
+        </div>
+
+    <?php endif; ?>
     <div>
         <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
@@ -16,10 +25,10 @@
 
     <?php foreach($data['products'] as $product): ?>
     <!-- Start Product -->
-    <div class="pt-3 border-shop">
+    <div class="product pt-3 border-shop">
         <div class="d-flex justify-content-between align-items-baseline">
-            <div class = "product-width">
-                <p><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
+            <div class ="product-width">
+                <p class="product"><?php echo $this->getTranslation($product->name, $_SESSION['lang']); ?>
                     <a data-toggle="collapse" href="#description<?php echo $product->product_number ?>" role="button" aria-expanded="false" aria-controls="description<?php echo $product->product_number ?>">
                         <i class="pl-2 fa fa-chevron-down"></i>
                         <i class="pl-2 fa fa-chevron-up"></i></a></p>
@@ -29,11 +38,11 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <button type="button" class="btn-decrement">-</button>
-                <p id="count<?php echo $product->product_number ?>" class="px-3">0</p>
+                <p id="quantity" class="px-3">0</p>
                 <button type="button" class="btn-increment">+</button>
             </div>
             <div class = "price-width text-right">
-                <p>€<span id="total">0.00</span></p>
+                <p>€<span class="total">0.00</span></p>
             </div>
         </div>
     </div>
@@ -53,7 +62,7 @@
     <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shops/overview">Terug naar Shops</a>
     </div>
     <div class="col text-right pt-4 pb-lg-5">
-    <button type="submit" onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
+    <button type="submit" <?php if (!isLoggedIn()) echo 'disabled style="cursor: not-allowed;"'; ?> onclick="window.location='<?php echo URLROOT . '/shops/step2?shop=' . $data['shop']->shop_number?>'" class="btn btn-green btn-padding">Verder</button>
     </div>
   </div>
 </div>

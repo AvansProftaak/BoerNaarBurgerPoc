@@ -16,3 +16,11 @@ function isLoggedInShopOwner() {
         return false;
     }
 }
+
+function isLoggedInAdmin() {
+    if(isset($_SESSION['admin_number'])) {
+        return true;
+    } else {
+        return false;
+    }
+}

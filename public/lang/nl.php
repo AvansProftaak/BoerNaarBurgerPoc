@@ -45,6 +45,7 @@ $lang = array (
 
     // searchbar      
     'searchfield'     => "Ordernummer, product, etc",
+    'search'          => "Zoek",
 
     // shops Rob
     'hello'           => "Hallo ",
@@ -58,6 +59,8 @@ $lang = array (
     'description'     => "beschrijving",
     'shops_text'      => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
     'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
+    'searchfield_shops' => "Zoek op plaatsnaam of product...",
+    'no_search_string'=> "Geen zoekopdracht ingevoerd!",
 
 
     //customer
@@ -215,11 +218,16 @@ $lang = array (
 
 
     //contactformulier
-    'contact_header'    =>  'Contact is zo gelegd',
-    'contact_txt'       =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
-    'contact_socials'   =>  'Connect met ons',
-    'contact_header2'   =>  'Stuur ons een bericht',
-    'contact_button'    =>  'Verzend email',
+    'contact_header'        =>  'Contact is zo gelegd',
+    'contact_txt'           =>  'Uw persoonsgegevens worden alleen gebruikt waarvoor u ze hebt achtergelaten.',
+    'contact_socials'       =>  'Connect met ons',
+    'contact_header2'       =>  'Stuur ons een bericht',
+    'contact_button'        =>  'Verzend email',
+    'contactname_error'     =>  'Vul uw naam in',
+    'contactemail_error'    =>  'Vul uw emailadres in',
+    'contactemail_error2'   =>  'Vul een geldig emailadres in',
+    'contactsubject_error'  =>  'Vul een onderwerp in',
+    'contactmessage_error'  =>  'Vul een bericht in',
 
 
     //FAQ
@@ -295,7 +303,8 @@ $lang = array (
     'product_add'               => 'Nieuw product',
     'product_management'        => 'product beheer'
 
-    
-
+    //shop step 1
+    'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
+                          account hebben. Registreer of login alstublieft.',
 );
 
