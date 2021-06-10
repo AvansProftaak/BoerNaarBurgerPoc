@@ -99,7 +99,6 @@
                 <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['our_shops']); ?><?php echo strtoupper($_POST['searchfield_shops']) ?></h1>
             <?php endif; ?>
     <?php endif; ?>
-    </div>
 
     <br>
 <hr class="columnLijn">
@@ -134,6 +133,7 @@
                 </div>
             </div>
             <?php endforeach; ?>
+
     <!-- WEST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksWestBrabant'])) : ?>
             <?php foreach($data['shopsWestBrabant'] as $shop): ?>
@@ -147,20 +147,9 @@
             </div>
             <?php endforeach; ?>
         </div>
+
     <!-- MIDDEN-BRABANT -->
     <?php elseif (isset($_GET['shopLinksMiddenBrabant'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>
-            <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
-                <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
@@ -172,21 +161,9 @@
             </div>
             <?php endforeach; ?>
         </div>
-        <?php endif; ?>
+
     <!-- OOST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>
-            <?php foreach($data['shopsOostBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
-                <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsOostBrabant'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
@@ -198,23 +175,11 @@
             </div>
             <?php endforeach; ?>
         </div>
-        <?php endif; ?>
+>
     <!-- ALLE SHOPS -->
     <?php elseif (isset($_GET['shopLinksAll'])) : ?>
-        <?php if (!isset($_SESSION['customer_number'])) : ?>
             <?php foreach($data['shopsAll'] as $shop): ?>
             <div class="account-profile-card" style="width: 18rem;">
-                <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
-                    <p class="card-text"><?php echo $this->getTranslation($shop->description, $_SESSION['lang']); ?></p>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        <?php elseif (isset($_SESSION['customer_number'])) : ?>
-            <?php foreach($data['shopsAll'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem; margin-bottom: 30px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -224,8 +189,6 @@
             </div>
             <?php endforeach; ?>
         </div>
-        <?php endif; ?>
-
     <?php endif; ?>
     </div>
 </div>      
