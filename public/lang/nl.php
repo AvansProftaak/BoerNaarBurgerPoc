@@ -318,7 +318,12 @@ $lang = array (
     'product_update_button'     => 'Aanpassingen opslaan',
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
-    'product_management'        => 'product beheer',
+    'product_management'        => 'Productbeheer',
+    'product_import'            => 'Importeer producten',
+    'import_label'              => 'Kies een CSV bestand om te uploaden.',
+    'import_text'               => 'Op deze pagina kunt u rechtstreeks producten importeren in uw shop via een CSV-bestand.<br>
+                                    Download ',
+    'import_text_2'             => ' een voorbeeld bestand.',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger

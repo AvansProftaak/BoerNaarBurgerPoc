@@ -302,8 +302,12 @@ $lang = array (
     'product_update_button'     => 'Save changes',
     'product_delete'            => 'Remove product',
     'product_add'               => 'Add product',
-    'product_management'        => 'product management',
-
+    'product_management'        => 'Product Management',
+    'product_import'            => 'Import products',
+    'import_label'              => 'Please select a CSV file to upload.',
+    'import_text'               => 'On this page you can import products into your shop directly via a CSV file.<br>
+                                    Click ',
+    'import_text_2'             => ' to download an example file.',
   
     //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
