@@ -9,6 +9,7 @@ class Pages extends Controller
         $this->pageModel = $this->model('Page');
     }
 
+    // Deze functie zorgt dat de button op de index een database samenstelt zodat de docenten data hebben om mee te werken
     public function index() {
         $data = [
             'dbCreated' => '',

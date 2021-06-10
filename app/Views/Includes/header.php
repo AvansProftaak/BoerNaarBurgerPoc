@@ -1,9 +1,11 @@
 <?php
-    require_once '../app/Helpers/language_helper.php';
+  require_once '../app/Helpers/language_helper.php';
+	    
+  if ($_SESSION['lang'] == "nl") {
     setlocale(LC_TIME, "");
     setlocale(LC_ALL, 'nl_NL'); 
+	}
 ?>
-
 
 <!doctype html>
 <html lang="nl">

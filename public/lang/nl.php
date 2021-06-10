@@ -10,6 +10,8 @@ $lang = array (
     'contact2'      => 'Contact',
     'save'          => 'Opslaan',
     'close'         => 'Sluiten',
+    'next'          => 'Verder',
+    'cancel'        => 'Annuleren',
 
     //header
     'home'            => 'HOME',
@@ -23,7 +25,7 @@ $lang = array (
     'register'        => 'Registreer',
 
     // index
-    'index_text'       => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
+    'index_text'      => "Wij bieden gezond en kwalitatief voedsel voor een (h)eerlijke prijs. Dagvers, rechtstreeks van het land! <br><br> Tonnen aan vers en heerlijk voedsel worden dagelijks weggegooid; groenten en fruit die net niet mooi genoeg zijn of overproductie die de boer niet kwijt kan bij de supermarkten. Wij zeggen: eeuwig zonde! Juist deze producten geven wij een bestemming, want ze zijn immers net zo vers en smakelijk. <br><br> Sluit je aan bij ons initiatief en bespaar tientallen euro's per maand, en <strong>maak een vuist tegen voedselverspilling!</strong>",
     'caroussel-1'     => "IK HELP DE BOER EN BEN ZELF GOEDKOPER UIT <br>WIN WIN, ALS JE HET MIJ VRAAGT",
     'caroussel-2'     => "VEEL LOKALE PRODUCTEN, OOK BIOLOGISCH,<br>HEERLIJK!",
     'caroussel-3'     => "OP DEZE MANIER DOE IK IETS TERUG<br>VOOR DE NEDERLANDSE BOER",
@@ -44,23 +46,24 @@ $lang = array (
     'createDatabase'  => "Database aanmaken",
 
     // searchbar      
-    'searchfield'     => "Ordernummer, product, etc",
+    'searchfield'     => "Zoek op ordernummer...",
     'search'          => "Zoek",
 
     // shops Rob
-    'hello'           => "Hallo ",
+    'hello'             => "Hallo ",
     'hello_new_customer'=> "Hallo vreemdeling",
-    'our_shops'       => "onze shops in ",
-    'midden_brabant'  => "Midden-Brabant",
-    'oost_brabant'    => "Oost-Brabant",
-    'shops_all'       => "ALLE BOER NAAR BURGER SHOPS",
-    'shops_all2'      => "ALLE SHOPS",
-    'address'         => "adres",
-    'description'     => "beschrijving",
-    'shops_text'      => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
-    'shops_text2'     => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
-    'searchfield_shops' => "Zoek op plaatsnaam of product...",
-    'no_search_string'=> "Geen zoekopdracht ingevoerd!",
+    'our_shops'         => "onze shops in ",
+    'midden_brabant'    => "Midden-Brabant",
+    'oost_brabant'      => "Oost-Brabant",
+    'shops_all'         => "ALLE BOER NAAR BURGER SHOPS",
+    'shops_all2'        => "ALLE SHOPS",
+    'address'           => "adres",
+    'description'       => "beschrijving",
+    'shops_text'        => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
+    'shops_text2'       => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
+    'searchfield_shops' => "Zoek op plaatsnaam...",
+    'no_search_string'  => "Geen zoekopdracht ingevoerd!",
+    'go_to_shop'        => 'Ga naar de shop',
 
 
     //customer
@@ -139,16 +142,25 @@ $lang = array (
     'change_failed'      => 'Uw gegevens konden niet worden opgeslagen. Probeer het opnieuw.',
 
     //order overview
-    'order'             => 'Bestelling',
-    'order_overview'    => 'Overzicht Bestellingen',
-    'empty_orders'      => 'Er zijn nog geen bestellingen geplaatst!',
-    'visit_shops'       => 'Bezoek de ',
-    'visit_shops2'      => ' van onze boeren en ontdek wat Boer naar Burger jou te bieden heeft!',
-    'go_shops'          => 'Ga naar de shops',
-    'order_info'        => 'Bestelinformatie',
-    'customer_number'   => 'Klantnummer',
-    'order_number'      => 'Bestelnummer',
-    'order_date'        => 'Besteldatum',
+    'order'                 => 'Bestelling',
+    'order_overview'        => 'Overzicht Bestellingen',
+    'empty_orders'          => 'Er zijn nog geen bestellingen geplaatst!',
+    'visit_shops'           => 'Bezoek de ',
+    'visit_shops2'          => ' van onze boeren en ontdek wat Boer naar Burger jou te bieden heeft!',
+    'go_shops'              => 'Ga naar de shops',
+    'order_info'            => 'Bestelinformatie',
+    'customer_number'       => 'Klantnummer',
+    'order_number'          => 'Bestelnummer',
+    'order_date'            => 'Besteldatum',
+    'open_invoice'          => 'Open factuur',
+    'welcome_overview'      => 'Leuk dat je lid bent van Boer naar Burger. Dit is je persoonlijke overzichtspagina.<br><br>Aan de rechterzijde van deze pagina vind je je historische bestellingen. Weet je echter je ordernummer, dan kun je ook zoeken op ordernummer.<br><br>Rechtsboven, in de navigatiebalk, kun de taal en je accountgegevens aanpassen.',
+    'ordernr_unknown'       => "Ordernummer onbekend.",
+    'ordernr_input'         => "Voer géén of een ander ordernummer in.",
+    'overview_completed'    => "VOLTOOID",
+    'overview_canceled'     => "GEANNULEERD",
+    'overview_pending'      => "OPEN",
+    'overview_expired'      => "VERLOPEN",
+
 
     //footer
     'footer_text'   => 'Boer naar Burger biedt een platform waarop producten aangeboden worden, die in de huidige maatschappij verloren gaan.
@@ -290,6 +302,7 @@ $lang = array (
     'pass_incorrect'   => 'Het opgegeven e-mailadres of wachtwoord is incorrect.',
     'pass_wrong'       => 'Het opgegeven wachtwoord is incorrect. Probeer het opnieuw.',
     'pass_failed'      => 'Het wachtwoord kon niet gewijzigd worden. Probeer het opnieuw.',
+    'order_error'      => 'Er is iets misgegaan. Probeer het opnieuw',
 
     //products
     'product_name'              => 'Naam van het product',
@@ -305,8 +318,65 @@ $lang = array (
     'product_add'               => 'Nieuw product',
     'product_management'        => 'product beheer',
 
-    //shop step 1
+    //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
+    'back_to_shops'   => 'Terug naar Shops',
+    'edit_failed'     => 'Gegevens wijzigen mislukt. Probeer het opnieuw.',
+    'edit_success'    => 'Uw gegevens zijn succesvol gewijzigd.',
+    'pay'             => 'Betalen',
+    't_and_c'         => 'gebruikersvoorwaarden',
+    'privacy_policy'  => 'privacybeleid',
+    'and_the'         => ' en het ',
+    'of_bnb'          => ' van Boer naar Burger',
+    'agree_terms'     => 'Ik ga akkoord met de ',
+    'payment_method'  => 'Selecteer Betaalmethode',
+    'edit_details'    => 'Wijzig Gegevens',
+    'your_details'    => 'Uw gegevens',
+    'order_view'      => 'Overzicht bestelling bij ',
+    'accept_consents' => 'Om verder te gaan moet u ons privacybeleid en gebruikersvoorwaarden accepteren.',
+    'payment_failed'  => 'Betaling kon niet worden gestart. Probeer het opnieuw.',
+    'test_phase'      => 'Testfase',
+    'develop_phase'   => 'Boer naar Burger bevindt zich nog in de ontwikkelfase. Het is momenteel (nog) niet mogelijk 
+                          daadwerkelijk een bestelling te plaatsen. Indien u op de hoogte gehouden wilt worden over Boer 
+                          naar Burger stuur een bericht naar ',
+    'success'         => 'Success',
+    'failed'          => 'Failed',
+    'simulate_pay'    => 'Kies hieronder om een betaling te simuleren.',
+    'finalize_fail'   => 'De betaling kon niet afgerond worden. Probeer het opnieuw.',
+    'payment_success' => 'Betaling gelukt!',
+    'thanks'          => 'Bedankt voor uw bestelling bij ',
+    'order_complete'  => '. Uw bestelling is succesvol afgerond. Binnen enkele minuten ontvangt
+                          u een bevestiging op het door u opgegeven e-mail adres.',
+    'attention'       => 'Let op!',
+    'spam_1'          => ' Soms wordt e-mail onderschept door een spamfilter. Controleer daarom ook uw spambox
+                          indien u binnen enkele minuten geen e-mail ontvangen heeft. Niks ontvangen? Neem ',
+    'spam_2'          => ' op met Boer naar Burger.',
+    'contact_lower'   => 'contact',
+    'back_to_view'    => 'Terug naar het overzicht',
+    'payment_cancel'  => 'Betaling geannuleerd',
+    'cancel_text'     => 'Uw betaling is geannuleerd. Ga terug naar de shop om een nieuwe bestelling te plaatsen.',
+    'problems'        => 'Heeft u problemen met betalen? Neem dan ',
+
+    //payment methods
+    'ideal'      => 'iDEAL',
+    'mastercard' => 'Mastercard',
+    'visa'       => 'Visa Card',
+    'paypal'     => 'PayPal',
+
+    // invoice
+    'invoice_payment_method'    => "Betalingsmethode",
+    'invoice_price'             => "Totaal",
+    'invoice_total_tax'         => "Bedrag incl. BTW:",
+    'invoice_total_no_tax'      => "Bedrag excl. BTW:",
+    'invoice_tax'               => "9% BTW:",
+    'invoice_unitprice'         => "Prijs",
+    'invoice_quantity'          => "Aantal",
+    'invoice_payment_success'   => "GESLAAGD",
+    'invoice_payment_fail'      => "MISLUKT",
+    'invoice_404_error'         => "De pagina die u zoekt is niet gevonden.",
+    'invoice_back_to_home'      => "Terug naar Home",
+    'invoice_page_not_found'    => " Pagina niet gevonden",
+
 );
 
