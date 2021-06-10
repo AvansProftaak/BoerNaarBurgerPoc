@@ -766,15 +766,13 @@ class Shopowners extends Controller
             'product_description_en'        => '',
             'product_price'         => '',
             'product_stock'         => '',
-            'product_image'         => '',
 
             'product_name_nlError'   => '',
             'product_name_enError'  => '',
             'product_description_nlError'   => '',
             'product_description_enError'   => '',
             'product_priceError'    => '',
-            'product_stockError'    => '',
-            'product_imageError'    => ''
+            'product_stockError'    => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -787,7 +785,8 @@ class Shopowners extends Controller
                 $KVKNumber = '06989770';
             }
 
-            print_r($_POST);
+            $shop = ($this->shopOwnerModel->getMyShop())[0];
+            $shopNumber = $shop->shop_number;
 
             $data = [
                 'kvk_number'            => $KVKNumber,
@@ -803,8 +802,8 @@ class Shopowners extends Controller
                     ],
                 'product_price'               => trim($_POST['product_price']),
                 'product_stock'          => trim($_POST['product_stock']),
-                'product_image'            => "/assets/shopbanners/" . trim($_FILES['product_image']['name']),
-
+                'shop_number' =>    "$shopNumber",
+                
                 'product_nameError'     => '',
                 'product_name_nlError'  => '',
                 'product_name_enError'  => '',
@@ -812,11 +811,9 @@ class Shopowners extends Controller
                 'product_description_nlError'   => '',
                 'product_description_enError'   => '',
                 'product_priceError'    => '',
-                'product_stockError'    => '',
-                'product_imageError'    => ''
+                'product_stockError'    => ''
             ];
 
-            // print_r( $data);
 
             $i = 0 ;
             foreach ($data as $key => $item) {
@@ -835,7 +832,7 @@ class Shopowners extends Controller
                     $data = [$errorName => $errorMessage];
                     print_r($data);
                }
-               print $i;
+               
                $i++ ;
             } 
             $errorMessages = [
@@ -861,11 +858,6 @@ class Shopowners extends Controller
             }
 
         if ($this->shopOwnerModel->addProduct($data)) {
-            exit();
-            $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
-            $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
-            $imageFileContents = file_get_contents($imageFile);
-            $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
             header('location: ' . URLROOT . '/Shopowners/addProduct');
         }
     }

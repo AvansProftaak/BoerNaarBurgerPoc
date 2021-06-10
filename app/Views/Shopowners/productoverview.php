@@ -36,10 +36,7 @@
     </div>
     </div>
 
-    <div class="py-4">
-        <h3 class="shop-products p-2"><?php echo $lang['products']; ?></h3>
-    </div>
-    <hr class="shop-border m-0">
+    
 
     <?php foreach($data['products'] as $product): ?>
     <!-- Start Product -->

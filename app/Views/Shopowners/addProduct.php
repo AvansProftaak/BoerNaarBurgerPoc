@@ -39,30 +39,20 @@
                             <!-- address -->
                             <div class="col-5">
                                 <label for="product_price" class="pl-2 user-data-header"><?php echo $lang['product_price']; ?><span class="pl-3 text-danger"><?php if(isset($data['product_priceError'])) echo $data['product_priceError'];?></span></label>
-                                <input id="product_price" type="text" class="form-control rounded-borders" name="product_price" placeholder="Langedreef" autocomplete="address">
+                                <input id="product_price" type="text" class="form-control rounded-borders" name="product_price" placeholder="1,50" autocomplete="product_price">
                             </div>
 
                             <!-- house_number -->
                             <div class="col-5">
                                 <label for="product_stock" class="pl-2 user-data-header"><?php echo $lang['product_stock']; ?><span class="pl-3 text-danger"><?php if(isset($data['product_stockError'])) echo $data['product_stockError'];?></span></label>
-                                <input id="product_stock" type="text" class="form-control rounded-borders" name="product_stock" placeholder="19" autocomplete="product_stock">
+                                <input id="product_stock" type="text" class="form-control rounded-borders" name="product_stock" placeholder="150" autocomplete="product_stock">
                             </div>
                         </div>
-<br>
-
-                        <h5 class="pt-4 pl-4 data-headers">Afbeelding</h5>
-                        <div class="form-group row mx-1 mb-0">
-                            <!-- photo -->
-                            <div class="col-5">
-                                <label for="product_image" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['product_imageError'])) echo $data['product_imageError'];?></span></label>
-                                <input id="product_image" type="file" name="product_image" class="form-control rounded-borders" placeholder="http://tiniurl.hackmij.com" autocomplete="product_image">
-                            </div>
-                        </div>
-
-                            <!-- Register Button -->
+                            <!-- eddit Button -->
                             <div class="form-group row mb-3 mt-4">
                                 <div class="ml-3 pl-3">
                                 <button type="submit" class="btn btn-green px-5"><?php echo $lang['product_add']; ?></button>
+                                <a class="btn btn-green px-5 " href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
                             </div>
                         </div>
                     </form>
