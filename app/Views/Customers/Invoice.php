@@ -1,12 +1,14 @@
 <?php
     require_once '../app/Helpers/language_helper.php';
 
+	// Als de sessie in Nederlands is, zet hij de tijd op Nederlandse weergave
 	if ($_SESSION['lang'] == "nl") {
 		setlocale(LC_TIME, "");
 		setlocale(LC_ALL, 'nl_NL'); 
 	}
  ?>
 
+<!-- Hij checkt of het klantnummer uit de sessie overeenkomt met het klantnummer van de invoice. Anders kun je willekeurige invoices opvragen via de url... en dat willen we niet -->
 <?php if ($_SESSION['customer_number'] == $data['customer_number']) : ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,8 @@
                                     <img src="../img/logo_Boer_naar_burger.jpg" alt="Logo" style="width: 100%; max-width: 150px">                                  
 								</td>
 
-								<td>									
+								<td>	
+									<!-- Hier vertaald hij de datum uit de database naar leesbare datum  -->
                                     <b><?php echo $lang['order_date']; ?>:</b> <?php 
                                                     $orderMoment = strtotime($data['completed_at']);
                                                     $date = strftime("%d %B %Y", $orderMoment);
@@ -75,7 +78,8 @@
 					<td><?php echo $data['payment_method']?></td>
 					<td></td>
 					<td></td>
-					<td>
+					<td> 
+						<!-- Vertaald de status van een betaling naar Nederlands -->
 						<?php
 							if ($data['payment_status'] == ("AUTHORIZED")) {
 								echo(strtoupper($lang['invoice_payment_success']));
@@ -94,6 +98,7 @@
 					<td><?php echo $lang['invoice_price']; ?></td>
 				</tr>
 
+				<!-- Voor ieder product uit de itemstabel van de order geeft hij de naam, aantal, prijs en totaalprijs -->
                 <?php foreach ($data['product_item'] as $productItem) : ?> 
 				<tr class="item">
 					<td><?php echo $this->getTranslation($productItem->name, $_SESSION['lang'])?></td>
@@ -123,6 +128,8 @@
 	</body>
 </html>
 
+
+<!-- Als het klantnummer niet overeenkomt met het klantnummer van de invoice, geeft hij een errorpagina weer -->
 <?php else : ?> 
 
 

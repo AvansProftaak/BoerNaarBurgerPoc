@@ -368,36 +368,40 @@ class Customers extends Controller
         }
     }
 
+    // Deze functie is gekoppeld aan de orderoverview.php. 
+    // De functioe haalt klantgegevens en ordergegevens van de klant op via email, gekoppeld aan de sessie (indien ingelogd)
+    // De $data variabele geeft de resultaten als key mee aan de view
     public function orderOverview() {
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
             
-
             $data = [
                 'orders'        => $orders,
                 'customer'      => $customer,
             ];
 
             $this->view('customers/orderoverview', $data);
+        
         } else {
             $this->login();
         } 
     }
 
+
+
+    // Deze functie is gekoppeld aan de invoice.php. 
+    // De functie wordt gevoed door de GET op ed invoice.php. Hiermee haalt het eigenlijk alle gegevens op die nodig zijn om de invoice te vullen met data.
+    // De $data variabele geeft de resultaten als key mee aan de view
     public function invoice(){
         if (isset($_GET['order'])) {
-            $allOrders = $this->orderModel->getAllOrders();
             $order = $this->orderModel->getOrder($_GET['order']);
-            $customer = $this->orderModel->getCustomerFromOrder($order);
+            $customer = $this->orderModel->getCustomerFromOrder($order);           
             $item = $this->orderModel->getItemsFromOrder($_GET['order']);
-            $product = $this->orderModel->getProductsFromItems($item);
             $payment = $this->orderModel->getPaymentFromOrder($_GET['order']);
             $productItem = $this->orderModel->productList($_GET['order']);
 
-
             $data = [
-                'allOrders'         => $allOrders,
                 'order_number'      => $item->order_number,
                 'completed_at'      => $order->completed_at,
                 'customer_number'   => $customer->customer_number,
@@ -417,8 +421,7 @@ class Customers extends Controller
                 'order_price_tax'   => $order->orderamount_incl_tax,
             ];
 
-
-        $this->view('customers/invoice', $data);
+            $this->view('customers/invoice', $data);
         } 
     }
 }

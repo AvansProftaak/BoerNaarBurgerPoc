@@ -9,6 +9,7 @@ class Pages extends Controller
         $this->pageModel = $this->model('Page');
     }
 
+    // Deze functie zorgt dat de button op de index een database samenstelt zodat de docenten data hebben om mee te werken
     public function index() {
         $data = [
             'dbCreated' => '',
@@ -16,9 +17,9 @@ class Pages extends Controller
 
         if (isset($_POST['createDatabase'])) {
             if($this->pageModel->createDatabase()) {
-                $data['dbCreated'] = 'De database is succesvol aangemaakt!';
+                header('location: ' . URLROOT . '/pages/index?success');
             } else {
-                $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
+                header('location: ' . URLROOT . '/pages/index?failed');
             }
         }
 
