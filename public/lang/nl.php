@@ -329,6 +329,7 @@ $lang = array (
     'file_error2'               => 'Alleen CSV bestanden kunnen geüpload worden.',
     'import_failed'             => 'Bestand kon niet worden geïmporteerd. Probeer het opnieuw.',
     'import_success'            => 'Producten zijn succesvol geïmporteerd.',
+    'import_nav'                => 'Importeer Producten',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger

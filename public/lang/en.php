@@ -313,6 +313,7 @@ $lang = array (
     'file_error2'               => 'Only CSV files are allowed.',
     'import_failed'             => 'File could not be imported. Please try again.',
     'import_success'            => 'Products successfully imported.',
+    'import_nav'                => 'Import Products',
   
     //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
