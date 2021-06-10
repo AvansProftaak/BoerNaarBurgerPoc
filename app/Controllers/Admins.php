@@ -86,6 +86,11 @@ class Admins extends Controller
                 } else {
            $this->login();
             }
-        }
 
+        if (isset($_POST['delete_queries'])){
+
+            $this->adminModel->truncateTable();
+            $this->view('admins/adminpanel', $data);
+        }
+    }
 }

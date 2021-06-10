@@ -33,7 +33,7 @@
 <div>
     <h1 style="text-align:center">ADMIN GEDEELTE BOER NAAR BURGER</h1>
 <br>
-    <h4 style="text-align:center">Overzicht van alle zoekresultaten!</h4>
+    <h4 style="text-align:center">Overzicht van zoekopdrachten zonder resultaat!</h4>
 
 <table style="width:75%" id="queries" align="center">
     <tr>
@@ -59,8 +59,13 @@
 
     <?php endforeach; ?>
 </table>
-    </div>
+
+    <form method = "POST">
+        <input type="submit" name="delete_queries" value="verwijder de zoekresultaten" class="dj-btn_admin"><br/>
+    </form>
+</div>
+
+
 
 </body>
 <?php include APPROOT."/Views/Includes/footer.php"; ?>
-
