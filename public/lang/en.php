@@ -308,6 +308,7 @@ $lang = array (
     'import_text'               => 'On this page you can import products into your shop directly via a CSV file.<br>
                                     Click ',
     'import_text_2'             => ' to download an example file.',
+    'import_btn'                => 'Import Products',
   
     //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
@@ -367,4 +368,9 @@ $lang = array (
     'invoice_404_error'         => "The page you are looking for was not found.",
     'invoice_back_to_home'      => "Back to Home",
     'invoice_page_not_found'    => " Page not found",
+
+    //404
+    'not_found'                 => 'Page not found.',
+    'not_found_message'         => 'Unfortunately the page you\'re trying to visit does not exist. If the problem 
+                                    persists, please <a href="' . URLROOT . '/pages/contact">reach out</a> to Boer naar Burger.'
 );

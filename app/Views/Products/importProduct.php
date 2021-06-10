@@ -26,7 +26,17 @@
                                 <input type="file" class="form-control-file" id="csv_import" name="csv_import">
                             </div>
                         </div>
-                        <hr class="mx-2">
+
+                        <div class="form-group row mb-3 d-flex">
+                            <div class="mx-1 pl-3">
+                                <button name = "submit-personal-data" type="button"
+                                        onclick="window.location='<?php echo URLROOT; ?>/shopowners/productoverview'"
+                                        class="btn btn-bnb-secondary"><?php echo $lang['back']; ?></button>
+                            </div>
+                            <div class="mx-1 pr-3">
+                                <a type="button" href="<?php echo URLROOT; ?>/customers/changepassword" class="btn btn-green"><?php echo $lang['import_btn']; ?></a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

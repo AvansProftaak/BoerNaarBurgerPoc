@@ -324,6 +324,7 @@ $lang = array (
     'import_text'               => 'Op deze pagina kunt u rechtstreeks producten importeren in uw shop via een CSV-bestand.<br>
                                     Download ',
     'import_text_2'             => ' een voorbeeld bestand.',
+    'import_btn'                => 'Importeer Producten',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
@@ -385,5 +386,9 @@ $lang = array (
     'invoice_back_to_home'      => "Terug naar Home",
     'invoice_page_not_found'    => " Pagina niet gevonden",
 
+    //404
+    'not_found'                 => 'Pagina niet gevonden.',
+    'not_found_message'         => 'De pagina die u probeert te bezoeken bestaat niet. Als het probleem blijft bestaan, 
+                                    neem dan <a href="' . URLROOT . '/pages/contact">contact</a> op met Boer naar Burger.'
 );
 

@@ -1,10 +1,9 @@
 <?php
 
 class Core {
-    // default is /pages/index. If invalid input is provided user is redirected to homepage
-    // TODO: create 404 page and set as default
+    // default is /pages/notFound. If invalid input is provided user is redirected to not found page
     protected $currentController = 'Pages';
-    protected string $currentMethod = 'index';
+    protected string $currentMethod = 'notFound';
     protected array $params = [];
 
     public function __construct() {

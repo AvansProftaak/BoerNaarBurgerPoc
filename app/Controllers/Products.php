@@ -18,6 +18,9 @@ class Products extends Controller
 
     public function importProduct() {
         if (isLoggedInShopOwner()) {
+
+
+
             $this->view('products/importProduct');
         } else {
             header('location: ' . URLROOT . '/Shopowners/login');

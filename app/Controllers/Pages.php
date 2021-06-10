@@ -99,6 +99,9 @@ class Pages extends Controller
         $this->view('pages/faq');
     }
 
+    public function notFound() {
+        $this->view('pages/notFound');
+    }
 
     public function sitemap() {
         $this->view('pages/sitemap');
