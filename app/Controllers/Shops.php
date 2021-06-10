@@ -93,8 +93,10 @@ class Shops extends Controller
                     $price = $_POST['totalProduct'][$key];
                     $amount = $_POST['product'][$key];
 
-                    if(!$this->orderModel->postOrderItem($orderNumber, $product, $price, $amount)) {
-                        $data['orderError'] = 'order_error';
+                    if ($amount > 0) {
+                        if (!$this->orderModel->postOrderItem($orderNumber, $product, $price, $amount)) {
+                            $data['orderError'] = 'order_error';
+                        }
                     }
                 }
                 header('location: ' . URLROOT . '/shops/step2?shop=' . $shop->shop_number);
