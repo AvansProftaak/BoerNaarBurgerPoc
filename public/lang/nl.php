@@ -325,6 +325,10 @@ $lang = array (
                                     Download ',
     'import_text_2'             => ' een voorbeeld bestand.',
     'import_btn'                => 'Importeer Producten',
+    'file_error'                => 'Kies een bestand om te uploaden.',
+    'file_error2'               => 'Alleen CSV bestanden kunnen geüpload worden.',
+    'import_failed'             => 'Bestand kon niet worden geïmporteerd. Probeer het opnieuw.',
+    'import_success'            => 'Producten zijn succesvol geïmporteerd.',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger

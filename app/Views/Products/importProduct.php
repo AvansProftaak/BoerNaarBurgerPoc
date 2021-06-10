@@ -13,28 +13,40 @@
                 <div class="col-9 pr-2">
                     <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['product_import']; ?></h2>
                     <hr class="mx-2">
-                    <form action="<?php echo URLROOT; ?>/shopowners/importProduct" method="POST" enctype="multipart/form-data">
+                    <form action="<?php echo URLROOT; ?>/products/importProduct" method="POST" enctype="multipart/form-data">
                         <div class="form-group row mx-1">
                             <div class="col">
                                 <p><?php echo $lang['import_text']; ?><a href="../csv/example_product_import_<?php echo $_SESSION['lang']; ?>.csv"><?php echo $lang['here']; ?></a><?php echo $lang['import_text_2']; ?></p>
                             </div>
                         </div>
+
                         <div class="form-group row mx-1">
                             <div class="col">
                                 <label for="csv_import" class="pl-2 user-data-header"><?php echo $lang['import_label']; ?></label><br>
-                                <span class="text-danger font-weight-bold"><?php // if($data['imageError']) : echo $lang[$data['imageError']]; endif; ?></span>
+
+                                <span class="text-danger font-weight-bold"><?php if($data['fileError']) : echo $lang[$data['fileError']]; endif; ?></span>
                                 <input type="file" class="form-control-file" id="csv_import" name="csv_import">
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3 d-flex">
+                        <?php if (isset($_GET['failed'])) : ?>
+                            <div class="form-group row mx-1 mb-0">
+                                <span class="pl-3 text-danger user-data-header mr-5"><?php echo $lang['import_failed']; ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (isset($_GET['success'])) : ?>
+                            <div class="form-group row mx-1 mb-0">
+                                <span class="pl-3 text-success user-data-header mr-5"><?php echo $lang['import_success']; ?></span>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="form-group row mb-3 mt-5 d-flex">
                             <div class="mx-1 pl-3">
-                                <button name = "submit-personal-data" type="button"
-                                        onclick="window.location='<?php echo URLROOT; ?>/shopowners/productoverview'"
-                                        class="btn btn-bnb-secondary"><?php echo $lang['back']; ?></button>
+                                <a type="button" href="<?php echo URLROOT; ?>/shopowners/productoverview"
+                                        class="btn btn-bnb-secondary"><?php echo $lang['back']; ?></a>
                             </div>
                             <div class="mx-1 pr-3">
-                                <a type="button" href="<?php echo URLROOT; ?>/customers/changepassword" class="btn btn-green"><?php echo $lang['import_btn']; ?></a>
+                                <button name="import_data" type="submit" class="btn btn-green"><?php echo $lang['import_btn']; ?></button>
                             </div>
                         </div>
                     </form>
