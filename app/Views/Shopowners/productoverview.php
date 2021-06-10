@@ -53,8 +53,8 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <!-- button naar channge this item en remove this item -->
-
-                <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/editproduct">aanpassen</a>
+                <a href="<?php echo URLROOT . '/shops/step1?shop=' . $shop->shop_number ?>" class="btn btn-green">Ga naar de shop</a>
+                <a class="btn btn-green btn-padding" name = "test" href="<?php echo URLROOT . '/shopowners/editproduct?shop=' . $shop->shop_number ?>">aanpassen</a>
             </div>
         </div>
     </div>
