@@ -1693,13 +1693,7 @@ h3 a:hover{
     font-family: 'Dosis', sans-serif;
     transition: 0.4s;
     border: 1px solid #005622;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
+
 .dj-btn_admin:hover {
     background-color:gold;
     border: 1px solid #005622;

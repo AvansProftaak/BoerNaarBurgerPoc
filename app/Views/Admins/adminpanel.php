@@ -59,7 +59,8 @@
 
     <?php endforeach; ?>
 </table>
-
+</div>
+<div style="text-align:center;">
     <form method = "POST">
         <input type="submit" name="delete_queries" value="verwijder de zoekresultaten" class="dj-btn_admin"><br/>
     </form>
