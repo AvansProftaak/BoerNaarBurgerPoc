@@ -1683,5 +1683,19 @@ h3 a:hover{
     color:white;
     text-decoration:none;
     }
-    
-    
+
+.dj-btn_admin {
+    background-color: #E38F88;
+    color: whitesmoke;
+    border-radius: 20px;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.4s;
+    border: 1px solid #005622;
+
+.dj-btn_admin:hover {
+    background-color:gold;
+    border: 1px solid #005622;
+    color: black;
+}

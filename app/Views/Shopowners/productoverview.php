@@ -26,9 +26,17 @@
     </div>
 
     <div class="py-4">
-        <h3 class="shop-products p-2"><?php echo $lang['products']; ?></h3>
+    <div class="row">
+    <div class="col text-left shop-products">
+    <h3 class="col shop-products pt-2"><?php echo $lang['products']; ?></h3>
+        </div>
+        <div class="col shop-products text-right">
+        <a class="btn btn-pink button-padding md-1" href="<?php echo URLROOT; ?>/shopowners/addproduct"><?php echo $lang['product_add']; ?></a>
+        </div>
     </div>
-    <hr class="shop-border m-0">
+    </div>
+
+    
 
     <?php foreach($data['products'] as $product): ?>
     <!-- Start Product -->
@@ -45,8 +53,7 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <!-- button naar channge this item en remove this item -->
-
-                <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/editproduct">aanpassen</a>
+                <a class="btn btn-green btn-padding" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?product=' . $product->product_number ?>">aanpassen</a>
             </div>
         </div>
     </div>

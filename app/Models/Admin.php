@@ -32,4 +32,12 @@ class Admin
         return $this->db->resultSet();
     }
 
+    public function truncateTable() {
+        $this->db->query('TRUNCATE boer_naar_burger.search_queries');
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

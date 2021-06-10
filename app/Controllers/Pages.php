@@ -17,9 +17,9 @@ class Pages extends Controller
 
         if (isset($_POST['createDatabase'])) {
             if($this->pageModel->createDatabase()) {
-                $data['dbCreated'] = 'De database is succesvol aangemaakt!';
+                header('location: ' . URLROOT . '/pages/index?success');
             } else {
-                $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
+                header('location: ' . URLROOT . '/pages/index?failed');
             }
         }
 
@@ -32,6 +32,17 @@ class Pages extends Controller
 
     public function contact()
     {
+        $data = [
+            'name' => '',
+            'emailFrom' => '',
+            'onderwerp' => '',
+            'message' => '',
+            'nameErr' => '',
+            'emailErr' => '',
+            'onderwerpErr' => '',
+            'messageErr' => '',
+        ];
+
         if (isset($_POST['send-contact'])) {
             //set variable data
             $data = [
@@ -65,7 +76,6 @@ class Pages extends Controller
            }
 
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
-                // echo "<script> alert('Bedankt voor uw bericht, we nemen zo spoedig mogelijk contact met u op.')</script>";
 
                 $mailTo = "info@boernaarburger.ml";
                 $headers = "From: " . $data['emailFrom'];

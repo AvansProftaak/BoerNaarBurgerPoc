@@ -44,6 +44,8 @@ $lang = array (
     'pick_up_QR'        => "COLLECT WITH QR CODE",
     'scan_and_pick'     => "Have your QR code scanned by the farmer and take your groceries home",
     'createDatabase'    => "Create Database",
+    'database_created'  => 'The database has been successfully created.',
+    'database_failed'   => 'Database couldn\'t be created. Check if your mySQL services are running.',
 
     //searchbar
     'searchfield'       => "Search for an ordernumber...",
@@ -289,15 +291,19 @@ $lang = array (
     'order_error'      => 'Something went wrong. Please try again.',
 
     //products
-    'product_name'              => 'Naam van het product',
-    'product_price'             => 'prijs van het product',
-    'product_description'       => 'Beschrijving van het product',
-    'product_stock'             => 'Voorraad',
+    'product_name'              => 'Product name',
+    'product_price'             => 'Product price',
+    'product_description'       => 'product description',
+    'product_stock'             => 'stock',
     'product_image'             => 'Image',
     'product_image_label'       => 'Select a foto',
-    'product_update'            => 'Update product',
+    'product_change'            => 'make changes',
+    'product_update'            => 'Chage you product',
+    'product_update_button'     => 'Save changes',
     'product_delete'            => 'Remove product',
     'product_add'               => 'Add product',
+    'product_management'        => 'product management',
+
   
     //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',

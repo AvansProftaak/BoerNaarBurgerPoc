@@ -44,6 +44,8 @@ $lang = array (
     'pick_up_QR'      => "HAAL AF MET QR-CODE",
     'scan_and_pick'   => "Laat je QR-code scannen door de boer en neem je boodschappen mee naar huis",
     'createDatabase'  => "Database aanmaken",
+    'database_created'=> 'De database is succesvol aangemaakt.',
+    'database_failed' => 'De database kon niet worden aangemaakt. Controleer of je mySQL services runnen.',
 
     // searchbar      
     'searchfield'     => "Zoek op ordernummer...",
@@ -311,9 +313,12 @@ $lang = array (
     'product_stock'             => 'Voorraad',
     'product_image'             => 'Foto',
     'product_image_label'       => 'Selecteer een foto',
-    'product_update'            => 'Aanpassingen opslaan',
+    'product_change'            => 'aanpassen',
+    'product_update'            => 'Pas uw product aan',
+    'product_update_button'     => 'Aanpassingen opslaan',
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
+    'product_management'        => 'product beheer',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
