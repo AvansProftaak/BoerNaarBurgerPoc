@@ -74,7 +74,8 @@ class Pages extends Controller
            if (empty($data['message'])) {
              $data['messageErr'] = 'contactmessage_error';
            }
-
+            $this->view('pages/contact', $data);
+           
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
 
                 $mailTo = "info@boernaarburger.ml";
