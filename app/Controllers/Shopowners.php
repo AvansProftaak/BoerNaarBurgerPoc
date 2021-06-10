@@ -854,12 +854,4 @@ public function editProduct() {
     $this->view('shopowners/editproduct');
 }
 
-    public function importProduct() {
-        if (isLoggedInShopOwner()) {
-            $this->view('shopowners/importProduct');
-        } else {
-            $this->login();
-        }
-    }
-
 }
