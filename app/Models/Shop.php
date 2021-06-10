@@ -62,7 +62,7 @@ class Shop
         $this->db->query('SELECT DISTINCT shops.shop_name as shop_name, shops.shop_number as shop_number, shops.city as city , shops.description as description, shops.banner_url as banner_url, products.name as product FROM boer_naar_burger.shops LEFT JOIN  boer_naar_burger.products ON shops.shop_number = products.shop_number GROUP by shops.shop_number ORDER BY shops.city;');
         return $this->db->resultSet();
     }
-
+//wordt gebruikt om zoekresultaten op te slaan
     public function saveSearch($search) {
         $this->db->query('INSERT INTO boer_naar_burger.search_queries (query) VALUES (:query)');
         $this->db->bind(':query', $search['query']);

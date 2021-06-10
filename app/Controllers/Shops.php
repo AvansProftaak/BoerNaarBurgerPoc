@@ -41,13 +41,13 @@ class Shops extends Controller
         if (isset($_POST['searchfield_shops'])) {
 
             $cities = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
-            
+            //als er geen cities gevonden zijn
             if ($cities == false) {
 
                 $data = [
                     'query'                 => $_POST['searchfield_shops'],
                         ];
-        
+        //dan opslaan in database
             $this->shopModel->saveSearch($data);
             $this->view('shops/shopdistrict', $data);
             }            
