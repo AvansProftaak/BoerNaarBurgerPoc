@@ -301,7 +301,7 @@ $lang = array (
     'product_update'            => 'Aanpassingen opslaan',
     'product_delete'            => 'Verwijder product',
     'product_add'               => 'Nieuw product',
-    'product_management'        => 'product beheer'
+    'product_management'        => 'product beheer',
 
     //shop step 1
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
