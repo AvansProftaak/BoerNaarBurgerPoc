@@ -330,6 +330,8 @@ $lang = array (
     'import_failed'             => 'Bestand kon niet worden geïmporteerd. Probeer het opnieuw.',
     'import_success'            => 'Producten zijn succesvol geïmporteerd.',
     'import_nav'                => 'Importeer Producten',
+    'go_to_import'              => 'Wilt u meerdere producten ineens toevoegen? U kunt <a href="'. URLROOT . '/products/importProduct">hier</a> 
+                                    producten via een csv bestand importeren.',
 
     //shop
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger

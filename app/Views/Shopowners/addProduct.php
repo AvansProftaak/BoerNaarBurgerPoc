@@ -53,6 +53,7 @@
                                 <div class="ml-3 pl-3">
                                 <button type="submit" class="btn btn-green px-5"><?php echo $lang['product_add']; ?></button>
                                 <a class="btn btn-green px-5 " href="<?php echo URLROOT; ?>/shopowners/productoverview"><?php echo $lang['my_shop']; ?></a>
+                                    <p class="mt-4"><?php echo $lang['go_to_import']; ?></p>
                             </div>
                         </div>
                     </form>

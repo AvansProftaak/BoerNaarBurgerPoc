@@ -314,6 +314,8 @@ $lang = array (
     'import_failed'             => 'File could not be imported. Please try again.',
     'import_success'            => 'Products successfully imported.',
     'import_nav'                => 'Import Products',
+    'go_to_import'              => 'Would you like to add more products at once? You can import products from csv 
+                                    <a href="'. URLROOT . '/products/importProduct">here</a>.',
   
     //shop
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
