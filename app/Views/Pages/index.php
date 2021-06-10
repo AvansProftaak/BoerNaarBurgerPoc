@@ -30,6 +30,16 @@
                     <div id="loading-spinner" class="spinner-border" role="status" style="display: none;">
                         <span class="sr-only">Loading...</span>
                     </div>
+                    <?php if (isset($_GET['success'])) : ?>
+                        <div class="form-group row mx-1 mb-0">
+                            <span class="pl-3 text-success user-data-header mr-5"><?php echo $lang['database_created']; ?></span>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (isset($_GET['failed'])) : ?>
+                        <div class="form-group row mx-1 mb-0">
+                            <span class="pl-3 text-danger user-data-header mr-5"><?php echo $lang['database_failed']; ?></span>
+                        </div>
+                    <?php endif; ?>
                     <button id="create-db-button" class="lh-button" type="submit" onclick="buttonClicked()"
                             name="createDatabase"><?php echo $lang['createDatabase']; ?></button>
                 </form>

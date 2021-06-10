@@ -17,9 +17,9 @@ class Pages extends Controller
 
         if (isset($_POST['createDatabase'])) {
             if($this->pageModel->createDatabase()) {
-                $data['dbCreated'] = 'De database is succesvol aangemaakt!';
+                header('location: ' . URLROOT . '/pages/index?success');
             } else {
-                $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
+                header('location: ' . URLROOT . '/pages/index?failed');
             }
         }
 

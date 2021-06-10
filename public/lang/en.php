@@ -44,6 +44,8 @@ $lang = array (
     'pick_up_QR'        => "COLLECT WITH QR CODE",
     'scan_and_pick'     => "Have your QR code scanned by the farmer and take your groceries home",
     'createDatabase'    => "Create Database",
+    'database_created'  => 'The database has been successfully created.',
+    'database_failed'   => 'Database couldn\'t be created. Check if your mySQL services are running.',
 
     //searchbar
     'searchfield'       => "Search for an ordernumber...",
