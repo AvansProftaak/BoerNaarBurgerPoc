@@ -157,10 +157,6 @@ class Shopowners extends Controller
 
     public function register() {
 
-        if (isLoggedIn()){
-            header('location: ' . URLROOT . '/pages/index');
-        }
-
         $data = [
             'first_name'            => '',
             'last_name'             => '',
@@ -286,11 +282,6 @@ class Shopowners extends Controller
 
     public function login() {
 
-        if (isLoggedIn()){
-            header('location: ' . URLROOT . '/pages/index');
-            $this->view('pages/index');
-        }
-
         $data = [
             'email'         => '',
             'password'      => '',
@@ -346,6 +337,15 @@ class Shopowners extends Controller
     }
 
     public function createShopOwnerSession ($shopOwner) {
+        if (isset($_SESSION['customer_number']) || isset($_SESSION['email']) || isset($_SESSION['customer_name'])) {
+            unset($_SESSION['customer_number']);
+            unset($_SESSION['email']);
+            unset($_SESSION['customer_name']);
+        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email'])) {
+            unset($_SESSION['admin_number']);
+            unset($_SESSION['admin_email']);
+        }
+
         $_SESSION['kvk_number'] = $shopOwner->kvk_number;
         $_SESSION['company_name'] = $shopOwner->company_name;
         $_SESSION['email'] = $shopOwner->email;

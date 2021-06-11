@@ -157,6 +157,15 @@ class Customers extends Controller
     }
 
     public function createCustomerSession ($customer) {
+        if (isset($_SESSION['kvk_number']) || isset($_SESSION['email']) || isset($_SESSION['shopowner_name'])) {
+            unset($_SESSION['kvk_number']);
+            unset($_SESSION['email']);
+            unset($_SESSION['shopowner_name']);
+        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email'])) {
+            unset($_SESSION['admin_number']);
+            unset($_SESSION['admin_email']);
+        }
+
         $_SESSION['customer_number'] = $customer->customer_number;
         $_SESSION['email'] = $customer->email;
         $_SESSION['customer_name'] = $customer->first_name . ' ' . $customer->last_name;
