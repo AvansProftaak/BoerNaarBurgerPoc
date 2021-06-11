@@ -19,7 +19,7 @@
         <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
     <div>
-        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-50 py-1" alt="shop image"/>
+        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-100 py-2" alt="shop image"/>
     </div>
     </div>
     </div>
