@@ -162,9 +162,15 @@ $lang = array (
     'ordernr_unknown'       => "Ordernummer onbekend.",
     'ordernr_input'         => "Voer géén of een ander ordernummer in.",
     'overview_completed'    => "VOLTOOID",
+    'overview_completed2'   => "VOLTOOIDE",
     'overview_canceled'     => "GEANNULEERD",
     'overview_pending'      => "OPEN",
     'overview_expired'      => "VERLOPEN",
+    'close_order'           => "SLUIT ORDER",
+    'open_order'            => "OPEN ORDER",
+    'product_number'        => "productnummer",
+    'amount'                => "aantal",
+    'customer_name'         => "naam klant",
 
 
     //footer

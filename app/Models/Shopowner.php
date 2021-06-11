@@ -238,7 +238,7 @@ class Shopowner
 
     public function shopownerOrders($kvk_number) {
     
-        $this->db->query('  SELECT i.order_number as order_number, i.product_number as product_number, p.name as product_name,  i.amount as amount, c.first_name as first_name, c.last_name as last_name, c.phone_number as phone_number, o.created_at as order_date
+        $this->db->query('  SELECT s.shop_name as shop_name, i.order_number as order_number, i.product_number as product_number, p.name as product_name,  i.amount as amount, c.first_name as first_name, c.last_name as last_name, c.phone_number as phone_number, o.created_at as order_date, o.status as status
                             FROM boer_naar_burger.shops as s
                             JOIN boer_naar_burger.products as p on p.shop_number = s.shop_number
                             JOIN boer_naar_burger.items as i on i.product_number = p.product_number
@@ -253,26 +253,49 @@ class Shopowner
     }
 
     public function deleteProduct($productNumber) {
-    
         // DELETE FROM table_name WHERE [condition];
         $this->db->query('  DELETE FROM boer_naar_burger.products WHERE product_number = :product_number');
         $this->db->bind(':product_number', $productNumber);
 
         return $this->db->execute();
     }
+
+    
+    public function closeOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "COMPLETED" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getShopName($kvk_number) {
+        $this->db->query('SELECT shop_name FROM boer_naar_burger.shops WHERE kvk_number = :kvk_number');
+        $this->db->bind(':kvk_number', $kvk_number);
+
+        return $this->db->single();
+    }
+
+    public function openOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "PENDING" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Deze functie haalt de ordergegevens uit de database via een GET
+    public function getOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order);
+    
+        return $this->db->single();
+    }
 }
 
-
-
-// $this->db->query('  SELECT items.amount as amount, items.price as total_item_price, products.name as name, products.price as price
-// FROM boer_naar_burger.items
-// JOIN boer_naar_burger.products ON products.product_number = items.product_number
-// WHERE items.order_number = :order_number');
-// $this->db->bind(':order_number', $order_number);
-
-// $this->db->query('SELECT i.order_number, i.price, p.name as product, s.shop_name as shop, i.amount
-// FROM boer_naar_burger.items as i
-// JOIN boer_naar_burger.products as p on p.product_number = i.product_number
-// JOIN boer_naar_burger.shops as s on s.shop_number = p.shop_number
-// WHERE i.order_number = :order_number');
-// $this->db->bind(':order_number', $order->order_number);

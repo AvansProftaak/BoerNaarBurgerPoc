@@ -1,14 +1,6 @@
 <?php
     include APPROOT."/Views/Includes/header.php";
     require_once '../app/Helpers/language_helper.php';
-
-    // echo "<pre>";
-    // var_dump($search);
-    // var_dump($data['search']);
-    // echo "</pre>";
-
-
-
 ?>
 
 

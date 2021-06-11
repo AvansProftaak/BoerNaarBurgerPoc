@@ -161,9 +161,17 @@ $lang = array (
     'ordernr_unknown'   => "Order number unknown.",
     'ordernr_input'     => "Enter no order number ór a different order number.",
     'overview_completed'=> "COMPLETED",
+    'overview_completed2'   => "COMPLETED",
     'overview_canceled' => "CANCELED",
     'overview_pending'  => "PENDING",
     'overview_expired'  => "EXPIRED",
+    'close_order'       => "CLOSE ORDER",
+    'open_order'        => "OPEN ORDER",
+    'product_number'    => "product number",
+    'amount'            => "amount",
+    'customer_name'     => "customer name",
+    
+
 
     //footer
     'footer_text'   => 'Boer naar Burger offers a platform with products that normally go to waste in the current society.
