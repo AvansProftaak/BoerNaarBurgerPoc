@@ -346,6 +346,7 @@ $lang = array (
     'shop_image'      => 'Afbeelding',
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
+    'back_to_acountdetails' => 'Terug naar account gegevens',
     'back_to_shops'   => 'Terug naar Shops',
     'edit_failed'     => 'Gegevens wijzigen mislukt. Probeer het opnieuw.',
     'edit_success'    => 'Uw gegevens zijn succesvol gewijzigd.',
