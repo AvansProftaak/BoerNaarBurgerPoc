@@ -5,11 +5,9 @@
         <div class="row account-profile-card">
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
-                        <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
-                        </div>
-                        <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
+                        
+                        <h3 class="white-text p-3"><?php echo $lang['name']; ?></br><?php echo $data['full_name']; ?></h3>
+                        <h3 class="white-text p-3">KVK:</br><?php echo $data['kvk_number']; ?></h3>
                     </div>
                 </div>
                 <div class="col-9 pr-2">
@@ -104,8 +102,7 @@
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
                         <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
+                            <img src="../img<?php echo $data['banner_url'] ?>" class="rounded-circle w-75 profile-photo" alt="shop image"/>
                         </div>
                         <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
                     </div>
@@ -119,8 +116,8 @@
                     <div class="form-group row mx-1">
                             <div class="col-5">
                                 <label for="shop_name" class="pl-2 user-data-header"><?php echo $lang['shop_name']; ?><span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
-                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_nl']; ?>" name="shop_name_nl" placeholder="Aardappelen loket" autocomplete="shop_name">
-                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_en']; ?>" name="shop_name_en" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_nl']; ?>" name="shop_name_nl" placeholder="Aardappelen boerderij" autocomplete="shop_name">
+                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_en']; ?>" name="shop_name_en" placeholder="potatoes farm" autocomplete="shop_name">
                             </div>
                         </div>
 

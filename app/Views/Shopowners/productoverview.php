@@ -6,10 +6,9 @@
         <div class="row account-profile-card">
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
-                        <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
-                        </div>
+                    <div>
+                            <<img src="../img<?php echo $data['shop']->banner_url ?>" class="rounded-circle w-75 profile-photo" alt="shop image"/>
+                        </div></br>
                         <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
                     </div>
                 </div>
@@ -20,7 +19,7 @@
         <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
     <div>
-        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-100 py-2" alt="shop image"/>
+        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-50 py-1" alt="shop image"/>
     </div>
     </div>
     </div>

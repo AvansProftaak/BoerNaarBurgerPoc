@@ -398,13 +398,14 @@ class Shopowners extends Controller
             $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
             
             $data = [
+                'full_name'             => $shopowner->first_name . ' ' . $shopowner->last_name , 
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'shop_name'             =>
                     [
                         'NL' => $this->getTranslation($shop->shop_name, 'nl'),
                         'EN' => $this->getTranslation($shop->shop_name, 'en')
                     ],
-                    'description'           =>
+                'description'           =>
                     [
                         'NL' => $this->getTranslation($shop->description, 'nl'),
                         'EN' => $this->getTranslation($shop->description, 'en')
@@ -439,6 +440,7 @@ class Shopowners extends Controller
                 'shop_nameError'        => ''
 
             ];
+
 
             
 
@@ -521,8 +523,6 @@ class Shopowners extends Controller
                 $descriptions = [   'NL' =>trim($_POST['description_nl']),
                                     'EN' =>trim($_POST['description_en'])];
 
-                
-
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
                     'shop_name'             =>
@@ -538,25 +538,22 @@ class Shopowners extends Controller
                     'shop_house_number'          => trim($_POST['shop_house_number']),
                     'shop_postal_code'           => trim($_POST['shop_postal_code']),
                     'shop_city'                  => trim($_POST['shop_city']),
-                    'banner_url'                 => "/assets/shopbanners/" . trim($_FILES['banner_url']['name']),
                     
                     'password'              => "$shopowner->password",
                     'shop_nameError'        => ''
                 ];
 
-
-
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);         
-
+                
                 if(isset($_FILES['banner_url'])){
                     $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
                     $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
                     $imageFileContents = file_get_contents($imageFile);
                     $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
-
+                    $banner =  "/assets/shopbanners/" . trim($_FILES['banner_url']['name']);
                 }
-
-                if ($this->shopModel->updateShop($data, $shop)) {
+                
+                if ($this->shopModel->updateShop($data, $shop, $banner)) {
                     $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
                     header('location: ' . URLROOT . '/shopowners/accountDetails');
                 } else {

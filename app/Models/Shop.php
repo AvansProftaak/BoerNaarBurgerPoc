@@ -87,13 +87,11 @@ class Shop
     }
 
 
-    public function updateShop($data, $shop) {
-        $shopName = $this->createOrUpdateTranslation($data['shop_name']);
+    public function updateShop($data, $shop, $banner) {
 
-        $this->db->query('UPDATE boer_naar_burger.shops SET shop_name = :shop_name, address = :address, house_number = :house_number, postal_code = :postal_code,
+        $this->db->query('UPDATE boer_naar_burger.shops SET address = :address, house_number = :house_number, postal_code = :postal_code,
                                 city = :city, country = :country, banner_url = :banner_url WHERE kvk_number = :kvk_number');
-        $this->db->bind(':banner_url', $data['banner_url']);
-        $this->db->bind(':shop_name', $shopName);
+        $this->db->bind(':banner_url', $banner);
         $this->db->bind(':address', $data['shop_address']);
         $this->db->bind(':house_number', $data['shop_house_number']);
         $this->db->bind(':postal_code', $data['shop_postal_code']);
