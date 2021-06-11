@@ -60,13 +60,14 @@ $lang = array (
     'shops_all'         => "ALLE BOER NAAR BURGER SHOPS",
     'shops_all2'        => "ALLE SHOPS",
     'address'           => "adres",
-    'description'       => "beschrijving",
+    'description'       => "Beschrijving",
     'shops_text'        => "Bij Boer naar Burger werken wij samen met onze boeren aan een betere toekomst, een toekomst zonder verspilling. Vele boeren uit Zeeland en Noord-Brabant geloven in dit project en sluiten zich aan bij Boer naar Burger. Door het aanbieden van producten, welke anders op de afvalstapel hadden beland, ontstaat er een win-win-win situatie.",
     'shops_text2'       => "Nieuwsgierig naar de boeren uit uw omgeving?<br> <b>Selecteer dan het gebied van je voorkeur</b>",
     'searchfield_shops' => "Zoek op plaatsnaam...",
     'no_search_string'  => "Geen zoekopdracht ingevoerd!",
     'go_to_shop'        => 'Ga naar de shop',
     'shops_no_hits'     => "OP DIT MOMENT HEBBEN WIJ HIER NOG GEEN AANGESLOTEN BOEREN<br>WIL JE OP DE HOOGTE GEHOUDEN WORDEN VAN ONZE ONTWIKKELINGEN, MELD JE DAN AAN VOOR DE MAILINGLIST",
+    'shop_description'  => 'Beschrijving van de shop',
 
 
     //customer
@@ -130,6 +131,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'name'               => 'Naam',
     'my_shop'            => 'Shop overzicht',
     'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',
@@ -335,6 +337,7 @@ $lang = array (
                                     producten via een csv bestand importeren.',
 
     //shop
+    'shop_image'      => 'Afbeelding',
     'login_mandatory' => 'Om een bestelling in deze winkel te plaatsen moet u een Boer naar Burger
                           account hebben. Registreer of login alstublieft.',
     'back_to_shops'   => 'Terug naar Shops',

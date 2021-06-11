@@ -7,7 +7,8 @@
     <hr class="shop-border m-0 order-overview-width">
 
     <div class="pt-2 border-shop order-overview-width">
-        <?php foreach ($data['orderDetails'] as $orderItem): ?>
+        <?php foreach ($data['orderDetails'] as $orderItem):
+            if ($orderItem->amount > 0): ?>
         <!-- start orderdetails row -->
         <div class="pt-2 d-flex justify-content-between align-items-baseline border-shop">
             <p class="mb-2"><?php echo $orderItem->amount; ?>x</p>
@@ -15,7 +16,8 @@
             <p class="mb-2">€<?php echo $orderItem->price; ?></p>
         </div>
         <!-- end orderdetails row -->
-        <?php endforeach; ?>
+        <?php endif;
+        endforeach; ?>
         <div class="pt-2 d-flex justify-content-between align-items-baseline">
             <p class="mb-2 font-weight-bold"><?php echo $lang['total']; ?>:</p>
             <p class="mb-2 font-weight-bold">€<?php echo $data['order']->orderamount_incl_tax; ?></p>

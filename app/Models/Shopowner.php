@@ -252,6 +252,14 @@ class Shopowner
                         
     }
 
+    public function deleteProduct($productNumber) {
+    
+        // DELETE FROM table_name WHERE [condition];
+        $this->db->query('  DELETE FROM boer_naar_burger.products WHERE product_number = :product_number');
+        $this->db->bind(':product_number', $productNumber);
+
+        return $this->db->execute();
+    }
 }
 
 

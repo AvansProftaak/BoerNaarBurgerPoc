@@ -1,8 +1,14 @@
 <?php
 
 
+
+use App\Traits\TranslationTrait;
+
 class Shop
 {
+
+    use TranslationTrait;
+
     private $db;
 
     public function __construct() {
@@ -81,16 +87,18 @@ class Shop
     }
 
 
-    public function updateShop($data, $shop) {
-        $this->db->query('UPDATE boer_naar_burger.shops SET shop_name = :shop_name, address = :address, house_number = :house_number, postal_code = :postal_code,
-                                city = :city, country = :country WHERE kvk_number = :kvk_number');
-        $this->db->bind(':shop_name', $data['shop_name']);
+    public function updateShop($data, $shop, $banner) {
+
+        $this->db->query('UPDATE boer_naar_burger.shops SET address = :address, house_number = :house_number, postal_code = :postal_code,
+                                city = :city, country = :country, banner_url = :banner_url WHERE kvk_number = :kvk_number');
+        $this->db->bind(':banner_url', $banner);
         $this->db->bind(':address', $data['shop_address']);
         $this->db->bind(':house_number', $data['shop_house_number']);
         $this->db->bind(':postal_code', $data['shop_postal_code']);
         $this->db->bind(':city', $data['shop_city']);
         $this->db->bind(':country', $data['shop_country']);
         $this->db->bind(':kvk_number', $data['kvk_number']);
+
 
         try {
             $this->db->execute();

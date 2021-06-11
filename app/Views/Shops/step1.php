@@ -42,7 +42,7 @@
                     <label for="quantity"></label>
                     <input type="text" id="quantity" class="product-input px-3" name="product[]" value="0" readonly/>
                     <input type="hidden" name="product_number[]" value="<?php echo $product->product_number; ?>"/>
-                    <button type="button" class="btn-increment">+</button>
+                    <button type="button" <?php if (isLoggedIn()) {echo 'class="btn-increment"';} else {echo 'disabled class="btn-increment disabled-btn"';} ?>>+</button>
                 </div>
                 <div class = "price-width text-right">
                     <p>€<input type="text" class="total total-input" value="0.00" name="totalProduct[]" readonly /></p>

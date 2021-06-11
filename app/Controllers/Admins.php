@@ -59,34 +59,41 @@ class Admins extends Controller
         }
         $this->view('admins/login', $data);
     }
-
+    ///creeer de adminSessie
     public function createAdminSession ($admins) {
-         $_SESSION['admin_number'] = $admins->admin_number;
-         $_SESSION['admin_email'] = $admins->email;
+        unset($_SESSION['kvk_number']);
+        unset($_SESSION['email']);
+        unset($_SESSION['shopowner_name']);
+        unset($_SESSION['customer_number']);
+        unset($_SESSION['email']);
+        unset($_SESSION['customer_name']);
+        $_SESSION['admin_number'] = $admins->admin_number;
+        $_SESSION['admin_email'] = $admins->email;
      }
 
+     //logout adminSessie
      public function logout() {
          unset($_SESSION['admin_number']);
          unset($_SESSION['admin_email']);
          header('location:' . URLROOT . '/admins/login');
      }
 
+    //toon de pagina AdminPanel
     public function AdminPanel()
     {
         if (isLoggedInAdmin()) {
-
+            //haal alle data op uit de DB search_query tabel
             $allQueries = $this->adminModel->getAllQueries();
 
             $data = [
                 'allQueries' => $allQueries
               ];
 
-
             $this->view('admins/adminpanel', $data);
                 } else {
            $this->login();
             }
-
+        ///als er op de knop verwijder zoekresultaten geklikt wordt
         if (isset($_POST['delete_queries'])){
 
             $this->adminModel->truncateTable();

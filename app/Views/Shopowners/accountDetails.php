@@ -5,18 +5,16 @@
         <div class="row account-profile-card">
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
-                        <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
-                        </div>
-                        <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
+                        
+                        <h3 class="white-text p-3"><?php echo $lang['name']; ?></br><?php echo $data['full_name']; ?></h3>
+                        <h3 class="white-text p-3">KVK:</br><?php echo $data['kvk_number']; ?></h3>
                     </div>
                 </div>
                 <div class="col-9 pr-2">
                 <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
                     <hr class="mx-2">
 
-                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
+                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row mx-1">
                             <!-- company Name -->
@@ -104,8 +102,7 @@
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
                         <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
+                            <img src="../img<?php echo $data['banner_url'] ?>" class="rounded-circle w-75 profile-photo" alt="shop image"/>
                         </div>
                         <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
                     </div>
@@ -114,20 +111,20 @@
                 <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['company_data']; ?></h2>
                     <hr class="mx-2">
 
-                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
+                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row mx-1">
                             <div class="col-5">
-                                <label for="shop_name" class="pl-2 user-data-header">shop naam<span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
-                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_nl']; ?>" name="shop_name_nl" placeholder="Aardappelen loket" autocomplete="shop_name">
-                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_en']; ?>" name="shop_name_en" placeholder="Aardappelen loket" autocomplete="shop_name">
+                                <label for="shop_name" class="pl-2 user-data-header"><?php echo $lang['shop_name']; ?><span class="pl-3 text-danger"><?php if(isset($data['shop_nameError'])) echo $data['shop_nameError'];?></span></label>
+                                <input id="shop_name_nl" type="text" class="form-control rounded-borders input-icon-nl <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_nl']; ?>" name="shop_name_nl" placeholder="Aardappelen boerderij" autocomplete="shop_name">
+                                <input id="shop_name_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['shop_nameError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['shop_name_en']; ?>" name="shop_name_en" placeholder="potatoes farm" autocomplete="shop_name">
                             </div>
                         </div>
 
                         <div class="form-group row mx-1">
                             <!-- description -->
                             <div class="col-5">
-                                <label for="description" class="pl-2 user-data-header">beschijving van de shop<span class="pl-3 text-danger"><?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?></span></label>
+                                <label for="description" class="pl-2 user-data-header"><?php echo $lang['shop_description']; ?><span class="pl-3 text-danger"><?php if(isset($data['descriptionError'])) echo $data['descriptionError'];?></span></label>
                                 <input id="description_nl" type="text" class="mt-2 form-control rounded-borders input-icon-nl <?php if($data['description_nlError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['description_nl']; ?>" name="description_nl" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
                                 <input id="description_en" type="text" class="mt-2 form-control rounded-borders input-icon-en <?php if($data['description_enError']) : ?> is-invalid <?php endif; ?>" value="<?php echo $data['description_en']; ?>" name="description_en" placeholder="Ik heb lekkere aardappelen" autocomplete="description">
 
@@ -157,12 +154,13 @@
                             </div>
                         </div>
 
-                        <h5 class="pt-4 pl-4 data-headers">Afbeelding</h5>
+                        <h5 class="pt-4 pl-4 data-headers"><?php echo $lang['shop_image']; ?></h5>
                         <div class="form-group row mx-1 mb-0">
                             <!-- photo -->
                             <div class="col-5">
-                                <label for="photo" class="pl-2 user-data-header">Foto URL<span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
-                                <input id="photo" type="file" name="photo" class="form-control rounded-borders" placeholder="/Downloads/mooiplaatje" autocomplete="photo">
+                                <label for="banner_url" class="pl-2 user-data-header"><span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
+                                <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders" placeholder="/downloads/image.png" autocomplete="banner_url">
+
                             </div>
                         </div></br>
 

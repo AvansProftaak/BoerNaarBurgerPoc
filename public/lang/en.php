@@ -67,6 +67,7 @@ $lang = array (
     'no_search_string'  => "No search input found",
     'go_to_shop'        => 'Enter the shop',
     'shops_no_hits'     => "CURRENTLY WE DO NOT HAVE ANY CONNECTED FARMERS HERE<br>DO YOU WANT TO BE KEEP INFORMED OF OUR DEVELOPMENTS, SIGN UP FOR THE MAILINGLIST",
+    'shop_description'  => 'Shop description',
 
 
     //customer
@@ -129,8 +130,9 @@ $lang = array (
     'new_password'     => 'New password',
 
     //account details
+    'name'               => 'Name',
     'my_shop'            => 'Shop overview',
-    'shop_name'          => 'shopname',
+    'shop_name'          => 'Shopname',
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',
     'profile_picture'    => 'Choose a picture to upload as your profile picture.',
@@ -320,6 +322,7 @@ $lang = array (
                                     <a href="'. URLROOT . '/products/importProduct">here</a>.',
   
     //shop
+    'shop_image'      => 'Image',
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
     'back_to_shops'   => 'Back to Shops',
     'edit_failed'     => 'Personal details could not be updated. Please try again.',

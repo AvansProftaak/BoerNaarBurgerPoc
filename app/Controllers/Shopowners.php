@@ -157,10 +157,6 @@ class Shopowners extends Controller
 
     public function register() {
 
-        if (isLoggedIn()){
-            header('location: ' . URLROOT . '/pages/index');
-        }
-
         $data = [
             'first_name'            => '',
             'last_name'             => '',
@@ -286,11 +282,6 @@ class Shopowners extends Controller
 
     public function login() {
 
-        if (isLoggedIn()){
-            header('location: ' . URLROOT . '/pages/index');
-            $this->view('pages/index');
-        }
-
         $data = [
             'email'         => '',
             'password'      => '',
@@ -346,6 +337,15 @@ class Shopowners extends Controller
     }
 
     public function createShopOwnerSession ($shopOwner) {
+        if (isset($_SESSION['customer_number']) || isset($_SESSION['email']) || isset($_SESSION['customer_name'])) {
+            unset($_SESSION['customer_number']);
+            unset($_SESSION['email']);
+            unset($_SESSION['customer_name']);
+        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email'])) {
+            unset($_SESSION['admin_number']);
+            unset($_SESSION['admin_email']);
+        }
+
         $_SESSION['kvk_number'] = $shopOwner->kvk_number;
         $_SESSION['company_name'] = $shopOwner->company_name;
         $_SESSION['email'] = $shopOwner->email;
@@ -398,13 +398,14 @@ class Shopowners extends Controller
             $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
             
             $data = [
+                'full_name'             => $shopowner->first_name . ' ' . $shopowner->last_name , 
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'shop_name'             =>
                     [
                         'NL' => $this->getTranslation($shop->shop_name, 'nl'),
                         'EN' => $this->getTranslation($shop->shop_name, 'en')
                     ],
-                    'description'           =>
+                'description'           =>
                     [
                         'NL' => $this->getTranslation($shop->description, 'nl'),
                         'EN' => $this->getTranslation($shop->description, 'en')
@@ -428,6 +429,7 @@ class Shopowners extends Controller
                 'shop_house_number'     => $shop->house_number,
                 'shop_postal_code'      => $shop->postal_code,
                 'shop_city'             => $shop->city,
+                'banner_url'            => $shop->banner_url,
                 'company_nameError'     => '',
                 'password'              => '',
                 'firstNameError'        => '',
@@ -438,6 +440,7 @@ class Shopowners extends Controller
                 'shop_nameError'        => ''
 
             ];
+
 
             
 
@@ -520,8 +523,6 @@ class Shopowners extends Controller
                 $descriptions = [   'NL' =>trim($_POST['description_nl']),
                                     'EN' =>trim($_POST['description_en'])];
 
-                
-
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
                     'shop_name'             =>
@@ -537,23 +538,26 @@ class Shopowners extends Controller
                     'shop_house_number'          => trim($_POST['shop_house_number']),
                     'shop_postal_code'           => trim($_POST['shop_postal_code']),
                     'shop_city'                  => trim($_POST['shop_city']),
+                    
                     'password'              => "$shopowner->password",
                     'shop_nameError'        => ''
                 ];
 
-
-                //if no errors are found continue
-                if (empty($data['firstNameError'])) {
-
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
-
-                    if ($this->shopModel->updateShop($data, $shop)) {
-                        $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
-
-                        header('location: ' . URLROOT . '/shopowners/accountDetails');
-                    } else {
-                        die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
-                    }
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);         
+                
+                if(isset($_FILES['banner_url'])){
+                    $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+                    $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+                    $imageFileContents = file_get_contents($imageFile);
+                    $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
+                    $banner =  "/assets/shopbanners/" . trim($_FILES['banner_url']['name']);
+                }
+                
+                if ($this->shopModel->updateShop($data, $shop, $banner)) {
+                    $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                    header('location: ' . URLROOT . '/shopowners/accountDetails');
+                } else {
+                    die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
                 }
             }
             $this->view('shopowners/accountDetails', $data);
@@ -746,7 +750,12 @@ public function editProduct() {
         header('location: ' . URLROOT . '/pages/index');
 
     }
+    if (isset($_GET['delete'])) {
+        if($this->shopOwnerModel->deleteProduct($_GET['delete'])) {
+            header('location: ' . URLROOT . '/Shopowners/productoverview');
+        }
     
+    }
     if (isset($_GET['product'])) {
         $data = [
             'product_name_nl'        => '',
