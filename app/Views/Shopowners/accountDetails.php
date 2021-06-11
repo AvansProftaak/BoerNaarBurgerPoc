@@ -6,8 +6,8 @@
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
                         
-                        <h3 class="white-text p-3"><?php echo $data['full_name']; ?></h3>
-                        <h3 class="white-text p-3">KVK <?php echo $data['kvk_number']; ?></h3>
+                        <h3 class="white-text p-3"><?php echo $lang['name']; ?></br><?php echo $data['full_name']; ?></h3>
+                        <h3 class="white-text p-3">KVK:</br><?php echo $data['kvk_number']; ?></h3>
                     </div>
                 </div>
                 <div class="col-9 pr-2">
@@ -102,8 +102,7 @@
                 <div class="col-3 text-center pt-4 green-background">
                     <div>
                         <div>
-                            <img src="<?php if($_SESSION['lang'] == 'nl') : ?>../img/noimage.png<?php else : ?>../img/noimageEN.png<?php endif; ?>" alt="Profile Picture" class="rounded-circle w-75 profile-photo"/>
-                            <a data-toggle="modal" data-target="#profilePictureModal"><img src ="../img/photo-icon.png" alt="camera-icon" class="photo-icon"></a>
+                            <img src="../img<?php echo $data['banner_url'] ?>" class="rounded-circle w-75 profile-photo" alt="shop image"/>
                         </div>
                         <h3 class="white-text p-3"><?php echo $_SESSION['company_name']; ?></h3>
                     </div>

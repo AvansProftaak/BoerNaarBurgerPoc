@@ -130,6 +130,7 @@ $lang = array (
     'new_password'      => 'Nieuw wachtwoord',
 
     //account details
+    'name'               => 'Naam',
     'my_shop'            => 'Shop overzicht',
     'shop_name'          => 'Naam van de shop',
     'personal_data'      => 'Gegevens',

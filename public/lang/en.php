@@ -128,6 +128,7 @@ $lang = array (
     'new_password'     => 'New password',
 
     //account details
+    'name'               => 'Name',
     'my_shop'            => 'Shop overview',
     'shop_name'          => 'Shopname',
     'personal_data'      => 'Personal Details',
