@@ -52,8 +52,8 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <!-- button naar channge this item en remove this item -->
-                <a class="btn btn-green btn-padding" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?delete=' . $product->product_number ?>">Delete</a>
-                <a class="btn btn-green btn-padding" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?product=' . $product->product_number ?>">aanpassen</a>
+                <a class="btn btn-green ml-2 mr-2" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?delete=' . $product->product_number ?>"><?php echo $lang['product_delete']; ?></a>
+                <a class="btn btn-green ml-2 mr-2" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?product=' . $product->product_number ?>"><?php echo $lang['product_change']; ?></a>
             </div>
         </div>
     </div>
