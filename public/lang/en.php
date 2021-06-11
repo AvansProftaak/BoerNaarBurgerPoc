@@ -63,10 +63,12 @@ $lang = array (
     'description'       => "description",
     'shops_text'        => "At Boer naar Burger we work together with our farmers towards a better future, a future without waste. Many farmers from Zeeland and North-Brabant believe in this project and join Boer naar Burger. By offering products that would otherwise have ended up on the waste pile, a win-win-win situation is created.",
     'shops_text2'       => "Curious about the farmers in your area?<br> <b>Select the area of ​​your preference</b>",
-    'searchfield_shops' => "Search for city...",
+    'searchfield_shops' => "Search for a connected city...",
     'no_search_string'  => "No search input found",
     'go_to_shop'        => 'Enter the shop',
+    'shops_no_hits'     => "CURRENTLY WE DO NOT HAVE ANY CONNECTED FARMERS HERE<br>DO YOU WANT TO BE KEEP INFORMED OF OUR DEVELOPMENTS, SIGN UP FOR THE MAILINGLIST",
     'shop_description'  => 'Shop description',
+
 
     //customer
     'orders'            => 'Order Overview',

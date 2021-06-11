@@ -88,16 +88,13 @@
                             <?php elseif (isset($_GET['shopLinksAll'])) : ?>
                                 <h1 class="rh-subtitle-shops"><?php echo $lang['shops_all']; ?></h1>
         <?php endif; ?>
-        <?php else : ?>                
-            <?php if (empty($_POST['searchfield_shops'])) : ?>
-                <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['no_search_string']); ?></h1> 
-            <?php elseif ($data['search'] == FALSE) : ?>
-                <p class="rh-h4-orderonbekend">
-                    OP DIT MOMENT HEBBEN WIJ HIER NOG GEEN AANGESLOTEN BOEREN<br>
-                    WIL JE OP DE HOOGTE GEHOUDEN WORDEN VAN ONZE ONTWIKKELINGEN, MELD JE DAN AAN VOOR DE MAILINGLIST</p>
-            <?php elseif ($data['search'] == TRUE) : ?>
-                <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['our_shops']); ?><?php echo strtoupper($_POST['searchfield_shops']) ?></h1>
-            <?php endif; ?>
+    <?php elseif (empty($_POST['searchfield_shops'])) : ?>
+        <h1 style='color:#E38F88' class="rh-subtitle-shops"><?php echo strtoupper($lang['no_search_string']); ?></h1> 
+    <?php elseif ($data['search'] == TRUE) : ?>
+        <h1 class="rh-subtitle-shops"><?php echo strtoupper($lang['our_shops']); ?><?php echo strtoupper($_POST['searchfield_shops']) ?></h1>
+    <?php else : ?>
+        <p class="rh-h4-orderonbekend"><span style='font-size:30px'>SORRY!</span><br>
+        <?php echo $lang['shops_no_hits']; ?></p>
     <?php endif; ?>
 
     <br>
@@ -195,6 +192,5 @@
 
 <br><br>
 <hr class="columnLijn">
-
 
 <?php require_once APPROOT."/Views/Includes/footer.php";?>
