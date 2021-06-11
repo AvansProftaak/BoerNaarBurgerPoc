@@ -398,13 +398,14 @@ class Shopowners extends Controller
             $shop = $this->shopModel->getMyShop($_SESSION['kvk_number']);
             
             $data = [
+                'full_name'             => $shopowner->first_name . ' ' . $shopowner->last_name , 
                 'kvk_number'            => $_SESSION['kvk_number'],
                 'shop_name'             =>
                     [
                         'NL' => $this->getTranslation($shop->shop_name, 'nl'),
                         'EN' => $this->getTranslation($shop->shop_name, 'en')
                     ],
-                    'description'           =>
+                'description'           =>
                     [
                         'NL' => $this->getTranslation($shop->description, 'nl'),
                         'EN' => $this->getTranslation($shop->description, 'en')
@@ -439,6 +440,7 @@ class Shopowners extends Controller
                 'shop_nameError'        => ''
 
             ];
+
 
             
 
@@ -521,8 +523,6 @@ class Shopowners extends Controller
                 $descriptions = [   'NL' =>trim($_POST['description_nl']),
                                     'EN' =>trim($_POST['description_en'])];
 
-                
-
                 $data = [
                     'kvk_number'            => $_SESSION['kvk_number'],
                     'shop_name'             =>
@@ -543,8 +543,6 @@ class Shopowners extends Controller
                     'password'              => "$shopowner->password",
                     'shop_nameError'        => ''
                 ];
-
-
 
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);         
 
