@@ -865,22 +865,52 @@ public function editProduct() {
     public function orderOverview(){
         if (isLoggedInShopOwner()) {
             $orders = $this->shopOwnerModel->shopownerOrders($_SESSION['kvk_number']);
-
+            $shop_name = $this->shopOwnerModel->getShopName($_SESSION['kvk_number']);
+           
             $data = [
-                'orders' => $orders
+                'orders'    => $orders,
+                'shop_name' => $shop_name,
 
             ];
-
-            echo "<pre>";
-            var_dump($data['orders']);
-            echo "</pre>";
-            die();
 
         $this->view('shopowners/orderoverview', $data);
         
         } else {
             $this->login();
         }
-    }
 
+        if(isset($_GET['order_number'])) {
+            
+            $order_number  = $_GET['order_number'];
+            $order = $this->shopOwnerModel->getOrder($order_number);
+            
+            if ($order->status == "COMPLETED") {
+
+                $this->shopOwnerModel->openOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+            }
+
+            elseif ($order->status == "PENDING") {
+
+                $this->shopOwnerModel->closeOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+
+            elseif ($order->status == "EXPIRED") {
+
+                $this->shopOwnerModel->closeOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+
+            elseif ($order->status == "CANCELED") {
+
+                $this->shopOwnerModel->closeOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+        }
+
+    }
 }

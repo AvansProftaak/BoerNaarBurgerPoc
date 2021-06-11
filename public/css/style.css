@@ -918,7 +918,7 @@ html {
 }
 
 .shop-login-warning {
-    border-radius: 12px; !important
+    border-radius: 12px !important;
 }
 
 a[aria-expanded=true] .fa-chevron-down {
@@ -1692,6 +1692,7 @@ h3 a:hover{
     font-family: 'Dosis', sans-serif;
     transition: 0.4s;
     border: 1px solid #005622;
+}
 
 .dj-btn_admin:hover {
     background-color:gold;
