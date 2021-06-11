@@ -428,6 +428,7 @@ class Shopowners extends Controller
                 'shop_house_number'     => $shop->house_number,
                 'shop_postal_code'      => $shop->postal_code,
                 'shop_city'             => $shop->city,
+                'banner_url'            => $shop->banner_url,
                 'company_nameError'     => '',
                 'password'              => '',
                 'firstNameError'        => '',
@@ -537,23 +538,29 @@ class Shopowners extends Controller
                     'shop_house_number'          => trim($_POST['shop_house_number']),
                     'shop_postal_code'           => trim($_POST['shop_postal_code']),
                     'shop_city'                  => trim($_POST['shop_city']),
+                    'banner_url'                 => "/assets/shopbanners/" . trim($_FILES['banner_url']['name']),
+                    
                     'password'              => "$shopowner->password",
                     'shop_nameError'        => ''
                 ];
 
 
-                //if no errors are found continue
-                if (empty($data['firstNameError'])) {
 
-                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);                    
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);         
 
-                    if ($this->shopModel->updateShop($data, $shop)) {
-                        $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                if(isset($_FILES['banner_url'])){
+                    $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
+                    $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
+                    $imageFileContents = file_get_contents($imageFile);
+                    $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
 
-                        header('location: ' . URLROOT . '/shopowners/accountDetails');
-                    } else {
-                        die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
-                    }
+                }
+
+                if ($this->shopModel->updateShop($data, $shop)) {
+                    $_SESSION['shopOwner_name'] = $data['first_name'] . ' ' . $data['last_name'];
+                    header('location: ' . URLROOT . '/shopowners/accountDetails');
+                } else {
+                    die('Gegevens wijzigen is mislukt. Probeer het opnieuw.');
                 }
             }
             $this->view('shopowners/accountDetails', $data);

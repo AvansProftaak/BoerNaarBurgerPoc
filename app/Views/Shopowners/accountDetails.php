@@ -16,7 +16,7 @@
                 <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['personal_data']; ?></h2>
                     <hr class="mx-2">
 
-                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
+                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row mx-1">
                             <!-- company Name -->
@@ -114,7 +114,7 @@
                 <h2 class="pt-4 pl-4 data-headers"><?php echo $lang['company_data']; ?></h2>
                     <hr class="mx-2">
 
-                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST">
+                    <form action="<?php echo URLROOT; ?>/shopowners/accountDetails" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row mx-1">
                             <div class="col-5">
@@ -161,8 +161,8 @@
                         <div class="form-group row mx-1 mb-0">
                             <!-- photo -->
                             <div class="col-5">
-                                <label for="photo" class="pl-2 user-data-header"><span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
-                                <input id="photo" type="file" name="photo" class="form-control rounded-borders" placeholder="/Downloads/mooiplaatje" autocomplete="photo">
+                                <label for="banner_url" class="pl-2 user-data-header"><span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
+                                <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders" placeholder="/downloads/image.png" autocomplete="banner_url">
                             </div>
                         </div></br>
 
