@@ -163,6 +163,7 @@
                             <div class="col-5">
                                 <label for="banner_url" class="pl-2 user-data-header"><span class="pl-3 text-danger"><?php if(isset($data['photoError'])) echo $data['photoError'];?></span></label>
                                 <input id="banner_url" type="file" name="banner_url" class="form-control rounded-borders" placeholder="/downloads/image.png" autocomplete="banner_url">
+
                             </div>
                         </div></br>
 
