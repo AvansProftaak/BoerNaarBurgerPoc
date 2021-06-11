@@ -748,7 +748,7 @@ public function editProduct() {
     }
     if (isset($_GET['delete'])) {
         if($this->shopOwnerModel->deleteProduct($_GET['delete'])) {
-            $this->view('shopowners/productoverview');
+            header('location: ' . URLROOT . '/Shopowners/productoverview');
         }
     
     }

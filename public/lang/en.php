@@ -66,6 +66,7 @@ $lang = array (
     'searchfield_shops' => "Search for city...",
     'no_search_string'  => "No search input found",
     'go_to_shop'        => 'Enter the shop',
+    'shop_description'  => 'Shop description',
 
     //customer
     'orders'            => 'Order Overview',
@@ -128,7 +129,7 @@ $lang = array (
 
     //account details
     'my_shop'            => 'Shop overview',
-    'shop_name'          => 'shopname',
+    'shop_name'          => 'Shopname',
     'personal_data'      => 'Personal Details',
     'save_personal_data' => 'Save details',
     'profile_picture'    => 'Choose a picture to upload as your profile picture.',
@@ -318,6 +319,7 @@ $lang = array (
                                     <a href="'. URLROOT . '/products/importProduct">here</a>.',
   
     //shop
+    'shop_image'      => 'Image',
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
     'back_to_shops'   => 'Back to Shops',
     'edit_failed'     => 'Personal details could not be updated. Please try again.',
