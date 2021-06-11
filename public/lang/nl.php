@@ -66,6 +66,7 @@ $lang = array (
     'searchfield_shops' => "Zoek op plaatsnaam...",
     'no_search_string'  => "Geen zoekopdracht ingevoerd!",
     'go_to_shop'        => 'Ga naar de shop',
+    'shops_no_hits'     => "OP DIT MOMENT HEBBEN WIJ HIER NOG GEEN AANGESLOTEN BOEREN<br>WIL JE OP DE HOOGTE GEHOUDEN WORDEN VAN ONZE ONTWIKKELINGEN, MELD JE DAN AAN VOOR DE MAILINGLIST",
 
 
     //customer
