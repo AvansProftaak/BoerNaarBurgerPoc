@@ -332,6 +332,7 @@ $lang = array (
     //shop
     'shop_image'      => 'Image',
     'login_mandatory' => 'To place an order in this webshop you need an account. Please register or login before proceeding.',
+    'back_to_acountdetails' => 'Back to account details',
     'back_to_shops'   => 'Back to Shops',
     'edit_failed'     => 'Personal details could not be updated. Please try again.',
     'edit_success'    => 'You personal details have been saved successfully.',

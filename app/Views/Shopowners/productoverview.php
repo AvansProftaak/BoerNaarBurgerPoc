@@ -67,10 +67,10 @@
     <div class="container">
   <div class="row">
   <div class="col text-left pt-4 pb-lg-5">
-    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails">Terug naar account gegevens</a>
+    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['back_to_acountdetails']; ?></a>
     </div>
     <div class="col text-right pt-4 pb-lg-5">
-    <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails">Naar bestellingsoverzicht</a>
+    <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/orderoverview"><?php echo $lang['orders']; ?></a>
     </div>
   </div>
 </div>
