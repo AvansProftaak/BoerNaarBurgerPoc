@@ -166,11 +166,14 @@ $lang = array (
     'overview_canceled'     => "GEANNULEERD",
     'overview_pending'      => "OPEN",
     'overview_expired'      => "VERLOPEN",
-    'close_order'           => "SLUIT ORDER",
-    'open_order'            => "OPEN ORDER",
+    'close_order'           => "sluit order",
+    'open_order'            => "open order",
     'product_number'        => "productnummer",
     'amount'                => "aantal",
     'customer_name'         => "naam klant",
+    'cancel_order'          => "annuleer order",
+    'adjust_order'          => "status",
+    'adjust'                => "aanpassen",
 
 
     //footer

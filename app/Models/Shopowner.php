@@ -259,7 +259,6 @@ class Shopowner
 
         return $this->db->execute();
     }
-
     
     public function closeOrder($order_number) {
         $this->db->query('UPDATE boer_naar_burger.orders SET status = "COMPLETED" WHERE order_number = :order_number');
@@ -272,11 +271,15 @@ class Shopowner
         }
     }
 
-    public function getShopName($kvk_number) {
-        $this->db->query('SELECT shop_name FROM boer_naar_burger.shops WHERE kvk_number = :kvk_number');
-        $this->db->bind(':kvk_number', $kvk_number);
+    public function cancelOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "CANCELED" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
 
-        return $this->db->single();
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function openOrder($order_number) {

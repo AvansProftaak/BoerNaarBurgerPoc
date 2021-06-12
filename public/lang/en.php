@@ -165,12 +165,14 @@ $lang = array (
     'overview_canceled' => "CANCELED",
     'overview_pending'  => "PENDING",
     'overview_expired'  => "EXPIRED",
-    'close_order'       => "CLOSE ORDER",
-    'open_order'        => "OPEN ORDER",
+    'close_order'       => "close order",
+    'open_order'        => "open order",
     'product_number'    => "product number",
     'amount'            => "amount",
     'customer_name'     => "customer name",
-    
+    'cancel_order'      => "cancel order",
+    'adjust_order'      => "status",
+    'adjust'            => "adjust",
 
 
     //footer
