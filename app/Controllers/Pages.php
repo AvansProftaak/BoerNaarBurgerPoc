@@ -37,10 +37,10 @@ class Pages extends Controller
             'emailFrom' => '',
             'onderwerp' => '',
             'message' => '',
-            'nameErr' => '',
-            'emailErr' => '',
-            'onderwerpErr' => '',
-            'messageErr' => '',
+            // 'nameErr' => '',
+            // 'emailErr' => '',
+            // 'onderwerpErr' => '',
+            // 'messageErr' => '',
         ];
 
         if (isset($_POST['send-contact'])) {
@@ -50,10 +50,10 @@ class Pages extends Controller
                 'emailFrom' => htmlspecialchars($_POST['emailFrom']),
                 'onderwerp' => htmlspecialchars($_POST['onderwerp']),
                 'message' => htmlspecialchars($_POST['message']),
-                'nameErr' => '',
-                'emailErr' => '',
-                'onderwerpErr' => '',
-                'messageErr' => '',
+                // 'nameErr' => '',
+                // 'emailErr' => '',
+                // 'onderwerpErr' => '',
+                // 'messageErr' => '',
             ];
 
 
