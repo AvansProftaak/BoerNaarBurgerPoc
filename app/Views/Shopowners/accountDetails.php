@@ -169,10 +169,10 @@
                             <button name = "submit-company-data" type="submit" class="btn btn-green"><?php echo $lang['save_personal_data']; ?></button>
                             </div>
                             <div class="mr-3 pr-3">
-                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/accountetails" class="btn btn-green">bestellingen</a>
+                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/orderoverview" class="btn btn-green"><?php echo $lang['orders']; ?></a>
                             </div>
                             <div class="mr-3 pr-3">
-                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/productoverview" class="btn btn-green">Beheer producten</a>
+                            <a type="button" href="<?php echo URLROOT; ?>/shopowners/productoverview" class="btn btn-green"><?php echo $lang['product_management']; ?></a>
                             </div>
                         </div>
                     </form>

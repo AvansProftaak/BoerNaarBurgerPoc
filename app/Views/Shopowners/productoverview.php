@@ -19,7 +19,7 @@
         <h1 class="shop-title p-2"><?php echo $this->getTranslation($data['shop']->shop_name, $_SESSION['lang']); ?></h1>
     </div>
     <div>
-        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-50 py-1" alt="shop image"/>
+        <img src="../img<?php echo $data['shop']->banner_url ?>" class="w-100 py-2" alt="shop image"/>
     </div>
     </div>
     </div>
@@ -52,8 +52,8 @@
             </div>
             <div class="d-flex justify-content-center align-items-baseline shop-width">
                 <!-- button naar channge this item en remove this item -->
-                <a class="btn btn-green btn-padding" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?delete=' . $product->product_number ?>">Delete</a>
-                <a class="btn btn-green btn-padding" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?product=' . $product->product_number ?>">aanpassen</a>
+                <a class="btn btn-green ml-2 mr-2" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?delete=' . $product->product_number ?>"><?php echo $lang['product_delete']; ?></a>
+                <a class="btn btn-green ml-2 mr-2" name="product" href="<?php echo URLROOT . '/shopowners/editproduct?product=' . $product->product_number ?>"><?php echo $lang['product_change']; ?></a>
             </div>
         </div>
     </div>
@@ -67,10 +67,10 @@
     <div class="container">
   <div class="row">
   <div class="col text-left pt-4 pb-lg-5">
-    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails">Terug naar account gegevens</a>
+    <a class="btn btn-pink btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails"><?php echo $lang['back_to_acountdetails']; ?></a>
     </div>
     <div class="col text-right pt-4 pb-lg-5">
-    <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/accountdetails">Naar bestellingsoverzicht</a>
+    <a class="btn btn-green btn-padding" href="<?php echo URLROOT; ?>/shopowners/orderoverview"><?php echo $lang['orders']; ?></a>
     </div>
   </div>
 </div>

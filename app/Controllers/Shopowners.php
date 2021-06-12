@@ -545,12 +545,14 @@ class Shopowners extends Controller
 
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);         
                 
-                if(isset($_FILES['banner_url'])){
+                if(isset($_FILES['banner_url']) && ($_FILES['banner_url']['error']!=4)){
                     $size = getimagesize($_FILES['banner_url']['tmp_name']); //get size
                     $imageFile = "data:" . $size["mime"] . ";base64," . base64_encode(file_get_contents($_FILES['banner_url']['tmp_name'])); //get image
                     $imageFileContents = file_get_contents($imageFile);
                     $this->shopOwnerModel->saveFile(trim($_FILES['banner_url']['name']), $imageFile);
                     $banner =  "/assets/shopbanners/" . trim($_FILES['banner_url']['name']);
+                } else {
+                    $banner =  $shop->banner_url;
                 }
                 
                 if ($this->shopModel->updateShop($data, $shop, $banner)) {
