@@ -66,7 +66,7 @@ class Pages extends Controller
            if (empty($data['message'])) {
              $data['messageErr'] = 'contactmessage_error';
            }
-           
+
 
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
 
