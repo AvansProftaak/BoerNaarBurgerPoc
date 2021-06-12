@@ -16,7 +16,7 @@
             padding: 8px;
         }
 
-        #queries tr:nth-child(even){background-color: #E38F88;;}
+        #queries tr:nth-child(even){background-color: #E38F88;}
 
         #queries tr:hover {background-color: #ddd;}
 
@@ -40,7 +40,7 @@
     <tr>
         <th>ID</th>
         <th>Datum/tijd</th>
-        <th>Zoekvraag</th>
+        <th>Zoekopdracht</th>
     </tr>
     <?php foreach ($data['allQueries'] as $query) : ?>
     <tr>

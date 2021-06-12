@@ -1684,6 +1684,7 @@ h3 a:hover{
     }
 
 .dj-btn_admin {
+    margin-top: 15px;
     background-color: #E38F88;
     color: whitesmoke;
     border-radius: 20px;
