@@ -37,10 +37,6 @@ class Pages extends Controller
             'emailFrom' => '',
             'onderwerp' => '',
             'message' => '',
-            // 'nameErr' => '',
-            // 'emailErr' => '',
-            // 'onderwerpErr' => '',
-            // 'messageErr' => '',
         ];
 
         if (isset($_POST['send-contact'])) {
@@ -50,10 +46,6 @@ class Pages extends Controller
                 'emailFrom' => htmlspecialchars($_POST['emailFrom']),
                 'onderwerp' => htmlspecialchars($_POST['onderwerp']),
                 'message' => htmlspecialchars($_POST['message']),
-                // 'nameErr' => '',
-                // 'emailErr' => '',
-                // 'onderwerpErr' => '',
-                // 'messageErr' => '',
             ];
 
 
@@ -74,8 +66,8 @@ class Pages extends Controller
            if (empty($data['message'])) {
              $data['messageErr'] = 'contactmessage_error';
            }
-            $this->view('pages/contact', $data);
            
+
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
 
                 $mailTo = "info@boernaarburger.ml";
