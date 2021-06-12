@@ -864,14 +864,14 @@ public function editProduct() {
     }
     $this->view('shopowners/editproduct');
 }
+
+
     public function orderOverview(){
         if (isLoggedInShopOwner()) {
             $orders = $this->shopOwnerModel->shopownerOrders($_SESSION['kvk_number']);
-            $shop_name = $this->shopOwnerModel->getShopName($_SESSION['kvk_number']);
            
             $data = [
                 'orders'    => $orders,
-                'shop_name' => $shop_name,
 
             ];
 
@@ -881,7 +881,7 @@ public function editProduct() {
             $this->login();
         }
 
-        if(isset($_GET['order_number'])) {
+        if(isset($_GET['order_number']) && isset($_POST['open_order'])) {
             
             $order_number  = $_GET['order_number'];
             $order = $this->shopOwnerModel->getOrder($order_number);
@@ -892,26 +892,54 @@ public function editProduct() {
                 $this->view('shopowners/orderoverview', $data); 
             }
 
-            elseif ($order->status == "PENDING") {
-
-                $this->shopOwnerModel->closeOrder($order_number);
-                $this->view('shopowners/orderoverview', $data); 
-
-            }
-
             elseif ($order->status == "EXPIRED") {
 
-                $this->shopOwnerModel->closeOrder($order_number);
+                $this->shopOwnerModel->openOrder($order_number);
                 $this->view('shopowners/orderoverview', $data); 
 
             }
 
             elseif ($order->status == "CANCELED") {
 
+                $this->shopOwnerModel->openOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+        }
+
+        if(isset($_GET['order_number']) && isset($_POST['close_order'])) {
+            
+            $order_number  = $_GET['order_number'];
+            $order = $this->shopOwnerModel->getOrder($order_number);
+            
+            if ($order->status == "PENDING") {
+
                 $this->shopOwnerModel->closeOrder($order_number);
                 $this->view('shopowners/orderoverview', $data); 
 
             }
+
+        }
+
+        if(isset($_GET['order_number']) && isset($_POST['cancel_order'])) {
+            
+            $order_number  = $_GET['order_number'];
+            $order = $this->shopOwnerModel->getOrder($order_number);
+            
+            if ($order->status == "EXPIRED") {
+
+                $this->shopOwnerModel->cancelOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+
+            elseif ($order->status == "PENDING") {
+
+                $this->shopOwnerModel->cancelOrder($order_number);
+                $this->view('shopowners/orderoverview', $data); 
+
+            }
+
         }
 
     }
