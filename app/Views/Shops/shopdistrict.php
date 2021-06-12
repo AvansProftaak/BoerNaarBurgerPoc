@@ -99,7 +99,7 @@
     <?php if (isset($_POST['searchfield_shops'])) : ?>
         <?php foreach ($data['shopsAll'] as $shop) : ?> 
             <?php if ($shop->city == ucwords(strtolower($_POST['searchfield_shops']))) : ?>
-            <div class="account-profile-card" style="width: 18rem;" style='pointer-events: none'>
+            <div class="account-profile-card" style="width: 18rem; margin:10px" style='pointer-events: none'>
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -114,7 +114,7 @@
     <!-- ZEELAND -->
     <?php elseif (isset($_GET['shopLinksZeeland'])) : ?>
             <?php foreach($data['shopsZeeland'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
+            <div class="account-profile-card" style="width: 18rem; margin:10px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -127,7 +127,7 @@
     <!-- WEST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksWestBrabant'])) : ?>
             <?php foreach($data['shopsWestBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
+            <div class="account-profile-card" style="width: 18rem; margin:10px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -141,7 +141,7 @@
     <!-- MIDDEN-BRABANT -->
     <?php elseif (isset($_GET['shopLinksMiddenBrabant'])) : ?>
             <?php foreach($data['shopsMiddenBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
+            <div class="account-profile-card" style="width: 18rem; margin:10px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -155,7 +155,7 @@
     <!-- OOST-BRABANT -->
     <?php elseif (isset($_GET['shopLinksOostBrabant'])) : ?>
             <?php foreach($data['shopsOostBrabant'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
+            <div class="account-profile-card" style="width: 18rem; margin:10px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
@@ -169,7 +169,7 @@
     <!-- ALLE SHOPS -->
     <?php elseif (isset($_GET['shopLinksAll'])) : ?>
             <?php foreach($data['shopsAll'] as $shop): ?>
-            <div class="account-profile-card" style="width: 18rem;">
+            <div class="account-profile-card" style="width: 18rem; margin:10px">
                 <img class="card-img-top bottom-border" src="../img<?php echo $shop->banner_url ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="shop-card-header card-title"><?php echo $this->getTranslation($shop->shop_name, $_SESSION['lang']); ?></h5>
