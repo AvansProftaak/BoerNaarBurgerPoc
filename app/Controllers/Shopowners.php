@@ -867,11 +867,9 @@ public function editProduct() {
     public function orderOverview(){
         if (isLoggedInShopOwner()) {
             $orders = $this->shopOwnerModel->shopownerOrders($_SESSION['kvk_number']);
-            $company_name = $this->shopOwnerModel->getCompanyName($_SESSION['kvk_number']);
            
             $data = [
                 'orders'    => $orders,
-                'company_name' => $company_name,
 
             ];
 

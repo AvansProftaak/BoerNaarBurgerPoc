@@ -103,7 +103,7 @@
                     </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style='background-color: #D3D3D3; border: 1px #6c757d;'>           
                             <form method="POST" action="<?php echo URLROOT . '/shopowners/orderoverview?order_number=' . $orders->order_number ?>">
-                                <input class="dropdown-item" style='color:#6c757d' type="submit" name="closeyyyyyy_order" value="<?php echo strtoupper($lang['close_order']); ?>" >
+                                <input class="dropdown-item" style='color:#6c757d' type="submit" name="close_order" value="<?php echo strtoupper($lang['close_order']); ?>" >
                                 <input class="dropdown-item" style='color:#6c757d' type="submit" name="cancel_order" value="<?php echo strtoupper($lang['cancel_order']); ?>" >
                             </form>  
                         </div>
