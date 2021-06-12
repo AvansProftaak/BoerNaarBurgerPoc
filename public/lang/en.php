@@ -237,8 +237,8 @@ $lang = array (
     'contact_header2'       =>  'Send us a message',
     'contact_button'        =>  'Send email',
     'contactname_error'     =>  'Enter your name',
-    'contactemail_error'    =>  'Enter your emailadres',
-    'contactemail_error2'   =>  'Enter a valid emailadres',
+    'contactemail_error'    =>  'Enter your email address',
+    'contactemail_error2'   =>  'Enter a valid email address',
     'contactsubject_error'  =>  'Enter your subject',
     'contactmessage_error'  =>  'Enter your message',
 
