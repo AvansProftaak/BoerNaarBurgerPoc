@@ -62,13 +62,15 @@
                 <div class="input-container">
                     <input type="text" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>naam <?php else : ?>name<?php endif; ?>"
                            name="name" class="input-c" value="<?php if (isset($_SESSION['customer_number']))  echo $_SESSION['customer_name'];
-                    else if (isset($_POST["name"])) echo $_POST["name"]; ?>">
+                           else if (isset($_SESSION['kvk_number']))  echo $_SESSION['shopowner_name'];
+                           else if (isset($_POST["name"])) echo $_POST["name"]; ?>">
                     <span class="form-error"><?php if(isset($data['nameErr'])) echo $lang[$data['nameErr']];?></span>
                 </div>
                 <div class="input-container">
                     <input type="email" placeholder="<?php if($_SESSION['lang'] == 'nl') : ?>email@voorbeeld.nl <?php else : ?>email@example.com<?php endif; ?>"
                            name="emailFrom" class="input-c" value="<?php if (isset($_SESSION['customer_number']))  echo $_SESSION['email'];
-                    else if (isset($_POST["emailFrom"])) echo $_POST["emailFrom"]; ?>">
+                           else if (isset($_SESSION['kvk_number']))  echo $_SESSION['email'];
+                           else if (isset($_POST["emailFrom"])) echo $_POST["emailFrom"]; ?>">
                      <span class="form-error"> <?php if(isset($data['emailErr'])) echo $lang[$data['emailErr']];?></span>
                 </div>
                 <div class="input-container">
