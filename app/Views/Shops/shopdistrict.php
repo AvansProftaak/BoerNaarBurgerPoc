@@ -88,6 +88,7 @@
         <p class="rh-h4-orderonbekend"><span style='font-size:30px'>SORRY!</span><br>
         <?php echo $lang['shops_no_hits']; ?></p>
     <?php endif; ?>
+    </div>
 
     <br>
 <hr class="columnLijn">
