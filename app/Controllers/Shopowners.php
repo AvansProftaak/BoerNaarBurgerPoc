@@ -869,7 +869,7 @@ public function editProduct() {
             
 
         if ($this->shopOwnerModel->updateItem($data)) {
-            header('location: ' . URLROOT . '/Shopowners/editproduct');
+            header('location: ' . URLROOT . '/Shopowners/productoverview');
         }
     }
         $this->view('shopowners/editproduct', $data);
