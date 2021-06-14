@@ -10,10 +10,12 @@ class Shopowners extends Controller
      */
     private $shopOwnerModel;
     public $shopModel;
+    public $orderModel;
 
     public function __construct() {
         $this->shopOwnerModel = $this->model('Shopowner');
         $this->shopModel = $this->model('Shop');
+        $this->orderModel = $this->model('Order');
     }
 
     
@@ -759,14 +761,17 @@ public function editProduct() {
     
     }
     if (isset($_GET['product'])) {
+
+        $product = $this->orderModel->getProduct($_GET['product']);        
+
         $data = [
-            'product_name_nl'        => '',
-            'product_name_en'       => '',
-            'product_description_nl'        => '',
-            'product_description_en'        => '',
-            'product_price'         => '',
-            'product_stock'         => '',
-            'product_number'         => $_GET['product'],
+            'product_name_nl'        => $this->getTranslation($product->name, 'nl'),
+            'product_name_en'       => $this->getTranslation($product->name, 'en'),
+            'product_description_nl'        => $this->getTranslation($product->description, 'nl'),
+            'product_description_en'        => $this->getTranslation($product->description, 'en'),
+            'product_price'         => $product->price,
+            'product_stock'         => $product->stock,
+            'product_number'         => $product->product_number,
 
             'product_name_nlError'   => '',
             'product_name_enError'  => '',
@@ -775,6 +780,7 @@ public function editProduct() {
             'product_priceError'    => '',
             'product_stockError'    => ''
         ];
+
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -787,20 +793,21 @@ public function editProduct() {
             }
             
             $shop = ($this->shopOwnerModel->getMyShop())[0];
+            
             $data = [
                 'product_name'             =>
                     [
-                        'NL' => trim($_POST['product_name_nl']),
-                        'EN' => trim($_POST['product_name_en'])
+                        'NL' => $_POST['product_name_nl'] ? $_POST['product_name_nl']: $this->getTranslation($product->name, 'nl'),
+                        'EN' => $_POST['product_name_en'] ? $_POST['product_name_en']: $this->getTranslation($product->name, 'en')
                     ],
                 'product_description'           =>
                     [
-                        'NL' => trim($_POST['product_description_nl']),
-                        'EN' => trim($_POST['product_description_en'])
+                        'NL' => $_POST['product_description_nl'] ? $_POST['product_description_nl']: $this->getTranslation($product->description, 'nl'),
+                        'EN' => $_POST['product_description_en'] ? $_POST['product_description_en']: $this->getTranslation($product->description, 'en'),
                     ],
-                'product_price'               => trim($_POST['product_price']),
-                'product_stock'          => trim($_POST['product_stock']),
-                'product_number'        =>  $_GET['product'],
+                'product_price'         => $_POST['product_price'] ? $_POST['product_price']: $product->price,
+                'product_stock'         => $_POST['product_stock'] ? $_POST['product_stock']: $product->stock,
+                'product_number'        => $_GET['product'],
                 
                 'product_nameError'     => '',
                 'product_name_nlError'  => '',
@@ -812,8 +819,8 @@ public function editProduct() {
                 'product_stockError'    => ''
             ];
 
-
-
+            
+            
             $i = 0 ;
             foreach ($data as $key => $item) {
                 if (empty($item)) {
@@ -829,11 +836,14 @@ public function editProduct() {
                     $errorName = $key . "Error";
 
                     $data = [$errorName => $errorMessage];
-                    print_r($data);
-            }
             
-            $i++ ;
-            } 
+                }
+         
+                
+
+                $i++ ;
+                } 
+
             $errorMessages = [
                 'product_nameError'     => '',
                 'product_name_nlError'  => '',
@@ -855,6 +865,8 @@ public function editProduct() {
                 }
                     
             }
+
+            
 
         if ($this->shopOwnerModel->updateItem($data)) {
             header('location: ' . URLROOT . '/Shopowners/editproduct');
