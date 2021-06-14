@@ -49,6 +49,7 @@ class Shops extends Controller
         // Als de waarde, welke ingevoerd is in de searchbar, niet voorkomt in de database, dan geeft hij de waarde mee als input naar de saveSearch functie in de Model.
         // Hier wordt het weggeschreven als query in de database.
         // De $data variabele geeft de resultaten als key mee aan de view en de shopModel
+        
             if (isset($_POST['searchfield_shops'])) {
             
                 $cities = $this->shopModel->getAllShopCities($_POST['searchfield_shops']);
