@@ -41,8 +41,6 @@ class Shopowners extends Controller
             'open_from'             => '',
             'closed_at'             => '',
             'banner_url'            => '',
-
-
             'kvk_numberError'       => '',
             'shop_nameError'        => '',
             'descriptionError'      => '',
@@ -459,7 +457,10 @@ class Shopowners extends Controller
                 'emailError'            => '',
                 'phone_numberError'     => '',
                 'passwordError'         => '',
-                'shop_nameError'        => ''
+                'shop_nameError'        => '',
+                'ibanError'             => '',
+                'description_nlError'   => '',
+                'description_enError'   => '',
 
             ];
 
@@ -664,19 +665,19 @@ class Shopowners extends Controller
         }
 
         $data = [
-            'product_name_nl'        => '',
-            'product_name_en'       => '',
+            'product_name_nl'               => '',
+            'product_name_en'               => '',
             'product_description_nl'        => '',
             'product_description_en'        => '',
-            'product_price'         => '',
-            'product_stock'         => '',
-
-            'product_name_nlError'   => '',
-            'product_name_enError'  => '',
+            'product_price'                 => '',
+            'product_stock'                 => '',
+            'product_nameError'             => '',
+            'product_name_nlError'          => '',
+            'product_name_enError'          => '',
             'product_description_nlError'   => '',
             'product_description_enError'   => '',
-            'product_priceError'    => '',
-            'product_stockError'    => ''
+            'product_priceError'            => '',
+            'product_stockError'            => '',
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
