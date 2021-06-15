@@ -216,6 +216,10 @@ class Shopowners extends Controller
             if (empty($data['first_name'])) {
                 $data['firstNameError'] = 'Vul uw voornaam in.';
             }
+            //validate last_name
+            if (empty($data['lastNameError'])) {
+                $data['lastNameError'] = 'Vul uw achternaam in.';
+            }
             if (empty($data['address'])) {
                 $data['addressError'] = 'Vul uw adres in.';
             }
@@ -225,9 +229,8 @@ class Shopowners extends Controller
             if (empty($data['postal_code'])) {
                 $data['postal_codeError'] = ' ';
             }
-            //validate last_name
             if (empty($data['city'])) {
-                $data['cityError'] = 'Vul uw achternaam in.';
+                $data['cityError'] = 'Vul uw stad in.';
             }
 
             //validate email
