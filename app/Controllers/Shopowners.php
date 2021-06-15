@@ -217,7 +217,7 @@ class Shopowners extends Controller
                 $data['firstNameError'] = 'Vul uw voornaam in.';
             }
             //validate last_name
-            if (empty($data['lastName'])) {
+            if (empty($data['last_name'])) {
                 $data['lastNameError'] = 'Vul uw achternaam in.';
             }
             if (empty($data['address'])) {
@@ -428,20 +428,21 @@ class Shopowners extends Controller
                     ],
                 'description'           =>
                     [
-                        'NL' => $this->getTranslation($shop->description, 'nl'),
-                        'EN' => $this->getTranslation($shop->description, 'en')
+                        'NL' => $this->getTranslation($shop->description, 'nl') ? $this->getTranslation($shop->description, 'nl') : "vul beschrijving in",
+                        'EN' => $this->getTranslation($shop->description, 'en') ? $this->getTranslation($shop->description, 'en') : "please add description"
                     ],
-                'shop_name_nl'          => $this->getTranslation($shop->shop_name, 'nl'),
-                'shop_name_en'          => $this->getTranslation($shop->shop_name, 'en'),
-                'description_nl'        => $this->getTranslation($shop->description, 'nl'),
-                'description_en'        => $this->getTranslation($shop->description, 'en'),
+                'shop_name_nl'          => $this->getTranslation($shop->shop_name, 'nl') ? $this->getTranslation($shop->shop_name, 'nl') : "vul shop naam in",
+                'shop_name_en'          => $this->getTranslation($shop->shop_name, 'en') ? $this->getTranslation($shop->shop_name, 'en') : "please add shop name",
+                'description_nl'        => $this->getTranslation($shop->description, 'nl')? $this->getTranslation($shop->description, 'nl') : "vul beschrijving in",
+                'description_en'        => $this->getTranslation($shop->description, 'en')? $this->getTranslation($shop->description, 'en') : "please add description",
                 'company_name'          => $shopowner->company_name,
                 'password'              => $shopowner->password,
-                'iban'                  => $shopowner->iban,
+                
+                'iban'                  => $shopowner->iban ? $shopowner->iban: "NL34ABNA.....",
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
-                'phone_number'          => $shopowner->phone_number,
+                'phone_number'          => $shopowner->phone_number ? $shopowner->phone_number: "06521.....",
                 'address'               => $shopowner->address,
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
