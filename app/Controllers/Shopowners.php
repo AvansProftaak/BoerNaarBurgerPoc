@@ -41,8 +41,6 @@ class Shopowners extends Controller
             'open_from'             => '',
             'closed_at'             => '',
             'banner_url'            => '',
-
-
             'kvk_numberError'       => '',
             'shop_nameError'        => '',
             'descriptionError'      => '',
@@ -177,7 +175,11 @@ class Shopowners extends Controller
             'passwordError'         => '',
             'confirmPasswordError'  => '',
             'companyNameError'      => '',
-            'kvkNumberError'        => ''
+            'kvkNumberError'        => '',
+            'addressError'          => '',
+            'house_numberError'     => '',
+            'postal_codeError'      => '',
+            'cityError'             => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -201,17 +203,32 @@ class Shopowners extends Controller
                 'passwordError'         => '',
                 'confirmPasswordError'  => '',
                 'companyNameError'      => '',
-                'kvkNumberError'        => ''
+                'kvkNumberError'        => '',
+                'addressError'          => '',
+                'house_numberError'     => '',
+                'postal_codeError'      => '',
+                'cityError'             => ''
             ];
 
             //validate first_name
             if (empty($data['first_name'])) {
                 $data['firstNameError'] = 'Vul uw voornaam in.';
             }
-
             //validate last_name
             if (empty($data['last_name'])) {
                 $data['lastNameError'] = 'Vul uw achternaam in.';
+            }
+            if (empty($data['address'])) {
+                $data['addressError'] = 'Vul uw adres in.';
+            }
+            if (empty($data['house_number'])) {
+                $data['house_numberError'] = ' ';
+            }
+            if (empty($data['postal_code'])) {
+                $data['postal_codeError'] = ' ';
+            }
+            if (empty($data['city'])) {
+                $data['cityError'] = 'Vul uw stad in.';
             }
 
             //validate email
@@ -409,20 +426,21 @@ class Shopowners extends Controller
                     ],
                 'description'           =>
                     [
-                        'NL' => $this->getTranslation($shop->description, 'nl'),
-                        'EN' => $this->getTranslation($shop->description, 'en')
+                        'NL' => $this->getTranslation($shop->description, 'nl') ? $this->getTranslation($shop->description, 'nl') : "vul beschrijving in",
+                        'EN' => $this->getTranslation($shop->description, 'en') ? $this->getTranslation($shop->description, 'en') : "please add description"
                     ],
-                'shop_name_nl'          => $this->getTranslation($shop->shop_name, 'nl'),
-                'shop_name_en'          => $this->getTranslation($shop->shop_name, 'en'),
-                'description_nl'        => $this->getTranslation($shop->description, 'nl'),
-                'description_en'        => $this->getTranslation($shop->description, 'en'),
+                'shop_name_nl'          => $this->getTranslation($shop->shop_name, 'nl') ? $this->getTranslation($shop->shop_name, 'nl') : "vul shop naam in",
+                'shop_name_en'          => $this->getTranslation($shop->shop_name, 'en') ? $this->getTranslation($shop->shop_name, 'en') : "please add shop name",
+                'description_nl'        => $this->getTranslation($shop->description, 'nl')? $this->getTranslation($shop->description, 'nl') : "vul beschrijving in",
+                'description_en'        => $this->getTranslation($shop->description, 'en')? $this->getTranslation($shop->description, 'en') : "please add description",
                 'company_name'          => $shopowner->company_name,
                 'password'              => $shopowner->password,
-                'iban'                  => $shopowner->iban,
+                
+                'iban'                  => $shopowner->iban ? $shopowner->iban: "NL34ABNA.....",
                 'first_name'            => $shopowner->first_name,
                 'last_name'             => $shopowner->last_name,
                 'email'                 => $shopowner->email,
-                'phone_number'          => $shopowner->phone_number,
+                'phone_number'          => $shopowner->phone_number ? $shopowner->phone_number: "06521.....",
                 'address'               => $shopowner->address,
                 'house_number'          => $shopowner->house_number,
                 'postal_code'           => $shopowner->postal_code,
@@ -439,7 +457,10 @@ class Shopowners extends Controller
                 'emailError'            => '',
                 'phone_numberError'     => '',
                 'passwordError'         => '',
-                'shop_nameError'        => ''
+                'shop_nameError'        => '',
+                'ibanError'             => '',
+                'description_nlError'   => '',
+                'description_enError'   => '',
 
             ];
 
@@ -644,19 +665,19 @@ class Shopowners extends Controller
         }
 
         $data = [
-            'product_name_nl'        => '',
-            'product_name_en'       => '',
+            'product_name_nl'               => '',
+            'product_name_en'               => '',
             'product_description_nl'        => '',
             'product_description_en'        => '',
-            'product_price'         => '',
-            'product_stock'         => '',
-
-            'product_name_nlError'   => '',
-            'product_name_enError'  => '',
+            'product_price'                 => '',
+            'product_stock'                 => '',
+            'product_nameError'             => '',
+            'product_name_nlError'          => '',
+            'product_name_enError'          => '',
             'product_description_nlError'   => '',
             'product_description_enError'   => '',
-            'product_priceError'    => '',
-            'product_stockError'    => ''
+            'product_priceError'            => '',
+            'product_stockError'            => '',
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
