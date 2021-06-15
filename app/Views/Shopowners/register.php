@@ -52,22 +52,22 @@
                         <div class="form-group row mx-1">
                             <!-- Street -->
                             <div class="col-4">
-                                <label for="address" class="pl-2 user-data-header"><?php echo $lang['street']; ?></label>
+                                <label for="address" class="pl-2 user-data-header"><?php echo $lang['street']; ?><span class="pl-3 text-danger"><?php echo $data['addressError'] ?></span></label>
                                 <input id="address" type="text" class="form-control rounded-borders <?php if($data['addressError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['address']))echo $data['address']; ?>" placeholder="Langedreef" name="address" autocomplete="address">
                             </div>
                             <!-- Housenumber -->
                             <div class="col-2">
-                                <label for="house_number" class="pl-2 user-data-header"><?php echo $lang['house_number']; ?></label>
-                                <input id="house_number" type="text" class="form-control rounded-borders <?php if($data['houseNumberError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['house_number']))echo $data['house_number']; ?>" placeholder="19" name="house_number" autocomplete="house_number">
+                                <label for="house_number" class="pl-2 user-data-header"><?php echo $lang['house_number']; ?><span class="pl-3 text-danger"><?php echo $data['house_numberError'] ?></span></label>
+                                <input id="house_number" type="text" class="form-control rounded-borders <?php if($data['house_numberError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['house_number']))echo $data['house_number']; ?>" placeholder="19" name="house_number" autocomplete="house_number">
                             </div>
                             <!-- Zipcode -->
                             <div class="col-sm-2">
-                                <label for="postal_code" class="pl-2 user-data-header"><?php echo $lang['zipcode']; ?></label>
-                                <input id="postal_code" type="text" class="form-control rounded-borders <?php if($data['postalCodeError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['postal_code']))echo $data['postal_code']; ?>" placeholder="4875FE" name="postal_code" autocomplete="postal_code">
+                                <label for="postal_code" class="pl-2 user-data-header"><?php echo $lang['zipcode']; ?><span class="pl-3 text-danger"><?php echo $data['postal_codeError'] ?></span></label>
+                                <input id="postal_code" type="text" class="form-control rounded-borders <?php if($data['postal_codeError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['postal_code']))echo $data['postal_code']; ?>" placeholder="4875FE" name="postal_code" autocomplete="postal_code">
                             </div>
                             <!-- City -->
                             <div class="col">
-                                <label for="city" class="pl-2 user-data-header"><?php echo $lang['city']; ?></label>
+                                <label for="city" class="pl-2 user-data-header"><?php echo $lang['city']; ?><span class="pl-3 text-danger"><?php echo $data['cityError'] ?></span></label>
                                 <input id="city" type="text" class="form-control rounded-borders <?php if($data['cityError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['city']))echo $data['city']; ?>" placeholder="Breda" name="city" autocomplete="city">
                             </div>
                         </div>

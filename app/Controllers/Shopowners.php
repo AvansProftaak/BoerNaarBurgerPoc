@@ -177,7 +177,11 @@ class Shopowners extends Controller
             'passwordError'         => '',
             'confirmPasswordError'  => '',
             'companyNameError'      => '',
-            'kvkNumberError'        => ''
+            'kvkNumberError'        => '',
+            'addressError'          => '',
+            'house_numberError'     => '',
+            'postal_codeError'      => '',
+            'cityError'             => ''
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -201,17 +205,29 @@ class Shopowners extends Controller
                 'passwordError'         => '',
                 'confirmPasswordError'  => '',
                 'companyNameError'      => '',
-                'kvkNumberError'        => ''
+                'kvkNumberError'        => '',
+                'addressError'          => '',
+                'house_numberError'     => '',
+                'postal_codeError'      => '',
+                'cityError'             => ''
             ];
 
             //validate first_name
             if (empty($data['first_name'])) {
                 $data['firstNameError'] = 'Vul uw voornaam in.';
             }
-
+            if (empty($data['address'])) {
+                $data['addressError'] = 'Vul uw adres in.';
+            }
+            if (empty($data['house_number'])) {
+                $data['house_numberError'] = ' ';
+            }
+            if (empty($data['postal_code'])) {
+                $data['postal_codeError'] = ' ';
+            }
             //validate last_name
-            if (empty($data['last_name'])) {
-                $data['lastNameError'] = 'Vul uw achternaam in.';
+            if (empty($data['city'])) {
+                $data['cityError'] = 'Vul uw achternaam in.';
             }
 
             //validate email
