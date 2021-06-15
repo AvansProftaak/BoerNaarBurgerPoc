@@ -38,9 +38,9 @@
                         <div class="col-md-12">
                             <div class="pt-5">
                                 <p class="text-md-center rh-column-links-tekst"><?php echo $lang['empty_orders']; ?><br>
-                                    <?php echo $lang['visit_shops']; ?><a href="<?php echo URLROOT; ?>/shops/overview"><?php echo $lang['shops_link']; ?></a><?php echo $lang['visit_shops2']; ?></p>
+                                    <?php echo $lang['visit_shops']; ?><a href="<?php echo URLROOT; ?>/shops/shopdistrict"><?php echo $lang['shops_link']; ?></a><?php echo $lang['visit_shops2']; ?></p>
                                 <div class="pt-3 d-flex justify-content-center">
-                                    <a class="center btn btn-green px-5" href="<?php echo URLROOT; ?>/shops/overview"><?php echo $lang['go_shops']; ?></a>
+                                    <a class="center btn btn-green px-5" href="<?php echo URLROOT; ?>/shops/shopdistrict"><?php echo $lang['go_shops']; ?></a>
                                 </div>
                             </div>
                         </div>
@@ -99,6 +99,7 @@
                                                 <?php 
                                                     if ($_SESSION['lang'] == "en") {
                                                         $orderMoment = strtotime($order->completed_at);
+                                                        if (!$orderMoment) $orderMoment = strtotime($order->created_at);
                                                         $date = strftime("%A %d %B %Y", $orderMoment);
                                                         $time = strftime("%I:%M %p", $orderMoment);                                                        
 
