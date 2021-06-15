@@ -82,6 +82,12 @@ class Admins extends Controller
     public function AdminPanel()
     {
         if (isLoggedInAdmin()) {
+            ///als er op de knop verwijder zoekresultaten geklikt wordt
+            if (isset($_POST['delete_queries'])){
+
+                $this->adminModel->truncateTable();
+            }
+
             //haal alle data op uit de DB search_query tabel
             $allQueries = $this->adminModel->getAllQueries();
 
@@ -93,11 +99,7 @@ class Admins extends Controller
                 } else {
            $this->login();
             }
-        ///als er op de knop verwijder zoekresultaten geklikt wordt
-        if (isset($_POST['delete_queries'])){
 
-            $this->adminModel->truncateTable();
-            $this->view('admins/adminpanel', $data);
-        }
+        $this->view('admins/adminpanel', $data);
     }
 }
