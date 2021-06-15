@@ -217,7 +217,7 @@ class Shopowners extends Controller
                 $data['firstNameError'] = 'Vul uw voornaam in.';
             }
             //validate last_name
-            if (empty($data['lastNameError'])) {
+            if (empty($data['lastName'])) {
                 $data['lastNameError'] = 'Vul uw achternaam in.';
             }
             if (empty($data['address'])) {
