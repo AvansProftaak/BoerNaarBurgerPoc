@@ -99,6 +99,7 @@
                                                 <?php 
                                                     if ($_SESSION['lang'] == "en") {
                                                         $orderMoment = strtotime($order->completed_at);
+                                                        if (!$orderMoment) $orderMoment = strtotime($order->created_at);
                                                         $date = strftime("%A %d %B %Y", $orderMoment);
                                                         $time = strftime("%I:%M %p", $orderMoment);                                                        
 
