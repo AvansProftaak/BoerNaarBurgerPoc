@@ -23,7 +23,7 @@
                             <!-- Last Name -->
                             <div class="col">
                                 <label for="last_name" class="pl-2 user-data-header"><?php echo $lang['last_name']; ?>*<span class="pl-3 text-danger"><?php echo $data['lastNameError'] ?></span></label>
-                                <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['lastnameError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['last_name']))echo $data['last_name']; ?>" placeholder="Bakker" name="last_name" autocomplete="lname">
+                                <input id="last_name" type="text" class="form-control rounded-borders <?php if($data['lastNameError']) : ?> is-invalid <?php endif; ?>" value="<?php if (isset($data['last_name']))echo $data['last_name']; ?>" placeholder="Bakker" name="last_name" autocomplete="lname">
                             </div>
                         </div>
 
