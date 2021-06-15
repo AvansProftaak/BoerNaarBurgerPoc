@@ -387,4 +387,8 @@ class Shops extends Controller
 
         return true;
     }
+
+    public function notFound() {
+        $this->view('shops/notFound');
+    }
 }
