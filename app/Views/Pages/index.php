@@ -164,7 +164,7 @@
                     <div class="rh-rij-text2">
                         <p class="rh-titel-column"><?php echo $lang['find_your_farmer']; ?></p>
                         <hr class="rh-hr-column">
-                        <a href="regio-keus2.html"><img class="rh-column-map" src="../img/kaart nederland.png"></a>
+                        <a href="<?php echo URLROOT; ?>/shops/shopdistrict?shopLinksAll=a_valuey"><img class="rh-column-map" src="../img/kaart nederland.png"></a>
                         <p class="rh-text-column"><?php echo $lang['find_a_farmer']; ?></p>
                     </div>
                     <div class="rh-rij-text3">
