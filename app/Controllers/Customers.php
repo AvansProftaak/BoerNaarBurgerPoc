@@ -92,8 +92,8 @@ class Customers extends Controller
             }
 
             //if no errors are found continue
-            if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError'] &&
-                    empty($data['emailError'])) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
+            if (empty($data['firstNameError']) && empty($data['lastNameError']) && empty($data['lastNameError']) &&
+                    empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])) {
 
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
