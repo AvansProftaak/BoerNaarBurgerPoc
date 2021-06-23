@@ -29,7 +29,7 @@ class Admin
     }
 
     //functie om alle zoekresultaten die in de Db zijn opgeslagen op te halen
-    ///die zijn zoekresultaten die geen resultaat teruggaven
+    ///dit zijn zoekresultaten die geen resultaat teruggaven
     public function getAllQueries() {
         $this->db->query('SELECT DISTINCT query_id, query_moment, query FROM boer_naar_burger.search_queries ORDER BY query_id;');
         return $this->db->resultSet();

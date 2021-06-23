@@ -40,12 +40,14 @@ class Pages extends Controller
         ];
 
         if (isset($_POST['send-contact'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
             //set variable data
             $data = [
-                'name' => htmlspecialchars($_POST['name']),
-                'emailFrom' => htmlspecialchars($_POST['emailFrom']),
-                'onderwerp' => htmlspecialchars($_POST['onderwerp']),
-                'message' => htmlspecialchars($_POST['message']),
+                'name' => trim($_POST['name']),
+                'emailFrom' => trim($_POST['emailFrom']),
+                'onderwerp' => trim($_POST['onderwerp']),
+                'message' => trim($_POST['message']),
             ];
 
 
