@@ -125,24 +125,6 @@ class Shopowner
         return -1;
     }
 
-    public function updateItem($data) {
-        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, name, description, stock, price, image_url)
-                              VALUES (:shop_number, :name, :description, :stock, :price, :image_url)');
-
-        $this->db->bind(':shop_number', $data['shop_number']);
-        $this->db->bind(':name', $data['name']);
-        $this->db->bind(':description', $data['description']);
-        $this->db->bind(':stock', $data['stock']);
-        $this->db->bind(':price', $data['price']);
-        $this->db->bind(':image_url', $data['image_url']);
-
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function getMyShop() {
 
         if (isLoggedInShopOwner()){
@@ -170,12 +152,15 @@ class Shopowner
     }
 
     public function update($data, $shopowner) {
+
+
         $this->db->query('UPDATE boer_naar_burger.shop_owners SET first_name = :first_name, last_name = :last_name,
-                                email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
-                                company_name = :company_name, phone_number = :phone_number, password = :password, iban = :iban, city = :city WHERE kvk_number = :kvk_number');
-        $this->db->bind(':company_name', $data['company_name']);
-        $this->db->bind(':password', $data['password']);
+                                company_name = :company_name, email = :email, address = :address, house_number = :house_number, postal_code = :postal_code,
+                                phone_number = :phone_number, iban = :iban, city = :city, country = :country WHERE kvk_number = :kvk_number');
+        // $this->db->bind(':password', $data['password']);
         $this->db->bind(':iban', $data['iban']);
+        $this->db->bind(':company_name', $data['company_name']);
+        $this->db->bind(':country', $data['country']);
         $this->db->bind(':phone_number', $data['phone_number']);
         $this->db->bind(':first_name', $data['first_name']);
         $this->db->bind(':last_name', $data['last_name']);
@@ -206,4 +191,114 @@ class Shopowner
             return false;
         }
     }
+
+    public function addProduct($data) {
+
+        $productName = $this->createOrUpdateTranslation($data['product_name']);
+        $productDescription = $this->createOrUpdateTranslation($data['product_description']);
+
+        $this->db->query('INSERT INTO boer_naar_burger.products (shop_number, name, description, stock, price)
+                              VALUES (:shop_number, :name, :description, :stock, :price)');
+
+        // notes shop_name and descriptio have to be the links to translations 
+        // here we are we need to get the right data at the right place
+        $this->db->bind(':shop_number', $data['shop_number']);
+        $this->db->bind(':name', $productName);
+        $this->db->bind(':description', $productDescription);
+        $this->db->bind(':stock', $data['product_stock']);
+        $this->db->bind(':price', $data['product_price']);
+
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function updateItem($data) {
+        $productName = $this->createOrUpdateTranslation($data['product_name']);
+        $productDescription = $this->createOrUpdateTranslation($data['product_description']);
+
+        $this->db->query('UPDATE boer_naar_burger.products SET name = :name, description = :description, stock = :stock, price = :price
+                         WHERE product_number = :product_number');
+
+        $this->db->bind(':product_number', $data['product_number']);
+        $this->db->bind(':name', $productName);
+        $this->db->bind(':description', $productDescription);
+        $this->db->bind(':stock', $data['product_stock']);
+        $this->db->bind(':price', $data['product_price']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function shopownerOrders($kvk_number) {
+    
+        $this->db->query('  SELECT s.shop_name as shop_name, i.order_number as order_number, i.product_number as product_number, p.name as product_name,  i.amount as amount, c.first_name as first_name, c.last_name as last_name, c.phone_number as phone_number, o.created_at as order_date, o.status as status
+                            FROM boer_naar_burger.shops as s
+                            JOIN boer_naar_burger.products as p on p.shop_number = s.shop_number
+                            JOIN boer_naar_burger.items as i on i.product_number = p.product_number
+                            JOIN boer_naar_burger.orders as o on o.order_number = i.order_number
+                            JOIN boer_naar_burger.customers as c on c.customer_number = o.customer_number
+                            WHERE s.kvk_number = :kvk_number
+                            ORDER BY order_number');
+        $this->db->bind(':kvk_number', $kvk_number);
+
+        return $this->db->resultSet();
+                        
+    }
+
+    public function deleteProduct($productNumber) {
+        // DELETE FROM table_name WHERE [condition];
+        $this->db->query('  DELETE FROM boer_naar_burger.products WHERE product_number = :product_number');
+        $this->db->bind(':product_number', $productNumber);
+
+        return $this->db->execute();
+    }
+    
+    public function closeOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "COMPLETED" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function cancelOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "CANCELED" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function openOrder($order_number) {
+        $this->db->query('UPDATE boer_naar_burger.orders SET status = "PENDING" WHERE order_number = :order_number');
+        $this->db->bind('order_number', $order_number);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Deze functie haalt de ordergegevens uit de database via een GET
+    public function getOrder($order) {
+        $this->db->query('SELECT * FROM boer_naar_burger.orders WHERE order_number = :order_number');
+        $this->db->bind(':order_number', $order);
+    
+        return $this->db->single();
+    }
 }
+

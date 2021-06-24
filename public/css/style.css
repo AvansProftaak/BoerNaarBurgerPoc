@@ -917,6 +917,10 @@ html {
     background-color: #005622;
 }
 
+.shop-login-warning {
+    border-radius: 12px !important;
+}
+
 a[aria-expanded=true] .fa-chevron-down {
     display: none;
 }
@@ -979,6 +983,28 @@ a[aria-expanded=false] .fa-chevron-up {
     border-color: #00471c;
     border-radius: 6px;
     color: whitesmoke;
+}
+
+.product-input {
+    border: none;
+    background-color: transparent;
+    max-width: 40px;
+}
+
+.order-total-input {
+    border: none;
+    background-color: transparent;
+    max-width: 85px;
+}
+
+.hide-button {
+    display: none;
+}
+
+.total-input {
+    border: none;
+    background-color: transparent;
+    max-width: 60px;
 }
 
 .btn-decrement:hover {
@@ -1110,7 +1136,6 @@ p {
     height: 50px;
     font-size: 16px;
     text-align: center;
-    line-height: center;
     transition: 0.4s;
 }
 
@@ -1642,39 +1667,11 @@ h3 a:hover{
     color: black;    
 }
 
-.searchbar{
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 60px;
-    background-color: #353b48;
-    border-radius: 30px;
-    padding: 10px;
-    }
+.account-profile-card {
+    margin-bottom: 30px;
+}
 
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 0;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 450px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
-
-    .search_icon{
+.search_icon{
     height: 40px;
     width: 40px;
     float: right;
@@ -1685,4 +1682,23 @@ h3 a:hover{
     color:white;
     text-decoration:none;
     }
-    
+
+.dj-btn_admin {
+    margin-top: 15px;
+    background-color: #E38F88;
+    color: whitesmoke;
+    border-radius: 20px;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    transition: 0.4s;
+    border: 1px solid #005622;
+}
+
+.dj-btn_admin:hover {
+    background-color:gold;
+    border: 1px solid #005622;
+    color: black;
+}
+
+

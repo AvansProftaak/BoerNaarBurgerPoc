@@ -14,6 +14,7 @@ require_once '../app/Helpers/language_helper.php';
     <script src="../js/app.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/shop.js"></script>
 
     <!-- Icon -->
     <link rel ="icon" href = '../img/icon/favicon.ico' type = "image/favicon">
@@ -36,17 +37,55 @@ require_once '../app/Helpers/language_helper.php';
         <div id="page-container-shop">
             <div id="app">
                 <nav class="p-0 navbar navigation-bar-shop navbar-expand-md justify-content-center">
+                    <?php if(strpos($_GET['url'],'step1')) : ?>
                     <ul class="pl-1 ml-5 navbar-nav">
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step1') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
+                            <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step2') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. <?php echo $lang['data']; ?></a>
+                            <a class="nav-link nav-text">2. <?php echo $lang['data']; ?></a>
                         </li>
                         <li class="mr-5 pr-3 nav-item nav-text">
-                            <a class="nav-link nav-text <?php if(strpos($_GET['url'],'step3') !== false) : ?> nav-active <?php endif; ?>" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. <?php echo $lang['payment']; ?></a>
+                            <a class="nav-link nav-text">3. <?php echo $lang['payment']; ?></a>
                         </li>
                     </ul>
+                    <?php elseif(strpos($_GET['url'],'step2')) : ?>
+                    <ul class="pl-1 ml-5 navbar-nav">
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. <?php echo $lang['data']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text">3. <?php echo $lang['payment']; ?></a>
+                        </li>
+                    </ul>
+                    <?php elseif(strpos($_GET['url'],'step3')) : ?>
+                    <ul class="pl-1 ml-5 navbar-nav">
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text" href="<?php echo URLROOT . '/shops/step2?shop=' . $_GET['shop'] ?>">2. <?php echo $lang['data']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step3?shop=' . $_GET['shop'] ?>">3. <?php echo $lang['payment']; ?></a>
+                        </li>
+                    </ul>
+                    <?php else : ?>
+                    <ul class="pl-1 ml-5 navbar-nav">
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text nav-active" href="<?php echo URLROOT . '/shops/step1?shop=' . $_GET['shop'] ?>">1. <?php echo $lang['products']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text">2. <?php echo $lang['data']; ?></a>
+                        </li>
+                        <li class="mr-5 pr-3 nav-item nav-text">
+                            <a class="nav-link nav-text">3. <?php echo $lang['payment']; ?></a>
+                        </li>
+                    </ul>
+                    <?php endif; ?>
 
                     <!-- Language selector -->
                     <ul class="navbar-nav">

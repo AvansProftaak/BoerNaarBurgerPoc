@@ -9,6 +9,7 @@ class Pages extends Controller
         $this->pageModel = $this->model('Page');
     }
 
+    // Deze functie zorgt dat de button op de index een database samenstelt zodat de docenten data hebben om mee te werken
     public function index() {
         $data = [
             'dbCreated' => '',
@@ -16,9 +17,9 @@ class Pages extends Controller
 
         if (isset($_POST['createDatabase'])) {
             if($this->pageModel->createDatabase()) {
-                $data['dbCreated'] = 'De database is succesvol aangemaakt!';
+                header('location: ' . URLROOT . '/pages/index?success');
             } else {
-                $data['dbCreated'] = 'De database kon niet worden aangemaakt. Controleer of je MySQL services runnen';
+                header('location: ' . URLROOT . '/pages/index?failed');
             }
         }
 
@@ -31,6 +32,13 @@ class Pages extends Controller
 
     public function contact()
     {
+        $data = [
+            'name' => '',
+            'emailFrom' => '',
+            'onderwerp' => '',
+            'message' => '',
+        ];
+
         if (isset($_POST['send-contact'])) {
             //set variable data
             $data = [
@@ -38,33 +46,29 @@ class Pages extends Controller
                 'emailFrom' => htmlspecialchars($_POST['emailFrom']),
                 'onderwerp' => htmlspecialchars($_POST['onderwerp']),
                 'message' => htmlspecialchars($_POST['message']),
-                'nameErr' => '',
-                'emailErr' => '',
-                'onderwerpErr' => '',
-                'messageErr' => '',
             ];
 
 
             if (empty($data['name'])) {
-                $data['nameErr'] = 'U heeft geen naam ingevuld.';
+                $data['nameErr'] = 'contactname_error';
             }
 
             if (empty($data['emailFrom'])) {
-                $data['emailErr'] = 'U heeft geen email adres ingevuld.';
+                $data['emailErr'] = 'contactemail_error';
             } else if (!filter_var($data['emailFrom'], FILTER_VALIDATE_EMAIL)){
-                $data['emailErr'] = 'U heeft een ongeldig email adres ingevuld.';
+                $data['emailErr'] = 'contactemail_error2';
             }
 
             if (empty($data['onderwerp'])) {
-                $data['onderwerpErr'] = 'U heeft geen onderwerp ingevuld.';
+                $data['onderwerpErr'] = 'contactsubject_error';
             }
 
            if (empty($data['message'])) {
-             $data['messageErr'] = 'U heeft geen bericht ingevuld.';
+             $data['messageErr'] = 'contactmessage_error';
            }
 
+
             if (empty($data['messageErr']) && empty($data['emailErr']) && empty($data['onderwerpErr']) && empty($data['nameErr'])) {
-                // echo "<script> alert('Bedankt voor uw bericht, we nemen zo spoedig mogelijk contact met u op.')</script>";
 
                 $mailTo = "info@boernaarburger.ml";
                 $headers = "From: " . $data['emailFrom'];
@@ -88,6 +92,9 @@ class Pages extends Controller
         $this->view('pages/faq');
     }
 
+    public function notFound() {
+        $this->view('pages/notFound');
+    }
 
     public function sitemap() {
         $this->view('pages/sitemap');

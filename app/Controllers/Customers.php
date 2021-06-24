@@ -157,6 +157,15 @@ class Customers extends Controller
     }
 
     public function createCustomerSession ($customer) {
+        if (isset($_SESSION['kvk_number']) || isset($_SESSION['email']) || isset($_SESSION['shopowner_name'])) {
+            unset($_SESSION['kvk_number']);
+            unset($_SESSION['email']);
+            unset($_SESSION['shopowner_name']);
+        } elseif (isset($_SESSION['admin_number']) || isset($_SESSION['admin_email'])) {
+            unset($_SESSION['admin_number']);
+            unset($_SESSION['admin_email']);
+        }
+
         $_SESSION['customer_number'] = $customer->customer_number;
         $_SESSION['email'] = $customer->email;
         $_SESSION['customer_name'] = $customer->first_name . ' ' . $customer->last_name;
@@ -368,54 +377,62 @@ class Customers extends Controller
         }
     }
 
+    // Deze functie is gekoppeld aan de orderoverview.php. 
+    // De functioe haalt klantgegevens en ordergegevens van de klant op via email, gekoppeld aan de sessie (indien ingelogd)
+    // De $data variabele geeft de resultaten als key mee aan de view
     public function orderOverview() {
         if (isLoggedIn()) {
             $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
             $orders = $this->orderModel->getCustomerOrders($customer);
-
+            
             $data = [
                 'orders'        => $orders,
                 'customer'      => $customer,
             ];
 
             $this->view('customers/orderoverview', $data);
+        
         } else {
             $this->login();
-        }
+        } 
     }
 
-    public function orderMoment() {
-        if (isLoggedIn()) {
-            $customer = $this->customerModel->getAccountDetails($_SESSION['email']);
-            $orders = $this->orderModel->getCustomerOrders($customer);
+
+
+    // Deze functie is gekoppeld aan de invoice.php. 
+    // De functie wordt gevoed door de GET op ed invoice.php. Hiermee haalt het eigenlijk alle gegevens op die nodig zijn om de invoice te vullen met data.
+    // De $data variabele geeft de resultaten als key mee aan de view
+    public function invoice(){
+        if (isset($_GET['order'])) {
+            $order = $this->orderModel->getOrder($_GET['order']);
+            $customer = $this->orderModel->getCustomerFromOrder($order);           
+            $item = $this->orderModel->getItemsFromOrder($_GET['order']);
+            $payment = $this->orderModel->getPaymentFromOrder($_GET['order']);
+            $productItem = $this->orderModel->productList($_GET['order']);
 
             $data = [
-                'orders'        => $orders,
-                'customer'      => $customer,
+                'order_number'      => $item->order_number,
+                'completed_at'      => $order->completed_at,
+                'customer_number'   => $customer->customer_number,
+                'first_name'        => $customer->first_name,
+                'last_name'         => $customer->last_name,
+                'address'           => $customer->address,
+                'house_number'      => $customer->house_number,
+                'postal_code'       => $customer->postal_code,
+                'city'              => $customer->city,
+                'email'             => $customer->email,
+                'payment_method'    => $payment->payment_method,
+                'paid_at'           => $payment->paid_at,
+                'payment_status'    => $payment->status,
+                'item'              => $item,
+                'product_item'      => $productItem,
+                'order_price'       => $order->orderamount_excl_tax,
+                'order_price_tax'   => $order->orderamount_incl_tax,
             ];
 
-            $ordermoment = $this->$data['orders'];
-
-            $this->view('customers/orderoverview', $ordermoment);
-        } else {
-            $this->login();
-        }
+            $this->view('customers/invoice', $data);
+        } 
     }
-
-    // public function orderMoment() {
-    //     $orders = $this->orderModel->getCustomerOrders($customer);
-        
-    //     setlocale(LC_TIME, "");
-    //     setlocale(LC_ALL, 'nl_NL');
-
-    //     $orderMoment = strtotime($orders->completed_at);                                    
-    //     $date = strftime("%A %d %B %Y", $orderMoment);
-    //     $time = strftime("%H:%M", $orderMoment);
-
-    //     return $date;
-    //     return $time;
-
-    //     $this->view('customers/orderoverview', $data);
-        
-    // }
 }
+
+
